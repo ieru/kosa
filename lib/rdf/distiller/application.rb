@@ -1,11 +1,7 @@
-set :environment, :production
-set :sessions, true
 
-set :dump_errors, false
-set :show_exceptions, false
-set :raise_errors, true
-
-
+#
+#				MAIN APP!
+#
 
 require 'sinatra/sparql'
 require 'sinatra/partials'
@@ -17,43 +13,37 @@ require 'linkeddata'
 require 'rdf/distiller/extensions'
 require 'uri'
 
-#require 'sinatra'
-# require 'sinatra/base'
-# require 'rack-flash'
-#require 'sinatra/flash'
-
-#require 'rubygems'
 require 'nokogiri'
 require 'rest_client'
 require 'fileutils'
 
 require 'erb'
-
 require 'json'
+
+# Relational Databases Adapters here:
 require 'dm-core'
 require 'dm-migrations/adapters/dm-sqlite-adapter'
 
-# require 'rdf'
-# require 'rdf/ntriples' # Support for N-Triples (.nt)
-# require 'rdf/raptor'   # Support for RDF/XML (.rdf) and Turtle (.ttl)
-# require 'rdf/json'     # Support for RDF/JSON (.json)
-# require 'rdf/trix'     # Support for TriX (.xml)
+#
+#				SOME CONFIG!
+#
 
-
-# enable :sessions
-# disable :dump_errors, :show_exceptions
+set :environment, :production
+set :sessions, true
+set :dump_errors, false
+set :show_exceptions, false
+set :raise_errors, true
 
 
 DataMapper.setup(:default, "sqlite3::memory:")
 
-
-#DataMapper::setup(:default, ENV['DATABASE_URL'] ||
+# DataMapper::setup(:default, ENV['DATABASE_URL'] ||
 #  "sqlite3://#{File.join(File.dirname(__FILE__), 'tmp', 'triples.db')}")
 
 
 
-# define the Data Model
 
+# define the Data Model (For Relational Databases)
 class Triples
 
   include DataMapper::Resource
@@ -111,72 +101,44 @@ module RDF::Distiller
       $logger.info "[#{request.path_info}], #{params.inspect}, #{format}, #{request.accept.inspect}"
     end
 
-=begin
-    get '/' do
-      cache_control :public, :must_revalidate, :max_age => 60
-      result = erb :index, :locals => {:title => "Ruby Linked Data Service"}
-      etag result.hash
-      result
+    # localhost:8008 points to a 4store database
+    SPARQLendpoint = 'http://localhost:8008/sparql/'
+    IMPORTendpoint = 'http://localhost:8008/data/'
+    
+    SITEtitle = "Kosa - KOS aggregator"
+
+    # instructs DataMapper to setup your database
+    DataMapper.auto_upgrade!
+
+    # Helpers: used?
+    def bs_styled_flash(key=:flash)
+      return "" if flash(key).empty?
+        id = (key == :flash ? "flash" : "flash_#{key}")
+        messages = flash(key).collect {|message| "  <div class='alert alert-#{message[0]}'>#{message[1]}</div>\n"}
+        "\n" + messages.join + ""
     end
+    # /Helpers
+    
 
-    get '/about' do
-      cache_control :public, :must_revalidate, :max_age => 60
-      haml :about, :locals => {:title => "Linked Data Service"}
+    def index
+        cache_control :public, :must_revalidate, :max_age => 60
+        result = erb :index2, :locals => {:title => SITEtitle}
+        etag result.hash
+        result
     end
-=end
-
-SPARQLendpoint = 'http://localhost:8008/sparql/'
-
-# instructs DataMapper to setup your database
-DataMapper.auto_upgrade!
-
-# Helpers
-def bs_styled_flash(key=:flash)
-  return "" if flash(key).empty?
-    id = (key == :flash ? "flash" : "flash_#{key}")
-    messages = flash(key).collect {|message| "  <div class='alert alert-#{message[0]}'>#{message[1]}</div>\n"}
-    "\n" + messages.join + ""
-end
-# /Helpers
-
-# DRY
-def index
-    cache_control :public, :must_revalidate, :max_age => 60
-    result = erb :index2, :locals => {:title => "Linked data Service"}
-    etag result.hash
-    result
-#  template = File.read(File.join('/rdf/distiller/views', 'index.htm.erb'))
-  # puts File.join('../views', 'index.htm.erb') 
-#  erb = ERB.new(template)
-#  erb.result(binding)
-end
-
-def import
-#  template = File.read(File.join('rdf/distiller/views', 'import.htm.erb'))
-#  erb = ERB.new(template)
-#  erb.result(binding)
-end
-def sparql
-    cache_control :public, :must_revalidate, :max_age => 60
-    result = erb :sparql2, :locals => {:title => "Linked data Service"}
-    etag result.hash
-    result
-
-#  template = File.read(File.join('rdf/distiller/views', 'sparql.htm.erb'))
-#  erb = ERB.new(template)
-#  erb.result(binding)
-end
-def signin
-    cache_control :public, :must_revalidate, :max_age => 60
-    result = erb :signin2, :locals => {:title => "Linked data Service"}
-    etag result.hash
-    result
-
-#  template = File.read(File.join('rdf/distiller/views', 'signin.htm.erb'))
-#  erb = ERB.new(template)
-#  erb.result(binding)
-end
-# // DRY
+    
+    def sparql
+        cache_control :public, :must_revalidate, :max_age => 60
+        result = erb :sparql2, :locals => {:title => SITEtitle}
+        etag result.hash
+        result
+    end
+    def signin
+        cache_control :public, :must_revalidate, :max_age => 60
+        result = erb :signin2, :locals => {:title => SITEtitle}
+        etag result.hash
+        result
+        end
 
    # Handle errors 
    
@@ -196,108 +158,120 @@ end
 #   end
    # // Errors
 
-
-# Imports
-post '/upload' do
-  unless  defined?(params)
-
-    tempfile = params['file'][:tempfile]
-    filename = params['file'][:filename]
-    FileUtils.cp(tempfile.path , "files/#{filename}")
-    flash[:success] = "importation succeded"
-  else
-    # flash[:danger] = "importation failed"
-  end
-  import
-end
-
-# static page routes
-get '/' do
-  index
-end
-=begin
-get '/import' do
-  import
-end
-=end
-get '/sparql' do
-  sparql
-end
-get '/signin' do
-  signin
-end
-# // end static page routes
-
-# SPARQL Query api
-post "/api/sparqlQuery" do
-  content_type 'text/plain'
-  query = params[:q]
-  # query = 'SELECT  ?type WHERE { ?thing a ?type . } ORDER BY ?type'
-
-  # puts "POSTing SPARQL query to #{SPARQLendpoint}"
-  response = RestClient.post SPARQLendpoint, :query => query
-
-  # puts "Response #{response.code}"
-  xml = Nokogiri::XML(response.to_str)
-
-  concatenated_items = "";
-  xml.xpath('//sparql:binding/sparql:uri', 'sparql' => 'http://www.w3.org/2005/sparql-results#').each do |item|
-    concatenated_items = concatenated_items + "<br>" + item.content
-  end
-  concatenated_items.to_s + "<br>"
-
-end
+    #
+    #				NAVIGATION!
+    #
 
 
-# Index // List
-get "/api/triples" do
-  content_type 'application/json'
-  { 'content' => Array(Triples.all) }.to_json
-end
-
-# Create
-post "/api/triples" do
-  opts = Triples.parse_json(request.body.read) rescue nil
-  halt(401, 'Invalid Format') if opts.nil?
-
-  triple = Triples.new(opts)
-  halt(500, 'Could not save triple') unless triple.save
-
-  response['Location'] = triple.url
-  response.status = 201
-end
-
-# Read (:id)
-get "/api/triples/:id" do
-  triple = Triples.get(params[:id]) rescue nil
-  halt(404, 'Not Found') if triple.nil?
-
-  content_type 'application/json'
-  { 'content' => triple }.to_json
-end
-
-# Update (:id)
-put "/api/triples/:id" do
-  triple = Triples.get(params[:id]) rescue nil
-  halt(404, 'Not Found') if triple.nil?
-
-  opts = Triples.parse_json(request.body.read) rescue nil
-  halt(401, 'Invalid Format') if opts.nil?
-
-  triple.description = opts[:description]
-  triple.is_done = opts[:is_done]
-  triple.save
-
-  response['Content-Type'] = 'application/json'
-  { 'content' => triple }.to_json
-end
-
-# Delete (:id)
-delete "/api/triples/:id" do
-  triple = Triples.get(params[:id]) rescue nil
-  triple.destroy unless triple.nil?
-end
-
+    # Imports
+    post '/upload' do
+      unless  defined?(params)
+    
+        tempfile = params['file'][:tempfile]
+        filename = params['file'][:filename]
+        FileUtils.cp(tempfile.path , "files/#{filename}")
+        flash[:success] = "importation succeded"
+      else
+        # flash[:danger] = "importation failed"
+      end
+      import
+    end
+    
+    # static page routes
+    get '/' do
+      index
+    end
+    get '/sparql' do
+      sparql
+    end
+    get '/signin' do
+      signin
+    end
+    # // end static page routes
+    
+    #
+    #				SPARQL API!
+    #
+    
+    
+    # SPARQL Query api
+    post "/api/sparqlQuery" do
+          content_type 'text/plain'
+      query = params[:q]
+      # query = 'SELECT  ?type WHERE { ?thing a ?type . } ORDER BY ?type'
+    
+      # puts "POSTing SPARQL query to #{SPARQLendpoint}"
+      response = RestClient.post SPARQLendpoint, :query => query
+    
+      # puts "Response #{response.code}"
+      xml = Nokogiri::XML(response.to_str)
+    
+      concatenated_items = "";
+      xml.xpath('//sparql:binding/sparql:uri', 'sparql' => 'http://www.w3.org/2005/sparql-results#').each do |item|
+        concatenated_items = concatenated_items + "<br>" + item.content
+          end
+          concatenated_items.to_s + "<br>"
+    
+    end
+    
+    
+    #
+    #				REST!
+    #
+    
+    # Index // List
+    get "/api/triples" do
+      content_type 'application/json'
+      { 'content' => Array(Triples.all) }.to_json
+    end
+    
+    # Create
+    post "/api/triples" do
+      opts = Triples.parse_json(request.body.read) rescue nil
+      halt(401, 'Invalid Format') if opts.nil?
+    
+      triple = Triples.new(opts)
+      halt(500, 'Could not save triple') unless triple.save
+    
+      response['Location'] = triple.url
+      response.status = 201
+    end
+    
+    # Read (:id)
+    get "/api/triples/:id" do
+      triple = Triples.get(params[:id]) rescue nil
+      halt(404, 'Not Found') if triple.nil?
+    
+      content_type 'application/json'
+      { 'content' => triple }.to_json
+    end
+    
+    # Update (:id)
+    put "/api/triples/:id" do
+      triple = Triples.get(params[:id]) rescue nil
+      halt(404, 'Not Found') if triple.nil?
+    
+      opts = Triples.parse_json(request.body.read) rescue nil
+      halt(401, 'Invalid Format') if opts.nil?
+    
+      triple.description = opts[:description]
+      triple.is_done = opts[:is_done]
+      triple.save
+    
+      response['Content-Type'] = 'application/json'
+      { 'content' => triple }.to_json
+    end
+    
+    # Delete (:id)
+    delete "/api/triples/:id" do
+      triple = Triples.get(params[:id]) rescue nil
+      triple.destroy unless triple.nil?
+    end
+    
+    
+    #
+    #				HELPERS!
+    #
 
     get '/doap' do
       cache_control :public, :must_revalidate, :max_age => 60
@@ -388,7 +362,7 @@ end
           content
         end
         @output.force_encoding(Encoding::UTF_8) if @output
-        haml :kosa, :locals => {:title => "Linked Data Import", :head => :kosa}
+        haml :kosa, :locals => {:title => SITEtitle, :head => :kosa}
       end
     end
 
