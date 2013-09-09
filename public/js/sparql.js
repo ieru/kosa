@@ -31,6 +31,15 @@ function syntaxHighlight(json) {
     });
 }
   
+  function isValidJson(str) {
+      try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+	return true;
+    }
+  
   // reset default text
   $("#clear").on("click", function (e) {
     e.stopPropagation();
@@ -55,16 +64,30 @@ function syntaxHighlight(json) {
     
    $.ajax({
      type: "POST",
+     cache: false,
+     // contentType: "text/plain",
+     dataType: "json",
      url: "api/sparqlQuery",
      data: { q: query },
      success: function (m) {
-       
+     
+        console.log(typeof m);
+        console.log(syntaxHighlight(m));
+     
+     if (typeof m == 'object') {
        
        $("#result").html('\
             <div class="bs-callout bs-callout-info">\
     	    <h4>Results</h4><pre>'+syntaxHighlight(m)+'</pre></div>');
 
-       // console.log(m);
+     } else {
+       $("#result").html('\
+      <div class="bs-callout bs-callout-danger">\
+      <h4>Error</h4>\
+      <p><b>Data returned is not valid.</b></p>\
+      </div>');
+
+     };
        
      },
      error: function (m) {

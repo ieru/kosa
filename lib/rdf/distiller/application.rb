@@ -13,7 +13,6 @@ require 'linkeddata'
 require 'rdf/distiller/extensions'
 require 'uri'
 
-# require 'nokogiri'
 require 'rest_client'
 require 'sparql/client'
 
@@ -123,22 +122,22 @@ module RDF::Distiller
     
 
     def index
-        cache_control :public, :must_revalidate, :max_age => 60
+        # cache_control :public, :must_revalidate, :max_age => 60
         result = erb :index, :locals => {:title => SITEtitle}
-        etag result.hash
+        # etag result.hash
         result
     end
     
     def sparql
-        cache_control :public, :must_revalidate, :max_age => 60
+        # cache_control :public, :must_revalidate, :max_age => 60
         result = erb :sparql2, :locals => {:title => SITEtitle}
-        etag result.hash
+        # etag result.hash
         result
     end
     def signin
-        cache_control :public, :must_revalidate, :max_age => 60
+        # cache_control :public, :must_revalidate, :max_age => 60
         result = erb :signin, :locals => {:title => SITEtitle}
-        etag result.hash
+        # etag result.hash
         result
     end
 
@@ -197,7 +196,8 @@ module RDF::Distiller
     # SPARQL Query api
     post "/api/sparqlQuery" do
       # content_type 'text/plain'
-      content_type 'application/json'
+      
+      # cache_control :public, :must_revalidate, :max_age => 60
       queryString = params[:q]
     
            
@@ -218,8 +218,9 @@ module RDF::Distiller
      sparql = SPARQL::Client.new(SPARQLendpoint)
      query = sparql.query(queryString)
      
+     # content_type 'application/json'
      query.each_solution do |s|
-       s.inspect
+       s.inspect.to_s
        # s.inspect
        # puts s
      end
@@ -288,18 +289,18 @@ module RDF::Distiller
     #
 
     get '/doap' do
-      cache_control :public, :must_revalidate, :max_age => 60
+      # cache_control :public, :must_revalidate, :max_age => 60
       case format
       when :nt
-        etag Digest::SHA1.hexdigest File.read(DOAP_NT)
+        # etag Digest::SHA1.hexdigest File.read(DOAP_NT)
         headers "Content-Type" => "application/n-triples; charset=utf-8"
         body File.read(DOAP_NT)
       when :json, :jsonld
-        etag Digest::SHA1.hexdigest File.read(DOAP_JSON)
+        # etag Digest::SHA1.hexdigest File.read(DOAP_JSON)
         headers "Content-Type" => format == :jsonld ? "application/ld+json; charset=utf-8" : "application/json; charset=utf-8"
         body File.read(DOAP_JSON)
       when :html
-        etag Digest::SHA1.hexdigest File.read(DOAP_JSON)
+        # etag Digest::SHA1.hexdigest File.read(DOAP_JSON)
         projects = ::JSON.parse(File.read(DOAP_JSON))['@graph']
         
         # Fix dc:created and doap:helper entries to be normalized
@@ -313,13 +314,13 @@ module RDF::Distiller
           :projects => projects
         }
       else
-        etag Digest::SHA1.hexdigest File.read(DOAP_NT)
+        # etag Digest::SHA1.hexdigest File.read(DOAP_NT)
         doap
       end
     end
 
     get '/import' do
-      cache_control :public, :must_revalidate, :max_age => 60
+      # cache_control :public, :must_revalidate, :max_age => 60
       distil
     end
 
@@ -328,7 +329,7 @@ module RDF::Distiller
     end
     
     get '/sparqld' do
-      cache_control :public, :must_revalidate, :max_age => 60
+      # cache_control :public, :must_revalidate, :max_age => 60
       sparqld
     end
 
@@ -341,7 +342,7 @@ module RDF::Distiller
 
     private
 
-    # Handle GET/POST /distiller
+    # Handle GET/POST
     def distil
       writer_options = {
         :standard_prefixes => true,
@@ -351,6 +352,13 @@ module RDF::Distiller
       writer_options[:format] = params["fmt"] || params["format"] || "turtle"
 
       content = parse(writer_options)
+      
+      #
+      #				IMPORT!
+      #
+      
+      
+      
       $logger.debug "distil content: #{content.class}, as type #{(writer_options[:format] || format).inspect}"
 
       if writer_options[:format].to_s == "rdfa"
@@ -376,7 +384,8 @@ module RDF::Distiller
           content
         end
         @output.force_encoding(Encoding::UTF_8) if @output
-        haml :kosa, :locals => {:title => SITEtitle, :head => :kosa}
+        # puts @output
+        haml :kosa, :locals => {:title => SITEtitle}
       end
     end
 
@@ -513,6 +522,7 @@ module RDF::Distiller
         :base_uri => params["uri"],
         :validate => params["validate"],
       }
+      
       sparql_opts[:format] = params["fmt"].to_sym if params["fmt"]
       sparql_opts[:debug] = @debug = [] if params["debug"]
 

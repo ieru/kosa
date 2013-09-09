@@ -17,7 +17,7 @@
       %script{"src" => "/js/respond.min.js"}
 
 
-    = partial "#{head}_head".to_sym rescue nil
+    /= partial "#{head}_head".to_sym rescue nil
   %body
     = partial :header
     = yield
