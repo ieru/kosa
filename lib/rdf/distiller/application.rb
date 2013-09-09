@@ -140,7 +140,7 @@ module RDF::Distiller
         result = erb :signin, :locals => {:title => SITEtitle}
         etag result.hash
         result
-        end
+    end
 
 
     #
@@ -196,9 +196,9 @@ module RDF::Distiller
     
     # SPARQL Query api
     post "/api/sparqlQuery" do
-          content_type 'text/plain'
+      # content_type 'text/plain'
+      content_type 'application/json'
       queryString = params[:q]
-      # query = 'SELECT  ?type WHERE { ?thing a ?type . } ORDER BY ?type'
     
            
       # 1st aproximations using restclient & nokogiri GEMs
@@ -219,7 +219,7 @@ module RDF::Distiller
      query = sparql.query(queryString)
      
      query.each_solution do |s|
-       s.inspect.to_s
+       s.inspect
        # s.inspect
        # puts s
      end
@@ -539,7 +539,7 @@ module RDF::Distiller
           ""  # Done in form
         else
           # Return service description graph
-          service_description(:repository => doap, :endpoint => url("/sparql"))
+          service_description(:repository => doap, :endpoint => url("/sparqld"))
         end
       end
 
