@@ -122,7 +122,7 @@ module RDF::Distiller
 
     def index
         cache_control :public, :must_revalidate, :max_age => 60
-        result = erb :index2, :locals => {:title => SITEtitle}
+        result = erb :index, :locals => {:title => SITEtitle}
         etag result.hash
         result
     end
@@ -135,7 +135,7 @@ module RDF::Distiller
     end
     def signin
         cache_control :public, :must_revalidate, :max_age => 60
-        result = erb :signin2, :locals => {:title => SITEtitle}
+        result = erb :signin, :locals => {:title => SITEtitle}
         etag result.hash
         result
         end
