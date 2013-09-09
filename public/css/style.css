@@ -102,3 +102,10 @@
   height: 2000px;
   overflow: hidden;
 }
+/* JSON prettifier */
+pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
+.string { color: green; }
+.number { color: darkorange; }
+.boolean { color: blue; }
+.null { color: magenta; }
+.key { color: red; }

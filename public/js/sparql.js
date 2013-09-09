@@ -8,6 +8,28 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns\#>\
 \n  \?s \?p \?o\
 \n} LIMIT 50\
 ";
+
+function syntaxHighlight(json) {
+    if (typeof json != 'string') {
+         json = JSON.stringify(json, undefined, 2);
+    }
+    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        var cls = 'number';
+        if (/^"/.test(match)) {
+            if (/:$/.test(match)) {
+                cls = 'key';
+            } else {
+                cls = 'string';
+            }
+        } else if (/true|false/.test(match)) {
+            cls = 'boolean';
+        } else if (/null/.test(match)) {
+            cls = 'null';
+        }
+        return '<span class="' + cls + '">' + match + '</span>';
+    });
+}
   
   // reset default text
   $("#clear").on("click", function (e) {
@@ -37,11 +59,10 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns\#>\
      data: { q: query },
      success: function (m) {
        
+       
        $("#result").html('\
-      <div class="bs-callout bs-callout-info">\
-      <h4>Results</h4>\
-      <p>'+m+'</p>\
-      </div>');
+            <div class="bs-callout bs-callout-info">\
+    	    <h4>Results</h4><pre>'+syntaxHighlight(m)+'</pre></div>');
 
        // console.log(m);
        
@@ -58,5 +79,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns\#>\
    });
 
   });
+
+
 
 })(jQuery, this, this.document);

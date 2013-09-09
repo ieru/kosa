@@ -13,8 +13,10 @@ require 'linkeddata'
 require 'rdf/distiller/extensions'
 require 'uri'
 
-require 'nokogiri'
+# require 'nokogiri'
 require 'rest_client'
+require 'sparql/client'
+
 require 'fileutils'
 
 require 'erb'
@@ -140,8 +142,11 @@ module RDF::Distiller
         result
         end
 
-   # Handle errors 
-   
+
+    #
+    #				ERROR HANDLING!!
+    #
+
    #$showExceptions = Sinatra::ShowExceptions.new(self)
    
    #error do
@@ -152,11 +157,6 @@ module RDF::Distiller
    not_found do
      "<H2>Your page cannot be found<H2>"
    end
-#
-#   error do
-#    "Internal Server Error"
-#   end
-   # // Errors
 
     #
     #				NAVIGATION!
@@ -197,20 +197,34 @@ module RDF::Distiller
     # SPARQL Query api
     post "/api/sparqlQuery" do
           content_type 'text/plain'
-      query = params[:q]
+      queryString = params[:q]
       # query = 'SELECT  ?type WHERE { ?thing a ?type . } ORDER BY ?type'
     
-      # puts "POSTing SPARQL query to #{SPARQLendpoint}"
-      response = RestClient.post SPARQLendpoint, :query => query
+           
+      # 1st aproximations using restclient & nokogiri GEMs
+      # response = RestClient.post SPARQLendpoint, :query => queryString
     
       # puts "Response #{response.code}"
-      xml = Nokogiri::XML(response.to_str)
+      # xml = Nokogiri::XML(response.to_str)
     
-      concatenated_items = "";
-      xml.xpath('//sparql:binding/sparql:uri', 'sparql' => 'http://www.w3.org/2005/sparql-results#').each do |item|
-        concatenated_items = concatenated_items + "<br>" + item.content
-          end
-          concatenated_items.to_s + "<br>"
+      # concatenated_items = "";
+      # xml.xpath('//sparql:binding/sparql:uri', 'sparql' => 'http://www.w3.org/2005/sparql-results#').each do |item|
+      #     concatenated_items = concatenated_items + "<br>" + item.content
+      #       end
+      #       concatenated_items.to_s + "<br>"
+          
+
+     # 2nd aproximation using sparql-client GEM
+     sparql = SPARQL::Client.new(SPARQLendpoint)
+     query = sparql.query(queryString)
+     
+     query.each_solution do |s|
+       s.inspect.to_s
+       # s.inspect
+       # puts s
+     end
+     
+
     
     end
     
