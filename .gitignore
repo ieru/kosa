@@ -1,0 +1,7 @@
+*-README
+/.yardoc/
+/*.log
+/.bundle/
+/vendor/
+/cache/
+/readmes/

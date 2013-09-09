@@ -1,0 +1,1138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: RDF::Term
+  
+    &mdash; Web portal for RDF.rb.
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '../';
+  framesUrl = "../frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (T)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../RDF.html" title="RDF (module)">RDF</a></span></span>
+     &raquo; 
+    <span class="title">Term</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="../method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="../file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: RDF::Term
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1">Comparable, <span class='object_link'><a href="Value.html" title="RDF::Value (module)">Value</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html" title="SPARQL::Algebra::Expression (module)">SPARQL::Algebra::Expression</a></span></dd>
+      
+    
+  
+  
+    <dt class="r2">Included in:</dt>
+    <dd class="r2"><span class='object_link'><a href="Literal.html" title="RDF::Literal (class)">Literal</a></span>, <span class='object_link'><a href="Query/Variable.html" title="RDF::Query::Variable (class)">Query::Variable</a></span>, <span class='object_link'><a href="Resource.html" title="RDF::Resource (module)">Resource</a></span></dd>
+    
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">vendor/bundler/ruby/2.0.0/bundler/gems/rdf-d329351bfc6d/lib/rdf/model/term.rb<span class="defines">,<br />
+  vendor/bundler/ruby/2.0.0/bundler/gems/sparql-d60d7aa9aa6e/lib/sparql/algebra/extensions.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Extensions for <code>RDF::Term</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%3C%3D%3E-instance_method" title="#&lt;=&gt; (instance method)">- (Integer) <strong>&lt;=&gt;</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Compares <code>self</code> to <code>other</code> for sorting purposes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%3D%3D-instance_method" title="#== (instance method)">- (Integer) <strong>==</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Compares <code>self</code> to <code>other</code> to implement RDFterm-equal.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#aggregate%3F-instance_method" title="#aggregate? (instance method)">- (Boolean) <strong>aggregate?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#compatible%3F-instance_method" title="#compatible? (instance method)">- (Boolean) <strong>compatible?</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Term compatibility according to SPARQL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#eql%3F-instance_method" title="#eql? (instance method)">- (Integer) <strong>eql?</strong>(other) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Determins if <code>self</code> is the same term as <code>other</code>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="protected ">
+  <span class="summary_signature">
+    
+      <a href="#escape-instance_method" title="#escape (instance method)">- (String) <strong>escape</strong>(string) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title protected">protected</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Escape a term using standard character escapes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#evaluate-instance_method" title="#evaluate (instance method)">- (RDF::Term) <strong>evaluate</strong>(bindings, options = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#term%3F-instance_method" title="#term? (instance method)">- (Boolean) <strong>term?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns <code>true</code> if <code>self</code> is a <span class='object_link'><a href="" title="RDF::Term (module)">Term</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_base-instance_method" title="#to_base (instance method)">- (RDF::Value) <strong>to_base</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns a base representation of <code>self</code>.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../SPARQL/Algebra/Expression.html" title="SPARQL::Algebra::Expression (module)">SPARQL::Algebra::Expression</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../SPARQL/Algebra/Expression.html#cast-class_method" title="SPARQL::Algebra::Expression.cast (method)">cast</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#constant%3F-instance_method" title="SPARQL::Algebra::Expression#constant? (method)">#constant?</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#extension-class_method" title="SPARQL::Algebra::Expression.extension (method)">extension</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#extensions-class_method" title="SPARQL::Algebra::Expression.extensions (method)">extensions</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#for-class_method" title="SPARQL::Algebra::Expression.for (method)">for</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#new-class_method" title="SPARQL::Algebra::Expression.new (method)">new</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#open-class_method" title="SPARQL::Algebra::Expression.open (method)">open</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#optimize-instance_method" title="SPARQL::Algebra::Expression#optimize (method)">#optimize</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#parse-class_method" title="SPARQL::Algebra::Expression.parse (method)">parse</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#register_extension-class_method" title="SPARQL::Algebra::Expression.register_extension (method)">register_extension</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#to_sxp_bin-instance_method" title="SPARQL::Algebra::Expression#to_sxp_bin (method)">#to_sxp_bin</a></span>, <span class='object_link'><a href="../SPARQL/Algebra/Expression.html#variable%3F-instance_method" title="SPARQL::Algebra::Expression#variable? (method)">#variable?</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Value.html" title="RDF::Value (module)">Value</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Value.html#anonymous%3F-instance_method" title="RDF::Value#anonymous? (method)">#anonymous?</a></span>, <span class='object_link'><a href="Value.html#constant%3F-instance_method" title="RDF::Value#constant? (method)">#constant?</a></span>, <span class='object_link'><a href="Value.html#graph%3F-instance_method" title="RDF::Value#graph? (method)">#graph?</a></span>, <span class='object_link'><a href="Value.html#inspect-instance_method" title="RDF::Value#inspect (method)">#inspect</a></span>, <span class='object_link'><a href="Value.html#inspect%21-instance_method" title="RDF::Value#inspect! (method)">#inspect!</a></span>, <span class='object_link'><a href="Value.html#invalid%3F-instance_method" title="RDF::Value#invalid? (method)">#invalid?</a></span>, <span class='object_link'><a href="Value.html#iri%3F-instance_method" title="RDF::Value#iri? (method)">#iri?</a></span>, <span class='object_link'><a href="Value.html#list%3F-instance_method" title="RDF::Value#list? (method)">#list?</a></span>, <span class='object_link'><a href="Value.html#literal%3F-instance_method" title="RDF::Value#literal? (method)">#literal?</a></span>, <span class='object_link'><a href="Value.html#node%3F-instance_method" title="RDF::Value#node? (method)">#node?</a></span>, <span class='object_link'><a href="Value.html#resource%3F-instance_method" title="RDF::Value#resource? (method)">#resource?</a></span>, <span class='object_link'><a href="Value.html#statement%3F-instance_method" title="RDF::Value#statement? (method)">#statement?</a></span>, <span class='object_link'><a href="Value.html#to_nquads-instance_method" title="RDF::Value#to_nquads (method)">#to_nquads</a></span>, <span class='object_link'><a href="Value.html#to_ntriples-instance_method" title="RDF::Value#to_ntriples (method)">#to_ntriples</a></span>, <span class='object_link'><a href="Value.html#to_rdf-instance_method" title="RDF::Value#to_rdf (method)">#to_rdf</a></span>, <span class='object_link'><a href="Value.html#type_error-instance_method" title="RDF::Value#type_error (method)">#type_error</a></span>, <span class='object_link'><a href="Value.html#uri%3F-instance_method" title="RDF::Value#uri? (method)">#uri?</a></span>, <span class='object_link'><a href="Value.html#valid%3F-instance_method" title="RDF::Value#valid? (method)">#valid?</a></span>, <span class='object_link'><a href="Value.html#validate%21-instance_method" title="RDF::Value#validate! (method)">#validate!</a></span>, <span class='object_link'><a href="Value.html#variable%3F-instance_method" title="RDF::Value#variable? (method)">#variable?</a></span></p>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="<=>-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Integer.html" title="Integer (class)">Integer</a></span></tt>) <strong>&lt;=&gt;</strong>(other) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Compares <code>self</code> to <code>other</code> for sorting purposes.</p>
+
+<p>Subclasses should override this to provide a more meaningful
+implementation than the default which simply performs a string
+comparison based on <code>#to_s</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>-1</code>, <code>0</code>, or <code>1</code></p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/rdf-d329351bfc6d/lib/rdf/model/term.rb', line 23</span>
+
+<span class='kw'>def</span> <span class='op'>&lt;=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="==-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Integer.html" title="Integer (class)">Integer</a></span></tt>) <strong>==</strong>(other) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Compares <code>self</code> to <code>other</code> to implement RDFterm-equal.</p>
+
+<p>Subclasses should override this to provide a more meaningful
+implementation than the default which simply performs a string
+comparison based on <code>#to_s</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>-1</code>, <code>0</code>, or <code>1</code></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://www.w3.org/TR/rdf-sparql-query/#func-RDFterm-equal" target="_parent" title="http://www.w3.org/TR/rdf-sparql-query/#func-RDFterm-equal">http://www.w3.org/TR/rdf-sparql-query/#func-RDFterm-equal</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/rdf-d329351bfc6d/lib/rdf/model/term.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="aggregate?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>aggregate?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/sparql-d60d7aa9aa6e/lib/sparql/algebra/extensions.rb', line 152</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_aggregate?'>aggregate?</span><span class='semicolon'>;</span> <span class='kw'>false</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="compatible?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>compatible?</strong>(other) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Term compatibility according to SPARQL</p>
+
+<p>Compatibility of two arguments is defined as:
+* The arguments are simple literals or literals typed as xsd:string
+* The arguments are plain literals with identical language tags
+* The first argument is a plain literal with language tag and the second argument is a simple literal or literal typed as xsd:string</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code>compatible?(&quot;abc&quot;	&quot;b&quot;)                         #=&gt; true
+compatible?(&quot;abc&quot;	&quot;b&quot;^^xsd:string)             #=&gt; true
+compatible?(&quot;abc&quot;^^xsd:string	&quot;b&quot;)             #=&gt; true
+compatible?(&quot;abc&quot;^^xsd:string	&quot;b&quot;^^xsd:string) #=&gt; true
+compatible?(&quot;abc&quot;@en	&quot;b&quot;)                     #=&gt; true
+compatible?(&quot;abc&quot;@en	&quot;b&quot;^^xsd:string)         #=&gt; true
+compatible?(&quot;abc&quot;@en	&quot;b&quot;@en)                  #=&gt; true
+compatible?(&quot;abc&quot;@fr	&quot;b&quot;@ja)                  #=&gt; false
+compatible?(&quot;abc&quot;	&quot;b&quot;@ja)                      #=&gt; false
+compatible?(&quot;abc&quot;	&quot;b&quot;@en)                      #=&gt; false
+compatible?(&quot;abc&quot;^^xsd:string	&quot;b&quot;@en)          #=&gt; false</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://www.w3.org/TR/sparql11-query/#func-arg-compatibility" target="_parent" title="http://www.w3.org/TR/sparql11-query/#func-arg-compatibility">http://www.w3.org/TR/sparql11-query/#func-arg-compatibility</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/sparql-d60d7aa9aa6e/lib/sparql/algebra/extensions.rb', line 175</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_compatible?'>compatible?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>unless</span> <span class='id identifier rubyid_literal?'>literal?</span>  <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_literal?'>literal?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_plain?'>plain?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_plain?'>plain?</span>
+
+  <span class='id identifier rubyid_dtr'>dtr</span> <span class='op'>=</span> <span class='const'>RDF</span><span class='op'>::</span><span class='const'>VERSION</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='op'>&gt;=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1.1</span><span class='tstring_end'>&quot;</span></span> <span class='op'>?</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_datatype'>datatype</span> <span class='op'>:</span> <span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_has_language?'>has_language?</span> <span class='op'>?</span> <span class='const'>RDF</span><span class='period'>.</span><span class='id identifier rubyid_langString'>langString</span> <span class='op'>:</span> <span class='const'>RDF</span><span class='op'>::</span><span class='const'>XSD</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+
+  <span class='comment'># * The arguments are simple literals or literals typed as xsd:string
+</span>  <span class='comment'># * The arguments are plain literals with identical language tags
+</span>  <span class='comment'># * The first argument is a plain literal with language tag and the second argument is a simple literal or literal typed as xsd:string
+</span>  <span class='id identifier rubyid_has_language?'>has_language?</span> <span class='op'>?</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_language'>language</span> <span class='op'>==</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_language'>language</span> <span class='op'>||</span> <span class='id identifier rubyid_dtr'>dtr</span> <span class='op'>==</span> <span class='const'>RDF</span><span class='op'>::</span><span class='const'>XSD</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span> <span class='op'>:</span>
+    <span class='id identifier rubyid_dtr'>dtr</span> <span class='op'>==</span> <span class='const'>RDF</span><span class='op'>::</span><span class='const'>XSD</span><span class='period'>.</span><span class='id identifier rubyid_string'>string</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="eql?-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../Integer.html" title="Integer (class)">Integer</a></span></tt>) <strong>eql?</strong>(other) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'></div>
+</div>
+<p>Determins if <code>self</code> is the same term as <code>other</code>.</p>
+
+<p>Subclasses should override this to provide a more meaningful
+implementation than the default which simply performs a string
+comparison based on <code>#to_s</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>other</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Integer.html" title="Integer (class)">Integer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p><code>-1</code>, <code>0</code>, or <code>1</code></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://www.w3.org/TR/rdf-sparql-query/#func-sameTerm" target="_parent" title="http://www.w3.org/TR/rdf-sparql-query/#func-sameTerm">http://www.w3.org/TR/rdf-sparql-query/#func-sameTerm</a></li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/rdf-d329351bfc6d/lib/rdf/model/term.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
+  <span class='kw'>super</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="escape-instance_method">
+  
+    - (<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>) <strong>escape</strong>(string)  <span class="extras">(protected)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Escape a term using standard character escapes</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>string</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+81
+82
+83
+84
+85
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/rdf-d329351bfc6d/lib/rdf/model/term.rb', line 81</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_escape'>escape</span><span class='lparen'>(</span><span class='id identifier rubyid_string'>string</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_string'>string</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\\\</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span>
+         <span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\b</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\b</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span>
+         <span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\f</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\f</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span>
+         <span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\t</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\t</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span>
+         <span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\n</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span>
+         <span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\r</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\r</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span>
+         <span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>&quot;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>\\&quot;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="evaluate-instance_method">
+  
+    - (<tt><span class='object_link'><a href="" title="RDF::Term (module)">RDF::Term</a></span></tt>) <strong>evaluate</strong>(bindings, options = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>bindings</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Query/Solution.html" title="RDF::Query::Solution (class)">RDF::Query::Solution</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>a query solution containing zero or more variable bindings</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Hash.html" title="Hash (class)">Hash</a></span>{<span class='object_link'><a href="../Symbol.html" title="Symbol (class)">Symbol</a></span> =&gt; <span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span>}</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>({})
+options passed from query</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="RDF::Term (module)">RDF::Term</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+148
+149
+150</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/sparql-d60d7aa9aa6e/lib/sparql/algebra/extensions.rb', line 148</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_evaluate'>evaluate</span><span class='lparen'>(</span><span class='id identifier rubyid_bindings'>bindings</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="term?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>term?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns <code>true</code> if <code>self</code> is a <span class='object_link'><a href="" title="RDF::Term (module)">RDF::Term</a></span>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/rdf-d329351bfc6d/lib/rdf/model/term.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_term?'>term?</span>
+  <span class='kw'>true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_base-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Value.html" title="RDF::Value (module)">RDF::Value</a></span></tt>) <strong>to_base</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns a base representation of <code>self</code>.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Value.html" title="RDF::Value (module)">RDF::Value</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>0.3.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'vendor/bundler/ruby/2.0.0/bundler/gems/rdf-d329351bfc6d/lib/rdf/model/term.rb', line 63</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_base'>to_base</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Jul  3 17:07:23 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
