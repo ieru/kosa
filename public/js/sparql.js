@@ -95,7 +95,7 @@ function syntaxHighlight(json) {
        $("#result").html('\
       <div class="bs-callout bs-callout-danger">\
       <h4>Error</h4>\
-      <p>The query could not be performed.</p>\
+      <p>The query could not be performed.'+m+'</p>\
       </div>');
                         
      }

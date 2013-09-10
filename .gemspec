@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby -rubygems
 # -*- encoding: utf-8 -*-
 
+require 'date'
+
 Gem::Specification.new do |s|
   s.version            = '0.0.1dev'
   s.date               = Date.today.to_s

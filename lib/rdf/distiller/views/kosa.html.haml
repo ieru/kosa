@@ -11,10 +11,12 @@
     %strong= CGI.escapeHTML(@error)
 
 %div
-  %h2
-    Linked data Import
+  /%h2
+  /    Linked data Import
   %form{:action => "/import", :class => "bs-callout bs-callout-normal", :method => :post, :enctype => "multipart/form-data"}
     %fieldset.url.upload.input
+      %h2.h2
+        RDF data Import
       /%h4
       /    Data Import form
       %fieldset.url.upload.input
@@ -22,12 +24,12 @@
         /    URI: 
         %p
           Uri:
-        %input#uri{:name => :uri, :size => 80, :class => "form-control ", :type => :text, :value => params['uri']}
+        %input#uri{:name => :uri, :placeholder => 'URI pointing to a RDF file (e.g. http://www.fao.org/countryprofiles/geoinfo/geopolitical/resource/area)',:size => 80, :class => "form-control ", :type => :text, :value => params['uri']}
       /%fieldset.input
       /  %legend
-      %p 
-        Markup:
-      %textarea.input#content{:cols => 128, :class => "form-control ", :name => :content, :rows => 15}= @content
+      /%p 
+      /    Markup:
+      /%textarea.input#content{:cols => 128, :class => "form-control ", :name => :content, :rows => 15}= @content
       %fieldset.url.upload.input
         %br
         %h4

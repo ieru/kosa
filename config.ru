@@ -11,6 +11,7 @@ require 'rack/cache'
 require 'rdf/distiller'
 require 'logger'
 
+set :logging, false
 set :raise_errors, true
 set :show_exceptions, false
 
