@@ -17,6 +17,7 @@ gem 'rdf-rdfxml',         :git => "git://github.com/ruby-rdf/rdf-rdfxml.git", :r
 gem 'rdf-turtle',         :git => "git://github.com/ruby-rdf/rdf-turtle.git", :require => 'rdf/turtle'
 gem 'rdf-trig',           :git => "git://github.com/ruby-rdf/rdf-trig.git", :require => "rdf/trig"
 gem 'rdf-xsd',            :git => "git://github.com/ruby-rdf/rdf-xsd.git", :require => "rdf/xsd"
+gem 'rdf-4store',         :git => "git://github.com/fumi/rdf-4store.git"
 gem 'json-ld',            :git => "git://github.com/ruby-rdf/json-ld.git", :require => 'json/ld'
 gem 'linkeddata',         :git => "git://github.com/ruby-rdf/linkeddata.git"
 gem 'sparql-client',      :git => "git://github.com/ruby-rdf/sparql-client.git"
@@ -26,7 +27,7 @@ gem 'sinatra-respond_to', :git => "git://github.com/gkellogg/sinatra-respond_to.
 gem 'sinatra-flash'
 
 gem 'rmagick'
-gem 'nokogiri'
+# gem 'nokogiri'
 gem 'rest-client'
 gem 'fileutils'
 gem 'json'

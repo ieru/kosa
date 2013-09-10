@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'rdf/util/file'
 require 'curb'
 

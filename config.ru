@@ -1,3 +1,4 @@
+# encoding: UTF-8
 #!/usr/bin/env rackup
 #\ -w -p 4568
 $:.unshift(File.expand_path('../lib',  __FILE__))

@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/fumi/rdf-4store.git
+  revision: cc1a6f1cccdfadb9d15286b623ffca660ce2c0c1
+  specs:
+    rdf-4store (0.0.3)
+      equivalent-xml (>= 0.3.0)
+      linkeddata (>= 0.3.5)
+      rdf (>= 0.3.11.1)
+      sparql-client (>= 0.3.3)
+
+GIT
   remote: git://github.com/gkellogg/sinatra-respond_to.git
   revision: bba116582cc48622e6c4a824aeb803d47a117a18
   specs:
@@ -7,11 +17,11 @@ GIT
 
 GIT
   remote: git://github.com/ruby-rdf/json-ld.git
-  revision: 6f7b622f605dfedef2f52d46842bf8bf75db98f4
+  revision: 7c8934c6d9092aa81933d341b16230bd7e0730e2
   specs:
-    json-ld (1.0.5)
+    json-ld (1.0.6)
       json (>= 1.7.5)
-      rdf (>= 1.0.7)
+      rdf (>= 1.0.8)
 
 GIT
   remote: git://github.com/ruby-rdf/linkeddata.git
@@ -89,12 +99,12 @@ GIT
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-trig.git
-  revision: db8ed4c830b2ec19ba0cf1ee60a8b05caa35bf2c
+  revision: 790abff8e0b04b59fe87fe4b6a0150e4f0304da5
   specs:
-    rdf-trig (1.0.2)
+    rdf-trig (1.0.3)
       ebnf (>= 0.3.0)
       rdf (>= 1.0.7)
-      rdf-turtle (>= 1.0.7)
+      rdf-turtle (>= 1.0.9)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-turtle.git
@@ -267,10 +277,10 @@ DEPENDENCIES
   json-ld!
   kosa!
   linkeddata!
-  nokogiri
   rack-test (>= 0.6.2)
   rake
   rdf!
+  rdf-4store!
   rdf-aggregate-repo!
   rdf-do
   rdf-isomorphic!

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 
 #
 #				MAIN APP!
@@ -7,10 +9,12 @@ require 'sinatra/sparql'
 require 'sinatra/partials'
 require 'sinatra/respond_to'
 
+require 'tempfile'
 
 require 'erubis'
 require 'linkeddata'
 require 'rdf/distiller/extensions'
+require 'rdf/4store'
 require 'uri'
 
 require 'rest_client'
@@ -353,13 +357,9 @@ module RDF::Distiller
 
       content = parse(writer_options)
       
-      #
-      #				IMPORT!
-      #
+       
       
-      
-      
-      $logger.debug "distil content: #{content.class}, as type #{(writer_options[:format] || format).inspect}"
+      # $logger.debug "distil content: #{content.class}, as type #{(writer_options[:format] || format).inspect}"
 
       if writer_options[:format].to_s == "rdfa"
         # If the format is RDFa, use specific HAML writer
@@ -384,7 +384,28 @@ module RDF::Distiller
           content
         end
         @output.force_encoding(Encoding::UTF_8) if @output
-        # puts @output
+        # @output.force_encoding('UTF-8') if @output
+
+      #
+      #				IMPORT!
+      #
+
+
+       
+      if !@output.nil? && !writer_options[:base_uri].nil? 
+        # vocabulary = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+        # randomFilename = (0..15).map{ vocabulary[rand(vocabulary.length)] }.join
+        
+        repository = RDF::FourStore::Repository.new(IMPORTendpoint)
+        # puts repository.count
+        repository.load!(writer_options[:base_uri])
+        # puts repository.count
+        # repository.load(@output.to_s.force_encoding('UTF-8'))
+
+        #file = Tempfile.new(randomFilename)
+        #file.write(@output);
+        
+      end
         haml :kosa, :locals => {:title => SITEtitle}
       end
     end
