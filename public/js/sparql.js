@@ -65,14 +65,14 @@ function syntaxHighlight(json) {
    $.ajax({
      type: "POST",
      cache: false,
-     // contentType: "text/plain",
-     dataType: "json",
+     // contentType: "application/sparql-results+json",
+     dataType: "application/sparql-results+json",
      url: "api/sparqlQuery",
      data: { q: query },
      success: function (m) {
      
         console.log(typeof m);
-        console.log(syntaxHighlight(m));
+        // console.log(syntaxHighlight(m));
      
      if (typeof m == 'object') {
        
@@ -81,12 +81,19 @@ function syntaxHighlight(json) {
     	    <h4>Results</h4><pre>'+syntaxHighlight(m)+'</pre></div>');
 
      } else {
+
+       $("#result").html('\
+            <div class="bs-callout bs-callout-info">\
+    	   <h4>Results</h4><pre>'+m+'</pre></div>');
+
+      
+      /*
        $("#result").html('\
       <div class="bs-callout bs-callout-danger">\
       <h4>Error</h4>\
       <p><b>Data returned is not valid.</b></p>\
       </div>');
-
+     */
      };
        
      },
@@ -95,7 +102,7 @@ function syntaxHighlight(json) {
        $("#result").html('\
       <div class="bs-callout bs-callout-danger">\
       <h4>Error</h4>\
-      <p>The query could not be performed.'+m+'</p>\
+      <p>The query could not be performed.</p>\
       </div>');
                         
      }

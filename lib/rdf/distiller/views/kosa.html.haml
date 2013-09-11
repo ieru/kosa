@@ -23,8 +23,8 @@
         /%label{:for => :uri}
         /    URI: 
         %p
-          Uri:
-        %input#uri{:name => :uri, :placeholder => 'URI pointing to a RDF file (e.g. http://www.fao.org/countryprofiles/geoinfo/geopolitical/resource/area)',:size => 80, :class => "form-control ", :type => :text, :value => params['uri']}
+          URI:<small>(e.g. http://www.fao.org/countryprofiles/geoinfo/geopolitical/resource)</small>
+        %input#uri{:name => :uri, :placeholder => 'URI pointing to a RDF repository',:size => 80, :class => "form-control ", :type => :text, :value => params['uri']}
       /%fieldset.input
       /  %legend
       /%p 

@@ -1,4 +1,4 @@
-(function (d3, window, document, undefined) {
+(function ($, d3, window, document, undefined) {
 
 var realWidth = window.innerWidth;
 var realHeight = window.innerHeight;
@@ -261,7 +261,8 @@ function zoom() {
 */
 
 // load data using AJAX
-d3.json("/json/test_data2.json", function(json) {
+$.getJSON("/json/test_data2.json", function(json) {
+// d3.json("/json/test_data2.json", function(json) {
 
     root = json;
     d3.select("#processName").html(root.text);
@@ -329,5 +330,5 @@ function dragndrop(d) {
       //.style("left", ((parseInt(drag.style("left")) + d3.event.sourceEvent.pageX) - this.offsetWidth/2)+"px")
 }
 */
-})(d3, this, this.document);
+})(jQuery, d3, this, this.document);
 

@@ -10,6 +10,7 @@ require 'sinatra/partials'
 require 'sinatra/respond_to'
 
 require 'tempfile'
+require 'rdf/turtle'
 
 require 'erubis'
 require 'linkeddata'
@@ -23,7 +24,6 @@ require 'sparql/client'
 require 'fileutils'
 
 require 'erb'
-require 'json'
 
 # Relational Databases Adapters here:
 require 'dm-core'
@@ -103,7 +103,7 @@ module RDF::Distiller
     set :public_folder, File.expand_path("../../../../public", __FILE__)
     mime_type "sse", "application/sse+sparql-query"
     before do
-      $logger.info "[#{request.path_info}], #{params.inspect}, #{format}, #{request.accept.inspect}"
+      # $logger.info "[#{request.path_info}], #{params.inspect}, #{format}, #{request.accept.inspect}"
     end
 
     # localhost:8008 points to a 4store database
@@ -166,16 +166,15 @@ module RDF::Distiller
     #
 
 
-    # Imports
     post '/upload' do
       unless  defined?(params)
     
         tempfile = params['file'][:tempfile]
         filename = params['file'][:filename]
         FileUtils.cp(tempfile.path , "files/#{filename}")
-        flash[:success] = "importation succeded"
+        flash[:success] = "upload succeded"
       else
-        # flash[:danger] = "importation failed"
+        # flash[:danger] = "upload failed"
       end
       import
     end
@@ -199,6 +198,7 @@ module RDF::Distiller
     
     # SPARQL Query api
     post "/api/sparqlQuery" do
+
       # content_type 'text/plain'
       
       # cache_control :public, :must_revalidate, :max_age => 60
@@ -220,13 +220,16 @@ module RDF::Distiller
 
      # 2nd aproximation using sparql-client GEM
      sparql = SPARQL::Client.new(SPARQLendpoint)
+     
      query = sparql.query(queryString)
      
-     # content_type 'application/json'
+     # query.inspect
+     content_type 'application/json'
+     #content_type 'application/sparql-results+json'
      query.each_solution do |s|
-       s.inspect.to_s
-       # s.inspect
-       # puts s
+       s.inspect
+     #   # s.inspect
+     #   # puts s
      end
      
 
@@ -359,7 +362,7 @@ module RDF::Distiller
       
        
       
-      # $logger.debug "distil content: #{content.class}, as type #{(writer_options[:format] || format).inspect}"
+      # # $logger.debug "distil content: #{content.class}, as type #{(writer_options[:format] || format).inspect}"
 
       if writer_options[:format].to_s == "rdfa"
         # If the format is RDFa, use specific HAML writer
@@ -446,7 +449,7 @@ module RDF::Distiller
         writer_options[:haml_options] = {:ugly => false}
       end
 
-      $logger.info "sparql content: #{content.class}, as type #{format.inspect} with options #{writer_options.inspect}"
+      # $logger.info "sparql content: #{content.class}, as type #{format.inspect} with options #{writer_options.inspect}"
       if format != :html
         writer_options[:format] = params["fmt"]
         settings.sparql_options.replace(writer_options)
@@ -460,7 +463,7 @@ module RDF::Distiller
           @output = if params["fmt"] == "sse"
             content
           else
-            $logger.debug "content-type: #{headers['Content-Type'].inspect}"
+            # $logger.debug "content-type: #{headers['Content-Type'].inspect}"
             SPARQL.serialize_results(content, serialize_options)
           end
         @output.force_encoding(Encoding::UTF_8) if @output
@@ -486,7 +489,7 @@ module RDF::Distiller
     ## Default graph, loaded from DOAP file
     def doap
       @doap ||= begin
-        $logger.debug "load #{DOAP_NT}"
+        # $logger.debug "load #{DOAP_NT}"
         RDF::Repository.load(DOAP_NT, :encoding => Encoding::UTF_8)
       end
     end
@@ -509,11 +512,11 @@ module RDF::Distiller
       when !params["content"].to_s.empty?
         raise RDF::ReaderError, "Specify input format" if in_fmt.nil? || in_fmt == :content
         @content = ::URI.unescape(params["content"])
-        $logger.info "Open form data with format #{in_fmt} for #{@content.inspect}"
+        # $logger.info "Open form data with format #{in_fmt} for #{@content.inspect}"
         reader = RDF::Reader.for(reader_opts[:format] || reader_opts)
         reader.new(@content, reader_opts) {|r| graph << r}
       when !params["uri"].to_s.empty?
-        $logger.info "Open uri <#{params["uri"]}> with format #{in_fmt}"
+        # $logger.info "Open uri <#{params["uri"]}> with format #{in_fmt}"
         
         reader = RDF::Reader.open(params["uri"], reader_opts) {|r| graph << r}
         params["in_fmt"] = reader.class.to_sym if in_fmt.nil? || in_fmt == :content
@@ -521,19 +524,19 @@ module RDF::Distiller
         graph = ""
       end
 
-      $logger.info "parsed #{graph.count} statements" if graph.is_a?(RDF::Graph)
+      # $logger.info "parsed #{graph.count} statements" if graph.is_a?(RDF::Graph)
       graph
     rescue Errno::ENOENT => e
       @error = "Errno::ENOENT: #{e.message}" 
       nil
     rescue RDF::ReaderError => e
       @error = "RDF::ReaderError: #{e.message}"
-      $logger.error @error  # to log
+      # $logger.error @error  # to log
       nil
     rescue
       raise unless settings.environment == :production
       @error = "#{$!.class}: #{$!.message}"
-      $logger.error @error  # to log
+      # $logger.error @error  # to log
       nil
     end
 
@@ -553,18 +556,18 @@ module RDF::Distiller
       case
       when !params["query"].to_s.empty?
         @query = params["query"]
-        $logger.info "Open form data: #{@query.inspect}"
+        # $logger.info "Open form data: #{@query.inspect}"
         # Optimization for RDFa Test suite
         repo = RDF::Repository.new if @query.to_s =~ /ASK FROM/
         sparql_expr = SPARQL.parse(@query, sparql_opts)
       when !params["uri"].to_s.empty?
-        $logger.info "Open uri <#{params["uri"]}>"
+        # $logger.info "Open uri <#{params["uri"]}>"
         RDF::Util::File.open_file(params["uri"]) do |f|
           sparql_expr = SPARQL.parse(f, sparql_opts)
         end
       else
         # Otherwise, return service description
-        $logger.info "Service Description"
+        # $logger.info "Service Description"
         return case format
         when :html
           ""  # Done in form
@@ -581,17 +584,17 @@ module RDF::Distiller
         return sparql_expr.to_sse
       end
 
-      $logger.debug "execute query"
+      # $logger.debug "execute query"
       repo ||= doap
       sparql_expr.execute(repo, sparql_opts)
     rescue SPARQL::Grammar::Parser::Error, SPARQL::MalformedQuery, TypeError
       @error = "#{$!.class}: #{$!.message}"
-      $logger.error @error  # to log
+      # $logger.error @error  # to log
       nil
     rescue
       raise unless settings.environment == :production
       @error = "#{$!.class}: #{$!.message}"
-      $logger.error @error  # to log
+      # $logger.error @error  # to log
       nil
     end
     
