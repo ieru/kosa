@@ -3,6 +3,6 @@
 
 live demo ( not working yet )
 ===
-[kosa.appgee.net]
+[http://kosa.appgee.net]
 
 * building wiki
