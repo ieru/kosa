@@ -13,16 +13,36 @@ describe RDF::Distiller::Application do
       get '/'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should be_ok
-      last_response.body.should match %r{Ruby Linked Data Service}
+      #last_response.body.should match %r{Ruby Linked Data Service}
     end
   end
   
-  describe "about" do
+  describe "import" do
     it "gets HTML" do
-      get '/about'
+      get '/import'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should be_ok
-      last_response.body.should match %r{Ruby Linked Data Service}
+      #last_response.body.should match %r{Ruby Linked Data Service}
     end
   end
+
+  describe "sparql" do
+    it "gets HTML" do
+      get '/sparql'
+      last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
+      last_response.should be_ok
+      #last_response.body.should match %r{Ruby Linked Data Service}
+    end
+  end
+
+  describe "signin" do
+    it "gets HTML" do
+      get '/signin'
+      last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
+      last_response.should be_ok
+      #last_response.body.should match %r{Ruby Linked Data Service}
+    end
+  end
+  
+  
 end
