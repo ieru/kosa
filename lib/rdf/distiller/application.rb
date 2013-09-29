@@ -17,6 +17,7 @@ require 'linkeddata'
 require 'rdf/distiller/extensions'
 require 'rdf/4store'
 require 'uri'
+require 'nokogiri'
 
 require 'rest_client'
 require 'sparql/client'
@@ -195,46 +196,62 @@ module RDF::Distiller
     #				SPARQL API!
     #
     
+
+    def sparqlService(queryString="")
+      
+       # cache_control :public, :must_revalidate, :max_age => 60
+       # queryString = params[:q]
+    
+           
+       # 1st aproximations using restclient & nokogiri GEMs
+       response = RestClient.post SPARQLendpoint, :query => queryString
+    
+       # puts "Response #{response.code}"
+       xml = Nokogiri::XML(response.to_str)
+    
+       content_type 'text/plain'
+         concatenated_items = "";
+       
+         xml.xpath('//sparql:binding/sparql:uri', 'sparql' => 'http://www.w3.org/2005/sparql-results#').each_with_index do |item, indx|
+             concatenated_items = concatenated_items + "<br>" + item.content
+             if indx % 3 == 0 
+             #   b = 2
+               concatenated_items = concatenated_items + "<br>"
+             end
+         end
+         concatenated_items.to_s + "<br>"
+         # end
+
+     # no way --> 406 error in javascript<--- back to 1st aprox..
+     # 2nd aproximation using sparql-client GEM
+
+     #      sparql = SPARQL::Client.new(SPARQLendpoint)
+     
+     #      query = sparql.query(queryString)
+     
+     #      # query.inspect
+     #      content_type 'application/json'
+     #      #content_type 'application/sparql-results+json'
+     #      query.each_solution do |s|
+     #        s.inspect
+     #      #   # s.inspect
+     #      #   # puts s
+     #      end  
+    end
+
     
     # SPARQL Query api
     post "/api/sparqlQuery" do
-
-      # content_type 'text/plain'
-      
-      # cache_control :public, :must_revalidate, :max_age => 60
       queryString = params[:q]
-    
-           
-      # 1st aproximations using restclient & nokogiri GEMs
-      # response = RestClient.post SPARQLendpoint, :query => queryString
-    
-      # puts "Response #{response.code}"
-      # xml = Nokogiri::XML(response.to_str)
-    
-      # concatenated_items = "";
-      # xml.xpath('//sparql:binding/sparql:uri', 'sparql' => 'http://www.w3.org/2005/sparql-results#').each do |item|
-      #     concatenated_items = concatenated_items + "<br>" + item.content
-      #       end
-      #       concatenated_items.to_s + "<br>"
-          
-
-     # 2nd aproximation using sparql-client GEM
-     sparql = SPARQL::Client.new(SPARQLendpoint)
-     
-     query = sparql.query(queryString)
-     
-     # query.inspect
-     content_type 'application/json'
-     #content_type 'application/sparql-results+json'
-     query.each_solution do |s|
-       s.inspect
-     #   # s.inspect
-     #   # puts s
-     end
-     
-
-    
+      sparqlService queryString
     end
+
+    # SPARQL Query api
+    post "/api/sparqlQuery.json" do
+      queryString = params[:q]
+      sparqlService queryString
+    end
+
     
     
     #
@@ -262,7 +279,8 @@ module RDF::Distiller
     # Read (:id)
     get "/api/triples/:id" do
       triple = Triples.get(params[:id]) rescue nil
-      halt(404, 'Not Found') if triple.nil?
+      halt(404, 'Not Found') 
+      if triple.nil?
     
       content_type 'application/json'
       { 'content' => triple }.to_json
@@ -608,4 +626,5 @@ module RDF::Distiller
       end
     end
   end
+end
 end

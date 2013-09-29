@@ -61,15 +61,30 @@ function syntaxHighlight(json) {
     e.preventDefault();
     
     query = $("#query").val();
-    
+
+   
+   
+   /*
+   $.ajaxSetup({ 
+     'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "application/javascript")} 
+   });*/
+   
    $.ajax({
      type: "POST",
      cache: false,
      // contentType: "application/sparql-results+json",
-     dataType: "application/sparql-results+json",
+     // dataType: "application/sparql-results+json",
+     // dataType: "application/javascript",
      url: "api/sparqlQuery",
      data: { q: query },
      success: function (m) {
+     
+     console.dir(m);
+     $("#result").html('\
+             <div class="bs-callout bs-callout-info">\
+     	    <h4>Results</h4><pre>'+m+'</pre></div>');
+     
+     /** fixed temporally results printing. fix this to parse result as a colored json
      
         console.log(typeof m);
         // console.log(syntaxHighlight(m));
@@ -87,27 +102,32 @@ function syntaxHighlight(json) {
     	   <h4>Results</h4><pre>'+m+'</pre></div>');
 
       
-      /*
-       $("#result").html('\
-      <div class="bs-callout bs-callout-danger">\
-      <h4>Error</h4>\
-      <p><b>Data returned is not valid.</b></p>\
-      </div>');
-     */
+      
+      // $("#result").html('\
+      // <div class="bs-callout bs-callout-danger">\
+      // <h4>Error</h4>\
+      // <p><b>Data returned is not valid.</b></p>\
+      // </div>');
+     
      };
-       
+      **/ 
      },
      error: function (m) {
-     
+       console.dir(m);
        $("#result").html('\
       <div class="bs-callout bs-callout-danger">\
       <h4>Error</h4>\
       <p>The query could not be performed.</p>\
       </div>');
                         
-     }
+     },
+     complete: function (m) {
+       // console.dir(m);
+     },
    });
-
+   //.done(function( data ) {
+   // console.log('hola');
+   // });
   });
 
 
