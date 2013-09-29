@@ -360,6 +360,16 @@ module RDF::Distiller
     post '/sparqld' do
       sparqld
     end
+    
+    # for distiller specs compliance
+    get '/distiller' do
+      # cache_control :public, :must_revalidate, :max_age => 60
+      sparqld
+    end
+
+    post '/distiller' do
+      sparqld
+    end
 
        
 
