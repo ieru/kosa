@@ -9,7 +9,7 @@ describe RDF::Distiller::Application do
     $logger.formatter = lambda {|severity, datetime, progname, msg| "#{msg}\n"}
   end
 
-=begin
+
   describe "/distiller" do
     context "HTML output" do
       context "URL" do
@@ -66,6 +66,6 @@ describe RDF::Distiller::Application do
       end
     end
   end
-=end
+
   
 end

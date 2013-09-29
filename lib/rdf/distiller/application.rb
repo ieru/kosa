@@ -252,6 +252,86 @@ module RDF::Distiller
       sparqlService queryString
     end
 
+
+    #
+    #				NEW REST API - HELPERS!
+    #
+   
+    def getTopConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+    def getConcept(lang="en", node="")
+      {}.to_json
+    end
+
+    def getConcepts(lang="en")
+      {}.to_json
+    end
+
+    def getBroaderConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+    def getNarrowerConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+    def getRelatedConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+    #
+    #				NEW REST API!
+    #
+    
+    # first node in a tree
+    get "/api/gettopconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getTopConcepts
+    end
+    
+    # data from one node
+    get "/api/getconcept" do
+      lang = params[:lang]
+      node = params[:node]
+      getConcept
+    end
+    
+    # all nodes JSON object
+    get "/api/getconcepts" do
+      lang = params[:lang]
+      getConcepts
+    end
+    
+    # Parent nodes
+    get "/api/getbroaderconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getBroaderConcepts
+    end
+    
+    # node children. Returns {} if no children
+    get "/api/getnarrowerconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getNarrowerConcepts
+    end
+    
+    get "/api/getrelatedconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getTopConcepts
+    end
+    
+
+    
+
+    
+
+
+    
     
     
     #
@@ -361,12 +441,12 @@ module RDF::Distiller
       sparqld
     end
     
-    # for distiller specs compliance
+    
+    # for RDF::Distiller Specs compliance
     get '/distiller' do
       # cache_control :public, :must_revalidate, :max_age => 60
       sparqld
     end
-
     post '/distiller' do
       sparqld
     end
