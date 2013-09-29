@@ -279,8 +279,7 @@ module RDF::Distiller
     # Read (:id)
     get "/api/triples/:id" do
       triple = Triples.get(params[:id]) rescue nil
-      halt(404, 'Not Found') 
-      if triple.nil?
+      halt(404, 'Not Found') if triple.nil?
     
       content_type 'application/json'
       { 'content' => triple }.to_json
@@ -626,5 +625,4 @@ module RDF::Distiller
       end
     end
   end
-end
 end
