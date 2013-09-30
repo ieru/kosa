@@ -3,11 +3,13 @@ require 'spec_helper'
 require 'linkeddata'
 
 describe RDF::Distiller::Application do
+=begin
   before(:each) do
     $debug_output = StringIO.new()
     $logger = Logger.new($debug_output)
     $logger.formatter = lambda {|severity, datetime, progname, msg| "#{msg}\n"}
   end
+
 
   describe "/doap" do
     before(:all) {@doap = RDF::Repository.new << [RDF::URI("doap"), RDF.type, RDF::DOAP.to_uri]}
@@ -63,4 +65,6 @@ describe RDF::Distiller::Application do
       end
     end
   end
+=end
 end
+

@@ -35,7 +35,7 @@ describe RDF::Distiller::Application do
         end
       end
     end
-    
+=begin
     context "RAW output" do
       context "form data" do
         it "retrieves a graph" do
@@ -50,8 +50,9 @@ describe RDF::Distiller::Application do
         end
       end
     end
-
+=end
     context "RDF Formats" do
+      
       RDF::Format.each do |format|
         next unless format.writer
         it "retrieves graph as #{format.to_sym}" do
