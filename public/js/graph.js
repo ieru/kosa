@@ -263,6 +263,8 @@ function zoom() {
 // load data using AJAX
 // $.getJSON("/json/test_data2.json", function(json) {
 //// d3.json("/json/test_data2.json", function(json) {
+
+$.ajaxSetup({ cache: true });
 $.getJSON("/api/getconcepts", function(json) {
 
     root = json;
