@@ -212,15 +212,15 @@ GEM
     htmlentities (4.3.1)
     json (1.8.0)
     json_pure (1.8.0)
-    json_select (0.1.4)
-      treetop
+    jsonpath (0.5.4)
+      multi_json
     maruku (0.7.0)
     mime-types (1.25)
     mini_portile (0.5.1)
+    multi_json (1.8.0)
     net-http-persistent (2.9)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
-    polyglot (0.3.3)
     rack (1.5.2)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -264,9 +264,6 @@ GEM
       json (>= 1.1.1)
     syntax (1.0.0)
     tilt (1.4.1)
-    treetop (1.4.15)
-      polyglot
-      polyglot (>= 0.3.1)
     wirble (0.1.3)
     yard (0.8.7.2)
 
@@ -282,7 +279,7 @@ DEPENDENCIES
   fileutils
   json
   json-ld!
-  json_select
+  jsonpath
   kosa!
   linkeddata!
   nokogiri

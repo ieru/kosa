@@ -8,7 +8,7 @@ require 'bundler'
 Bundler.setup
 
 require 'rack/cache'
-require 'rdf/distiller'
+require 'rdf/kosa'
 require 'logger'
 
 set :logging, false
