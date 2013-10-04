@@ -80,7 +80,15 @@ function update(source) {
         });
 
     nodeEnter.append("svg:circle")
-        .attr("r", 4.5)
+        .attr("r", function (d) {
+        // console.log(d.name + ' hijos? -->' + (typeof d.children == 'undefined'));
+        // console.dir(d.children);
+        if (typeof d.children != 'undefined') {
+            return 6;
+        } else {
+            return 4.5;
+        }})
+        // .attr("r", 4.5)
         .attr("class", function (d) {
            return "level" + d.part_level;
          })
@@ -134,7 +142,15 @@ function update(source) {
     //    .attr("r", function (d) {
     //    return Math.sqrt((d.part_cc_p * 1)) + 4;
     //})
-        .attr("r", 4.5)
+        .attr("r", function(d) {
+        // console.log(d.name + ' hijos? -->' + (typeof d.children == 'undefined'));
+        if (typeof d.children != 'undefined') {
+            return 6;
+        } else {
+            return 4.5;
+        }
+        
+        })
         .attr("class", function (d) {
         return "level" + d.part_level;
     })
@@ -168,7 +184,14 @@ function update(source) {
     //    .attr("r", function (d) {
     //    return Math.sqrt((d.part_cc_p * 1)) + 4;
     //});
-	.attr("r", 4.5);
+	//.attr("r", 4.5);
+        .attr("r", function(d) {
+        if (d._children) {
+            return 6;
+        } else {
+            return 4.5;
+        }
+        });
 
     nodeExit.select("text")
         .style("fill-opacity", 1e-6);
