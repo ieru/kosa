@@ -13,9 +13,17 @@ require 'logger'
 
 set :logging, false
 set :raise_errors, true
-set :show_exceptions, false
+
+set :show_exceptions, true
+
+set :static, true
+
+set :root, File.dirname(__FILE__) 
 
 set :environment, (ENV['RACK_ENV'] || 'production').to_sym
+
+APP_ROOT = File.dirname(__FILE__)
+
 
 if settings.environment == :production
   puts "Mode set to #{settings.environment.inspect}, logging to sinatra.log"

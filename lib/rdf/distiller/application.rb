@@ -18,11 +18,15 @@ require 'rdf/distiller/extensions'
 require 'rdf/4store'
 require 'uri'
 require 'nokogiri'
+require 'rubygems'
+require 'json'
 
 require 'rest_client'
 require 'sparql/client'
 
 require 'fileutils'
+
+# require 'pp'
 
 require 'erb'
 
@@ -36,8 +40,10 @@ require 'dm-migrations/adapters/dm-sqlite-adapter'
 
 set :environment, :production
 set :sessions, true
+
 set :dump_errors, false
 set :show_exceptions, false
+
 set :raise_errors, true
 
 
@@ -253,6 +259,9 @@ module RDF::Distiller
     end
 
 
+
+
+
     #
     #				NEW REST API - HELPERS!
     #
@@ -266,7 +275,29 @@ module RDF::Distiller
     end
 
     def getConcepts(lang="en")
-      {}.to_json
+      # a = {"aa": "bb"}.to_json
+      json_file = File.dirname(__FILE__) + "/../../../public/json/test_data2.json"
+      
+      
+      content_type 'application/json'
+      if File.exists?(json_file)
+        json = File.read(json_file)
+        # json
+        json
+      else 
+        {}.to_json
+      end
+        
+      
+      # parsed = JSON.parse(a)
+      # parsed["a"]
+      # json
+      # {}.to_json
+      # File.dirname(__FILE__).to_s
+      # File.dirname(__FILE__)
+      # json_path.to_s
+      # file.to_s
+      
     end
 
     def getBroaderConcepts(lang="en", node="")
@@ -280,6 +311,7 @@ module RDF::Distiller
     def getRelatedConcepts(lang="en", node="")
       {}.to_json
     end
+
 
     #
     #				NEW REST API!

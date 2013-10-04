@@ -261,8 +261,9 @@ function zoom() {
 */
 
 // load data using AJAX
-$.getJSON("/json/test_data2.json", function(json) {
-// d3.json("/json/test_data2.json", function(json) {
+// $.getJSON("/json/test_data2.json", function(json) {
+//// d3.json("/json/test_data2.json", function(json) {
+$.getJSON("/api/getconcepts", function(json) {
 
     root = json;
     d3.select("#processName").html(root.text);
