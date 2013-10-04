@@ -54,9 +54,19 @@ DataMapper.setup(:default, "sqlite3::memory:")
 
 
 
+#
+#				HELPER CLASS - NOT USED YET!
+#
 
-# define the Data Model (For Relational Databases)
-class Triples
+module EXTERNAL
+  include ::JSON
+  module_function :parse
+end
+
+
+module RDF::Kosa 
+ # Class 1
+ class Triples
 
   include DataMapper::Resource
 
@@ -92,23 +102,24 @@ class Triples
     ret
   end
 
-end
+ end
 
+ # Class 2
+ class Application < Sinatra::Base
 
-
-
-
-module RDF::Distiller
-  class Application < Sinatra::Base
+            
+    
     register Sinatra::RespondTo
     register Sinatra::SPARQL
+    
     helpers Sinatra::Partials
     set :views, ::File.expand_path('../views',  __FILE__)
     DOAP_NT = File.expand_path("../../../../etc/doap.nt", __FILE__)
     DOAP_JSON = File.expand_path("../../../../etc/doap.jsonld", __FILE__)
-
     set :public_folder, File.expand_path("../../../../public", __FILE__)
+    
     mime_type "sse", "application/sse+sparql-query"
+    
     before do
       # $logger.info "[#{request.path_info}], #{params.inspect}, #{format}, #{request.accept.inspect}"
     end
@@ -169,10 +180,11 @@ module RDF::Distiller
    end
 
     #
-    #				NAVIGATION!
+    #				MAIN MENU NAVIGATION!
     #
 
-
+    # @TODO : not complete
+    #
     post '/upload' do
       unless  defined?(params)
     
@@ -197,6 +209,231 @@ module RDF::Distiller
       signin
     end
     # // end static page routes
+
+
+
+    #
+    #				RESTful API - HELPERS!
+    #
+
+=begin
+    # same funct in JS
+    function traverse(o,func) {
+    for (var i in o) {
+        func.apply(this,[i,o[i]]);  
+        if (o[i] !== null && typeof(o[i])=="object") {
+            //going on step down in the object tree!!
+            traverse(o[i],func);
+        }
+    }
+   }
+=end
+    
+    def getJson
+      json_file = File.dirname(__FILE__) + "/../../../public/json/test_data2.json"
+      if File.exists?(json_file)
+        json = File.read(json_file)
+        # json
+        return json
+      else 
+        return {}.to_json
+      end
+      
+    end
+    
+
+    # recurse function to search a node within a JSON
+    # O (TOTAL_NODES) 
+    def transversalJsonSearch(json_string, function)
+      
+      json = EXTERNAL.parse(json_string)
+      return extract_list(json)
+      # EXTERNAL.parse(json).each do |node|
+    #    node.to_s + '<br>'
+     # end
+      
+      #EXTERNAL.parse(json).each_with_index do |node, indx|
+    #     node[indx].to_json
+         # indx.to_s
+     # end 
+    end
+    
+=begin
+    def extract_list(hash, collect = false)
+      hash.map do |k, v|
+        v.is_a?(Hash) ? extract_list(v, (k == "children")) : (collect ? v : nil)
+      end.compact.flatten
+    end
+=end
+
+
+    def recursive_find( key, object )
+      case object
+      when Array
+        object.each do |el|
+          if el.is_a?(Hash) || el.is_a?(Array)
+            res = recursive_find( key, el )
+            return res if res
+          end
+        end
+      when Hash
+        return object[key] if object.has_key?( key )
+        object.each do |k,v|
+          if v.is_a?(Hash) || v.is_a?(Array)
+            res = recursive_find( key, v )
+            return res if res
+          end
+        end
+      end
+      nil
+    end
+
+    def getTopConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+    def getConcept(node="", lang="en")
+      # {}.to_json
+      
+      json_string = getJson
+      json = EXTERNAL.parse(json_string)
+      recursive_find("name", json)
+
+      # return transversalJsonSearch(json, nil)
+      
+    end
+
+    def getConcepts(lang="en")
+      # a = {"aa": "bb"}.to_json
+      
+      content_type 'application/json'
+      return getJson
+      
+      # parsed = JSON.parse(a)
+      # parsed["a"]
+      # json
+      # {}.to_json
+      # File.dirname(__FILE__).to_s
+      # File.dirname(__FILE__)
+      # json_path.to_s
+      # file.to_s
+      
+    end
+
+    def getBroaderConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+    def getNarrowerConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+    def getRelatedConcepts(lang="en", node="")
+      {}.to_json
+    end
+
+
+    #
+    #				RESTful API!
+    #
+    
+    # first node in a tree
+    get "/api/gettopconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getTopConcepts
+    end
+    
+    # data from one node
+    get "/api/getconcept" do
+      lang = params[:lang]
+      node = params[:node]
+      getConcept
+    end
+    
+    # all nodes JSON object
+    get "/api/getconcepts" do
+      lang = params[:lang]
+      getConcepts
+    end
+    
+    # Parent nodes
+    get "/api/getbroaderconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getBroaderConcepts
+    end
+    
+    # node children. Returns {} if no children
+    get "/api/getnarrowerconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getNarrowerConcepts
+    end
+    
+    get "/api/getrelatedconcepts" do
+      lang = params[:lang]
+      node = params[:node]
+      getTopConcepts
+    end
+    
+
+    
+    #
+    #				REST CRUD! (uses Triples Class)
+    #
+    
+    # Index // List
+    get "/api/triples" do
+      content_type 'application/json'
+      { 'content' => Array(Triples.all) }.to_json
+    end
+    
+    # Create
+    post "/api/triples" do
+      opts = Triples.parse_json(request.body.read) rescue nil
+      halt(401, 'Invalid Format') if opts.nil?
+    
+      triple = Triples.new(opts)
+      halt(500, 'Could not save triple') unless triple.save
+    
+      response['Location'] = triple.url
+      response.status = 201
+    end
+    
+    # Read (:id)
+    get "/api/triples/:id" do
+      triple = Triples.get(params[:id]) rescue nil
+      halt(404, 'Not Found') if triple.nil?
+    
+      content_type 'application/json'
+      { 'content' => triple }.to_json
+    end
+    
+    # Update (:id)
+    put "/api/triples/:id" do
+      triple = Triples.get(params[:id]) rescue nil
+      halt(404, 'Not Found') if triple.nil?
+    
+      opts = Triples.parse_json(request.body.read) rescue nil
+      halt(401, 'Invalid Format') if opts.nil?
+    
+      triple.description = opts[:description]
+      triple.is_done = opts[:is_done]
+      triple.save
+    
+      response['Content-Type'] = 'application/json'
+      { 'content' => triple }.to_json
+    end
+    
+    # Delete (:id)
+    delete "/api/triples/:id" do
+      triple = Triples.get(params[:id]) rescue nil
+      triple.destroy unless triple.nil?
+    end
+
+
+
     
     #
     #				SPARQL API!
@@ -258,167 +495,11 @@ module RDF::Distiller
       sparqlService queryString
     end
 
-
-
-
-
-    #
-    #				NEW REST API - HELPERS!
-    #
    
-    def getTopConcepts(lang="en", node="")
-      {}.to_json
-    end
-
-    def getConcept(lang="en", node="")
-      {}.to_json
-    end
-
-    def getConcepts(lang="en")
-      # a = {"aa": "bb"}.to_json
-      json_file = File.dirname(__FILE__) + "/../../../public/json/test_data2.json"
-      
-      
-      content_type 'application/json'
-      if File.exists?(json_file)
-        json = File.read(json_file)
-        # json
-        json
-      else 
-        {}.to_json
-      end
-        
-      
-      # parsed = JSON.parse(a)
-      # parsed["a"]
-      # json
-      # {}.to_json
-      # File.dirname(__FILE__).to_s
-      # File.dirname(__FILE__)
-      # json_path.to_s
-      # file.to_s
-      
-    end
-
-    def getBroaderConcepts(lang="en", node="")
-      {}.to_json
-    end
-
-    def getNarrowerConcepts(lang="en", node="")
-      {}.to_json
-    end
-
-    def getRelatedConcepts(lang="en", node="")
-      {}.to_json
-    end
-
-
-    #
-    #				NEW REST API!
-    #
-    
-    # first node in a tree
-    get "/api/gettopconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getTopConcepts
-    end
-    
-    # data from one node
-    get "/api/getconcept" do
-      lang = params[:lang]
-      node = params[:node]
-      getConcept
-    end
-    
-    # all nodes JSON object
-    get "/api/getconcepts" do
-      lang = params[:lang]
-      getConcepts
-    end
-    
-    # Parent nodes
-    get "/api/getbroaderconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getBroaderConcepts
-    end
-    
-    # node children. Returns {} if no children
-    get "/api/getnarrowerconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getNarrowerConcepts
-    end
-    
-    get "/api/getrelatedconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getTopConcepts
-    end
-    
-
-    
-
     
 
 
-    
-    
-    
-    #
-    #				REST!
-    #
-    
-    # Index // List
-    get "/api/triples" do
-      content_type 'application/json'
-      { 'content' => Array(Triples.all) }.to_json
-    end
-    
-    # Create
-    post "/api/triples" do
-      opts = Triples.parse_json(request.body.read) rescue nil
-      halt(401, 'Invalid Format') if opts.nil?
-    
-      triple = Triples.new(opts)
-      halt(500, 'Could not save triple') unless triple.save
-    
-      response['Location'] = triple.url
-      response.status = 201
-    end
-    
-    # Read (:id)
-    get "/api/triples/:id" do
-      triple = Triples.get(params[:id]) rescue nil
-      halt(404, 'Not Found') if triple.nil?
-    
-      content_type 'application/json'
-      { 'content' => triple }.to_json
-    end
-    
-    # Update (:id)
-    put "/api/triples/:id" do
-      triple = Triples.get(params[:id]) rescue nil
-      halt(404, 'Not Found') if triple.nil?
-    
-      opts = Triples.parse_json(request.body.read) rescue nil
-      halt(401, 'Invalid Format') if opts.nil?
-    
-      triple.description = opts[:description]
-      triple.is_done = opts[:is_done]
-      triple.save
-    
-      response['Content-Type'] = 'application/json'
-      { 'content' => triple }.to_json
-    end
-    
-    # Delete (:id)
-    delete "/api/triples/:id" do
-      triple = Triples.get(params[:id]) rescue nil
-      triple.destroy unless triple.nil?
-    end
-    
+
     
     #
     #				HELPERS!
@@ -474,7 +555,7 @@ module RDF::Distiller
     end
     
     
-    # for RDF::Distiller Specs compliance
+    # for Specs compliance
     get '/distiller' do
       # cache_control :public, :must_revalidate, :max_age => 60
       sparqld
@@ -747,4 +828,10 @@ module RDF::Distiller
       end
     end
   end
-end
+
+
+
+    
+end 
+# module
+

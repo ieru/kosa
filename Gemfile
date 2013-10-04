@@ -35,7 +35,7 @@ gem 'rdf-raptor'
 gem 'dm-core'
 gem 'dm-migrations'
 gem 'dm-sqlite-adapter'
-
+gem 'json_select'
 
 
 # Bundle gems for the local environment. Make sure to

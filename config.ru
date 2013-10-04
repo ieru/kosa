@@ -41,4 +41,4 @@ use Rack::Cache,
 
 disable :run, :reload
 
-run RDF::Distiller::Application
+run RDF::Kosa::Application
