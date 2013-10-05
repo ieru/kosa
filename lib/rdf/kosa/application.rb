@@ -316,6 +316,7 @@ module RDF::Kosa
     def getConcept(node=nil, lang="en")
     
       json_string = getJson
+      json = Siren.parse(json_string)
       if node.nil? 
         {}.to_json
       else
@@ -325,9 +326,22 @@ module RDF::Kosa
         # value = "'$..*[?(@.name="+node.to_s+")]'"
         # value.to_s
         # JsonPath.on(json_string, "$..*[?(@.name='cluster')]").to_json
-        JsonPath.on(json_string, "$..children[?(@.name='"+node+"')].children.*").to_json
+        # JsonPath.on(json_string, "$..children[?(@.name='"+node+"')].children.*").to_json
         # JsonPath.on(json_string, "$.*[?(@.size=2023)]").to_json
         # {}.to_json
+        # Siren.query("$..name[? @ ~ '"+node+"' ]", json_string).to_json
+        
+        # json = Siren.parse(json_string) # very slow parser, using standard JSON
+        json = EXTERNAL.parse("["+json_string+"]") 
+        # Siren.query("$..name[? @ = '"+node+"']", json).to_json
+        # Siren.query("$..children", json).to_json
+        # Siren.query("$..children[= @[0]][? @.name = '"+node.to_s+"']", json).to_json
+        # [? @.name = '"+node+"']
+        # works on 1rst level
+        # Siren.query("$.children[? @.name = '"+node.to_s+"'][= @.children ]", json).to_json
+        # Siren.query("$..children[0][= @][? @.name = '"+node+"]']", json).to_json
+        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
+        # Siren.query("$..children[0:@.size-1:1][? @.size > 1][= @ ]", json).to_json
       end
 
     end
