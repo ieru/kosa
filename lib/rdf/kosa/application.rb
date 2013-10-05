@@ -23,8 +23,11 @@ require 'json'
 
 require 'rest_client'
 require 'sparql/client'
+
 # require 'json_select'
-require 'jsonpath'
+# require 'jsonpath'
+
+require 'siren'
 
 require 'fileutils'
 
@@ -48,7 +51,9 @@ set :show_exceptions, false
 
 set :raise_errors, true
 
-
+#
+# In case we need a Relational DB
+#
 DataMapper.setup(:default, "sqlite3::memory:")
 
 # DataMapper::setup(:default, ENV['DATABASE_URL'] ||
@@ -57,7 +62,7 @@ DataMapper.setup(:default, "sqlite3::memory:")
 
 
 #
-#				HELPER CLASS - NOT USED YET!
+# Helper module to avoid confussion between JSON, RDF::JSON gems
 #
 
 module EXTERNAL
@@ -65,9 +70,12 @@ module EXTERNAL
   module_function :parse
 end
 
+#
+# Main module
+#
 
 module RDF::Kosa 
- # Class 1
+ # Class Triples
  class Triples
 
   include DataMapper::Resource
@@ -106,7 +114,7 @@ module RDF::Kosa
 
  end
 
- # Class 2
+ # Main Class 
  class Application < Sinatra::Base
 
             
@@ -231,6 +239,9 @@ module RDF::Kosa
    }
 =end
     
+    #
+    # temmporal method with dummy JSON data
+    #
     def getJson
       json_file = File.dirname(__FILE__) + "/../../../public/json/test_data2.json"
       if File.exists?(json_file)
@@ -245,7 +256,7 @@ module RDF::Kosa
     
 
     # recurse function to search a node within a JSON
-    # O (TOTAL_NODES) 
+    # Complexity O(TOTAL_NODES) 
     def transversalJsonSearch(json_string, function)
       
       json = EXTERNAL.parse(json_string)
@@ -291,7 +302,7 @@ module RDF::Kosa
     end
     
 
-    def getTopConcepts(node="", lang="en")
+    def getTopConcepts(node=nil, lang="en")
     
       json_string = getJson
       if node.nil?
@@ -302,7 +313,7 @@ module RDF::Kosa
       end
     end
 
-    def getConcept(node="", lang="en")
+    def getConcept(node=nil, lang="en")
     
       json_string = getJson
       if node.nil? 
@@ -311,8 +322,12 @@ module RDF::Kosa
         # value = '\'*:val("'+node.to_s+'")\''
         # value = ":val('cluster')"
         # return JSONSelect(":has(.name:val(cluster))").matches(json_string)
-        # value
-        {}.to_json
+        # value = "'$..*[?(@.name="+node.to_s+")]'"
+        # value.to_s
+        # JsonPath.on(json_string, "$..*[?(@.name='cluster')]").to_json
+        JsonPath.on(json_string, "$..children[?(@.name='"+node+"')].children.*").to_json
+        # JsonPath.on(json_string, "$.*[?(@.size=2023)]").to_json
+        # {}.to_json
       end
 
     end

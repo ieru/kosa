@@ -203,6 +203,8 @@ GEM
     equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
+    eventful (1.0.1)
+      methodphitamine (= 1.0.0)
     executable-hooks (1.2.3)
     ffi (1.9.0)
     fileutils (0.7)
@@ -212,15 +214,14 @@ GEM
     htmlentities (4.3.1)
     json (1.8.0)
     json_pure (1.8.0)
-    jsonpath (0.5.4)
-      multi_json
     maruku (0.7.0)
+    methodphitamine (1.0.0)
     mime-types (1.25)
     mini_portile (0.5.1)
-    multi_json (1.8.0)
     net-http-persistent (2.9)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    polyglot (0.3.3)
     rack (1.5.2)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -260,10 +261,16 @@ GEM
       tilt (~> 1.3, >= 1.3.4)
     sinatra-flash (0.3.0)
       sinatra (>= 1.0.0)
+    siren (0.2.0)
+      eventful
+      treetop
     sxp (0.1.3)
       json (>= 1.1.1)
     syntax (1.0.0)
     tilt (1.4.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
     wirble (0.1.3)
     yard (0.8.7.2)
 
@@ -279,7 +286,6 @@ DEPENDENCIES
   fileutils
   json
   json-ld!
-  jsonpath
   kosa!
   linkeddata!
   nokogiri
@@ -307,6 +313,7 @@ DEPENDENCIES
   shotgun
   sinatra-flash
   sinatra-respond_to!
+  siren
   sparql!
   sparql-client!
   syntax
