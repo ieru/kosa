@@ -1,4 +1,4 @@
-(function ($, d3, window, document, undefined) {
+(function ($, d3, _, window, document, undefined) {
 
 var realWidth = window.innerWidth;
 var realHeight = window.innerHeight;
@@ -288,9 +288,29 @@ function zoom() {
 //// d3.json("/json/test_data2.json", function(json) {
 
 $.ajaxSetup({ cache: true });
-$.getJSON("/api/getconcepts", function(json) {
+$.getJSON("/api/gettopconcepts?node=nonExistentNode", function(json_array) {
 
+    var json = {}, isJsonArrayValid = false;
+    if (typeof json_array == 'object' && json_array !== null && json_array.length > 0) {
+      json.name = json_array[0];
+      isJsonArrayValid = true;
+    } else {
+      json.name = '-- no children --';
     root = json;
+    }
+    if (isJsonArrayValid) {
+      getChildren(json, json.name, 'en');
+      // rootUpdate called from callback
+    } else {
+      json.children = null;
+      root = json;
+      rootUpdate();
+    }
+});
+
+function rootUpdate() {
+
+    // console.dir(root);
     d3.select("#processName").html(root.text);
     root.x0 = h / 2;
     root.y0 = 0;
@@ -310,11 +330,52 @@ $.getJSON("/api/getconcepts", function(json) {
 
     });
 
-    update(root);
-});
+    update(root);  
+}
+
+function getChildren(subTree, node, lang) {
+  showSpinner();
+
+  $.ajax({
+    // dataType:"jsonp",
+    url: "/api/getnarrowerconcepts?node="+encodeURIComponent(node)+"&lang="+encodeURIComponent(lang),
+    success: function(childs) {
+      var json_array;
+      hideSpinner();
+      // console.dir(childs);
+
+      // node.children = childs.replace(/[\[\]\"]*/g, '').split(',');
+      // console.dir(node);
+      
+      json_array = childs.replace(/[\[\]\"]*/g, '').split(',');
+      
+      subTree.children = [];
+      _.each(json_array, function (childNode, index) {
+        
+        // console.log(childNode);
+        var subObject = {};
+        subObject.name = childNode;
+        subObject.children = [];
+        
+        subTree.children.push(subObject);
+        
+      }); 
+      
+      root = subTree;
+      rootUpdate();
+
+    },
+    error: function(e) {
+      hideSpinner();
+      console.dir('There was an error retrieving data.');
+    }
+  });
+}
 
 
 function dragndrop(d) {
+
+
 
     var dragTarget = d3.select(this);
     
@@ -335,7 +396,7 @@ function dragndrop(d) {
 }
 
 function hideSpinner () {
-console.log("weee");
+  // console.log("weee");
  d3.select("#spinner").
    style("display", "none");
 }
@@ -356,5 +417,5 @@ function dragndrop(d) {
       //.style("left", ((parseInt(drag.style("left")) + d3.event.sourceEvent.pageX) - this.offsetWidth/2)+"px")
 }
 */
-})(jQuery, d3, this, this.document);
+})(jQuery, d3, _, this, this.document);
 
