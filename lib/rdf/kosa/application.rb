@@ -279,7 +279,9 @@ module RDF::Kosa
     end
 =end
 
-
+    #
+    # Not used, used Siren Ruby Gem to move along the JSON 
+    #
     def recursive_find( key, object )
       case object
       when Array
@@ -304,19 +306,22 @@ module RDF::Kosa
 
     def getTopConcepts(node=nil, lang="en")
     
-      json_string = getJson
+      
       if node.nil?
         {}.to_json
       else
         # return JSONSelect("*:root").matches(json_string)
-        {}.to_json
+        # {}.to_json
+        json_string = getJson
+        json = EXTERNAL.parse("["+json_string+"]") 
+                
+        Siren.query("$[0].name", json);
+
       end
     end
 
     def getConcept(node=nil, lang="en")
     
-      json_string = getJson
-      json = Siren.parse(json_string)
       if node.nil? 
         {}.to_json
       else
@@ -332,7 +337,7 @@ module RDF::Kosa
         # Siren.query("$..name[? @ ~ '"+node+"' ]", json_string).to_json
         
         # json = Siren.parse(json_string) # very slow parser, using standard JSON
-        json = EXTERNAL.parse("["+json_string+"]") 
+        
         # Siren.query("$..name[? @ = '"+node+"']", json).to_json
         # Siren.query("$..children", json).to_json
         # Siren.query("$..children[= @[0]][? @.name = '"+node.to_s+"']", json).to_json
@@ -340,18 +345,24 @@ module RDF::Kosa
         # works on 1rst level
         # Siren.query("$.children[? @.name = '"+node.to_s+"'][= @.children ]", json).to_json
         # Siren.query("$..children[0][= @][? @.name = '"+node+"]']", json).to_json
-        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
         # Siren.query("$..children[0:@.size-1:1][? @.size > 1][= @ ]", json).to_json
+        
+
+        json_string = getJson
+        
+        # json = Siren.parse(json_string)
+        json = EXTERNAL.parse("["+json_string+"]") 
+        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @]", json).to_json
+        
       end
 
     end
 
     def getConcepts(lang="en")
       # a = {"aa": "bb"}.to_json
-      
       content_type 'application/json'
       return getJson
-      
+
       # parsed = JSON.parse(a)
       # parsed["a"]
       # json
@@ -360,27 +371,42 @@ module RDF::Kosa
       # File.dirname(__FILE__)
       # json_path.to_s
       # file.to_s
-      
     end
 
-    def getBroaderConcepts(node, lang="en")
-    
-      json_string = getJson
+
+    def getNarrowerConcepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        # JSONSelect(':root').matches(json)
+        # {}.to_json
+        json_string = getJson
+        # json = Siren.parse(json_string)
+        json = EXTERNAL.parse("["+json_string+"]") 
+
+        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
+      end
+    end
+
+
+    # Not implemented Yet
+    def getBroaderConcepts(node=nil, lang="en")
       if node.nil?
         {}.to_json
       else
         # JSONSelect(':root').matches(json)
         {}.to_json
       end
-
     end
 
-    def getNarrowerConcepts(node, lang="en")
-      {}.to_json
-    end
-
-    def getRelatedConcepts(node, lang="en")
-      {}.to_json
+    # Not implemented Yet
+    def getRelatedConcepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        # JSONSelect(':root').matches(json)
+        {}.to_json
+      end
     end
 
 
@@ -425,7 +451,7 @@ module RDF::Kosa
     get "/api/getrelatedconcepts" do
       lang = params[:lang]
       node = params[:node]
-      getTopConcepts(node, lang)
+      getRelatedConcepts(node, lang)
     end
     
 
