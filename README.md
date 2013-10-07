@@ -1,10 +1,10 @@
-## KOSa
+## KOSaggregator
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 ## Demo
 
-A current live snapshot can be seen on http://kos.appgee.net (Open Alpha)
+A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version)
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa)
 
