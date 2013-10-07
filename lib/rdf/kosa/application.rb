@@ -323,7 +323,26 @@ module RDF::Kosa
         parser = Yajl::Parser.new
         json = parser.parse("["+json_string+"]")
                 
-        Siren.query("$[0].name", json);
+        # Siren.query("$[={'aa':'@.name'}]", json).to_json
+        Siren.query("$[=name]", json).to_json
+
+      end
+    end
+
+    def getTopConceptsNumChilds(node=nil, lang="en")
+      if node.nil?
+        [0].to_json
+      else
+        # return JSONSelect("*:root").matches(json_string)
+        # {}.to_json
+        # json_string = getJson
+        # json = EXTERNAL.parse("["+json_string+"]") 
+        json_string = getJson
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
+                
+        # Siren.query("$[={'aa':'@.name'}]", json).to_json
+        Siren.query("$[? children != null][=children.size]", json).to_json
 
       end
     end
@@ -407,6 +426,24 @@ module RDF::Kosa
       end
     end
 
+    def getNarrowerConceptsNumChilds(node=nil, lang="en")
+      if node.nil?
+        [0].to_json
+      else
+        # JSONSelect(':root').matches(json)
+        # {}.to_json
+
+        # json = Siren.parse(json_string)
+        # json = EXTERNAL.parse("["+json_string+"]") 
+
+        json_string = getJson
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
+
+        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @.children.size]", json).to_json
+      end
+    end
+
 
     # Not implemented Yet
     def getBroaderConcepts(node=nil, lang="en")
@@ -439,6 +476,13 @@ module RDF::Kosa
       node = params[:node]
       getTopConcepts(node, lang)
     end
+
+    # first node in a tree
+    get "/api/gettopconceptsnumchilds" do
+      lang = params[:lang]
+      node = params[:node]
+      getTopConceptsNumChilds(node, lang)
+    end
     
     # data from one node
     get "/api/getconcept" do
@@ -465,6 +509,13 @@ module RDF::Kosa
       lang = params[:lang]
       node = params[:node]
       getNarrowerConcepts(node, lang)
+    end
+
+    # number of children of eacho of the children of the given node. Returns {0} if no children
+    get "/api/getnarrowerconceptsnumchilds" do
+      lang = params[:lang]
+      node = params[:node]
+      getNarrowerConceptsNumChilds(node, lang)
     end
     
     get "/api/getrelatedconcepts" do
