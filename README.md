@@ -46,8 +46,8 @@ cd kosa
 # (use 'rvm all do gem install sinatra ...' , instead, if you have rvm installed)
 gem install sinatra rubygems nokogiri rest_client json dm-core dm-sqlite-adapter, rdf
 gem install rdf-aggregate-repo, rdf-isomorphic, rdf-json, rdf-microdata, rdf-n3, rdf-rdfa
-gem install rdf-rdfxml, rdf-turtle, rdf-trig, rdf-xsd, rdf-4store, json-ld, linkeddata, sparql-client
-gem install sparql, sinatra-respond_to, sinatra-flash, rmagick
+gem install rdf-rdfxml, rdf-turtle, rdf-trig, rdf-xsd, rdf-4store, json-ld, linkeddata
+gem install sparql, sinatra-respond_to, sinatra-flash, rmagick, sparql-client
 ```
 
 - Install bundle using: (it may be necessary to remove the Gemfile.lock file to rebuild the previous build)
@@ -64,10 +64,13 @@ rackup -p <your_por_number> config.ru
 ( use 'rvm all do rackup -p <your_por_number> config.ru', if you are using rvm )
 ```
 
+## Todo List
+
+https://github.com/ieru/kosa/wiki/TODO-LIST
+
+
 ## Licence
 
 Copyright University of Alcala. Licenced under GPL/GNU version 2 Licence.  
-RDF importer on this application is based on RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info
-
-
+RDF importer on this application is based on RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
 
