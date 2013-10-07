@@ -20,6 +20,7 @@ require 'uri'
 require 'nokogiri'
 require 'rubygems'
 require 'json'
+require 'yajl'
 
 require 'rest_client'
 require 'sparql/client'
@@ -240,7 +241,7 @@ module RDF::Kosa
 =end
     
     #
-    # temmporal method with dummy JSON data
+    # temmporal method with dummy JSON data <--- this should be stores within a class
     #
     def getJson
       json_file = File.dirname(__FILE__) + "/../../../public/json/test_data2.json"
@@ -259,7 +260,11 @@ module RDF::Kosa
     # Complexity O(TOTAL_NODES) 
     def transversalJsonSearch(json_string, function)
       
-      json = EXTERNAL.parse(json_string)
+      parser = Yajl::Parser.new
+      json_string = getJson
+      json = parser.parse("["+json_string+"]")
+
+      # json = EXTERNAL.parse(json_string)
       return extract_list(json)
       # EXTERNAL.parse(json).each do |node|
     #    node.to_s + '<br>'
@@ -312,8 +317,11 @@ module RDF::Kosa
       else
         # return JSONSelect("*:root").matches(json_string)
         # {}.to_json
+        # json_string = getJson
+        # json = EXTERNAL.parse("["+json_string+"]") 
         json_string = getJson
-        json = EXTERNAL.parse("["+json_string+"]") 
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
                 
         Siren.query("$[0].name", json);
 
@@ -348,10 +356,17 @@ module RDF::Kosa
         # Siren.query("$..children[0:@.size-1:1][? @.size > 1][= @ ]", json).to_json
         
 
-        json_string = getJson
+        # json_string = getJson
         
         # json = Siren.parse(json_string)
-        json = EXTERNAL.parse("["+json_string+"]") 
+        # json = EXTERNAL.parse("["+json_string+"]") 
+        
+        json_string = getJson
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
+
+        
+
         Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @]", json).to_json
         
       end
@@ -380,9 +395,13 @@ module RDF::Kosa
       else
         # JSONSelect(':root').matches(json)
         # {}.to_json
-        json_string = getJson
+
         # json = Siren.parse(json_string)
-        json = EXTERNAL.parse("["+json_string+"]") 
+        # json = EXTERNAL.parse("["+json_string+"]") 
+
+        json_string = getJson
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
 
         Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
       end

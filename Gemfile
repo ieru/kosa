@@ -40,6 +40,8 @@ gem 'dm-sqlite-adapter'
 # gem 'jsonpath'
 
 gem 'siren'
+# yajl gem increases JSON parse ~ 1.9x -> https://github.com/brianmario/yajl-ruby
+gem 'yajl-ruby'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
