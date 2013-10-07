@@ -50,6 +50,7 @@ hideSpinner();
 
 
 function update(source) {
+    
     var duration = d3.event && d3.event.altKey ? 5000 : 500;
 
     // Compute the new tree layout.
@@ -75,8 +76,14 @@ function update(source) {
         // return "translate(" + 500 + "," + source.x0 + ")";
     })
         .on("click", function (d) {
-          toggle(d);
-          update(d);
+          
+          // var json = {};
+          // json.name = d.name;
+          getChildren(d, d.name, 'en');
+          // node updated in callback
+                      
+          // toggle(d);
+          // update(d);
         });
 
     nodeEnter.append("svg:circle")
@@ -312,7 +319,7 @@ function getRoot(node, lang) {
         }
 
         if (isJsonArrayValid) {
-          getChildren(json, json.name, 'en');
+          getRootChildren(json.name, 'en');
           // rootUpdate called from callback
         } else {          
 
@@ -329,23 +336,21 @@ function getRoot(node, lang) {
     });
 }
 
-function getChildren(subTree, node, lang) {
+function getChildren(subTree, searchText, lang) {
   showSpinner();
 
   $.ajax({
     // dataType:"jsonp",
-    url: "/api/getnarrowerconcepts?node="+encodeURIComponent(node)+"&lang="+encodeURIComponent(lang),
+    url: "/api/getnarrowerconcepts?node="+encodeURIComponent(searchText)+"&lang="+encodeURIComponent(lang),
     success: function(childs) {
-      var json_array;
+      var json_array, children;
       hideSpinner();
-      // console.dir(childs);
-
-      // node.children = childs.replace(/[\[\]\"]*/g, '').split(',');
-      // console.dir(node);
       
       json_array = childs.replace(/[\[\]\"]*/g, '').split(',');
       
-      subTree.children = [];
+      
+      children = [];
+      
       _.each(json_array, function (childNode, index) {
         
         // console.log(childNode);
@@ -353,12 +358,15 @@ function getChildren(subTree, node, lang) {
         subObject.name = childNode;
         subObject.children = [];
         
-        subTree.children.push(subObject);
+        children.push(subObject);
         
       }); 
       
-      root = subTree;
-      rootUpdate();
+      subTree.children = children;
+      
+      console.dir(subTree);
+      toggle(subTree.children);
+      update(subTree.children);
 
     },
     error: function(e) {
@@ -368,6 +376,47 @@ function getChildren(subTree, node, lang) {
   });
 }
 
+function getRootChildren(searchText, lang) {
+  showSpinner();
+
+  $.ajax({
+    // dataType:"jsonp",
+    url: "/api/getnarrowerconcepts?node="+encodeURIComponent(searchText)+"&lang="+encodeURIComponent(lang),
+    success: function(childs) {
+      var json_array, newNode = {};
+      hideSpinner();
+      // console.dir(childs);
+
+      // node.children = childs.replace(/[\[\]\"]*/g, '').split(',');
+      // console.dir(node);
+      
+      json_array = childs.replace(/[\[\]\"]*/g, '').split(',');
+      
+      
+      newNode.name = searchText;
+      newNode.children = [];
+      
+      _.each(json_array, function (childNode, index) {
+        
+        // console.log(childNode);
+        var subObject = {};
+        subObject.name = childNode;
+        subObject.children = [];
+        
+        newNode.children.push(subObject);
+        
+      }); 
+      
+      root = newNode;
+      rootUpdate();
+
+    },
+    error: function(e) {
+      hideSpinner();
+      console.dir('There was an error retrieving data.');
+    }
+  });
+}
 
 
 function rootUpdate() {
