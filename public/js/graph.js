@@ -351,22 +351,41 @@ function getChildren(subTree, searchText, lang) {
       
       children = [];
       
-      _.each(json_array, function (childNode, index) {
+      _.each(json_array, function (childNode) {
         
-        // console.log(childNode);
-        var subObject = {};
-        subObject.name = childNode;
-        subObject.children = [];
         
-        children.push(subObject);
+        if (childNode !== null && childNode !== '') {
+          var subObject = {};
+          
+          // console.log(childNode);
+          subObject.name = childNode;
+          subObject.children = [];
         
+          children.push(subObject);
+        }
+        // console.log(typeof childNode);
       }); 
+
+      // console.dir(children);
+      
+      if (subTree === null) {
+        return; 
+      }
       
       subTree.children = children;
       
-      console.dir(subTree);
-      toggle(subTree.children);
+      // console.dir(subTree);
+
+      // toggle(subTree.children);
+
+      // toggle(subTree);
+      // toggle(subTree);
+      update(subTree);
       update(subTree.children);
+
+      
+      // toggle(subTree);
+      // update(subTree);
 
     },
     error: function(e) {
@@ -397,16 +416,21 @@ function getRootChildren(searchText, lang) {
       newNode.children = [];
       
       _.each(json_array, function (childNode, index) {
+    
+        if (childNode !== null && childNode !== '') {
+    
+          // console.log(childNode);
+          var subObject = {};
+          subObject.name = childNode;
+          subObject.children = [];
         
-        // console.log(childNode);
-        var subObject = {};
-        subObject.name = childNode;
-        subObject.children = [];
-        
-        newNode.children.push(subObject);
-        
+          newNode.children.push(subObject);
+        }        
       }); 
       
+      if (newNode === null) {
+        return;
+      }
       root = newNode;
       rootUpdate();
 
