@@ -287,50 +287,46 @@ function zoom() {
 // $.getJSON("/json/test_data2.json", function(json) {
 //// d3.json("/json/test_data2.json", function(json) {
 
-$.ajaxSetup({ cache: true });
-$.getJSON("/api/gettopconcepts?node=nonExistentNode", function(json_array) {
 
-    var json = {}, isJsonArrayValid = false;
-    if (typeof json_array == 'object' && json_array !== null && json_array.length > 0) {
-      json.name = json_array[0];
-      isJsonArrayValid = true;
-    } else {
-      json.name = '-- no children --';
-    root = json;
-    }
-    if (isJsonArrayValid) {
-      getChildren(json, json.name, 'en');
-      // rootUpdate called from callback
-    } else {
-      json.children = null;
-      root = json;
-      rootUpdate();
-    }
-});
+function getRoot(node, lang) {
+  showSpinner();
 
-function rootUpdate() {
+  $.ajax({
+    // dataType:"jsonp",
+    url: "/api/gettopconcepts?node="+encodeURIComponent(node)+"&lang="+encodeURIComponent(lang),
+    success: function(json_array) {
+        var json = {}, isJsonArrayValid = false;
+        hideSpinner();
+   
+        if (typeof json_array == 'object' && json_array !== null && json_array.length > 0) {
+          json.name = json_array[0];
+          isJsonArrayValid = true;
+          
+        } else if (typeof json_array == 'string' && json_array !== null && json_array.length > 0) {  
 
-    // console.dir(root);
-    d3.select("#processName").html(root.text);
-    root.x0 = h / 2;
-    root.y0 = 0;
-    
-    
-    botao.on("click", function () {    
-    // toggle(root);
-    // update(root);
-    var mainLayer = d3.select("#navigational>svg");
-       mainLayer
-	
-     //vis
-	.attr("x", 0)
-	.attr("y", 0)
-	.style("left", "0px")
-	.style("top", "0px");
+          json.name = json_array.replace(/[\[\]\"]*/g, '').split(',');;
+          isJsonArrayValid = true;
+        } else {
 
+          json.name = '-- no children --';
+        }
+
+        if (isJsonArrayValid) {
+          getChildren(json, json.name, 'en');
+          // rootUpdate called from callback
+        } else {          
+
+          json.children = null;
+          root = json;
+          rootUpdate();
+        }
+
+      },
+      error: function(e) {
+        hideSpinner();
+        console.warn('There was an error retrieving data.');
+      }
     });
-
-    update(root);  
 }
 
 function getChildren(subTree, node, lang) {
@@ -373,6 +369,33 @@ function getChildren(subTree, node, lang) {
 }
 
 
+
+function rootUpdate() {
+
+    // console.dir(root);
+    d3.select("#processName").html(root.text);
+    root.x0 = h / 2;
+    root.y0 = 0;
+    
+    
+    botao.on("click", function () {    
+    // toggle(root);
+    // update(root);
+    var mainLayer = d3.select("#navigational>svg");
+       mainLayer
+	
+     //vis
+	.attr("x", 0)
+	.attr("y", 0)
+	.style("left", "0px")
+	.style("top", "0px");
+
+    });
+
+    update(root);  
+}
+
+
 function dragndrop(d) {
 
 
@@ -394,13 +417,11 @@ function dragndrop(d) {
 	 //  console.log(d3.event.dy + parseInt(dragTarget.attr("y")));
 
 }
-
 function hideSpinner () {
   // console.log("weee");
  d3.select("#spinner").
    style("display", "none");
 }
-
 function showSpinner () {
  d3.select("#spinner").
    style("display", "block");
@@ -417,5 +438,14 @@ function dragndrop(d) {
       //.style("left", ((parseInt(drag.style("left")) + d3.event.sourceEvent.pageX) - this.offsetWidth/2)+"px")
 }
 */
+
+/**
+ * JS init()
+ *
+ */
+
+$.ajaxSetup({ cache: true });
+getRoot('nonExistentNode', 'en');
+
 })(jQuery, d3, _, this, this.document);
 
