@@ -2,14 +2,14 @@ $:.unshift "."
 require 'spec_helper'
 require 'linkeddata'
 
-describe RDF::Distiller::Application do
+describe RDF::Kosa::Application do
   before(:each) do
     $debug_output = StringIO.new()
     $logger = Logger.new($debug_output)
     $logger.formatter = lambda {|severity, datetime, progname, msg| "#{msg}\n"}
   end
 
-
+=begin
   describe "/distiller" do
     context "HTML output" do
       context "URL" do
@@ -35,7 +35,7 @@ describe RDF::Distiller::Application do
         end
       end
     end
-=begin
+
     context "RAW output" do
       context "form data" do
         it "retrieves a graph" do
@@ -50,7 +50,7 @@ describe RDF::Distiller::Application do
         end
       end
     end
-=end
+    
     context "RDF Formats" do
       
       RDF::Format.each do |format|
@@ -67,6 +67,6 @@ describe RDF::Distiller::Application do
       end
     end
   end
-
+=end
   
 end

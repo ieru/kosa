@@ -2,13 +2,14 @@ $:.unshift "."
 require 'spec_helper'
 require 'linkeddata'
 
-describe RDF::Distiller::Application do
-=begin
+describe RDF::Kosa::Application do
+
   before(:each) do
     $debug_output = StringIO.new()
     $logger = Logger.new($debug_output)
     $logger.formatter = lambda {|severity, datetime, progname, msg| "#{msg}\n"}
   end
+=begin
 
   describe "/sparql" do
     before(:all) {@doap = RDF::Repository.new << [RDF::URI("doap"), RDF.type, RDF::DOAP.to_uri]}
@@ -102,7 +103,7 @@ describe RDF::Distiller::Application do
       last_response.status.should == 200
       last_response.body.should == %((construct\n ((triple ?s ?p ?o))\n (bgp (triple ?s ?p ?o))\n)\n)
       last_response.content_type.should include("application/sse+sparql-query")
-    end
-=end    
+    end    
   end
+=end  
 end

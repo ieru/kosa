@@ -2,7 +2,7 @@ $:.unshift "."
 require 'spec_helper'
 require 'linkeddata'
 
-describe RDF::Distiller::Application do
+describe RDF::Kosa::Application do
 =begin
   before(:each) do
     $debug_output = StringIO.new()

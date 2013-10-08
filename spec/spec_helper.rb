@@ -3,7 +3,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rspec'
 require 'rack/test'
-require 'rdf/distiller'
+require 'rdf/kosa'
 require 'matchers'
 require 'logger'
 
@@ -18,7 +18,7 @@ set :environment, :test
   c.include ::Rack::Test::Methods
 
   def app
-   ::RDF::Distiller::Application
+   ::RDF::Kosa::Application
   end
 
   def mime_type(sym)
