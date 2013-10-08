@@ -68,6 +68,9 @@ rackup -p <your_port_number> config.ru
 
 https://github.com/ieru/kosa/wiki/TODO-LIST
 
+## API documentation
+
+https://github.com/ieru/kosa/wiki/RESTful-API-documentation
 
 ## Licence
 
