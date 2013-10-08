@@ -8,7 +8,7 @@ A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa)
 
-## Intallation
+## Installation
 
 
 - First step is to install a graph-based database: 4-store has been used
@@ -60,8 +60,8 @@ bundle install
 - Since the server has been installed using Rack, to run it, just type:
 
 ```
-rackup -p <your_por_number> config.ru
-( use 'rvm all do rackup -p <your_por_number> config.ru', if you are using rvm )
+rackup -p <your_port_number> config.ru
+( use 'rvm all do rackup -p <your_port_number> config.ru', if you are using rvm )
 ```
 
 ## Todo List
