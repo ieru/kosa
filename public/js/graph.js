@@ -299,27 +299,23 @@ function getRoot(node, lang) {
   showSpinner();
 
   $.ajax({
-    // dataType:"jsonp",
+     dataType:"json",
     url: "/api/gettopconcepts?node="+encodeURIComponent(node)+"&lang="+encodeURIComponent(lang),
-    success: function(json_array) {
-        var json = {}, isJsonArrayValid = false;
+    success: function(json) {
+        var isJsonArrayValid = false;
         hideSpinner();
    
-        if (typeof json_array == 'object' && json_array !== null && json_array.length > 0) {
-          json.name = json_array[0];
-          isJsonArrayValid = true;
+        if (typeof json == 'object' && json !== null && json.length > 0) {
+          isJsonArrayValid = true;          
           
-        } else if (typeof json_array == 'string' && json_array !== null && json_array.length > 0) {  
-
-          json.name = json_array.replace(/[\[\]\"]*/g, '').split(',');;
-          isJsonArrayValid = true;
+        } else if (typeof json == 'string' && json !== null && json.length > 0) {  
+          // json.name = json_array.replace(/[\[\]\"]*/g, '').split(',');;
         } else {
-
-          json.name = '-- no children --';
         }
 
         if (isJsonArrayValid) {
-          getRootChildren(json.name, 'en');
+          
+          getRootChildren(json.id, 'en');
           // rootUpdate called from callback
         } else {          
 
