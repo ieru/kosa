@@ -336,39 +336,43 @@ function getChildren(subTree, searchText, lang) {
   showSpinner();
 
   $.ajax({
-    // dataType:"jsonp",
+    dataType:"json",
     url: "/api/getnarrowerconcepts?node="+encodeURIComponent(searchText)+"&lang="+encodeURIComponent(lang),
     success: function(childs) {
-      var json_array, children;
+      var children;
       hideSpinner();
       
-      json_array = childs.replace(/[\[\]\"]*/g, '').split(',');
+      // json_array = childs.replace(/[\[\]\"]*/g, '').split(',');
       
       
-      children = [];
-      
-      _.each(json_array, function (childNode) {
+      // children = [];
+      /*
+      _.each(childs, function (childNode) {
         
         
-        if (childNode !== null && childNode !== '') {
-          var subObject = {};
+        if (typeof childNode != 'object' || childNode == null) {
+        
+          // var subObject = {};
           
           // console.log(childNode);
-          subObject.name = childNode;
-          subObject.children = [];
+          // subObject.name = childNode.name;
+          // subObject.id = childNode.id;
+          // subObject.children = [];
         
-          children.push(subObject);
+          children.push(childNode);
         }
-        // console.log(typeof childNode);
-      }); 
+        console.dir(children);
+      });
+      */ 
 
       // console.dir(children);
       
-      if (subTree === null) {
+      if (typeof subTree == 'undefined' || subTree === null) {
         return; 
       }
       
-      subTree.children = children;
+      console.dir(childs);
+      subTree.children = childs;
       
       // console.dir(subTree);
 
