@@ -22,6 +22,7 @@ require 'rubygems'
 require 'json'
 require 'yajl'
 
+require 'net/http'
 require 'rest_client'
 require 'sparql/client'
 
@@ -254,6 +255,14 @@ module RDF::Kosa
       end
       
     end
+
+    def getJsonFromExternalAPI(uri, node)
+      url = uri + node
+      
+      resp = Net::HTTP.get_response(URI.parse(url))
+      return resp.body
+      
+    end
     
 
     # recurse function to search a node within a JSON
@@ -319,13 +328,22 @@ module RDF::Kosa
         # {}.to_json
         # json_string = getJson
         # json = EXTERNAL.parse("["+json_string+"]") 
-        json_string = getJson
-        parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-                
-        # Siren.query("$[={'aa':'@.name'}]", json).to_json
-        Siren.query("$[=name]", json).to_json
+        
+        
 
+        
+        # v1: json_string = getJson
+        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-term-parents/", "CO_010:0000000")
+        
+        parser = Yajl::Parser.new
+        json = parser.parse(json_string)
+                
+        ## Siren.query("$[={'aa':'@.name'}]", json).to_json
+        
+        
+        # v1: Siren.query("$[=name]", json).to_json
+        Siren.query("$[0][0]", json).to_json
+        
       end
     end
 
@@ -337,7 +355,12 @@ module RDF::Kosa
         # {}.to_json
         # json_string = getJson
         # json = EXTERNAL.parse("["+json_string+"]") 
+        
+        
+        
         json_string = getJson
+        
+        
         parser = Yajl::Parser.new
         json = parser.parse("["+json_string+"]")
                 
@@ -418,11 +441,13 @@ module RDF::Kosa
         # json = Siren.parse(json_string)
         # json = EXTERNAL.parse("["+json_string+"]") 
 
-        json_string = getJson
+        # json_string = getJson
+        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
+        
         parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-
-        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
+        json = parser.parse(json_string)
+        json.to_json
+        # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
       end
     end
 
@@ -436,7 +461,7 @@ module RDF::Kosa
         # json = Siren.parse(json_string)
         # json = EXTERNAL.parse("["+json_string+"]") 
 
-        json_string = getJson
+        json_string = getUrlJson(node)
         parser = Yajl::Parser.new
         json = parser.parse("["+json_string+"]")
 

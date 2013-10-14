@@ -79,7 +79,7 @@ function update(source) {
           
           // var json = {};
           // json.name = d.name;
-          getChildren(d, d.id, 'en');
+          getChildren(d, d.name, 'en');
           // node updated in callback
                       
           // toggle(d);
