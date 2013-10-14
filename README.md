@@ -8,6 +8,13 @@ A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa)
 
+## Technologies
+
+- Ruby Sinatra
+- 4store Database
+- D3.js ; Tested for responsiveness
+- Responsive Bootstrap 3 template
+
 ## Installation
 
 
@@ -15,13 +22,15 @@ A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version
 - Intallation can be accomplished from a debian-like system running: 
 
 ```
-apt-get install 4-store
+$ sudo apt-get install 4-store
 ```
 
 - on Mac systems : 
 
 ```
-port install 4-store
+(if using MacPorts)  
+
+$ sudo port install 4-store
 ```
 
 - on RedHat Like systems: 
@@ -30,38 +39,78 @@ port install 4-store
 yum install 4-store
 ```
 
-- After installing the database, configure it to listen on port 8008
+- Create a 4store database, 
+
+```
+$ sudo 4s-backend-setup testDB
+$ sudo 4s-backend testDB
+```
+
+- Run the database, listening on port 8008 (to do so, just type: )
+
+```
+$ sudo 4s-httpd -p 8008 testDB  
+
+(if you want to test your installed database, point your browser to http://localhost:8008/test 
+You will access an SPARQL endpoint)
+```
+
+- Install ruby on your machine / ensure you have it installed 
+```
+$ ruby -v
+ ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-linux]
+```
+
+- Fill your database with some RDF dummy data (to test the endpoint)
+
+```
+( in kosa directory: )
+
+$ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontology.rdf  
+
+( ruby _loader.rb <ontology_name> <file_to_load> )  
+
+$ ruby _loader.rb co_010 co_010_ontology.rdf
+```
 
 - Clone, or download a zip of this repository. Clone may be done using:
 
 ```
-git clone https://github.com/ieru/kosa.git
-cd kosa
+$ git clone https://github.com/ieru/kosa.git
+$ cd kosa
 ```
 
-- Install ruby on your machine
+- Before installing gems and runnig bundle install; install ImageMagick
+
+( Download and install your OS version. More info at vendor's link:
+http://www.imagemagick.org/script/binary-releases.php )
+
+
 - Install required gems with the command (you may need more Gems):
 
 ```
-# (use 'rvm all do gem install sinatra ...' , instead, if you have rvm installed)
-gem install sinatra rubygems nokogiri rest_client json dm-core dm-sqlite-adapter, rdf
-gem install rdf-aggregate-repo, rdf-isomorphic, rdf-json, rdf-microdata, rdf-n3, rdf-rdfa
-gem install rdf-rdfxml, rdf-turtle, rdf-trig, rdf-xsd, rdf-4store, json-ld, linkeddata
-gem install sparql, sinatra-respond_to, sinatra-flash, rmagick, sparql-client
+# (use 'rvm all do gem install sinatra ...' , instead, if you have rvm installed)  
+
+$ sudo gem install sinatra rubygems nokogiri rest_client json dm-core dm-sqlite-adapter, rdf
+$ sudo gem install rdf-aggregate-repo, rdf-isomorphic, rdf-json, rdf-microdata, rdf-n3, rdf-rdfa
+$ sudo gem install rdf-rdfxml, rdf-turtle, rdf-trig, rdf-xsd, rdf-4store, json-ld, linkeddata
+$ sudo gem install sparql, sinatra-respond_to, sinatra-flash, rmagick, sparql-client
+$ sudo gem install rmagick
 ```
 
 - Install bundle using: (it may be necessary to remove the Gemfile.lock file to rebuild the previous build)
 
 ```
-bundle install
-(or 'rvm all do bundle install' -- if you use rvm -- )
+( from cloned kosa directory )
+$ sudo bundle install
+(or '$ sudo rvm all do bundle install' -- if you use rvm -- )
 ```
 
 - Since the server has been installed using Rack, to run it, just type:
 
 ```
-rackup -p <your_port_number> config.ru
-( use 'rvm all do rackup -p <your_port_number> config.ru', if you are using rvm )
+$ sudo rackup -p <your_port_number> config.ru
+( use '$ sudo rvm all do rackup -p <your_port_number> config.ru', if you are using rvm )
 ```
 
 ## Todo List
