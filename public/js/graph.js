@@ -1,13 +1,13 @@
 (function ($, d3, _, window, document, undefined) {
 
-var realWidth = window.innerWidth;
-var realHeight = window.innerHeight;
+var realWidth = $(window).width();
+var realHeight = $(window).height();
 
 var m = [40, 240, 40, 40],
-    // w = realWidth - m[0] - m[0],
-    w = 1000,
-    // h = realHeight - m[0] - m[2],
-    h = 2000,
+    w = realWidth - m[0] - m[0],
+    // w = 1000,
+    h = realHeight - m[0] - m[2],
+    h = 1000,
     i = 0,
     root;
 
@@ -306,22 +306,19 @@ function getRoot(node, lang) {
         var isJsonArrayValid = false;
         hideSpinner();
    
-        if (typeof json == 'object' && json !== null && json.length > 0) {
-          isJsonArrayValid = true;          
-          
-        } else if (typeof json == 'string' && json !== null && json.length > 0) {  
-          // json.name = json_array.replace(/[\[\]\"]*/g, '').split(',');;
-        } else {
+        if (typeof json == 'object' && json.id != undefined && json.name != undefined) {
+          isJsonArrayValid = true;                    
         }
 
+        json.children = null;
+        root = json;
+        
+        
         if (isJsonArrayValid) {
-          
-          getRootChildren(json.id, 'en');
-          // rootUpdate called from callback
+
+          getRootChildren(json, 'en');
         } else {          
 
-          json.children = null;
-          root = json;
           rootUpdate();
         }
 
@@ -362,20 +359,22 @@ function getChildren(subTree, searchText, lang) {
   });
 }
 
-function getRootChildren(searchText, lang) {
+function getRootChildren(json, lang) {
   showSpinner();
 
   $.ajax({
-    // dataType:"jsonp",
-    url: "/api/getnarrowerconcepts?node="+encodeURIComponent(searchText)+"&lang="+encodeURIComponent(lang),
+    dataType:"json",
+    url: "/api/getnarrowerconcepts?node="+encodeURIComponent(json.id)+"&lang="+encodeURIComponent(lang),
     success: function(childs) {
 
       hideSpinner();
 
+      console.dir(childs);
+      
       if (childs === null) {
         return;
       }
-      root = childs;
+      root.children = childs;
       rootUpdate();
 
     },
@@ -393,15 +392,14 @@ function rootUpdate() {
     d3.select("#processName").html(root.text);
     root.x0 = h / 2;
     root.y0 = 0;
+
     
     
     botao.on("click", function () {    
     // toggle(root);
     // update(root);
-    var mainLayer = d3.select("#navigational>svg");
-       mainLayer
-	
-     //vis
+      var mainLayer = d3.select("#navigational>svg");
+      mainLayer
 	.attr("x", 0)
 	.attr("y", 0)
 	.style("left", "0px")

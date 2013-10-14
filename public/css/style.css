@@ -3,8 +3,9 @@
 }
 
 svg.svg_container.draggable {
-  /** 10x drawing area**/
-  width:1000%;
+  /** 30x drawing area**/
+  width:3000%;
+  height:3000%;
 }
 
 #navigational g.node circle,
@@ -110,7 +111,7 @@ svg.svg_container.draggable {
   position: relative;
 }
 #navigational.draggable-parent {
-  height: 2000px;
+  height: 900px;
   overflow: hidden;
   z-index: 999;
 
