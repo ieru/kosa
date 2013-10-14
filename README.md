@@ -29,14 +29,10 @@ $ sudo apt-get install 4-store
 
 ```
 (if using MacPorts)  
+$ sudo port install 4-store  
 
-$ sudo port install 4-store
-```
-
-- on RedHat Like systems: 
-
-```
-yum install 4-store
+(more info on installing 4store, here:
+http://4store.org/trac/wiki/Install )
 ```
 
 - Create a 4store database, 
@@ -55,10 +51,12 @@ $ sudo 4s-httpd -p 8008 testDB
 You will access an SPARQL endpoint)
 ```
 
-- Install ruby on your machine / ensure you have it installed 
+- Install ruby on your machine, or ensure you have it installed
+
 ```
 $ ruby -v
- ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-linux]
+ruby 1.9 ...
+
 ```
 
 - Fill your database with some RDF dummy data (to test the endpoint)

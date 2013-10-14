@@ -127,14 +127,17 @@ function update(source) {
         .attr("text-anchor", function (d) {
         })
         .text(function (d) {
-        if (d.part_level > 0) {
+          if (d.part_level > 0) {
             return d.name;
-        } else if (d.part_multi > 1) {
+          } else if (d.part_multi > 1) {
             return  d.name + " [" + d.part_multi + "]";
-        } else {
+          } else {
             return d.name;
-        }
-    });
+          }
+        });
+        /*.attr("transform", function(d) {
+          return "rotate(-4)" 
+        });*/
         // .style("fill-opacity", 1e-6);
 
     // Transition nodes to their new position.
