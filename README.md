@@ -12,7 +12,7 @@ A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version
 
 - Ruby Sinatra
 - 4-store Database
-- Responsive D3.js (SVG graphs)
+- Responsive D3.js (svg graphs)
 - Responsive Bootstrap 3 template
 
 ## Installation
@@ -21,18 +21,20 @@ A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version
 - First step is to install a graph-based database: 4-store has been used
 - Intallation can be accomplished from a debian-like system running: 
 
+( More info on installing 4store, here:
+http://4store.org/trac/wiki/Install
+
 ```
 $ sudo apt-get install 4-store
 ```
 
 - on Mac systems : 
 
+
 ```
 (if using MacPorts)  
 $ sudo port install 4-store  
 
-(more info on installing 4store, here:
-http://4store.org/trac/wiki/Install )
 ```
 
 - Create a 4store database, 
@@ -92,7 +94,8 @@ $ cd kosa
 - Before installing gems and runnig bundle install; install ImageMagick
 
 ( Download and install your OS version. More info at vendor's link:
-http://www.imagemagick.org/script/binary-releases.php )
+http://www.imagemagick.org/script/binary-releases.php
+
 
 
 - Install required gems with the command (you may need more Gems):
@@ -121,6 +124,10 @@ $ sudo bundle install
 $ sudo rackup -p <your_port_number> config.ru
 ( use '$ sudo rvm all do rackup -p <your_port_number> config.ru', if you are using rvm )
 ```
+
+## Troubleshooting
+
+https://github.com/ieru/kosa/wiki/Troubleshooting
 
 ## Todo List
 
