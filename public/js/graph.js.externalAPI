@@ -90,7 +90,7 @@ function update(source) {
         .attr("r", function (d) {
         // console.log(d.name + ' hijos? -->' + (typeof d.children == 'undefined'));
         // console.dir(d.children);
-        if (typeof d.children != 'undefined' || d.has_children === 1) {
+        if (typeof d.children != 'undefined') {
             return 6;
         } else {
             return 4.5;
@@ -100,7 +100,7 @@ function update(source) {
            return "level" + d.part_level;
          })
         .style("stroke", function (d) {
-        if (d._children || d.has_children === 1) {
+        if (d._children) {
             return "#777";
         }})
         /*
@@ -116,8 +116,7 @@ function update(source) {
     nodeEnter.append("svg:text")
         .attr("x", function (d) {
         // return d.children || d._children ? -((Math.sqrt((d.part_cc_p * 1)) + 6) + this.getComputedTextLength()) : Math.sqrt((d.part_cc_p * 1)) + 6;
-          // return d.children || d._children || d.has_children === 1 ? -8  : 8;
-          return 8;
+          return d.children || d._children ? -8  : 8;
         })
         .attr("y", function (d) {
         // return d.children || d._children ? 0 : 0;
@@ -125,6 +124,7 @@ function update(source) {
         })
         .attr("dy", ".35em")
         .attr("text-anchor", function (d) {
+          return d.children || d._children ? "end" : "start";
         })
         .text(function (d) {
         if (d.part_level > 0) {
@@ -151,7 +151,7 @@ function update(source) {
     //})
         .attr("r", function(d) {
         // console.log(d.name + ' hijos? -->' + (typeof d.children == 'undefined'));
-        if (typeof d.children != 'undefined' || d.has_children === 1) {
+        if (typeof d.children != 'undefined') {
             return 6;
         } else {
             return 4.5;
@@ -162,15 +162,14 @@ function update(source) {
         return "level" + d.part_level;
     })
         .style("stroke", function (d) {
-        if (d._children || d.has_children === 1) {
-            // return "steelblue";
-            return "#31628B";
+        if (d._children) {
+            return "steelblue";
         } else {
             return null;
         }
     })
         .style("fill", function (d) {
-        if (d._children || d.has_children === 1) {
+        if (d._children) {
             return "steelblue";
         } else {
             return null;
@@ -194,7 +193,7 @@ function update(source) {
     //});
 	//.attr("r", 4.5);
         .attr("r", function(d) {
-        if (d._children || d.has_children === 1) {
+        if (d._children) {
             return 6;
         } else {
             return 4.5;
@@ -264,7 +263,7 @@ function update(source) {
 };
 // Toggle children.
 function toggle(d) {
-    if (d.children || d.has_children === 1) {
+    if (d.children) {
         d._children = d.children;
         d.children = null;
     } else {
@@ -340,24 +339,58 @@ function getChildren(subTree, searchText, lang) {
     dataType:"json",
     url: "/api/getnarrowerconcepts?node="+encodeURIComponent(searchText)+"&lang="+encodeURIComponent(lang),
     success: function(childs) {
-      
+      var children;
       hideSpinner();
+      
+      // json_array = childs.replace(/[\[\]\"]*/g, '').split(',');
+      
+      
+      // children = [];
+      /*
+      _.each(childs, function (childNode) {
+        
+        
+        if (typeof childNode != 'object' || childNode == null) {
+        
+          // var subObject = {};
+          
+          // console.log(childNode);
+          // subObject.name = childNode.name;
+          // subObject.id = childNode.id;
+          // subObject.children = [];
+        
+          children.push(childNode);
+        }
+        console.dir(children);
+      });
+      */ 
+
+      // console.dir(children);
       
       if (typeof subTree == 'undefined' || subTree === null) {
         return; 
       }
       
-      // console.dir(childs);
+      console.dir(childs);
       subTree.children = childs;
       
+      // console.dir(subTree);
+
+      // toggle(subTree.children);
+
+      // toggle(subTree);
+      // toggle(subTree);
       update(subTree);
       update(subTree.children);
 
+      
+      // toggle(subTree);
+      // update(subTree);
 
     },
     error: function(e) {
       hideSpinner();
-      console.warn('There was an error retrieving data.');
+      console.dir('There was an error retrieving data.');
     }
   });
 }
@@ -369,19 +402,42 @@ function getRootChildren(searchText, lang) {
     // dataType:"jsonp",
     url: "/api/getnarrowerconcepts?node="+encodeURIComponent(searchText)+"&lang="+encodeURIComponent(lang),
     success: function(childs) {
-
+      var json_array, newNode = {};
       hideSpinner();
+      // console.dir(childs);
 
-      if (childs === null) {
+      // node.children = childs.replace(/[\[\]\"]*/g, '').split(',');
+      // console.dir(node);
+      
+      json_array = childs.replace(/[\[\]\"]*/g, '').split(',');
+      
+      
+      newNode.name = searchText;
+      newNode.children = [];
+      
+      _.each(json_array, function (childNode, index) {
+    
+        if (childNode !== null && childNode !== '') {
+    
+          // console.log(childNode);
+          var subObject = {};
+          subObject.name = childNode;
+          subObject.children = [];
+        
+          newNode.children.push(subObject);
+        }        
+      }); 
+      
+      if (newNode === null) {
         return;
       }
-      root = childs;
+      root = newNode;
       rootUpdate();
 
     },
     error: function(e) {
       hideSpinner();
-      console.warn('There was an error retrieving data.');
+      console.dir('There was an error retrieving data.');
     }
   });
 }
