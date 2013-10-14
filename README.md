@@ -11,8 +11,8 @@ A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version
 ## Technologies
 
 - Ruby Sinatra
-- 4store Database
-- D3.js ; Tested for responsiveness
+- 4-store Database
+- Responsive D3.js (SVG graphs)
 - Responsive Bootstrap 3 template
 
 ## Installation
