@@ -2,8 +2,11 @@
 require 'rubygems'
 require 'rest_client'
 
-filename = './index.rdf'
-graph    = 'http://source.data.gov.uk/data/reference/organogram-co/2010-10-31/index.rdf'
+arg1, arg2 = ARGV.slice! 0, 2
+abort "Syntax: $ ruby _loader.rb <ontology_name> <file_to_load>" unless arg2
+
+filename = './' +  arg2
+graph    = arg1
 endpoint = 'http://localhost:8008/data/'
 
 puts File.read(filename)

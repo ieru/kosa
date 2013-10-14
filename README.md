@@ -71,6 +71,17 @@ $ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontolo
 ( ruby _loader.rb <ontology_name> <file_to_load> )  
 
 $ ruby _loader.rb co_010 co_010_ontology.rdf
+...
+...
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label> "GCP germplasm ontology"@en .
+
+Loading ./co_010_ontology.rdf into co_010 in 4store
+
+...
+(you may see a 400 Error here. Its not important)
+...
+
 ```
 
 - Clone, or download a zip of this repository. Clone may be done using:
