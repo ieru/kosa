@@ -5,7 +5,7 @@ var realHeight = window.innerHeight;
 
 var m = [40, 240, 40, 40],
     // w = realWidth - m[0] - m[0],
-    w = 980,
+    w = 1000,
     // h = realHeight - m[0] - m[2],
     h = 2000,
     i = 0,
