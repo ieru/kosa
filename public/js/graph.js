@@ -1,13 +1,16 @@
 (function ($, d3, _, window, document, undefined) {
 
-var realWidth = $(window).width();
-var realHeight = $(window).height();
+// var realWidth = $(window).width();
+// var realHeight = $(window).height();
 
-var m = [80, 240, 80, 80],
-    w = realWidth - m[0] - m[0],
-    // w = 1000,
-    h = realHeight - m[0] - m[2],
-    // h = 1000,
+var realWidth = $('#navigational').innerWidth();
+var realHeight = $('#navigational').innerHeight();
+
+
+var m = [-50, 500, 10, 40],
+    w = realWidth,
+    h = realHeight+m[1],
+    // h = 4000,
     i = 1000,
     root;
 
@@ -30,18 +33,25 @@ var botao = d3.select("#form #button");
 
 var vis = d3.select("#navigational")
     .append("svg:svg")
+    .attr("xmlns", "http://www.w3.org/2000/svg")
+    .attr("version", "1.1")
     .attr("class", "svg_container draggable")
-    .attr("width", w)
+    .attr("width", w+"px")
+    .attr("height", h + "px")
     .attr("x", 0)
     .attr("y", 0)
-    .attr("height", h)
+    .attr("viewBox", '0 0 '+ w +' '+ parseInt(h))
+    .attr("preserveAspectRatio", "xMidYMin meet")
+    //.attr("preserveAspectRatio", "none")
     .style("overflow", "scroll")
     .style("background-color", "#EEE")
     .call(drag)
     .append("svg:g")
-    .attr("class", "drawarea")
     .append("svg:g")
-    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+    .attr("class", "transformable")
+    .attr("transform", "translate(" + m[3] + "," +  m[0] + ")");
+
+var svg = document.getElementsByTagName('svg')[0];
 
 hideSpinner();    
 
@@ -55,7 +65,24 @@ function update(source) {
 
     // Normalize for fixed-depth.
     nodes.forEach(function (d) {
-         d.y =   (h * -1) + (d.depth * 200);
+     
+
+         var vv = vis.select("g.transformable").
+         attr("transform", "translate(" + w/2 + ", "+ m[0] + 200+ ")");         
+         console.dir(vv);
+         console.log("w: "+ w + "m: "+ (m[0]+200));
+
+         d.y = (h * -1) + (d.depth * 200);
+
+         
+     /**
+     vis
+    .attr("x", w / 2)
+    .attr("y", function(){ h / 2})
+    .style("left", dragTarget.attr("x")+"px")
+    .style("bottom", (dragTarget.attr("y") * -1) +"px");
+    **/
+
      });
 
     // Update the nodes.
@@ -110,8 +137,6 @@ function update(source) {
     nodeEnter.append("svg:text")
         .attr("y", function (d) {
         // return d.children || d._children ? -((Math.sqrt((d.part_cc_p * 1)) + 6) + this.getComputedTextLength()) : Math.sqrt((d.part_cc_p * 1)) + 6;
-          // return d.children || d._children || d.has_children === 1 ? -8  : 8;
-          // console.log(d.part_cc_p);
           return 14;
         })
         .attr("x", function (d) {
@@ -123,17 +148,11 @@ function update(source) {
           return "middle";
         })
         .text(function (d) {
-        /**
-          if (d.part_level > 0) {
-            return d.name;
-          } else if (d.part_multi > 1) {
-            return  d.name + " [" + d.part_multi + "]";
-          } else {
-            return d.name;
-          }
-          **/
-          return d.name;
+           var extraDataString = ( typeof d.children == 'object' ) ? ' (+'+d.children.length+')' : '';
+           // return (d.name.length < __MAXTERMLENGTH) ? d.name + extraDataString : d.name.substr(0,__MAXTERMLENGTH) + '...'+ extraDataString;
+           return d.name + extraDataString;
         });
+        // rotate text 90 degrees
         //.attr("transform", function(d) {
         //  return "rotate(-90)";
         // });
@@ -146,17 +165,11 @@ function update(source) {
           var a,b;
           a = d.x;
           b = d.y * -1;
-          // return "translate(" + d.y + "," + d.x + ")"; // initial
           return "translate(" + a + ", " + b + ")";
-        // return "translate(" + 250 + "," + d.x + ")";
     });
 
     nodeUpdate.select("circle")
-    //    .attr("r", function (d) {
-    //    return Math.sqrt((d.part_cc_p * 1)) + 4;
-    //})
         .attr("r", function(d) {
-        // console.log(d.name + ' hijos? -->' + (typeof d.children == 'undefined'));
         if (typeof d.children != 'undefined' || d.has_children === 1) {
             return 6;
         } else {
@@ -169,7 +182,6 @@ function update(source) {
         })
         .style("stroke", function (d) {
           if (d._children || d.has_children === 1) {
-              // return "steelblue";
               return "#31628B";
           } else {
               return null;
@@ -199,10 +211,6 @@ function update(source) {
         .remove();
 
     nodeExit.select("circle")
-    //    .attr("r", function (d) {
-    //    return Math.sqrt((d.part_cc_p * 1)) + 4;
-    //});
-	//.attr("r", 4.5);
         .attr("r", function(d) {
         if (d._children || d.has_children === 1) {
             return 6;
@@ -411,8 +419,8 @@ function rootUpdate() {
       // update(root);
       var mainLayer = d3.select("#navigational>svg");
       mainLayer
-	.attr("x", w / 2)
-	.attr("y", h / 2)
+	.attr("x", w)
+	.attr("y", h )
 	.style("left", "0px")
 	.style("bottom", "0px");
 
@@ -430,7 +438,11 @@ function dragndrop(d) {
     .attr("x", function(){return (d3.event.dx + parseInt(dragTarget.attr("x")))})
     .attr("y", function(){return (d3.event.dy + parseInt(dragTarget.attr("y")))})
     .style("left", dragTarget.attr("x")+"px")
-    .style("top", dragTarget.attr("y")+"px");
+    // .style("top", dragTarget.attr("y") +"px");
+    .style("bottom", (dragTarget.attr("y") * -1) +"px");
+    
+    
+    
 
 }
 
@@ -444,6 +456,7 @@ function showSpinner () {
  d3.select("#spinner").
    style("display", "block");
 }
+
 
 /**
  * JS init()
