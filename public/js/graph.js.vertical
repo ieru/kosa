@@ -7,8 +7,8 @@ var m = [40, 240, 40, 40],
     w = realWidth - m[0] - m[0],
     // w = 1000,
     h = realHeight - m[0] - m[2],
-    // h = 1000,
-    i = 1000,
+    h = 1000,
+    i = 0,
     root;
 
 var tree = d3.layout.tree()
@@ -16,10 +16,7 @@ var tree = d3.layout.tree()
 
 var diagonal = d3.svg.diagonal()
     .projection(function (d) {
-    var a, b;
-    a = d.x;
-    b = d.y * -1;
-    return [a, b];
+    return [d.y, d.x];
 });
 
 var drag = d3.behavior.drag()
@@ -62,8 +59,8 @@ function update(source) {
 
     // Normalize for fixed-depth.
     nodes.forEach(function (d) {
-         d.y = d.depth * -200;
-     });
+        d.y = d.depth * 150;
+    });
 
     // Update the nodes.
     var node = vis.selectAll("g.node")
@@ -75,11 +72,7 @@ function update(source) {
     var nodeEnter = node.enter().append("svg:g")
         .attr("class", "node")
         .attr("transform", function (d) {
-            var a,b;
-            a = source.x0;
-            b = source.y0 * -1;
-        
-            return "translate(" + a + ", " + b + ")";
+        return "translate(" + source.y0 + "," + source.x0 + ")";
         // return "translate(" + 500 + "," + source.x0 + ")";
     })
         .on("click", function (d) {
@@ -134,7 +127,6 @@ function update(source) {
         .attr("text-anchor", function (d) {
         })
         .text(function (d) {
-        /**
           if (d.part_level > 0) {
             return d.name;
           } else if (d.part_multi > 1) {
@@ -142,8 +134,6 @@ function update(source) {
           } else {
             return d.name;
           }
-          **/
-          return d.name;
         });
         /*.attr("transform", function(d) {
           return "rotate(-4)" 
@@ -154,11 +144,7 @@ function update(source) {
     var nodeUpdate = node.transition()
         .duration(duration)
         .attr("transform", function (d) {
-          var a,b;
-          a = d.x;
-          b = d.y * -1;
-          // return "translate(" + d.y + "," + d.x + ")"; // initial
-          return "translate(" + a + ", " + b + ")";
+        return "translate(" + d.y + "," + d.x + ")";
         // return "translate(" + 250 + "," + d.x + ")";
     });
 
@@ -177,22 +163,22 @@ function update(source) {
         })
         .attr("class", function (d) {
         return "level" + d.part_level;
-        })
+    })
         .style("stroke", function (d) {
-          if (d._children || d.has_children === 1) {
-              // return "steelblue";
-              return "#31628B";
-          } else {
-              return null;
-          }
-        })
+        if (d._children || d.has_children === 1) {
+            // return "steelblue";
+            return "#31628B";
+        } else {
+            return null;
+        }
+    })
         .style("fill", function (d) {
-          if (d._children || d.has_children === 1) {
-              return "steelblue";
-          } else {
-              return null;
-          }
-        });
+        if (d._children || d.has_children === 1) {
+            return "steelblue";
+        } else {
+            return null;
+        }
+    });
     /*
     nodeUpdate.select("text")
         .style("fill-opacity", 1);
@@ -201,12 +187,8 @@ function update(source) {
     var nodeExit = node.exit().transition()
         .duration(duration)
         .attr("transform", function (d) {
-          var a,b;
-          a = source.x;
-          b = source.y * -1;
-        
-          return "translate(" + a + "," + b + ")";
-        })
+        return "translate(" + source.y + "," + source.x + ")";
+    })
         .remove();
 
     nodeExit.select("circle")
@@ -236,14 +218,14 @@ function update(source) {
         .attr("class", "link")
         .attr("d", function (d) {
         var o = {
-            x: source.y0,
-            y: source.x0
+            x: source.x0,
+            y: source.y0
         };
         return diagonal({
             source: o,
             target: o
         });
-        })
+    })
         .transition()
         .duration(duration)
         .attr("d", diagonal);
@@ -258,8 +240,8 @@ function update(source) {
         .duration(duration)
         .attr("d", function (d) {
         var o = {
-            x: source.y,
-            y: source.x
+            x: source.x,
+            y: source.y
         };
         return diagonal({
             source: o,
@@ -285,15 +267,13 @@ function update(source) {
 };
 // Toggle children.
 function toggle(d) {
-  if (d.has_children === 1) {     
-    if (d.children) {
+    if (d.children || d.has_children === 1) {
         d._children = d.children;
         d.children = null;
     } else {
         d.children = d._children;
         d._children = null;
     }
-  }
 
 };
 /*
@@ -327,6 +307,7 @@ function getRoot(node, lang) {
     url: "/api/gettopconcepts?node="+encodeURIComponent(node)+"&lang="+encodeURIComponent(lang),
     success: function(json) {
         var isJsonArrayValid = false;
+        hideSpinner();
    
         if (typeof json == 'object' && json.id != undefined && json.name != undefined) {
           isJsonArrayValid = true;                    
@@ -336,7 +317,6 @@ function getRoot(node, lang) {
         root = json;
         
         
-        hideSpinner();
         if (isJsonArrayValid) {
 
           getRootChildren(json, 'en');
@@ -392,7 +372,7 @@ function getRootChildren(json, lang) {
 
       hideSpinner();
 
-      // console.dir(childs);
+      console.dir(childs);
       
       if (childs === null) {
         return;
@@ -416,12 +396,11 @@ function rootUpdate() {
     root.x0 = h / 2;
     root.y0 = 0;
 
-
     
     
     botao.on("click", function () {    
-      // toggle(root);
-      // update(root);
+    // toggle(root);
+    // update(root);
       var mainLayer = d3.select("#navigational>svg");
       mainLayer
 	.attr("x", 0)
