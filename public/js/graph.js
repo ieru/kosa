@@ -3,7 +3,7 @@
 var realWidth = $(window).width();
 var realHeight = $(window).height();
 
-var m = [40, 240, 40, 40],
+var m = [80, 240, 80, 80],
     w = realWidth - m[0] - m[0],
     // w = 1000,
     h = realHeight - m[0] - m[2],
@@ -25,8 +25,6 @@ var diagonal = d3.svg.diagonal()
 var drag = d3.behavior.drag()
     .on("drag", dragndrop);
 
-//var vis = d3.select("#navigational");
-
 var botao = d3.select("#form #button");
 
 
@@ -46,10 +44,6 @@ var vis = d3.select("#navigational")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 hideSpinner();    
-    /*
-    vis
-      .on("load", hideSpinner);
-    */
 
 
 function update(source) {
@@ -58,11 +52,10 @@ function update(source) {
 
     // Compute the new tree layout.
     var nodes = tree.nodes(root).reverse();
-    // console.warn(nodes)
 
     // Normalize for fixed-depth.
     nodes.forEach(function (d) {
-         d.y = d.depth * -200;
+         d.y =   (h * -1) + (d.depth * 200);
      });
 
     // Update the nodes.
@@ -78,16 +71,12 @@ function update(source) {
             var a,b;
             a = source.x0;
             b = source.y0 * -1;
-        
+            
             return "translate(" + a + ", " + b + ")";
-        // return "translate(" + 500 + "," + source.x0 + ")";
     })
         .on("click", function (d) {
           
-          // var json = {};
-          // json.name = d.name;
           getChildren(d, d.id, 'en');
-          // node updated in callback
                       
           // toggle(d);
           // update(d);
@@ -95,8 +84,6 @@ function update(source) {
 
     nodeEnter.append("svg:circle")
         .attr("r", function (d) {
-        // console.log(d.name + ' hijos? -->' + (typeof d.children == 'undefined'));
-        // console.dir(d.children);
         if (typeof d.children != 'undefined' || d.has_children === 1) {
             return 6;
         } else {
@@ -121,17 +108,19 @@ function update(source) {
     
 
     nodeEnter.append("svg:text")
-        .attr("x", function (d) {
+        .attr("y", function (d) {
         // return d.children || d._children ? -((Math.sqrt((d.part_cc_p * 1)) + 6) + this.getComputedTextLength()) : Math.sqrt((d.part_cc_p * 1)) + 6;
           // return d.children || d._children || d.has_children === 1 ? -8  : 8;
-          return 8;
+          // console.log(d.part_cc_p);
+          return 14;
         })
-        .attr("y", function (d) {
+        .attr("x", function (d) {
         // return d.children || d._children ? 0 : 0;
           return 0;
         })
         .attr("dy", ".35em")
         .attr("text-anchor", function (d) {
+          return "middle";
         })
         .text(function (d) {
         /**
@@ -145,9 +134,9 @@ function update(source) {
           **/
           return d.name;
         });
-        /*.attr("transform", function(d) {
-          return "rotate(-4)" 
-        });*/
+        //.attr("transform", function(d) {
+        //  return "rotate(-90)";
+        // });
         // .style("fill-opacity", 1e-6);
 
     // Transition nodes to their new position.
@@ -193,10 +182,10 @@ function update(source) {
               return null;
           }
         });
-    /*
-    nodeUpdate.select("text")
-        .style("fill-opacity", 1);
-    */
+    
+    // nodeUpdate.select("text")
+    //    .style("fill-opacity", 1);
+    
     // Transition exiting nodes to the parent's new position.
     var nodeExit = node.exit().transition()
         .duration(duration)
@@ -236,8 +225,8 @@ function update(source) {
         .attr("class", "link")
         .attr("d", function (d) {
         var o = {
-            x: source.y0,
-            y: source.x0
+            x: source.x0,
+            y: source.y0
         };
         return diagonal({
             source: o,
@@ -258,8 +247,8 @@ function update(source) {
         .duration(duration)
         .attr("d", function (d) {
         var o = {
-            x: source.y,
-            y: source.x
+            x: source.x,
+            y: source.t
         };
         return diagonal({
             source: o,
@@ -274,7 +263,10 @@ function update(source) {
         d.y0 = d.y;
     });
 
-    /*
+    /**
+     * Zoom feature replaced by drag and drop 
+     *
+     
     d3.select("svg")
         .call(d3.behavior.zoom()
         .scaleExtent([0.5, 5])
@@ -283,6 +275,7 @@ function update(source) {
     */
 
 };
+
 // Toggle children.
 function toggle(d) {
   if (d.has_children === 1) {     
@@ -294,9 +287,13 @@ function toggle(d) {
         d._children = null;
     }
   }
-
 };
-/*
+
+/**
+ *
+ * Zoom feature. not responsive, removed
+ *
+ * 
 function zoom() {
     var scale = d3.event.scale,
         translation = d3.event.translate,
@@ -312,11 +309,7 @@ function zoom() {
         .attr("transform", "translate(" + translation + ")" +
         " scale(" + scale + ")");
 };
-*/
-
-// load data using AJAX
-// $.getJSON("/json/test_data2.json", function(json) {
-//// d3.json("/json/test_data2.json", function(json) {
+**/
 
 
 function getRoot(node, lang) {
@@ -367,7 +360,6 @@ function getChildren(subTree, searchText, lang) {
         return; 
       }
       
-      // console.dir(childs);
       subTree.children = childs;
       
       update(subTree);
@@ -392,8 +384,6 @@ function getRootChildren(json, lang) {
 
       hideSpinner();
 
-      // console.dir(childs);
-      
       if (childs === null) {
         return;
       }
@@ -411,12 +401,9 @@ function getRootChildren(json, lang) {
 
 function rootUpdate() {
 
-    // console.dir(root);
     d3.select("#processName").html(root.text);
     root.x0 = h / 2;
     root.y0 = 0;
-
-
     
     
     botao.on("click", function () {    
@@ -424,10 +411,10 @@ function rootUpdate() {
       // update(root);
       var mainLayer = d3.select("#navigational>svg");
       mainLayer
-	.attr("x", 0)
-	.attr("y", 0)
+	.attr("x", w / 2)
+	.attr("y", h / 2)
 	.style("left", "0px")
-	.style("top", "0px");
+	.style("bottom", "0px");
 
     });
 
@@ -437,46 +424,26 @@ function rootUpdate() {
 
 function dragndrop(d) {
 
+  var dragTarget = d3.select(this);
 
-
-    var dragTarget = d3.select(this);
-    
-      // .attr("y", d3.event.y)
-      // .attr("x", d3.event.x)
-      // .attr("y", d3.event.sourceEvent.pageY)
-      // .attr("x", d3.event.sourceEvent.pageX);
-	dragTarget
-	    .attr("x", function(){return (d3.event.dx + parseInt(dragTarget.attr("x")))})
-	    .attr("y", function(){return (d3.event.dy + parseInt(dragTarget.attr("y")))})
-	    .style("left", dragTarget.attr("x")+"px")
-	    .style("top", dragTarget.attr("y")+"px");
-         // .style("left", function(){return (d3.event.dx + parseInt(dragTarget.style("left")))+"px" })
-         // .style("top", function(){return (d3.event.dy + parseInt(dragTarget.style("top")))+"px"})
-	 //  console.log(d3.event.dx + parseInt(dragTarget.attr("x")));
-	 //  console.log(d3.event.dy + parseInt(dragTarget.attr("y")));
+  dragTarget
+    .attr("x", function(){return (d3.event.dx + parseInt(dragTarget.attr("x")))})
+    .attr("y", function(){return (d3.event.dy + parseInt(dragTarget.attr("y")))})
+    .style("left", dragTarget.attr("x")+"px")
+    .style("top", dragTarget.attr("y")+"px");
 
 }
+
 function hideSpinner () {
-  // console.log("weee");
+
  d3.select("#spinner").
    style("display", "none");
 }
 function showSpinner () {
+
  d3.select("#spinner").
    style("display", "block");
 }
-
-/*
-function dragndrop(d) {
-    //var drag = d3.select(this);
-     d3.select(this)
-      .style("top", ((d3.event.sourceEvent.pageY) - this.offsetHeight/2)+"px")
-      .style("left", ((d3.event.sourceEvent.pageX) - this.offsetWidth/2)+"px");
-      //drag
-      //.style("top", ((parseInt(drag.style("top")) + d3.event.sourceEvent.pageY) - this.offsetHeight/2)+"px")
-      //.style("left", ((parseInt(drag.style("left")) + d3.event.sourceEvent.pageX) - this.offsetWidth/2)+"px")
-}
-*/
 
 /**
  * JS init()
