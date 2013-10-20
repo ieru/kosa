@@ -12,6 +12,7 @@ var m = [-50, 500, 10, 40],
     h = realHeight+m[1],
     // h = 4000,
     i = 1000,
+    midWidth = parseInt(w / 2),
     root;
 
 var tree = d3.layout.tree()
@@ -65,14 +66,20 @@ function update(source) {
 
     // Normalize for fixed-depth.
     nodes.forEach(function (d) {
-     
 
-         var vv = vis.select("g.transformable").
-         attr("transform", "translate(" + w/2 + ", "+ m[0] + 200+ ")");         
-         console.dir(vv);
-         console.log("w: "+ w + "m: "+ (m[0]+200));
+         // var vv = vis.select("g.transformable").
+         // attr("transform", "translate(" + w/2 + ", "+ m[0] + 200+ ")");         
+         // console.dir(vv);
+         // console.log("w: "+ w + "m: "+ (m[0]+200));
+         
 
+         
+         // console.log(midWidth+ ' --- ' + d.x);
+         // console.dir(d);
+         
+         // d.x0 = (midWidth - d.x);
          d.y = (h * -1) + (d.depth * 200);
+         // console.dir(d);
 
          
      /**
@@ -89,6 +96,7 @@ function update(source) {
     var node = vis.selectAll("g.node")
         .data(nodes, function (d) {
         return d.id || (d.id = ++i);
+        console.dir(d);
     });
 
     // Enter any new nodes at the parent's previous position.
