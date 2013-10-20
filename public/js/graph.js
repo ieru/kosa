@@ -95,8 +95,8 @@ function update(source) {
     // Update the nodes.
     var node = vis.selectAll("g.node")
         .data(nodes, function (d) {
-        return d.id || (d.id = ++i);
-        console.dir(d);
+        // console.dir(d);
+        return d.nid || (d.nid = ++i);
     });
 
     // Enter any new nodes at the parent's previous position.
@@ -145,7 +145,7 @@ function update(source) {
     nodeEnter.append("svg:text")
         .attr("y", function (d) {
         // return d.children || d._children ? -((Math.sqrt((d.part_cc_p * 1)) + 6) + this.getComputedTextLength()) : Math.sqrt((d.part_cc_p * 1)) + 6;
-          return 14;
+          return (d.nid % 2 === 0) ? 14 : 26;
         })
         .attr("x", function (d) {
         // return d.children || d._children ? 0 : 0;
@@ -233,7 +233,7 @@ function update(source) {
     // Update the links.
     var link = vis.selectAll("path.link")
         .data(tree.links(nodes), function (d) {
-        return d.target.id;
+        return d.target.nid;
     });
 
     // Enter any new links at the parent's previous position.
