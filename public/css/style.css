@@ -26,14 +26,18 @@ svg.svg_container.draggable {
 #navigational text.node {
   cursor: pointer;
   font-size: 10px;
+  background-color:#eee;
 }
 
 #navigational path.link {
   fill: none;
   stroke: #ccc;
-  stroke-width: 1.5px;
+  stroke-width: 1px;
 }
-
+#navigational path.link.has_children {
+  stroke-width: 1.5px;
+  stroke: #31628B;
+}
 /*
 #navigational circle.node circle {
   fill: #fff;

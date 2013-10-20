@@ -51,6 +51,8 @@ var vis = d3.select("#navigational")
     .call(drag)
     .append("svg:g")
     .append("svg:g")
+    .attr("x", 0)
+    .attr("y", 0)
     .attr("width", "100%")
     .attr("height","100%")
     .attr("class", "transformable")
@@ -135,13 +137,18 @@ function update(source) {
         .style("stroke", function (d) {
         if (d._children || d.has_children === 1) {
             return "#777";
+        } else {
+            return "#ccc";
         }})
-        /*
         .style("fill", function (d) {
-        if (d._children) {
+        if (d._children || d.has_children === 1) {
+            // return "#777";
             return "steelblue";
+        } else {
+            return "#ccc";
         }});
-        */
+        
+        
       
     
     
@@ -159,6 +166,7 @@ function update(source) {
         .attr("text-anchor", function (d) {
           return "middle";
         })
+        // .attr("fill", "#eee")
         .text(function (d) {
            var extraDataString = ( typeof d.children == 'object' ) ? ' (+'+d.children.length+')' : '';
            // return (d.name.length < __MAXTERMLENGTH) ? d.name + extraDataString : d.name.substr(0,__MAXTERMLENGTH) + '...'+ extraDataString;
@@ -174,10 +182,10 @@ function update(source) {
     var nodeUpdate = node.transition()
         .duration(duration)
         .attr("transform", function (d) {
-          var a,b;
-          a = d.x;
-          b = d.y * -1;
-          return "translate(" + a + ", " + b + ")";
+          var x,y;
+          x = d.x;
+          y = d.y * -1;
+          return "translate(" + x + ", " + y + ")";
     });
 
     nodeUpdate.select("circle")
@@ -193,17 +201,17 @@ function update(source) {
         return "level" + d.part_level;
         })
         .style("stroke", function (d) {
-          if (d._children || d.has_children === 1) {
+          if (d._children || d.has_children === 1 || d.depth === 0) {
               return "#31628B";
           } else {
-              return null;
+              return "#aaa";
           }
         })
         .style("fill", function (d) {
-          if (d._children || d.has_children === 1) {
+          if (d._children || d.has_children === 1 || d.depth === 0) {
               return "steelblue";
           } else {
-              return null;
+              return "#ccc";
           }
         });
     
@@ -214,11 +222,11 @@ function update(source) {
     var nodeExit = node.exit().transition()
         .duration(duration)
         .attr("transform", function (d) {
-          var a,b;
-          a = source.x;
-          b = source.y * -1;
+          var x, y;
+          x = source.x;
+          y = source.y * -1;
         
-          return "translate(" + a + "," + b + ")";
+          return "translate(" + x + "," + y + ")";
         })
         .remove();
 
@@ -242,8 +250,14 @@ function update(source) {
 
     // Enter any new links at the parent's previous position.
     link.enter().insert("svg:path", "g")
-        .attr("class", "link")
-        .attr("d", function (d) {
+        .attr("class", function(d){
+        if (d.target._children || d.target.has_children === 1) {
+            return "link has_children";
+        } else {
+            return "link";
+        }})
+        .attr("stroke-dasharray", "3,3")
+        .attr("d", function (d) {        
         var o = {
             x: source.x0,
             y: source.y0
