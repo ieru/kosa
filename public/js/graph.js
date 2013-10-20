@@ -7,12 +7,11 @@ var realWidth = $('#navigational').innerWidth();
 var realHeight = $('#navigational').innerHeight();
 
 
-var m = [-50, 500, 10, 40],
+var m = [-650, 600, 10, 40],
     w = realWidth,
     h = realHeight+m[1],
     // h = 4000,
     i = 1000,
-    midWidth = parseInt(w / 2),
     root;
 
 var tree = d3.layout.tree()
@@ -38,17 +37,22 @@ var vis = d3.select("#navigational")
     .attr("version", "1.1")
     .attr("class", "svg_container draggable")
     .attr("width", w+"px")
-    .attr("height", h + "px")
+    .attr("height",(h-m[1])+"px")
+    .attr("viewBox", '0 0 '+ w +' '+ parseInt(h-m[1]))
+    .attr("preserveAspectRatio", "xMidYMax meet")
+    // .attr("preserveAspectRatio", "none")
     .attr("x", 0)
     .attr("y", 0)
-    .attr("viewBox", '0 0 '+ w +' '+ parseInt(h))
-    .attr("preserveAspectRatio", "xMidYMin meet")
-    //.attr("preserveAspectRatio", "none")
-    .style("overflow", "scroll")
+    // .attr("viewBox", '0 0 '+ w +' '+ parseInt(h))
+    // .attr("preserveAspectRatio", "xMidYMin slide")
+    // .attr("preserveAspectRatio", "none")
+    // .style("overflow", "scroll")
     .style("background-color", "#EEE")
     .call(drag)
     .append("svg:g")
     .append("svg:g")
+    .attr("width", "100%")
+    .attr("height","100%")
     .attr("class", "transformable")
     .attr("transform", "translate(" + m[3] + "," +  m[0] + ")");
 
@@ -418,7 +422,7 @@ function getRootChildren(json, lang) {
 function rootUpdate() {
 
     d3.select("#processName").html(root.text);
-    root.x0 = h / 2;
+    root.x0 = 0;
     root.y0 = 0;
     
     
@@ -427,10 +431,10 @@ function rootUpdate() {
       // update(root);
       var mainLayer = d3.select("#navigational>svg");
       mainLayer
-	.attr("x", w)
-	.attr("y", h )
+	.attr("x", 0)
+	.attr("y", 0 )
 	.style("left", "0px")
-	.style("bottom", "0px");
+	.style("top", "0px");
 
     });
 
@@ -446,8 +450,8 @@ function dragndrop(d) {
     .attr("x", function(){return (d3.event.dx + parseInt(dragTarget.attr("x")))})
     .attr("y", function(){return (d3.event.dy + parseInt(dragTarget.attr("y")))})
     .style("left", dragTarget.attr("x")+"px")
-    // .style("top", dragTarget.attr("y") +"px");
-    .style("bottom", (dragTarget.attr("y") * -1) +"px");
+    .style("top", dragTarget.attr("y") +"px");
+    // .style("bottom", (dragTarget.attr("y") * -1) +"px");
     
     
     

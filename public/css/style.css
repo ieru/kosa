@@ -102,8 +102,8 @@ svg.svg_container.draggable {
   cursor: move;
   position: absolute;
   display: inline-block;
-  bottom: 0;
-  /*top:0;*/
+  /*bottom: 0;*/
+  top:0;
   left: 0;
 }
 .draggable-parent {
@@ -111,7 +111,7 @@ svg.svg_container.draggable {
 }
 #navigational.draggable-parent {
   height: 400px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   z-index: 999;
 
