@@ -6,8 +6,10 @@
 var realWidth = $('#navigational').innerWidth();
 var realHeight = $('#navigational').innerHeight();
 
+// CONSTANTS
+var X_INCREMENT = 200, Y_INCREMENT = 200;
 
-var m = [-650, 600, 10, 40],
+var m = [-650, 500, 10, 40],
     w = realWidth,
     h = realHeight+m[1],
     // h = 4000,
@@ -33,6 +35,7 @@ var botao = d3.select("#form #button");
 
 var vis = d3.select("#navigational")
     .append("svg:svg")
+    .attr("id", "viewbox")
     .attr("xmlns", "http://www.w3.org/2000/svg")
     .attr("version", "1.1")
     .attr("class", "svg_container draggable")
@@ -58,7 +61,8 @@ var vis = d3.select("#navigational")
     .attr("class", "transformable")
     .attr("transform", "translate(" + m[3] + "," +  m[0] + ")");
 
-var svg = document.getElementsByTagName('svg')[0];
+// var svg = document.getElementsByTagName('svg')[0];
+var svg = d3.select("svg#viewbox");
 
 hideSpinner();    
 
@@ -66,7 +70,6 @@ hideSpinner();
 function update(source) {
     
     var duration = d3.event && d3.event.altKey ? 5000 : 500;
-
     // Compute the new tree layout.
     var nodes = tree.nodes(root).reverse();
 
@@ -84,7 +87,12 @@ function update(source) {
          // console.dir(d);
          
          // d.x0 = (midWidth - d.x);
-         d.y = (h * -1) + (d.depth * 200);
+         
+         d.y = (h * -1) + (d.depth * Y_INCREMENT);
+         // vis.select("svg:svg");
+         
+         
+                                                                                                                                                     
          // console.dir(d);
 
          
@@ -97,6 +105,8 @@ function update(source) {
     **/
 
      });
+
+
 
     // Update the nodes.
     var node = vis.selectAll("g.node")
@@ -380,6 +390,28 @@ function getRoot(node, lang) {
     });
 }
 
+function resizeViewBox() {
+    console.dir(svg);
+
+    var viewW, viewH;
+    var params = svg.attr('viewBox');
+    // var viewPortW = svg.attr('width');
+    var viewPortH = svg.attr('height');
+         
+    // remove min-x
+    params = params.substring(params.indexOf(' ') + 1, params.length);
+    // remove min-y
+    params = params.substring(params.indexOf(' ') + 1, params.length);
+    // get width
+    viewW = parseInt(params.substring(0, params.indexOf(' ')));
+    viewH = parseInt(params.substring(params.indexOf(' ') + 1, params.length));                    
+         
+    svg.attr("viewBox", "0 0 "+ viewW + " " + (viewH + Y_INCREMENT / 2) );
+         
+    // svg.attr("width",  (viewPortW + X_INCREMENT) + "px" );
+    svg.attr("height", (parseInt(viewPortH) + Y_INCREMENT)+"px" );
+
+}
 function getChildren(subTree, searchText, lang) {
   showSpinner();
 
@@ -398,7 +430,7 @@ function getChildren(subTree, searchText, lang) {
       
       update(subTree);
       update(subTree.children);
-
+      resizeViewBox();
 
     },
     error: function(e) {
@@ -452,7 +484,8 @@ function rootUpdate() {
 
     });
 
-    update(root);  
+    update(root);
+    resizeViewBox();  
 }
 
 
