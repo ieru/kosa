@@ -9,7 +9,7 @@ var realHeight = $('#navigational').innerHeight();
 // CONSTANTS
 var X_INCREMENT = 200, Y_INCREMENT = 200;
 
-var m = [-650, 500, 10, 40],
+var m = [-650, 600, 10, 40],
     w = realWidth,
     h = realHeight+m[1],
     // h = 4000,
@@ -391,12 +391,13 @@ function getRoot(node, lang) {
 }
 
 function resizeViewBox() {
-    console.dir(svg);
+    // console.dir(svg);
 
     var viewW, viewH;
     var params = svg.attr('viewBox');
     // var viewPortW = svg.attr('width');
     var viewPortH = svg.attr('height');
+    var incrementedH, calculatedH;
          
     // remove min-x
     params = params.substring(params.indexOf(' ') + 1, params.length);
@@ -404,14 +405,23 @@ function resizeViewBox() {
     params = params.substring(params.indexOf(' ') + 1, params.length);
     // get width
     viewW = parseInt(params.substring(0, params.indexOf(' ')));
-    viewH = parseInt(params.substring(params.indexOf(' ') + 1, params.length));                    
+    // viewH = parseInt(params.substring(params.indexOf(' ') + 1, params.length));                    
          
-    svg.attr("viewBox", "0 0 "+ viewW + " " + (viewH + Y_INCREMENT / 2) );
          
     // svg.attr("width",  (viewPortW + X_INCREMENT) + "px" );
-    svg.attr("height", (parseInt(viewPortH) + Y_INCREMENT)+"px" );
+    incrementedH = (parseInt(viewPortH) + Y_INCREMENT);
+    // position of viewBox in relatio of preseveAspectRatio_YMax
+    calculatedH = incrementedH / 2 + Y_INCREMENT + (Y_INCREMENT / 2);
+    
+    // preserveAspectRatio_YMid
+    // calculatedH = 50;
+    
+
+    svg.attr("viewBox", "0 0 "+ viewW + " " + calculatedH);
+    svg.attr("height", incrementedH +"px" );
 
 }
+
 function getChildren(subTree, searchText, lang) {
   showSpinner();
 
@@ -431,6 +441,8 @@ function getChildren(subTree, searchText, lang) {
       update(subTree);
       update(subTree.children);
       resizeViewBox();
+      resizeViewBox();
+      
 
     },
     error: function(e) {
