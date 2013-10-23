@@ -127,10 +127,21 @@ function update(source) {
     })
         .on("click", function (d) {
           
-          getChildren(d, d.id, 'en');
+          
+
+          if (d.has_children === 1) {
+          
+            getChildren(d, d.id, 'en');
+            // toggle(d);
+            // update(d);
+            //resizeViewBox();
+          }
+
                       
           // toggle(d);
           // update(d);
+          // resizeViewBox();
+          
         });
 
     nodeEnter.append("svg:circle")
@@ -322,15 +333,15 @@ function update(source) {
 
 // Toggle children.
 function toggle(d) {
-  if (d.has_children === 1) {     
-    if (d.children) {
+  //if (d.has_children === 1) {     
+    if (d.children && d.has_children === 1) {
         d._children = d.children;
         d.children = null;
     } else {
         d.children = d._children;
         d._children = null;
     }
-  }
+  //}
 };
 
 /**
@@ -438,8 +449,13 @@ function getChildren(subTree, searchText, lang) {
       
       subTree.children = childs;
       
+      // toggle(subTree);
       update(subTree);
+      
+      // toggle(subTree.children);
       update(subTree.children);
+      
+      // 2x
       resizeViewBox();
       resizeViewBox();
       
