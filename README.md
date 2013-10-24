@@ -96,16 +96,16 @@ $ cd kosa
 ( Download and install your OS version. More info at vendor's link:
 http://www.imagemagick.org/script/binary-releases.php
 
-- For MacOs the easiest way is: 
+( For MacOs the easiest way is 
 1. go http://www.macports.org/install.php and download the .dmg file
-2. Double click it
+2. Double-click it
 3. $ sudo port -v selfupdate
-4. $ sudo port install ImageMagick
+4. $ sudo port install ImageMagick )
 
-- Install required gems with the command (you may need more Gems):
+- Install required gems with the command:
 
 ```
-# (use 'rvm all do gem install sinatra ...' , instead, if you have rvm installed)  
+# (use 'rvm all do gem install sinatra .....' , instead, if you have rvm installed)  
 
 $ sudo gem install sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
 $ sudo gem install rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa
