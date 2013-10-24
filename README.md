@@ -96,11 +96,12 @@ $ cd kosa
 ( Download and install your OS version. More info at vendor's link:
 http://www.imagemagick.org/script/binary-releases.php
 
-( For MacOs the easiest way is 
+If you are using MacOs, the easiest way is:  
+
 1. go http://www.macports.org/install.php and download the .dmg file
 2. Double-click it
 3. $ sudo port -v selfupdate
-4. $ sudo port install ImageMagick )
+4. $ sudo port install ImageMagick
 
 - Install required gems with the command:
 
