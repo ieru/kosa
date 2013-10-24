@@ -344,6 +344,7 @@ function toggle(d) {
   //}
 };
 
+
 /**
  *
  * Zoom feature. not responsive, removed
