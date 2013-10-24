@@ -15,6 +15,12 @@ A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version
 - Responsive D3.js (svg graphs)
 - Responsive Bootstrap 3 template
 
+## Requirements
+
+- Ruby 
+- ImageMagick
+- 4-store
+
 ## Installation
 
 
@@ -93,7 +99,8 @@ $ cd kosa
 
 - Before installing gems and runnig bundle install; install ImageMagick
 
-( Download and install your OS version. More info at vendor's link:
+( Download and install your OS version -- For Mac read below --. 
+Get more Info, and troubleshoouing, at vendor's link:
 http://www.imagemagick.org/script/binary-releases.php
 
 If you are using MacOs, the easiest way is:  
