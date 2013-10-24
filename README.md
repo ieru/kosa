@@ -96,18 +96,21 @@ $ cd kosa
 ( Download and install your OS version. More info at vendor's link:
 http://www.imagemagick.org/script/binary-releases.php
 
-
+- For MacOs the easiest way is: 
+1. go http://www.macports.org/install.php and download the .dmg file
+2. Double click it
+3. $ sudo port -v selfupdate
+4. $ sudo port install ImageMagick
 
 - Install required gems with the command (you may need more Gems):
 
 ```
 # (use 'rvm all do gem install sinatra ...' , instead, if you have rvm installed)  
 
-$ sudo gem install sinatra rubygems nokogiri rest_client json dm-core dm-sqlite-adapter, rdf
-$ sudo gem install rdf-aggregate-repo, rdf-isomorphic, rdf-json, rdf-microdata, rdf-n3, rdf-rdfa
-$ sudo gem install rdf-rdfxml, rdf-turtle, rdf-trig, rdf-xsd, rdf-4store, json-ld, linkeddata
-$ sudo gem install sparql, sinatra-respond_to, sinatra-flash, rmagick, sparql-client
-$ sudo gem install rmagick
+$ sudo gem install sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
+$ sudo gem install rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa
+$ sudo gem install rdf-rdfxml rdf-turtle rdf-trig rdf-xsd rdf-4store json-ld linkeddata
+$ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
 ```
 
 - Install bundle using: (it may be necessary to remove the Gemfile.lock file to rebuild the previous build)
