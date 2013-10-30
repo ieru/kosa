@@ -4,16 +4,9 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 ## Demo
 
-A current live snapshot can be seen on http://kos.appgee.net (Open-Alpha version)
+A current live demo may be seen on [demo](http://kos.appgee.net) (Open-Alpha version)
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa)
-
-## Technologies
-
-- Ruby Sinatra
-- 4-store Database
-- Responsive D3.js (svg graphs)
-- Responsive Bootstrap 3 template
 
 ## Requirements
 
@@ -79,13 +72,12 @@ $ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontolo
 $ ruby _loader.rb co_010 co_010_ontology.rdf
 ...
 ...
-<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/...
 <http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label> "GCP germplasm ontology"@en .
 
 Loading ./co_010_ontology.rdf into co_010 in 4store
 
 ...
-(you may see a 400 Error here. Its not important)
 ...
 
 ```
@@ -148,8 +140,15 @@ https://github.com/ieru/kosa/wiki/TODO-LIST
 
 https://github.com/ieru/kosa/wiki/RESTful-API-documentation
 
+## Links
+
+- [Ruby-Sinatra](http://www.sinatrarb.com/)
+- [4-store Database](http://4store.org/)
+- [Responsive D3.js (svg graphs)](http://d3js.org/)
+- [Responsive Bootstrap 3](http://getbootstrap.com/)
+
 ## Licence
 
 Copyright University of Alcala. Licenced under GPL/GNU version 2 Licence.  
-RDF importer on this application is based on RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
+RDF Tool on this application is based on RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
 
