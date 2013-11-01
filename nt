@@ -1,0 +1,1233 @@
+<http://www.cropontology.org/rdf/CO_010%3A0000387> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000387> <http://www.w3.org/2000/01/rdf-schema#label> "naming location"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000387> <http://www.w3.org/2000/01/rdf-schema#comment> "\"The location where the germplasm was given a name.\" [IRRI:km]"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000387> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000386> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000386> <http://www.w3.org/2000/01/rdf-schema#label> "naming date"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000386> <http://www.w3.org/2000/01/rdf-schema#comment> "\"The date when the germplasm was given a name.\" [IRRI:km]"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000386> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000385> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000385> <http://www.w3.org/2000/01/rdf-schema#label> "preferred id"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000385> <http://www.w3.org/2000/01/rdf-schema#comment> "\"The preferred id for a germplasm.\" [IRRI:km]"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000385> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000384> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000384> <http://www.w3.org/2000/01/rdf-schema#label> "preferred name"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000384> <http://www.w3.org/2000/01/rdf-schema#comment> "\"The preferred name for a germplasm.\" [IRRI:km]"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000384> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000383> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000383> <http://www.w3.org/2000/01/rdf-schema#label> "maintenance children"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000383> <http://www.w3.org/2000/01/rdf-schema#comment> "\"Children of a germplasm created by a maintenance method.\" [IRRI:km]"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000383> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000382> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000382> <http://www.w3.org/2000/01/rdf-schema#label> "derivative children"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000382> <http://www.w3.org/2000/01/rdf-schema#comment> "\"Children of a germplasm created by a derivative method.\" [GCP:km]"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000382> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000381> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000381> <http://www.w3.org/2000/01/rdf-schema#label> "pedigree group"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000381> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000052> .
+<http://www.cropontology.org/rdf/CO_010%3A0000380> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000380> <http://www.w3.org/2000/01/rdf-schema#label> "pedigree source"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000380> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000052> .
+<http://www.cropontology.org/rdf/CO_010%3A0000379> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000379> <http://www.w3.org/2000/01/rdf-schema#label> "location of regeneration"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000379> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000378> .
+<http://www.cropontology.org/rdf/CO_010%3A0000378> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000378> <http://www.w3.org/2000/01/rdf-schema#label> "previous regeneration descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000378> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000377> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000377> <http://www.w3.org/2000/01/rdf-schema#label> "number of time accession regenerated"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000377> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000376> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000376> <http://www.w3.org/2000/01/rdf-schema#label> "regeneration site location"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000376> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000375> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000375> <http://www.w3.org/2000/01/rdf-schema#label> "regeneration descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000375> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000232> .
+<http://www.cropontology.org/rdf/CO_010%3A0000374> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000374> <http://www.w3.org/2000/01/rdf-schema#label> "passport descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000374> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000232> .
+<http://www.cropontology.org/rdf/CO_010%3A0000374> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000252> .
+<http://www.cropontology.org/rdf/CO_010%3A0000373> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000373> <http://www.w3.org/2000/01/rdf-schema#label> "classification descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000373> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000372> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000372> <http://www.w3.org/2000/01/rdf-schema#label> "MultiplicationOrRegenerationDescriptorCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000372> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000234> .
+<http://www.cropontology.org/rdf/CO_010%3A0000371> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000371> <http://www.w3.org/2000/01/rdf-schema#label> "FertilizerApplicationCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000371> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000142> .
+<http://www.cropontology.org/rdf/CO_010%3A0000371> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000372> .
+<http://www.cropontology.org/rdf/CO_010%3A0000371> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000230> .
+<http://www.cropontology.org/rdf/CO_010%3A0000370> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000370> <http://www.w3.org/2000/01/rdf-schema#label> "EvaluationDescriptorCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000370> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000234> .
+<http://www.cropontology.org/rdf/CO_010%3A0000369> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000369> <http://www.w3.org/2000/01/rdf-schema#label> "preferred growing condition"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000369> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000368> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000368> <http://www.w3.org/2000/01/rdf-schema#label> "3 processed product"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000368> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000365> .
+<http://www.cropontology.org/rdf/CO_010%3A0000367> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000367> <http://www.w3.org/2000/01/rdf-schema#label> "2 preserved"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000367> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000365> .
+<http://www.cropontology.org/rdf/CO_010%3A0000366> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000366> <http://www.w3.org/2000/01/rdf-schema#label> "1 table fruit"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000366> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000365> .
+<http://www.cropontology.org/rdf/CO_010%3A0000365> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000365> <http://www.w3.org/2000/01/rdf-schema#label> "MethodOfUseCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000365> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000365> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000364> .
+<http://www.cropontology.org/rdf/CO_010%3A0000364> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000364> <http://www.w3.org/2000/01/rdf-schema#label> "method of use"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000364> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000363> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000363> <http://www.w3.org/2000/01/rdf-schema#label> "3 occasional"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000363> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000360> .
+<http://www.cropontology.org/rdf/CO_010%3A0000362> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000362> <http://www.w3.org/2000/01/rdf-schema#label> "2 weekly"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000362> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000360> .
+<http://www.cropontology.org/rdf/CO_010%3A0000361> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000361> <http://www.w3.org/2000/01/rdf-schema#label> "1 daily"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000361> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000360> .
+<http://www.cropontology.org/rdf/CO_010%3A0000360> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000360> <http://www.w3.org/2000/01/rdf-schema#label> "FrequencyOfUseOfThePlantCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000360> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000360> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000359> .
+<http://www.cropontology.org/rdf/CO_010%3A0000359> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000359> <http://www.w3.org/2000/01/rdf-schema#label> "frequency of use of the plant"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000359> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000358> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000358> <http://www.w3.org/2000/01/rdf-schema#label> "4 aesthetic"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000358> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000354> .
+<http://www.cropontology.org/rdf/CO_010%3A0000357> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000357> <http://www.w3.org/2000/01/rdf-schema#label> "3 chiefs"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000357> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000354> .
+<http://www.cropontology.org/rdf/CO_010%3A0000356> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000356> <http://www.w3.org/2000/01/rdf-schema#label> "2 religious purpose"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000356> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000354> .
+<http://www.cropontology.org/rdf/CO_010%3A0000355> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000355> <http://www.w3.org/2000/01/rdf-schema#label> "1 feast"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000355> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000354> .
+<http://www.cropontology.org/rdf/CO_010%3A0000354> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000354> <http://www.w3.org/2000/01/rdf-schema#label> "SpecialUseCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000354> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000354> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000353> .
+<http://www.cropontology.org/rdf/CO_010%3A0000353> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000353> <http://www.w3.org/2000/01/rdf-schema#label> "special use"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000353> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000016> .
+<http://www.cropontology.org/rdf/CO_010%3A0000352> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000352> <http://www.w3.org/2000/01/rdf-schema#label> "number of times accession multiplied"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000352> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000351> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000351> <http://www.w3.org/2000/01/rdf-schema#label> "plot number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000351> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000349> .
+<http://www.cropontology.org/rdf/CO_010%3A0000351> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000378> .
+<http://www.cropontology.org/rdf/CO_010%3A0000350> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000350> <http://www.w3.org/2000/01/rdf-schema#label> "location of multiplication"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000350> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000349> .
+<http://www.cropontology.org/rdf/CO_010%3A0000349> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000349> <http://www.w3.org/2000/01/rdf-schema#label> "previous multiplication descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000349> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000348> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000348> <http://www.w3.org/2000/01/rdf-schema#label> "collaborator"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000348> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000348> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000347> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000347> <http://www.w3.org/2000/01/rdf-schema#label> "multiplication site location"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000347> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000346> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000346> <http://www.w3.org/2000/01/rdf-schema#label> "field plot number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000346> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000346> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000345> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000345> <http://www.w3.org/2000/01/rdf-schema#label> "multiplication descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000345> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000232> .
+<http://www.cropontology.org/rdf/CO_010%3A0000345> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000044> .
+<http://www.cropontology.org/rdf/CO_010%3A0000344> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000344> <http://www.w3.org/2000/01/rdf-schema#label> "2 percent recovery"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000344> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000342> .
+<http://www.cropontology.org/rdf/CO_010%3A0000343> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000343> <http://www.w3.org/2000/01/rdf-schema#label> "1 number of samples recovered"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000343> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000342> .
+<http://www.cropontology.org/rdf/CO_010%3A0000342> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000342> <http://www.w3.org/2000/01/rdf-schema#label> "RecoveryOfSamplesCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000342> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000142> .
+<http://www.cropontology.org/rdf/CO_010%3A0000342> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000341> .
+<http://www.cropontology.org/rdf/CO_010%3A0000341> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000341> <http://www.w3.org/2000/01/rdf-schema#label> "recovery of sample"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000341> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000340> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000340> <http://www.w3.org/2000/01/rdf-schema#label> "medium used for regeneration or recovery"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000340> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000339> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000339> <http://www.w3.org/2000/01/rdf-schema#label> "3 encapsulation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000339> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000336> .
+<http://www.cropontology.org/rdf/CO_010%3A0000338> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000338> <http://www.w3.org/2000/01/rdf-schema#label> "2 rapid freezing cryopreservation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000338> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000336> .
+<http://www.cropontology.org/rdf/CO_010%3A0000337> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000337> <http://www.w3.org/2000/01/rdf-schema#label> "1 slow freezing cryopreservation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000337> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000336> .
+<http://www.cropontology.org/rdf/CO_010%3A0000336> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000336> <http://www.w3.org/2000/01/rdf-schema#label> "MethodOfCryopreservationCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000336> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000142> .
+<http://www.cropontology.org/rdf/CO_010%3A0000336> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000335> .
+<http://www.cropontology.org/rdf/CO_010%3A0000335> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000335> <http://www.w3.org/2000/01/rdf-schema#label> "method of cryopreservation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000335> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000334> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000334> <http://www.w3.org/2000/01/rdf-schema#label> "number of samples taken from liquid nitrogen"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000334> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000333> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000333> <http://www.w3.org/2000/01/rdf-schema#label> "end of cryopreservation storage period"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000333> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000332> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000332> <http://www.w3.org/2000/01/rdf-schema#label> "number of samples introduced in liquid nitrogen"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000332> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000331> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000331> <http://www.w3.org/2000/01/rdf-schema#label> "introduction date in liquid nitrogen"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000331> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000330> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000330> <http://www.w3.org/2000/01/rdf-schema#label> "type of material for cryopreservation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000330> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000329> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000329> <http://www.w3.org/2000/01/rdf-schema#label> "cryopreservation descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000329> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000328> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000328> <http://www.w3.org/2000/01/rdf-schema#label> "2 somatic embryogenesis"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000328> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000326> .
+<http://www.cropontology.org/rdf/CO_010%3A0000327> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000327> <http://www.w3.org/2000/01/rdf-schema#label> "1 organogenesis"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000327> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000326> .
+<http://www.cropontology.org/rdf/CO_010%3A0000326> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000326> <http://www.w3.org/2000/01/rdf-schema#label> "RegenerationProcessCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000326> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000142> .
+<http://www.cropontology.org/rdf/CO_010%3A0000326> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000311> .
+<http://www.cropontology.org/rdf/CO_010%3A0000325> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000325> <http://www.w3.org/2000/01/rdf-schema#label> "7 cell suspension"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000325> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000324> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000324> <http://www.w3.org/2000/01/rdf-schema#label> "6 callus"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000324> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000323> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000323> <http://www.w3.org/2000/01/rdf-schema#label> "5 somatic embryo"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000323> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000322> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000322> <http://www.w3.org/2000/01/rdf-schema#label> "4 apical or axillary shoot tip"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000322> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000321> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000321> <http://www.w3.org/2000/01/rdf-schema#label> "3 apical or axillary meristem"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000321> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000320> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000320> <http://www.w3.org/2000/01/rdf-schema#label> "2 zygotic embryo"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000320> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000319> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000319> <http://www.w3.org/2000/01/rdf-schema#label> "TypeOfPlantMaterialCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000319> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000142> .
+<http://www.cropontology.org/rdf/CO_010%3A0000319> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000308> .
+<http://www.cropontology.org/rdf/CO_010%3A0000319> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000310> .
+<http://www.cropontology.org/rdf/CO_010%3A0000319> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000330> .
+<http://www.cropontology.org/rdf/CO_010%3A0000318> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000318> <http://www.w3.org/2000/01/rdf-schema#label> "next subculture date"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000318> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000317> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000317> <http://www.w3.org/2000/01/rdf-schema#label> "location after the last cryopreservation subculture"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000317> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000316> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000316> <http://www.w3.org/2000/01/rdf-schema#label> "number of plants at the last subculture"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000316> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000315> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000315> <http://www.w3.org/2000/01/rdf-schema#label> "medium used at the last subculture"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000315> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000314> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000314> <http://www.w3.org/2000/01/rdf-schema#label> "last subculture date"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000314> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000313> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000313> <http://www.w3.org/2000/01/rdf-schema#label> "number of replicates per genotype"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000313> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000312> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000312> <http://www.w3.org/2000/01/rdf-schema#label> "number of genotypes introduced in vitro"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000312> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000311> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000311> <http://www.w3.org/2000/01/rdf-schema#label> "cryopreservation regeneration process"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000311> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000329> .
+<http://www.cropontology.org/rdf/CO_010%3A0000310> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000310> <http://www.w3.org/2000/01/rdf-schema#label> "type of subculture material"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000310> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000309> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000309> <http://www.w3.org/2000/01/rdf-schema#label> "date of introduction in vitro"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000309> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000308> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000308> <http://www.w3.org/2000/01/rdf-schema#label> "type of explant"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000308> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000307> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000307> <http://www.w3.org/2000/01/rdf-schema#label> "in vitro conservation descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000307> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000306> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000306> <http://www.w3.org/2000/01/rdf-schema#label> "6 polyembryonic seed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000306> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000278> .
+<http://www.cropontology.org/rdf/CO_010%3A0000305> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000305> <http://www.w3.org/2000/01/rdf-schema#label> "plant or propagule establishment"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000305> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000304> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000304> <http://www.w3.org/2000/01/rdf-schema#label> "planting date"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000304> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000304> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000304> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000303> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000303> <http://www.w3.org/2000/01/rdf-schema#label> "row number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000303> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000301> .
+<http://www.cropontology.org/rdf/CO_010%3A0000302> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000302> <http://www.w3.org/2000/01/rdf-schema#label> "block designation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000302> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000301> .
+<http://www.cropontology.org/rdf/CO_010%3A0000301> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000301> <http://www.w3.org/2000/01/rdf-schema#label> "storage address descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000301> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000300> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000300> <http://www.w3.org/2000/01/rdf-schema#label> "9 high genetic erosion"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000300> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000296> .
+<http://www.cropontology.org/rdf/CO_010%3A0000299> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000299> <http://www.w3.org/2000/01/rdf-schema#label> "2 seed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000299> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000112> .
+<http://www.cropontology.org/rdf/CO_010%3A0000299> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000117> .
+<http://www.cropontology.org/rdf/CO_010%3A0000298> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000298> <http://www.w3.org/2000/01/rdf-schema#label> "5 moderate genetic erosion"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000298> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000296> .
+<http://www.cropontology.org/rdf/CO_010%3A0000297> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000297> <http://www.w3.org/2000/01/rdf-schema#label> "3 slow genetic erosion"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000297> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000296> .
+<http://www.cropontology.org/rdf/CO_010%3A0000296> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000296> <http://www.w3.org/2000/01/rdf-schema#label> "GeneticErosionCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000296> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000296> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000295> .
+<http://www.cropontology.org/rdf/CO_010%3A0000295> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000295> <http://www.w3.org/2000/01/rdf-schema#label> "genetic erosion"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000295> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000294> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000294> <http://www.w3.org/2000/01/rdf-schema#label> "4 available in alternate years"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000294> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000290> .
+<http://www.cropontology.org/rdf/CO_010%3A0000293> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000293> <http://www.w3.org/2000/01/rdf-schema#label> "3 available throughout the year"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000293> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000290> .
+<http://www.cropontology.org/rdf/CO_010%3A0000292> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000292> <http://www.w3.org/2000/01/rdf-schema#label> "2 available in off-season"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000292> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000290> .
+<http://www.cropontology.org/rdf/CO_010%3A0000291> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000291> <http://www.w3.org/2000/01/rdf-schema#label> "1 available only in main season"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000291> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000290> .
+<http://www.cropontology.org/rdf/CO_010%3A0000290> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000290> <http://www.w3.org/2000/01/rdf-schema#label> "SeasonalityCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000290> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000290> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000289> .
+<http://www.cropontology.org/rdf/CO_010%3A0000289> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000289> <http://www.w3.org/2000/01/rdf-schema#label> "seasonality"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000289> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000288> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000288> <http://www.w3.org/2000/01/rdf-schema#label> "2 inorganic fertilizer"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000288> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000371> .
+<http://www.cropontology.org/rdf/CO_010%3A0000287> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000287> <http://www.w3.org/2000/01/rdf-schema#label> "1 organic fertilizer"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000287> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000371> .
+<http://www.cropontology.org/rdf/CO_010%3A0000286> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000286> <http://www.w3.org/2000/01/rdf-schema#label> "2 irrigated"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000286> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000284> .
+<http://www.cropontology.org/rdf/CO_010%3A0000285> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000285> <http://www.w3.org/2000/01/rdf-schema#label> "1 rainfed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000285> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000284> .
+<http://www.cropontology.org/rdf/CO_010%3A0000284> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000284> <http://www.w3.org/2000/01/rdf-schema#label> "WaterRequirementCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000284> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000284> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000229> .
+<http://www.cropontology.org/rdf/CO_010%3A0000283> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000283> <http://www.w3.org/2000/01/rdf-schema#label> "5 in vitro"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000283> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000278> .
+<http://www.cropontology.org/rdf/CO_010%3A0000282> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000282> <http://www.w3.org/2000/01/rdf-schema#label> "4 layering"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000282> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000278> .
+<http://www.cropontology.org/rdf/CO_010%3A0000281> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000281> <http://www.w3.org/2000/01/rdf-schema#label> "3 cutting"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000281> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000278> .
+<http://www.cropontology.org/rdf/CO_010%3A0000280> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000280> <http://www.w3.org/2000/01/rdf-schema#label> "2 grafting"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000280> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000278> .
+<http://www.cropontology.org/rdf/CO_010%3A0000279> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000279> <http://www.w3.org/2000/01/rdf-schema#label> "1 monoembryonic seed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000279> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000278> .
+<http://www.cropontology.org/rdf/CO_010%3A0000278> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000278> <http://www.w3.org/2000/01/rdf-schema#label> "PropagationMethodCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000278> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000278> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000228> .
+<http://www.cropontology.org/rdf/CO_010%3A0000277> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000277> <http://www.w3.org/2000/01/rdf-schema#label> "CroppingSystemCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000277> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000372> .
+<http://www.cropontology.org/rdf/CO_010%3A0000277> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000019> .
+<http://www.cropontology.org/rdf/CO_010%3A0000276> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000276> <http://www.w3.org/2000/01/rdf-schema#label> "3 natural cropping"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000276> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000277> .
+<http://www.cropontology.org/rdf/CO_010%3A0000275> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000275> <http://www.w3.org/2000/01/rdf-schema#label> "2 intercropping"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000275> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000277> .
+<http://www.cropontology.org/rdf/CO_010%3A0000274> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000274> <http://www.w3.org/2000/01/rdf-schema#label> "1 monoculture"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000274> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000277> .
+<http://www.cropontology.org/rdf/CO_010%3A0000273> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000273> <http://www.w3.org/2000/01/rdf-schema#label> "cultural characteristic"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000273> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000272> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000272> <http://www.w3.org/2000/01/rdf-schema#label> "3 known plant use introduction"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000272> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000269> .
+<http://www.cropontology.org/rdf/CO_010%3A0000271> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000271> <http://www.w3.org/2000/01/rdf-schema#label> "2 unknown plant use introduction"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000271> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000269> .
+<http://www.cropontology.org/rdf/CO_010%3A0000270> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000270> <http://www.w3.org/2000/01/rdf-schema#label> "1 indigenous plant use"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000270> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000269> .
+<http://www.cropontology.org/rdf/CO_010%3A0000269> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000269> <http://www.w3.org/2000/01/rdf-schema#label> "HistoryOfPlantUseCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000269> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000269> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000268> .
+<http://www.cropontology.org/rdf/CO_010%3A0000268> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000268> <http://www.w3.org/2000/01/rdf-schema#label> "history of plant use"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000268> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000267> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000267> <http://www.w3.org/2000/01/rdf-schema#label> "5 in vitro plantlet"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000267> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000112> .
+<http://www.cropontology.org/rdf/CO_010%3A0000266> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000266> <http://www.w3.org/2000/01/rdf-schema#label> "3 seedling or sapling"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000266> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000112> .
+<http://www.cropontology.org/rdf/CO_010%3A0000265> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000265> <http://www.w3.org/2000/01/rdf-schema#label> "1 fruit"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000265> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000112> .
+<http://www.cropontology.org/rdf/CO_010%3A0000264> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000264> <http://www.w3.org/2000/01/rdf-schema#label> "6 bud sport"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000264> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000258> .
+<http://www.cropontology.org/rdf/CO_010%3A0000263> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000263> <http://www.w3.org/2000/01/rdf-schema#label> "5 induced mutation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000263> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000258> .
+<http://www.cropontology.org/rdf/CO_010%3A0000262> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000262> <http://www.w3.org/2000/01/rdf-schema#label> "4 seedling selection"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000262> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000258> .
+<http://www.cropontology.org/rdf/CO_010%3A0000261> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000261> <http://www.w3.org/2000/01/rdf-schema#label> "3 clonal selection"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000261> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000258> .
+<http://www.cropontology.org/rdf/CO_010%3A0000260> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000260> <http://www.w3.org/2000/01/rdf-schema#label> "2 artificial pollination"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000260> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000258> .
+<http://www.cropontology.org/rdf/CO_010%3A0000259> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000259> <http://www.w3.org/2000/01/rdf-schema#label> "1 open pollination"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000259> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000258> .
+<http://www.cropontology.org/rdf/CO_010%3A0000258> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000258> <http://www.w3.org/2000/01/rdf-schema#label> "CultivarOriginCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000258> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000258> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000257> .
+<http://www.cropontology.org/rdf/CO_010%3A0000257> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000257> <http://www.w3.org/2000/01/rdf-schema#label> "cultivar origin"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000257> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000250> .
+<http://www.cropontology.org/rdf/CO_010%3A0000256> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000256> <http://www.w3.org/2000/01/rdf-schema#label> "collecting event descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000256> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000003> .
+<http://www.cropontology.org/rdf/CO_010%3A0000255> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000255> <http://www.w3.org/2000/01/rdf-schema#label> "generated germplasm"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000255> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000251> .
+<http://www.cropontology.org/rdf/CO_010%3A0000254> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000254> <http://www.w3.org/2000/01/rdf-schema#label> "collected germplasm"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000254> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000251> .
+<http://www.cropontology.org/rdf/CO_010%3A0000253> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000253> <http://www.w3.org/2000/01/rdf-schema#label> "donated germplasm"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000253> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000251> .
+<http://www.cropontology.org/rdf/CO_010%3A0000252> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000252> <http://www.w3.org/2000/01/rdf-schema#label> "passport"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000252> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000151> .
+<http://www.cropontology.org/rdf/CO_010%3A0000251> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000251> <http://www.w3.org/2000/01/rdf-schema#label> "germplasm"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000251> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000151> .
+<http://www.cropontology.org/rdf/CO_010%3A0000250> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000250> <http://www.w3.org/2000/01/rdf-schema#label> "generated germplasmd descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000250> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000020> .
+<http://www.cropontology.org/rdf/CO_010%3A0000250> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000255> .
+<http://www.cropontology.org/rdf/CO_010%3A0000249> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000249> <http://www.w3.org/2000/01/rdf-schema#label> "crop name descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000249> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000373> .
+<http://www.cropontology.org/rdf/CO_010%3A0000248> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000248> <http://www.w3.org/2000/01/rdf-schema#label> "stress susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000248> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000233> .
+<http://www.cropontology.org/rdf/CO_010%3A0000247> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000247> <http://www.w3.org/2000/01/rdf-schema#label> "susceptibility to salinity"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000247> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000246> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000246> <http://www.w3.org/2000/01/rdf-schema#label> "susceptibility to mineral toxicity"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000246> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000245> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000245> <http://www.w3.org/2000/01/rdf-schema#label> "biotic stress"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000245> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000009> .
+<http://www.cropontology.org/rdf/CO_010%3A0000244> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000244> <http://www.w3.org/2000/01/rdf-schema#label> "9 very high susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000244> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000239> .
+<http://www.cropontology.org/rdf/CO_010%3A0000243> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000243> <http://www.w3.org/2000/01/rdf-schema#label> "7 high susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000243> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000239> .
+<http://www.cropontology.org/rdf/CO_010%3A0000242> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000242> <http://www.w3.org/2000/01/rdf-schema#label> "5 intermediate susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000242> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000239> .
+<http://www.cropontology.org/rdf/CO_010%3A0000241> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000241> <http://www.w3.org/2000/01/rdf-schema#label> "3 low susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000241> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000239> .
+<http://www.cropontology.org/rdf/CO_010%3A0000240> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000240> <http://www.w3.org/2000/01/rdf-schema#label> "1 very low or no visible sign of susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000240> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000239> .
+<http://www.cropontology.org/rdf/CO_010%3A0000239> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000239> <http://www.w3.org/2000/01/rdf-schema#label> "StressSusceptibilityDescriptorCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000239> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000370> .
+<http://www.cropontology.org/rdf/CO_010%3A0000239> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000248> .
+<http://www.cropontology.org/rdf/CO_010%3A0000238> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000238> <http://www.w3.org/2000/01/rdf-schema#label> "abiotic stress"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000238> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000009> .
+<http://www.cropontology.org/rdf/CO_010%3A0000237> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000237> <http://www.w3.org/2000/01/rdf-schema#label> "local germplasm name descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000237> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000021> .
+<http://www.cropontology.org/rdf/CO_010%3A0000236> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000236> <http://www.w3.org/2000/01/rdf-schema#label> "Code"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000236> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000235> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000235> <http://www.w3.org/2000/01/rdf-schema#label> "descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000235> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000234> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000234> <http://www.w3.org/2000/01/rdf-schema#label> "GermplasmDescriptorCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000234> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000236> .
+<http://www.cropontology.org/rdf/CO_010%3A0000233> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000233> <http://www.w3.org/2000/01/rdf-schema#label> "evaluation descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000233> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000232> .
+<http://www.cropontology.org/rdf/CO_010%3A0000233> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000251> .
+<http://www.cropontology.org/rdf/CO_010%3A0000232> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000232> <http://www.w3.org/2000/01/rdf-schema#label> "germplasm descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000232> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000235> .
+<http://www.cropontology.org/rdf/CO_010%3A0000232> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000251> .
+<http://www.cropontology.org/rdf/CO_010%3A0000231> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000231> <http://www.w3.org/2000/01/rdf-schema#label> "import or export activity"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000231> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000230> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000230> <http://www.w3.org/2000/01/rdf-schema#label> "fertilizer application"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000230> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000017> .
+<http://www.cropontology.org/rdf/CO_010%3A0000229> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000229> <http://www.w3.org/2000/01/rdf-schema#label> "water requirement"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000229> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000017> .
+<http://www.cropontology.org/rdf/CO_010%3A0000228> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000228> <http://www.w3.org/2000/01/rdf-schema#label> "propagation method"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000228> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000017> .
+<http://www.cropontology.org/rdf/CO_010%3A0000227> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000227> <http://www.w3.org/2000/01/rdf-schema#label> "ethnobotany descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000227> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000003> .
+<http://www.cropontology.org/rdf/CO_010%3A0000226> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000226> <http://www.w3.org/2000/01/rdf-schema#label> "collecting site descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000226> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000003> .
+<http://www.cropontology.org/rdf/CO_010%3A0000225> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000225> <http://www.w3.org/2000/01/rdf-schema#label> "donated germplasm descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000225> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000225> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000253> .
+<http://www.cropontology.org/rdf/CO_010%3A0000224> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000224> <http://www.w3.org/2000/01/rdf-schema#label> "taxon rank"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000224> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000223> .
+<http://www.cropontology.org/rdf/CO_010%3A0000223> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000223> <http://www.w3.org/2000/01/rdf-schema#label> "taxonomy descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000223> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000373> .
+<http://www.cropontology.org/rdf/CO_010%3A0000222> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000222> <http://www.w3.org/2000/01/rdf-schema#label> "pedigree developer insitute"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000222> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000052> .
+<http://www.cropontology.org/rdf/CO_010%3A0000221> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000221> <http://www.w3.org/2000/01/rdf-schema#label> "pedigree developer"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000221> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000052> .
+<http://www.cropontology.org/rdf/CO_010%3A0000220> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000220> <http://www.w3.org/2000/01/rdf-schema#label> "parentage of pedigree"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000220> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000052> .
+<http://www.cropontology.org/rdf/CO_010%3A0000219> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000219> <http://www.w3.org/2000/01/rdf-schema#label> "11 short term"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000219> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000146> .
+<http://www.cropontology.org/rdf/CO_010%3A0000218> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000218> <http://www.w3.org/2000/01/rdf-schema#label> "12 medium term"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000218> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000146> .
+<http://www.cropontology.org/rdf/CO_010%3A0000217> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000217> <http://www.w3.org/2000/01/rdf-schema#label> "13 long term"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000217> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000146> .
+<http://www.cropontology.org/rdf/CO_010%3A0000216> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000216> <http://www.w3.org/2000/01/rdf-schema#label> "40 cryopreserved collection"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000216> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000143> .
+<http://www.cropontology.org/rdf/CO_010%3A0000215> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000215> <http://www.w3.org/2000/01/rdf-schema#label> "InstituteCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000215> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000215> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000154> .
+<http://www.cropontology.org/rdf/CO_010%3A0000214> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000214> <http://www.w3.org/2000/01/rdf-schema#label> "CountryOfOriginCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000214> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000214> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000010> .
+<http://www.cropontology.org/rdf/CO_010%3A0000213> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000213> <http://www.w3.org/2000/01/rdf-schema#label> "12 shrubland"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000213> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000066> .
+<http://www.cropontology.org/rdf/CO_010%3A0000212> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000212> <http://www.w3.org/2000/01/rdf-schema#label> "13 grassland"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000212> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000066> .
+<http://www.cropontology.org/rdf/CO_010%3A0000211> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000211> <http://www.w3.org/2000/01/rdf-schema#label> "11 forest"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000211> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000066> .
+<http://www.cropontology.org/rdf/CO_010%3A0000210> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000210> <http://www.w3.org/2000/01/rdf-schema#label> "14 desert"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000210> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000066> .
+<http://www.cropontology.org/rdf/CO_010%3A0000209> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000209> <http://www.w3.org/2000/01/rdf-schema#label> "15 aquatic habitat"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000209> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000066> .
+<http://www.cropontology.org/rdf/CO_010%3A0000208> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000208> <http://www.w3.org/2000/01/rdf-schema#label> "61 roadside"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000208> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000198> .
+<http://www.cropontology.org/rdf/CO_010%3A0000207> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000207> <http://www.w3.org/2000/01/rdf-schema#label> "62 field margin"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000207> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000198> .
+<http://www.cropontology.org/rdf/CO_010%3A0000206> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000206> <http://www.w3.org/2000/01/rdf-schema#label> "27 threshing floor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000206> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000205> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000205> <http://www.w3.org/2000/01/rdf-schema#label> "25 pasture"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000205> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000204> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000204> <http://www.w3.org/2000/01/rdf-schema#label> "28 park"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000204> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000203> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000203> <http://www.w3.org/2000/01/rdf-schema#label> "22 orchard"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000203> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000202> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000202> <http://www.w3.org/2000/01/rdf-schema#label> "21 field"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000202> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000201> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000201> <http://www.w3.org/2000/01/rdf-schema#label> "26 farm store"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000201> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000200> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000200> <http://www.w3.org/2000/01/rdf-schema#label> "24 fallow land"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000200> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000199> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000199> <http://www.w3.org/2000/01/rdf-schema#label> "23 home garden"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000199> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000067> .
+<http://www.cropontology.org/rdf/CO_010%3A0000198> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000198> <http://www.w3.org/2000/01/rdf-schema#label> "60 weedy habitat"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000198> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000065> .
+<http://www.cropontology.org/rdf/CO_010%3A0000197> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000197> <http://www.w3.org/2000/01/rdf-schema#label> "50 seed company"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000197> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000065> .
+<http://www.cropontology.org/rdf/CO_010%3A0000196> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000196> <http://www.w3.org/2000/01/rdf-schema#label> "120 semi-natural or wild"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000196> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000090> .
+<http://www.cropontology.org/rdf/CO_010%3A0000195> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000195> <http://www.w3.org/2000/01/rdf-schema#label> "110 natural"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000195> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000090> .
+<http://www.cropontology.org/rdf/CO_010%3A0000194> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000194> <http://www.w3.org/2000/01/rdf-schema#label> "420 genetic stock"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000194> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000159> .
+<http://www.cropontology.org/rdf/CO_010%3A0000193> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000193> <http://www.w3.org/2000/01/rdf-schema#label> "0 no"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000193> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000191> .
+<http://www.cropontology.org/rdf/CO_010%3A0000192> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000192> <http://www.w3.org/2000/01/rdf-schema#label> "1 yes"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000192> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000191> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2000/01/rdf-schema#label> "BooleanCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000234> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000006> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000027> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000132> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000133> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000139> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000140> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000141> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000273> .
+<http://www.cropontology.org/rdf/CO_010%3A0000191> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000369> .
+<http://www.cropontology.org/rdf/CO_010%3A0000190> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000190> <http://www.w3.org/2000/01/rdf-schema#label> "cytological character"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000190> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000233> .
+<http://www.cropontology.org/rdf/CO_010%3A0000189> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000189> <http://www.w3.org/2000/01/rdf-schema#label> "fungal susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000189> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000180> .
+<http://www.cropontology.org/rdf/CO_010%3A0000188> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000188> <http://www.w3.org/2000/01/rdf-schema#label> "bacterial susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000188> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000180> .
+<http://www.cropontology.org/rdf/CO_010%3A0000187> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000187> <http://www.w3.org/2000/01/rdf-schema#label> "99 other special uses"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000187> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000354> .
+<http://www.cropontology.org/rdf/CO_010%3A0000186> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000186> <http://www.w3.org/2000/01/rdf-schema#label> "99 other parts of the plant used"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000186> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000185> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000185> <http://www.w3.org/2000/01/rdf-schema#label> "9 seed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000185> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000184> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000184> <http://www.w3.org/2000/01/rdf-schema#label> "molecular marker"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000184> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000233> .
+<http://www.cropontology.org/rdf/CO_010%3A0000183> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000183> <http://www.w3.org/2000/01/rdf-schema#label> "disease susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000183> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000180> .
+<http://www.cropontology.org/rdf/CO_010%3A0000182> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000182> <http://www.w3.org/2000/01/rdf-schema#label> "8 pericarp"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000182> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000181> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000181> <http://www.w3.org/2000/01/rdf-schema#label> "pest susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000181> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000180> .
+<http://www.cropontology.org/rdf/CO_010%3A0000180> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000180> <http://www.w3.org/2000/01/rdf-schema#label> "biotic stress susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000180> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000248> .
+<http://www.cropontology.org/rdf/CO_010%3A0000179> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000179> <http://www.w3.org/2000/01/rdf-schema#label> "susceptibility to soil acidity"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000179> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000178> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000178> <http://www.w3.org/2000/01/rdf-schema#label> "drought susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000178> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000177> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000177> <http://www.w3.org/2000/01/rdf-schema#label> "susceptibility to manganese toxicity"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000177> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000176> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000176> <http://www.w3.org/2000/01/rdf-schema#label> "99 other water requirement"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000176> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000284> .
+<http://www.cropontology.org/rdf/CO_010%3A0000175> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000175> <http://www.w3.org/2000/01/rdf-schema#label> "high temperature susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000175> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000174> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000174> <http://www.w3.org/2000/01/rdf-schema#label> "low temperature susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000174> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000173> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000173> <http://www.w3.org/2000/01/rdf-schema#label> "susceptibility to mineral deficiency"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000173> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000172> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000172> <http://www.w3.org/2000/01/rdf-schema#label> "flooding susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000172> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000171> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000171> <http://www.w3.org/2000/01/rdf-schema#label> "wind susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000171> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000170> .
+<http://www.cropontology.org/rdf/CO_010%3A0000170> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000170> <http://www.w3.org/2000/01/rdf-schema#label> "abiotic stress susceptibility"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000170> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000248> .
+<http://www.cropontology.org/rdf/CO_010%3A0000169> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000169> <http://www.w3.org/2000/01/rdf-schema#label> "99 other type of sample collected"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000169> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000112> .
+<http://www.cropontology.org/rdf/CO_010%3A0000168> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000168> <http://www.w3.org/2000/01/rdf-schema#label> "99 other type of plant material"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000168> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000167> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000167> <http://www.w3.org/2000/01/rdf-schema#label> "biochemical marker"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000167> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000233> .
+<http://www.cropontology.org/rdf/CO_010%3A0000166> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000166> <http://www.w3.org/2000/01/rdf-schema#label> "identified gene"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000166> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000233> .
+<http://www.cropontology.org/rdf/CO_010%3A0000165> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000165> <http://www.w3.org/2000/01/rdf-schema#label> "99 other type of material received"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000165> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000117> .
+<http://www.cropontology.org/rdf/CO_010%3A0000164> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000164> <http://www.w3.org/2000/01/rdf-schema#label> "411 synthetic population"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000164> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000093> .
+<http://www.cropontology.org/rdf/CO_010%3A0000163> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000163> <http://www.w3.org/2000/01/rdf-schema#label> "415 segregating population"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000163> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000093> .
+<http://www.cropontology.org/rdf/CO_010%3A0000162> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000162> <http://www.w3.org/2000/01/rdf-schema#label> "414 inbred line"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000162> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000093> .
+<http://www.cropontology.org/rdf/CO_010%3A0000161> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000161> <http://www.w3.org/2000/01/rdf-schema#label> "412 hybrid"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000161> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000093> .
+<http://www.cropontology.org/rdf/CO_010%3A0000160> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000160> <http://www.w3.org/2000/01/rdf-schema#label> "413 founder stock"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000160> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000093> .
+<http://www.cropontology.org/rdf/CO_010%3A0000159> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000159> <http://www.w3.org/2000/01/rdf-schema#label> "400 breedingmaterial"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000159> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000089> .
+<http://www.cropontology.org/rdf/CO_010%3A0000158> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000158> <http://www.w3.org/2000/01/rdf-schema#label> "subtaxa authority"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000158> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000223> .
+<http://www.cropontology.org/rdf/CO_010%3A0000157> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000157> <http://www.w3.org/2000/01/rdf-schema#label> "species authority"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000157> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000223> .
+<http://www.cropontology.org/rdf/CO_010%3A0000156> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000156> <http://www.w3.org/2000/01/rdf-schema#label> "donor institute code"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000156> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000154> .
+<http://www.cropontology.org/rdf/CO_010%3A0000156> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000225> .
+<http://www.cropontology.org/rdf/CO_010%3A0000155> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000155> <http://www.w3.org/2000/01/rdf-schema#label> "breeding institute code"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000155> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000154> .
+<http://www.cropontology.org/rdf/CO_010%3A0000154> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000154> <http://www.w3.org/2000/01/rdf-schema#label> "institute code"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000154> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000153> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000153> <http://www.w3.org/2000/01/rdf-schema#label> "common crop name"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000153> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000249> .
+<http://www.cropontology.org/rdf/CO_010%3A0000152> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000152> <http://www.w3.org/2000/01/rdf-schema#label> "ancestral data"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000152> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000250> .
+<http://www.cropontology.org/rdf/CO_010%3A0000151> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000151> <http://www.w3.org/2000/01/rdf-schema#label> "entity"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000151> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000000> .
+<http://www.cropontology.org/rdf/CO_010%3A0000150> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000150> <http://www.w3.org/2000/01/rdf-schema#label> "2 intermediate holding station"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000150> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000148> .
+<http://www.cropontology.org/rdf/CO_010%3A0000149> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000149> <http://www.w3.org/2000/01/rdf-schema#label> "1 final destination of sample"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000149> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000148> .
+<http://www.cropontology.org/rdf/CO_010%3A0000148> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000148> <http://www.w3.org/2000/01/rdf-schema#label> "DestinationOfTheAccessionCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000148> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000142> .
+<http://www.cropontology.org/rdf/CO_010%3A0000148> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000136> .
+<http://www.cropontology.org/rdf/CO_010%3A0000147> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000147> <http://www.w3.org/2000/01/rdf-schema#label> "99 other type of germplasm storage"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000147> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000143> .
+<http://www.cropontology.org/rdf/CO_010%3A0000146> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000146> <http://www.w3.org/2000/01/rdf-schema#label> "10 seed collection"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000146> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000143> .
+<http://www.cropontology.org/rdf/CO_010%3A0000145> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000145> <http://www.w3.org/2000/01/rdf-schema#label> "30 in vitro collection"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000145> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000143> .
+<http://www.cropontology.org/rdf/CO_010%3A0000144> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000144> <http://www.w3.org/2000/01/rdf-schema#label> "20 field collection"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000144> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000143> .
+<http://www.cropontology.org/rdf/CO_010%3A0000143> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000143> <http://www.w3.org/2000/01/rdf-schema#label> "TypeOfGermplasmStorageCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000143> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000142> .
+<http://www.cropontology.org/rdf/CO_010%3A0000143> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000137> .
+<http://www.cropontology.org/rdf/CO_010%3A0000142> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000142> <http://www.w3.org/2000/01/rdf-schema#label> "ManagementDescriptorCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000142> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000234> .
+<http://www.cropontology.org/rdf/CO_010%3A0000141> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000141> <http://www.w3.org/2000/01/rdf-schema#label> "quarantine required"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000141> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000138> .
+<http://www.cropontology.org/rdf/CO_010%3A0000140> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000140> <http://www.w3.org/2000/01/rdf-schema#label> "import permit needed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000140> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000138> .
+<http://www.cropontology.org/rdf/CO_010%3A0000139> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000139> <http://www.w3.org/2000/01/rdf-schema#label> "phytosanitary certificate needed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000139> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000138> .
+<http://www.cropontology.org/rdf/CO_010%3A0000138> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000138> <http://www.w3.org/2000/01/rdf-schema#label> "import procedure"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000138> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000231> .
+<http://www.cropontology.org/rdf/CO_010%3A0000137> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000137> <http://www.w3.org/2000/01/rdf-schema#label> "type of germplasm storage"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000137> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000136> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000136> <http://www.w3.org/2000/01/rdf-schema#label> "destination of the accession"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000136> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000134> .
+<http://www.cropontology.org/rdf/CO_010%3A0000135> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000135> <http://www.w3.org/2000/01/rdf-schema#label> "treatment of sample during mission"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000135> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000134> .
+<http://www.cropontology.org/rdf/CO_010%3A0000134> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000134> <http://www.w3.org/2000/01/rdf-schema#label> "pre and postmovement activities data"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000134> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000133> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000133> <http://www.w3.org/2000/01/rdf-schema#label> "export permit needed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000133> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000130> .
+<http://www.cropontology.org/rdf/CO_010%3A0000132> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000132> <http://www.w3.org/2000/01/rdf-schema#label> "import permit from receiving country needed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000132> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000130> .
+<http://www.cropontology.org/rdf/CO_010%3A0000131> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000131> <http://www.w3.org/2000/01/rdf-schema#label> "5 other status of plantation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000131> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000081> .
+<http://www.cropontology.org/rdf/CO_010%3A0000130> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000130> <http://www.w3.org/2000/01/rdf-schema#label> "export procedure"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000130> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000231> .
+<http://www.cropontology.org/rdf/CO_010%3A0000129> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000129> <http://www.w3.org/2000/01/rdf-schema#label> "availability for exchange"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000129> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000128> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000128> <http://www.w3.org/2000/01/rdf-schema#label> "99 other regeneration process"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000128> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000326> .
+<http://www.cropontology.org/rdf/CO_010%3A0000127> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000127> <http://www.w3.org/2000/01/rdf-schema#label> "99 other propagation method"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000127> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000278> .
+<http://www.cropontology.org/rdf/CO_010%3A0000126> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000126> <http://www.w3.org/2000/01/rdf-schema#label> "location of safety duplicates"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000126> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000126> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000154> .
+<http://www.cropontology.org/rdf/CO_010%3A0000125> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000125> <http://www.w3.org/2000/01/rdf-schema#label> "population identification"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000125> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000125> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000125> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000124> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000124> <http://www.w3.org/2000/01/rdf-schema#label> "management descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000124> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000232> .
+<http://www.cropontology.org/rdf/CO_010%3A0000124> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000044> .
+<http://www.cropontology.org/rdf/CO_010%3A0000123> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000123> <http://www.w3.org/2000/01/rdf-schema#label> "99 other plant use"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000123> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000075> .
+<http://www.cropontology.org/rdf/CO_010%3A0000122> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000122> <http://www.w3.org/2000/01/rdf-schema#label> "7 peel"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000122> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000121> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000121> <http://www.w3.org/2000/01/rdf-schema#label> "4 bud"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000121> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000117> .
+<http://www.cropontology.org/rdf/CO_010%3A0000120> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000120> <http://www.w3.org/2000/01/rdf-schema#label> "99 other method of use"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000120> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000365> .
+<http://www.cropontology.org/rdf/CO_010%3A0000119> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000119> <http://www.w3.org/2000/01/rdf-schema#label> "3 sucker"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000119> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000117> .
+<http://www.cropontology.org/rdf/CO_010%3A0000118> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000118> <http://www.w3.org/2000/01/rdf-schema#label> "1 in vitro plant"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000118> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000117> .
+<http://www.cropontology.org/rdf/CO_010%3A0000117> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000117> <http://www.w3.org/2000/01/rdf-schema#label> "TypeOfMaterialReceivedCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000117> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000117> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000060> .
+<http://www.cropontology.org/rdf/CO_010%3A0000116> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000116> <http://www.w3.org/2000/01/rdf-schema#label> "99 other frequency of use of the plant"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000116> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000360> .
+<http://www.cropontology.org/rdf/CO_010%3A0000115> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000115> <http://www.w3.org/2000/01/rdf-schema#label> "4 shoot"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000115> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000112> .
+<http://www.cropontology.org/rdf/CO_010%3A0000114> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000114> <http://www.w3.org/2000/01/rdf-schema#label> "1 seed"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000114> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000319> .
+<http://www.cropontology.org/rdf/CO_010%3A0000113> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000113> <http://www.w3.org/2000/01/rdf-schema#label> "99 other fertilizer application"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000113> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000371> .
+<http://www.cropontology.org/rdf/CO_010%3A0000112> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000112> <http://www.w3.org/2000/01/rdf-schema#label> "TypeOfSampleCollectedCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000112> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000112> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000036> .
+<http://www.cropontology.org/rdf/CO_010%3A0000111> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000111> <http://www.w3.org/2000/01/rdf-schema#label> "99 other cultivar origin"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000111> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000258> .
+<http://www.cropontology.org/rdf/CO_010%3A0000110> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000110> <http://www.w3.org/2000/01/rdf-schema#label> "6 fruit"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000110> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000109> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000109> <http://www.w3.org/2000/01/rdf-schema#label> "5 flower"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000109> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000108> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000108> <http://www.w3.org/2000/01/rdf-schema#label> "4 leaf"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000108> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000107> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000107> <http://www.w3.org/2000/01/rdf-schema#label> "3 bark"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000107> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000106> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000106> <http://www.w3.org/2000/01/rdf-schema#label> "2 stem"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000106> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000105> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000105> <http://www.w3.org/2000/01/rdf-schema#label> "1 root"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000105> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000104> .
+<http://www.cropontology.org/rdf/CO_010%3A0000104> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000104> <http://www.w3.org/2000/01/rdf-schema#label> "PartsOfThePlantUsedCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000104> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000104> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000035> .
+<http://www.cropontology.org/rdf/CO_010%3A0000103> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000103> <http://www.w3.org/2000/01/rdf-schema#label> "99 other cropping system"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000103> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000277> .
+<http://www.cropontology.org/rdf/CO_010%3A0000102> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000102> <http://www.w3.org/2000/01/rdf-schema#label> "99 other collecting or acquisition source"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000102> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000065> .
+<http://www.cropontology.org/rdf/CO_010%3A0000101> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000101> <http://www.w3.org/2000/01/rdf-schema#label> "999 other biological status of accession"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000101> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000089> .
+<http://www.cropontology.org/rdf/CO_010%3A0000100> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000100> <http://www.w3.org/2000/01/rdf-schema#label> "location after the last in vitro subculture"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000100> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000099> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000099> <http://www.w3.org/2000/01/rdf-schema#label> "in vitro regeneration process"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000099> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000307> .
+<http://www.cropontology.org/rdf/CO_010%3A0000098> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000098> <http://www.w3.org/2000/01/rdf-schema#label> "collector institute"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000098> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000096> .
+<http://www.cropontology.org/rdf/CO_010%3A0000097> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000097> <http://www.w3.org/2000/01/rdf-schema#label> "collector name"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000097> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000096> .
+<http://www.cropontology.org/rdf/CO_010%3A0000096> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000096> <http://www.w3.org/2000/01/rdf-schema#label> "collector descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000096> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000095> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000095> <http://www.w3.org/2000/01/rdf-schema#label> "collecting mission end date"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000095> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000080> .
+<http://www.cropontology.org/rdf/CO_010%3A0000094> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000094> <http://www.w3.org/2000/01/rdf-schema#label> "500 improved cultivar"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000094> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000089> .
+<http://www.cropontology.org/rdf/CO_010%3A0000093> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000093> <http://www.w3.org/2000/01/rdf-schema#label> "410 breeder's line"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000093> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000159> .
+<http://www.cropontology.org/rdf/CO_010%3A0000092> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000092> <http://www.w3.org/2000/01/rdf-schema#label> "300 traditional cultivar"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000092> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000089> .
+<http://www.cropontology.org/rdf/CO_010%3A0000091> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000091> <http://www.w3.org/2000/01/rdf-schema#label> "200 weedy"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000091> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000089> .
+<http://www.cropontology.org/rdf/CO_010%3A0000090> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000090> <http://www.w3.org/2000/01/rdf-schema#label> "100 wild"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000090> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000089> .
+<http://www.cropontology.org/rdf/CO_010%3A0000089> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000089> <http://www.w3.org/2000/01/rdf-schema#label> "BiologicalStatusOfAccessionCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000089> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000089> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000022> .
+<http://www.cropontology.org/rdf/CO_010%3A0000088> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000088> <http://www.w3.org/2000/01/rdf-schema#label> "collecting mission start date"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000088> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000080> .
+<http://www.cropontology.org/rdf/CO_010%3A0000087> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000087> <http://www.w3.org/2000/01/rdf-schema#label> "collecting mission title"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000087> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000080> .
+<http://www.cropontology.org/rdf/CO_010%3A0000086> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000086> <http://www.w3.org/2000/01/rdf-schema#label> "collecting mission code"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000086> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000080> .
+<http://www.cropontology.org/rdf/CO_010%3A0000085> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000085> <http://www.w3.org/2000/01/rdf-schema#label> "4 plantation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000085> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000081> .
+<http://www.cropontology.org/rdf/CO_010%3A0000084> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000084> <http://www.w3.org/2000/01/rdf-schema#label> "3 midsize holding"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000084> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000081> .
+<http://www.cropontology.org/rdf/CO_010%3A0000083> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000083> <http://www.w3.org/2000/01/rdf-schema#label> "2 smallholding"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000083> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000081> .
+<http://www.cropontology.org/rdf/CO_010%3A0000082> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000082> <http://www.w3.org/2000/01/rdf-schema#label> "1 backyard"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000082> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000081> .
+<http://www.cropontology.org/rdf/CO_010%3A0000081> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000081> <http://www.w3.org/2000/01/rdf-schema#label> "StatusOfPlantationCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000081> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000081> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000018> .
+<http://www.cropontology.org/rdf/CO_010%3A0000080> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000080> <http://www.w3.org/2000/01/rdf-schema#label> "collecting mission descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000080> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000003> .
+<http://www.cropontology.org/rdf/CO_010%3A0000079> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000079> <http://www.w3.org/2000/01/rdf-schema#label> "4 ornamental"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000079> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000075> .
+<http://www.cropontology.org/rdf/CO_010%3A0000078> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000078> <http://www.w3.org/2000/01/rdf-schema#label> "3 food"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000078> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000075> .
+<http://www.cropontology.org/rdf/CO_010%3A0000077> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000077> <http://www.w3.org/2000/01/rdf-schema#label> "2 building"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000077> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000075> .
+<http://www.cropontology.org/rdf/CO_010%3A0000076> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000076> <http://www.w3.org/2000/01/rdf-schema#label> "1 textile"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000076> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000075> .
+<http://www.cropontology.org/rdf/CO_010%3A0000075> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000075> <http://www.w3.org/2000/01/rdf-schema#label> "PlantUseCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000075> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000075> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000016> .
+<http://www.cropontology.org/rdf/CO_010%3A0000074> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000074> <http://www.w3.org/2000/01/rdf-schema#label> "7 high plant population density"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000074> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000071> .
+<http://www.cropontology.org/rdf/CO_010%3A0000073> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000073> <http://www.w3.org/2000/01/rdf-schema#label> "5 intermediate plant population density"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000073> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000071> .
+<http://www.cropontology.org/rdf/CO_010%3A0000072> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000072> <http://www.w3.org/2000/01/rdf-schema#label> "3 low plant population density"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000072> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000071> .
+<http://www.cropontology.org/rdf/CO_010%3A0000071> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000071> <http://www.w3.org/2000/01/rdf-schema#label> "PlantPopulationDensityCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000071> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000071> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000015> .
+<http://www.cropontology.org/rdf/CO_010%3A0000070> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000070> <http://www.w3.org/2000/01/rdf-schema#label> "other export procedure"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000070> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000130> .
+<http://www.cropontology.org/rdf/CO_010%3A0000069> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000069> <http://www.w3.org/2000/01/rdf-schema#label> "40 research organization"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000069> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000065> .
+<http://www.cropontology.org/rdf/CO_010%3A0000068> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000068> <http://www.w3.org/2000/01/rdf-schema#label> "30 market or shop"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000068> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000065> .
+<http://www.cropontology.org/rdf/CO_010%3A0000067> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000067> <http://www.w3.org/2000/01/rdf-schema#label> "20 farm or cultivated habitat"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000067> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000065> .
+<http://www.cropontology.org/rdf/CO_010%3A0000066> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000066> <http://www.w3.org/2000/01/rdf-schema#label> "10 wild habitat"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000066> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000065> .
+<http://www.cropontology.org/rdf/CO_010%3A0000065> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000065> <http://www.w3.org/2000/01/rdf-schema#label> "CollectingOrAcquisitionSourceCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000065> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000064> .
+<http://www.cropontology.org/rdf/CO_010%3A0000065> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000005> .
+<http://www.cropontology.org/rdf/CO_010%3A0000064> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000064> <http://www.w3.org/2000/01/rdf-schema#label> "PassportDescriptorCode"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000064> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000234> .
+<http://www.cropontology.org/rdf/CO_010%3A0000063> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000063> <http://www.w3.org/2000/01/rdf-schema#label> "taxonomic reference"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000063> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000223> .
+<http://www.cropontology.org/rdf/CO_010%3A0000062> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000062> <http://www.w3.org/2000/01/rdf-schema#label> "cultivar group"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000062> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000224> .
+<http://www.cropontology.org/rdf/CO_010%3A0000061> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000061> <http://www.w3.org/2000/01/rdf-schema#label> "other identification number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000061> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000021> .
+<http://www.cropontology.org/rdf/CO_010%3A0000060> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000060> <http://www.w3.org/2000/01/rdf-schema#label> "type of material received"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000060> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000059> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000059> <http://www.w3.org/2000/01/rdf-schema#label> "donor accession number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000059> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000058> .
+<http://www.cropontology.org/rdf/CO_010%3A0000059> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000225> .
+<http://www.cropontology.org/rdf/CO_010%3A0000058> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000058> <http://www.w3.org/2000/01/rdf-schema#label> "accession number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000058> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000021> .
+<http://www.cropontology.org/rdf/CO_010%3A0000058> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000058> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000058> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000057> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000057> <http://www.w3.org/2000/01/rdf-schema#label> "acquisition date"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000057> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000056> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000056> <http://www.w3.org/2000/01/rdf-schema#label> "donor name"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000056> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000225> .
+<http://www.cropontology.org/rdf/CO_010%3A0000055> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000055> <http://www.w3.org/2000/01/rdf-schema#label> "pedigree release year"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000055> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000052> .
+<http://www.cropontology.org/rdf/CO_010%3A0000054> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000054> <http://www.w3.org/2000/01/rdf-schema#label> "male parent"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000054> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000220> .
+<http://www.cropontology.org/rdf/CO_010%3A0000053> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000053> <http://www.w3.org/2000/01/rdf-schema#label> "female parent"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000053> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000220> .
+<http://www.cropontology.org/rdf/CO_010%3A0000052> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000052> <http://www.w3.org/2000/01/rdf-schema#label> "pedigree information"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000052> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000152> .
+<http://www.cropontology.org/rdf/CO_010%3A0000051> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000051> <http://www.w3.org/2000/01/rdf-schema#label> "remarks"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000051> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000051> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000124> .
+<http://www.cropontology.org/rdf/CO_010%3A0000050> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000050> <http://www.w3.org/2000/01/rdf-schema#label> "previous location"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000050> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000003> .
+<http://www.cropontology.org/rdf/CO_010%3A0000049> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000049> <http://www.w3.org/2000/01/rdf-schema#label> "accession size"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000049> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000048> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000048> <http://www.w3.org/2000/01/rdf-schema#label> "local language"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000048> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000237> .
+<http://www.cropontology.org/rdf/CO_010%3A0000048> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000249> .
+<http://www.cropontology.org/rdf/CO_010%3A0000047> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000047> <http://www.w3.org/2000/01/rdf-schema#label> "translation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000047> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000237> .
+<http://www.cropontology.org/rdf/CO_010%3A0000047> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000249> .
+<http://www.cropontology.org/rdf/CO_010%3A0000046> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000046> <http://www.w3.org/2000/01/rdf-schema#label> "synonym"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000046> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000021> .
+<http://www.cropontology.org/rdf/CO_010%3A0000045> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000045> <http://www.w3.org/2000/01/rdf-schema#label> "accession name"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000045> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000021> .
+<http://www.cropontology.org/rdf/CO_010%3A0000044> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000044> <http://www.w3.org/2000/01/rdf-schema#label> "accession"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000044> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000151> .
+<http://www.cropontology.org/rdf/CO_010%3A0000043> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000043> <http://www.w3.org/2000/01/rdf-schema#label> "section"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000043> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000224> .
+<http://www.cropontology.org/rdf/CO_010%3A0000042> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000042> <http://www.w3.org/2000/01/rdf-schema#label> "genus"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000042> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000224> .
+<http://www.cropontology.org/rdf/CO_010%3A0000041> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000041> <http://www.w3.org/2000/01/rdf-schema#label> "reference form"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000041> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000223> .
+<http://www.cropontology.org/rdf/CO_010%3A0000040> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000040> <http://www.w3.org/2000/01/rdf-schema#label> "subtaxa"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000040> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000224> .
+<http://www.cropontology.org/rdf/CO_010%3A0000039> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000039> <http://www.w3.org/2000/01/rdf-schema#label> "species"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000039> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000224> .
+<http://www.cropontology.org/rdf/CO_010%3A0000038> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000038> <http://www.w3.org/2000/01/rdf-schema#label> "full scientific name"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000038> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000223> .
+<http://www.cropontology.org/rdf/CO_010%3A0000037> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000037> <http://www.w3.org/2000/01/rdf-schema#label> "accession descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000037> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000374> .
+<http://www.cropontology.org/rdf/CO_010%3A0000037> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000044> .
+<http://www.cropontology.org/rdf/CO_010%3A0000036> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000036> <http://www.w3.org/2000/01/rdf-schema#label> "type of sample collected"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000036> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000035> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000035> <http://www.w3.org/2000/01/rdf-schema#label> "parts of the plant used"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000035> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000034> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000034> <http://www.w3.org/2000/01/rdf-schema#label> "number of plants sampled"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000034> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000033> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000033> <http://www.w3.org/2000/01/rdf-schema#label> "site number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000033> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000032> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000032> <http://www.w3.org/2000/01/rdf-schema#label> "secondary administrative subdivision"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000032> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000031> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000031> <http://www.w3.org/2000/01/rdf-schema#label> "collector's note"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000031> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000030> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000030> <http://www.w3.org/2000/01/rdf-schema#label> "collecting date of sample"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000030> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000029> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000029> <http://www.w3.org/2000/01/rdf-schema#label> "cultivar"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000029> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000224> .
+<http://www.cropontology.org/rdf/CO_010%3A0000028> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000028> <http://www.w3.org/2000/01/rdf-schema#label> "location of collecting site"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000028> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000027> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000027> <http://www.w3.org/2000/01/rdf-schema#label> "herbarium specimen"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000027> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000026> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000026> <http://www.w3.org/2000/01/rdf-schema#label> "longitude of collecting site"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000026> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000025> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000025> <http://www.w3.org/2000/01/rdf-schema#label> "local name"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000025> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000237> .
+<http://www.cropontology.org/rdf/CO_010%3A0000024> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000024> <http://www.w3.org/2000/01/rdf-schema#label> "collecting institute code"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000024> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000080> .
+<http://www.cropontology.org/rdf/CO_010%3A0000024> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000154> .
+<http://www.cropontology.org/rdf/CO_010%3A0000023> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000023> <http://www.w3.org/2000/01/rdf-schema#label> "collecting source environment"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000023> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000022> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000022> <http://www.w3.org/2000/01/rdf-schema#label> "biological status of accession"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000022> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000021> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000021> <http://www.w3.org/2000/01/rdf-schema#label> "accession identifier descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000021> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000020> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000020> <http://www.w3.org/2000/01/rdf-schema#label> "origin descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000020> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000037> .
+<http://www.cropontology.org/rdf/CO_010%3A0000019> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000019> <http://www.w3.org/2000/01/rdf-schema#label> "cropping system"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000019> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000017> .
+<http://www.cropontology.org/rdf/CO_010%3A0000018> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000018> <http://www.w3.org/2000/01/rdf-schema#label> "status of plantation"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000018> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000017> .
+<http://www.cropontology.org/rdf/CO_010%3A0000017> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000017> <http://www.w3.org/2000/01/rdf-schema#label> "cultural method"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000017> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000017> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000345> .
+<http://www.cropontology.org/rdf/CO_010%3A0000017> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000375> .
+<http://www.cropontology.org/rdf/CO_010%3A0000016> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000016> <http://www.w3.org/2000/01/rdf-schema#label> "plant use"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000016> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000015> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000015> <http://www.w3.org/2000/01/rdf-schema#label> "plant population density"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000015> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000014> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000014> <http://www.w3.org/2000/01/rdf-schema#label> "collecting number"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000014> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000021> .
+<http://www.cropontology.org/rdf/CO_010%3A0000013> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000013> <http://www.w3.org/2000/01/rdf-schema#label> "post-movement activities data"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000013> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000003> .
+<http://www.cropontology.org/rdf/CO_010%3A0000012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000012> <http://www.w3.org/2000/01/rdf-schema#label> "associated flora"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000012> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000011> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000011> <http://www.w3.org/2000/01/rdf-schema#label> "ethnic group"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000011> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000227> .
+<http://www.cropontology.org/rdf/CO_010%3A0000010> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000010> <http://www.w3.org/2000/01/rdf-schema#label> "country of origin"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000010> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000009> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000009> <http://www.w3.org/2000/01/rdf-schema#label> "prevailing stress"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000009> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000008> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000008> <http://www.w3.org/2000/01/rdf-schema#label> "latitude of collecting site"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000008> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000007> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000007> <http://www.w3.org/2000/01/rdf-schema#label> "primary administrative subdivision"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000007> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000006> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000006> <http://www.w3.org/2000/01/rdf-schema#label> "photograph"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000006> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000256> .
+<http://www.cropontology.org/rdf/CO_010%3A0000005> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000005> <http://www.w3.org/2000/01/rdf-schema#label> "collecting or acquisition source"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000005> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000004> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000004> <http://www.w3.org/2000/01/rdf-schema#label> "elevation of collecting site"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000004> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000226> .
+<http://www.cropontology.org/rdf/CO_010%3A0000003> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000003> <http://www.w3.org/2000/01/rdf-schema#label> "collected germplasm descriptor"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000020> .
+<http://www.cropontology.org/rdf/CO_010%3A0000003> <http://www.w3.org/2004/02/skos/core#broader> <http://www.cropontology.org/rdf/CO_010%3A0000254> .
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2004/02/skos/core#Concept> .
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label> "GCP germplasm ontology"@en .
+
