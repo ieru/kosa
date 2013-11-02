@@ -1,5 +1,10 @@
 #!/bin/sh
 
+
+if [ "x$1" = "x" ];then
+	echo "$0 <commit message>"
+	exit 0
+fi	
 git add *
 git commit -m "$1"
 git push origin master
