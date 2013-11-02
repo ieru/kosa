@@ -132,8 +132,8 @@ function update(source) {
       if (d.has_children === 1) {
 
         getChildren(d, d.id, 'en');
-            // toggle(d);
-            // update(d);
+            toggle(d);
+            update(d);
             //resizeViewBox();
           }
 
