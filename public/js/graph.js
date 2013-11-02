@@ -765,8 +765,8 @@ function init(){
     //init Spacetree
     //Create a new ST instance
     init();
+    console.log("Inyeccion");
     var st = new $jit.ST({
-        console.log("Inyeccion");
         //id of viz container element
         injectInto: 'navigational',
         //set duration for the animation
