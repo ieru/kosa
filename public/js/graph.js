@@ -766,6 +766,7 @@ function init(){
     //end
     //init Spacetree
     //Create a new ST instance
+    console.log("Pre-init");
     init();
     console.log("Inyeccion");
     var st = new $jit.ST({
