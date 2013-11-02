@@ -902,7 +902,7 @@ function init(){
     $.ajax({
       dataType: "json",
       url: '/json/test_data2.json',
-      success: function(){
+      success: function(data){
         start(data)
       }
   });
