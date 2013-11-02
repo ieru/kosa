@@ -2,7 +2,7 @@
 var labelType, useGradients, nativeTextSupport, animate;
 
 (function() {
-console.log("Inicializacion")
+console.log("Inicializacion");
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
       typeOfCanvas = typeof HTMLCanvasElement,
@@ -766,7 +766,7 @@ function init(){
     //Create a new ST instance
     init();
     var st = new $jit.ST({
-        console.log("Inyeccion")
+        console.log("Inyeccion");
         //id of viz container element
         injectInto: 'navigational',
         //set duration for the animation
