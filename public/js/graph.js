@@ -902,7 +902,8 @@ function init(){
     $.ajax({
       dataType: "json",
       url: '/json/test_data2.json',
-      data:json,
-      success: start(json)
+      success: function(){
+        start(data)
+      }
   });
 };
