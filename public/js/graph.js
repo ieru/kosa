@@ -26,17 +26,6 @@ var Log = {
 };
 
 
-function init(){
-    //init data
-    $.ajax({
-      dataType: "json",
-      url: "/json/test_data2.json",
-      success: function(json){
-        start(json);
-    }
-});
-};
-
     // var json = {
     //     id: "node02",
     //     name: "0.2",
@@ -907,5 +896,14 @@ function init(){
         //end
 
     }
+
+    function init(){
+        $.ajax({
+          dataType: "json",
+          url: '/json/test_data2.json',
+          success: start(json)
+      });
+    };
+
 }
 
