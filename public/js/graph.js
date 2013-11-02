@@ -897,7 +897,7 @@ var Log = {
 
     }
 
-};
+
 function init(){
     $.ajax({
       dataType: "json",
