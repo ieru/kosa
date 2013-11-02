@@ -897,13 +897,11 @@ var Log = {
 
     }
 
-    function init(){
-        $.ajax({
-          dataType: "json",
-          url: '/json/test_data2.json',
-          success: start(json)
-      });
-    };
-
 }
-
+function init(){
+    $.ajax({
+      dataType: "json",
+      url: '/json/test_data2.json',
+      success: start(json)
+  });
+};
