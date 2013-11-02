@@ -1,3 +1,4 @@
+(function ($, window, document, undefined) {
 var labelType, useGradients, nativeTextSupport, animate;
 
 (function() {
@@ -898,3 +899,4 @@ function init(){
 
 
 }
+})(jQuery, this, this.document);
