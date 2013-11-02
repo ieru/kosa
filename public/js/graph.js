@@ -3,6 +3,7 @@ var labelType, useGradients, nativeTextSupport, animate;
 
 (function() {
 console.log("Inicializacion");
+console.log(typeof $jit);
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
       typeOfCanvas = typeof HTMLCanvasElement,
@@ -29,6 +30,7 @@ var Log = {
 
 
 function init(){
+    console.log("Inicio init");
     //init data
     var json = {
         id: "node02",
