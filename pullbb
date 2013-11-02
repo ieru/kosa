@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sudo git pull bb master
+sudo service nginx reload
