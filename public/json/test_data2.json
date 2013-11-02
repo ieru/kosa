@@ -1,42 +1,42 @@
 {
- "id": 3,
+ "id": 1,
  "name": "flare",
  "data":{},
  "children": [
   {
-   "id": 23,
+   "id": 2,
    "name": "analytics",
    "data":{},
    "children": [
     {
-     "id": 33,
+     "id": 3,
      "name": "cluster",
      "data":{},
      "children": [
-      {"id": 33,
+      {"id": 4,
         "name": "AgglomerativeCluster", "size": 3938},
-      {"id": 33,
+      {"id": 5,
         "name": "CommunityStructure", "size": 3812},
-      {"id": 33,
+      {"id": 6,
         "name": "HierarchicalCluster", "size": 6714},
-      {"id": 33,
+      {"id": 7,
         "name": "MergeEdge", "size": 743}
      ]
     },
     {
-     "id": 33,
+     "id": 8,
      "name": "graph",
      "data":{},
      "children": [
-      {"id": 33,
+      {"id": 9,
         "name": "BetweennessCentrality", "size": 3534},
-      {"id": 33,
+      {"id": 10,
         "name": "LinkDistance", "size": 5731},
-      {"id": 33,
+      {"id": 11,
         "name": "MaxFlowMinCut", "size": 7840},
-      {"id": 33,
+      {"id": 12,
         "name": "ShortestPaths", "size": 5914},
-      {"id": 33,
+      {"id": 13,
         "name": "SpanningTree", "size": 3416}
      ]
     },
