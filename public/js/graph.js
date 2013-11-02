@@ -1,4 +1,4 @@
-(function ($, window, document, undefined) {
+// (function ($, window, document, undefined) {
 var labelType, useGradients, nativeTextSupport, animate;
 
 (function() {
@@ -763,6 +763,7 @@ function init(){
     //end
     //init Spacetree
     //Create a new ST instance
+    init();
     var st = new $jit.ST({
         //id of viz container element
         injectInto: 'navigational',
@@ -905,4 +906,4 @@ function init(){
 
 
 }
-})(jQuery, this, this.document);
+// })(jQuery, this, this.document);
