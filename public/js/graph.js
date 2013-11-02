@@ -18,10 +18,11 @@ var labelType, useGradients, nativeTextSupport, animate;
 var Log = {
   elem: false,
   write: function(text){
-    if (!this.elem) 
-      this.elem = document.getElementById('log');
-    this.elem.innerHTML = text;
-    this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
+    // if (!this.elem) 
+    //   this.elem = document.getElementById('log');
+    // this.elem.innerHTML = text;
+    // this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
+    console.dir(text);
   }
 };
 
