@@ -876,12 +876,18 @@ function init(){
     st.onClick(st.root);
     //end
     //Add event handlers to switch spacetree orientation.
-    var top = $jit.id('r-top'), 
-        left = $jit.id('r-left'), 
-        bottom = $jit.id('r-bottom'), 
-        right = $jit.id('r-right'),
-        normal = $jit.id('s-normal');
-        
+    // var top = $jit.id('r-top'), 
+    //     left = $jit.id('r-left'), 
+    //     bottom = $jit.id('r-bottom'), 
+    //     right = $jit.id('r-right'),
+    //     normal = $jit.id('s-normal');
+    
+    var top = false,
+        left = false,
+        bottom = true,
+        right = false,
+        normal =true;
+
     
     function changeHandler() {
         if(this.checked) {
