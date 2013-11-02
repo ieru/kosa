@@ -1,9 +1,6 @@
-// (function ($, window, document, undefined) {
 var labelType, useGradients, nativeTextSupport, animate;
 
 (function() {
-console.log("Inicializacion");
-console.log(typeof $jit);
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
       typeOfCanvas = typeof HTMLCanvasElement,
@@ -30,7 +27,6 @@ var Log = {
 
 
 function init(){
-    console.log("Inicio init");
     //init data
     var json = {
         id: "node02",
@@ -766,12 +762,9 @@ function init(){
     //end
     //init Spacetree
     //Create a new ST instance
-    console.log("Pre-init");
-    init();
-    console.log("Inyeccion");
     var st = new $jit.ST({
         //id of viz container element
-        injectInto: 'navigational',
+        injectInto: 'infovis',
         //set duration for the animation
         duration: 800,
         //set animation transition type
@@ -882,18 +875,12 @@ function init(){
     st.onClick(st.root);
     //end
     //Add event handlers to switch spacetree orientation.
-    // var top = $jit.id('r-top'), 
-    //     left = $jit.id('r-left'), 
-    //     bottom = $jit.id('r-bottom'), 
-    //     right = $jit.id('r-right'),
-    //     normal = $jit.id('s-normal');
-    
-    var top = false,
-        left = false,
-        bottom = true,
-        right = false,
-        normal =true;
-
+    var top = $jit.id('r-top'), 
+        left = $jit.id('r-left'), 
+        bottom = $jit.id('r-bottom'), 
+        right = $jit.id('r-right'),
+        normal = $jit.id('s-normal');
+        
     
     function changeHandler() {
         if(this.checked) {
@@ -909,6 +896,4 @@ function init(){
     top.onchange = left.onchange = bottom.onchange = right.onchange = changeHandler;
     //end
 
-
 }
-// })(jQuery, this, this.document);
