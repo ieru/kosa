@@ -22,7 +22,7 @@ var Log = {
     //   this.elem = document.getElementById('log');
     // this.elem.innerHTML = text;
     // this.elem.style.left = (500 - this.elem.offsetWidth / 2) + 'px';
-    console.dir(text);
+    // console.dir(text);
   }
 };
 
@@ -897,4 +897,10 @@ function init(){
     top.onchange = left.onchange = bottom.onchange = right.onchange = changeHandler;
     //end
 
+
 }
+// $(document).load(function(){
+//     init();
+// });
+
+$(document).load(init);
