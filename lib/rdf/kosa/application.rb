@@ -708,12 +708,12 @@ module RDF::Kosa
       end
     end
 
-    get '/import' do
+    get '/tools' do
       # cache_control :public, :must_revalidate, :max_age => 60
       distil
     end
 
-    post '/import' do
+    post '/tools' do
       distil
     end
     

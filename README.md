@@ -130,25 +130,26 @@ $ sudo rackup -p <your_port_number> config.ru
 
 ## Troubleshooting
 
-https://github.com/ieru/kosa/wiki/Troubleshooting
+[Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
 
 ## Todo List
 
-https://github.com/ieru/kosa/wiki/TODO-LIST
+[TODO-LIST](https://github.com/ieru/kosa/wiki/TODO-LIST)
 
 ## API documentation
 
-https://github.com/ieru/kosa/wiki/RESTful-API-documentation
+[API-documentation](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
 
 ## Links
 
-- [Ruby-Sinatra](http://www.sinatrarb.com/)
-- [4-store Database](http://4store.org/)
-- [Responsive D3.js (svg graphs)](http://d3js.org/)
-- [Responsive Bootstrap 3](http://getbootstrap.com/)
+- [Ruby](https://www.ruby-lang.org)
+- [Sinatra](http://www.sinatrarb.com/)
+- [4-store](http://4store.org/)
+- [HTML5 Canvas](http://www.w3.org/html/logo/)
+- [Bootstrap 3](http://getbootstrap.com/)
 
 ## Licence
 
-Copyright University of Alcala. Licenced under GPL/GNU version 2 Licence.  
+Copyright University of Alcala. Licenced under GNU/ GPL version 2 Licence.  
 RDF Tool on this application is based on RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
 
