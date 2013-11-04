@@ -1,5 +1,15 @@
+/**
+To-do: - add sections
+       - refactor
+
+**/
 .jit-autoadjust-label {
   padding: 15px;
+}
+
+#infovis-label div.node{
+  font-size: 12px !important;
+  padding-top:0 !important;
 }
 
 #update, #restore {
