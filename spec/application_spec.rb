@@ -19,7 +19,7 @@ describe RDF::Kosa::Application do
   
   describe "import" do
     it "gets HTML" do
-      get '/import'
+      get '/tools'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should be_ok
       #last_response.body.should match %r{Ruby Linked Data Service}
