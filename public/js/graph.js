@@ -259,7 +259,7 @@ function init(){
         levelDistance: 50,
         //set max levels to show. Useful when used with
         //the request method for requesting trees of specific depth
-        levelsToShow: 0,
+        levelsToShow: 1,
         //set node and edge styles
         //set overridable=true for styling individual
         //nodes or edges
