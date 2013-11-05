@@ -153,3 +153,4 @@ $ sudo rackup -p <your_port_number> config.ru
 Copyright University of Alcala. Licenced under GNU/ GPL version 2 Licence.  
 RDF Tool on this application is based on RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
 
+
