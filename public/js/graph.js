@@ -249,20 +249,24 @@ function init(){
     //init Spacetree
     //Create a new ST instance
     var st = new $jit.ST({
-        'injectInto': 'infovis',
+        injectInto: 'infovis',
         orientation: 'bottom',
         //set duration for the animation
         duration: 800,
         //set animation transition type
         transition: $jit.Trans.Quart.easeInOut,
         //set distance between node and its children
-        levelDistance: 50,
+        levelDistance: 60,
         //set max levels to show. Useful when used with
         //the request method for requesting trees of specific depth
         levelsToShow: 1,
         //set node and edge styles
         //set overridable=true for styling individual
         //nodes or edges
+        Navigation: {
+          enable:true,
+          panning:true
+	},
         Node: {
             height: 20,
             width: 40,
