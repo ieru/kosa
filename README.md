@@ -72,7 +72,7 @@ $ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontolo
 $ ruby _loader.rb co_010 co_010_ontology.rdf
 ...
 ...
-<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type..
 <http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label...
 
 Loading ./co_010_ontology.rdf into co_010 in 4store
@@ -91,10 +91,10 @@ $ cd kosa
 
 - Before installing gems and runnig bundle install; install ImageMagick
 
-For Mac Os:
+For Mac Os:  
 [rmagick installation fort MacOs](http://blog.paulopoiati.com/2013/01/28/installing-rmagick-in-mac-os-x-mountain-lion-with-homebrew/)
 
-For most systems:
+For most Systems:  
 Download and install your OS version 
 Get more Info, and troubleshoouing, at vendor's link:
 http://www.imagemagick.org/script/binary-releases.php
@@ -102,11 +102,13 @@ http://www.imagemagick.org/script/binary-releases.php
 - Install required gems with the command:
 
 ```
-# (use 'rvm all do gem install sinatra .....' , instead, if you have rvm installed)  
 
-Note: if you are using MacOs and RVM run this command first:
+Note: if you are using MacOs + RVM run this command first:
 
 $ sudo rvm osx-ssl-certs update all
+
+
+(use 'rvm all do gem install sinatra .....' , instead, if you have rvm installed)  
 
 $ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
 $ sudo gem install rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa
@@ -117,7 +119,7 @@ $ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
 - Install bundle using: (it may be necessary to remove the Gemfile.lock file to rebuild the previous build)
 
 ```
-( from cloned kosa directory )
+( from cloned KOS directory )
 $ sudo bundle install
 (or '$ sudo rvm all do bundle install' -- if you use rvm -- )
 ```
@@ -127,19 +129,17 @@ $ sudo bundle install
 ```
 $ sudo rackup config.ru
 ( use '$ sudo rvm all do rackup config.ru', if you are using rvm )
-
-This will be the result if everything's Ok:
-
+...
 [2013-11-04 23:22:27] INFO  WEBrick 1.3.1
 [2013-11-04 23:22:27] INFO  ruby 1.9.2 (2012-04-20) [x86_64-darwin12.5.0]
 [2013-11-04 23:22:27] INFO  WEBrick::HTTPServer#start: pid=53704 port=4568
 
 
-To access your server, open your server and write the address below:
+Now, open your browser and write:
 
 http://localhost:4568
 
-..and voila..!
+..Voila..
 
 ```
 
