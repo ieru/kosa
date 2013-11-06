@@ -72,8 +72,8 @@ $ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontolo
 $ ruby _loader.rb co_010 co_010_ontology.rdf
 ...
 ...
-<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/...
-<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label> "GCP germplasm ontology"@en .
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>..
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label...
 
 Loading ./co_010_ontology.rdf into co_010 in 4store
 
@@ -91,12 +91,13 @@ $ cd kosa
 
 - Before installing gems and runnig bundle install; install ImageMagick
 
-( Download and install your OS version -- For Mac read below --. 
+For Mac Os:
+[rmagick installation fort MacOs](http://blog.paulopoiati.com/2013/01/28/installing-rmagick-in-mac-os-x-mountain-lion-with-homebrew/)
+
+For most systems:
+Download and install your OS version 
 Get more Info, and troubleshoouing, at vendor's link:
 http://www.imagemagick.org/script/binary-releases.php
-
-If you are using MacOs, the easiest way is to follow this site manual:
-[rmagick installation fort MacOs](http://blog.paulopoiati.com/2013/01/28/installing-rmagick-in-mac-os-x-mountain-lion-with-homebrew/)
 
 - Install required gems with the command:
 
@@ -127,7 +128,7 @@ $ sudo bundle install
 $ sudo rackup config.ru
 ( use '$ sudo rvm all do rackup config.ru', if you are using rvm )
 
-This will be the result if everithings is Ok:
+This will be the result if everything's Ok:
 
 [2013-11-04 23:22:27] INFO  WEBrick 1.3.1
 [2013-11-04 23:22:27] INFO  ruby 1.9.2 (2012-04-20) [x86_64-darwin12.5.0]
@@ -135,6 +136,7 @@ This will be the result if everithings is Ok:
 
 
 To access your server, open your server and write the address below:
+
 http://localhost:4568
 
 ..and voila..!
