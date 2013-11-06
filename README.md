@@ -95,19 +95,19 @@ $ cd kosa
 Get more Info, and troubleshoouing, at vendor's link:
 http://www.imagemagick.org/script/binary-releases.php
 
-If you are using MacOs, the easiest way is:  
-
-1. go http://www.macports.org/install.php and download the .dmg file
-2. Double-click it
-3. $ sudo port -v selfupdate
-4. $ sudo port install ImageMagick
+If you are using MacOs, the easiest way is to follow this site manual:
+[rmagick installation fort MacOs](http://blog.paulopoiati.com/2013/01/28/installing-rmagick-in-mac-os-x-mountain-lion-with-homebrew/)
 
 - Install required gems with the command:
 
 ```
 # (use 'rvm all do gem install sinatra .....' , instead, if you have rvm installed)  
 
-$ sudo gem install sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
+Note: if you are using MacOs and RVM run this command first:
+
+$ sudo rvm osx-ssl-certs update all
+
+$ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
 $ sudo gem install rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa
 $ sudo gem install rdf-rdfxml rdf-turtle rdf-trig rdf-xsd rdf-4store json-ld linkeddata
 $ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
@@ -124,8 +124,21 @@ $ sudo bundle install
 - Since the server has been installed using Rack, to run it, just type:
 
 ```
-$ sudo rackup -p <your_port_number> config.ru
-( use '$ sudo rvm all do rackup -p <your_port_number> config.ru', if you are using rvm )
+$ sudo rackup config.ru
+( use '$ sudo rvm all do rackup config.ru', if you are using rvm )
+
+This will be the result if everithings is Ok:
+
+[2013-11-04 23:22:27] INFO  WEBrick 1.3.1
+[2013-11-04 23:22:27] INFO  ruby 1.9.2 (2012-04-20) [x86_64-darwin12.5.0]
+[2013-11-04 23:22:27] INFO  WEBrick::HTTPServer#start: pid=53704 port=4568
+
+
+To access your server, open your server and write the address below:
+http://localhost:4568
+
+..and voila..!
+
 ```
 
 ## Troubleshooting
