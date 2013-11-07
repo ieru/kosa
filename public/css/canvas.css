@@ -181,9 +181,11 @@ a {
 #infovis {
     position:relative;
     width:600px;
-    height:600px;
+    /* 600px */
+    height:400px;
     margin:auto;
     overflow:hidden;
+    cursor:move;
 }
 
 /*TOOLTIPS*/

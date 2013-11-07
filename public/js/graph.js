@@ -25,6 +25,17 @@ var Log = {
 }
 };
 
+function hideSpinner () {
+ $("#spinner").
+   attr("style", "display:none;");
+}
+
+function showSpinner () {
+ $("#spinner").
+   attr("style", "display:block;");
+}
+
+
 /*
 // (jul: removed json() )
     
@@ -246,7 +257,6 @@ function init(){
           
     });
 
-    //init Spacetree
     //Create a new ST instance
     var st = new $jit.ST({
         injectInto: 'infovis',
@@ -302,10 +312,12 @@ function init(){
         
         onBeforeCompute: function(node){
             Log.write("loading " + node.name);
+            // showSpinner();
         },
         
         onAfterCompute: function(){
             Log.write("done");
+            hideSpinner();
         },
         
         //This method is called on DOM label creation.
@@ -373,33 +385,8 @@ function init(){
     st.compute();
     //emulate a click on the root node.
     st.onClick(st.root);
-    //end
-    //Add event handlers to switch spacetree orientation.
-   function get(id) {
-      return document.getElementById(id);  
-    };
+   
 
-    var top = get('r-top'), 
-    left = get('r-left'), 
-    bottom = get('r-bottom'), 
-    right = get('r-right');
-    
-    function changeHandler() {
-        if(this.checked) {
-            top.disabled = bottom.disabled = right.disabled = left.disabled = true;
-            // st.switchPosition(this.value, "animate", {
-            // (jul) changed pos
-            st.switchPosition('bottom', "animate", {
-                onComplete: function(){
-                    top.disabled = bottom.disabled = right.disabled = left.disabled = false;
-                }
-            });
-        }
-    };
-    
-    top.onchange = left.onchange = bottom.onchange = right.onchange = changeHandler;
-    //end
 
 }
-
 
