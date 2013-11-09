@@ -1,0 +1,16 @@
+<!--
+	Author: 
+	Date: 
+
+	Description: Template Description
+-->
+
+<div id="content">
+  <div id="artist"><h1>{{artist}}</h1></div>
+  <div id="operas">
+  	<ul>
+  		{{#each operas}}
+  			<li>{{this}}</li>
+  		{{/each}}
+  </div>
+</div>

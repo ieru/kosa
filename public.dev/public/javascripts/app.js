@@ -1,0 +1,575 @@
+(function(/*! Brunch !*/) {
+  'use strict';
+
+  var globals = typeof window !== 'undefined' ? window : global;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+
+  var has = function(object, name) {
+    return ({}).hasOwnProperty.call(object, name);
+  };
+
+  var expand = function(root, name) {
+    var results = [], parts, part;
+    if (/^\.\.?(\/|$)/.test(name)) {
+      parts = [root, name].join('/').split('/');
+    } else {
+      parts = name.split('/');
+    }
+    for (var i = 0, length = parts.length; i < length; i++) {
+      part = parts[i];
+      if (part === '..') {
+        results.pop();
+      } else if (part !== '.' && part !== '') {
+        results.push(part);
+      }
+    }
+    return results.join('/');
+  };
+
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function(name) {
+      var dir = dirname(path);
+      var absolute = expand(dir, name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var module = {id: name, exports: {}};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var require = function(name, loaderPath) {
+    var path = expand(name, '.');
+    if (loaderPath == null) loaderPath = '/';
+
+    if (has(cache, path)) return cache[path].exports;
+    if (has(modules, path)) return initModule(path, modules[path]);
+
+    var dirIndex = expand(path, './index');
+    if (has(cache, dirIndex)) return cache[dirIndex].exports;
+    if (has(modules, dirIndex)) return initModule(dirIndex, modules[dirIndex]);
+
+    throw new Error('Cannot find module "' + name + '" from '+ '"' + loaderPath + '"');
+  };
+
+  var define = function(bundle, fn) {
+    if (typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has(bundle, key)) {
+          modules[key] = bundle[key];
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+    }
+  };
+
+  var list = function() {
+    var result = [];
+    for (var item in modules) {
+      if (has(modules, item)) {
+        result.push(item);
+      }
+    }
+    return result;
+  };
+
+  globals.require = require;
+  globals.require.define = define;
+  globals.require.register = define;
+  globals.require.list = list;
+  globals.require.brunch = true;
+})();
+require.register("Application", function(exports, require, module) {
+/**
+ * Application Bootstrapper
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Application = {
+
+    /**
+     * Initialize the app
+     * 
+     */
+    initialize: function() {
+
+        // Import views
+        var HomeView = require('views/HomeView');
+        var ApplicationRouter = require('routers/ApplicationRouter');
+
+        // Initialize views
+        this.homeView = new HomeView();
+        this.applicationRouter = new ApplicationRouter();
+        
+
+        if (typeof Object.freeze === 'function') Object.freeze(this);
+    }
+}
+
+module.exports = Application;
+
+});
+
+;require.register("config/ApplicationConfig", function(exports, require, module) {
+/**
+ * Application Configuration
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var ApplicationConfig = (function() {
+
+	/*
+   	 * @private
+	 */
+	var _baseUrl = "/";
+
+	/*
+   	 * Public interface
+	 */
+	return {
+		BASE_URL: _baseUrl
+	}
+
+}).call()
+
+module.exports = ApplicationConfig;
+});
+
+;require.register("core/Collection", function(exports, require, module) {
+/**
+ * Base Class for all Backbone Collections
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Collection = Backbone.Collection.extend({
+
+	//--------------------------------------
+	//+ PUBLIC PROPERTIES / CONSTANTS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ INHERITED / OVERRIDES
+	//--------------------------------------
+	
+	//--------------------------------------
+  	//+ PUBLIC METHODS / GETTERS / SETTERS
+  	//--------------------------------------
+
+  	//--------------------------------------
+  	//+ EVENT HANDLERS
+  	//--------------------------------------
+
+  	//--------------------------------------
+  	//+ PRIVATE AND PROTECTED METHODS
+  	//--------------------------------------
+
+});
+
+module.exports = Collection;
+});
+
+;require.register("core/Model", function(exports, require, module) {
+/**
+ * Base Class for all Backbone Models
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Model = Backbone.Model.extend({
+
+	//--------------------------------------
+	//+ PUBLIC PROPERTIES / CONSTANTS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ INHERITED / OVERRIDES
+	//--------------------------------------
+	
+	//--------------------------------------
+  	//+ PUBLIC METHODS / GETTERS / SETTERS
+  	//--------------------------------------
+
+  	//--------------------------------------
+  	//+ EVENT HANDLERS
+  	//--------------------------------------
+
+  	//--------------------------------------
+  	//+ PRIVATE AND PROTECTED METHODS
+  	//--------------------------------------
+  
+});
+
+module.exports = Model;
+
+});
+
+;require.register("core/Router", function(exports, require, module) {
+/**
+ * Backbone Primary Router
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Router = Backbone.Router.extend({
+
+	//--------------------------------------
+    //+ INHERITED / OVERRIDES
+    //--------------------------------------
+    
+	routes: {},
+
+    /**
+     * Initializes the Base router
+     * @param  {Object} options 
+     * 
+     */
+    initialize: function( options ) {
+
+    }
+});
+
+module.exports = Router;
+});
+
+;require.register("core/View", function(exports, require, module) {
+/**
+ * View Base Class
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var View = Backbone.View.extend({
+
+  //--------------------------------------
+  //+ PUBLIC PROPERTIES / CONSTANTS
+  //--------------------------------------
+
+  /*
+   * @private
+   */
+  template: function() {},
+  
+
+  //--------------------------------------
+  //+ INHERITED / OVERRIDES
+  //--------------------------------------
+  
+  /*
+   * @private
+   */
+  initialize: function() {
+    _.bindAll( this );
+  },
+
+  /*
+   * @private
+   */
+  render: function() {
+    this.$el.html( this.template() );
+    
+    return this;
+  },
+
+  //--------------------------------------
+  //+ PUBLIC METHODS / GETTERS / SETTERS
+  //--------------------------------------
+
+  //--------------------------------------
+  //+ EVENT HANDLERS
+  //--------------------------------------
+
+  //--------------------------------------
+  //+ PRIVATE AND PROTECTED METHODS
+  //--------------------------------------
+
+});
+
+module.exports = View;
+
+});
+
+;require.register("events/Event", function(exports, require, module) {
+/**
+ * General events
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Event = {
+	
+	/*
+   	 * Public interface
+	 */
+	APPLICATION_INITIALIZED: 'onApplicationInitialized'
+	
+
+}
+
+module.exports = Event;
+});
+
+;require.register("helpers/ViewHelper", function(exports, require, module) {
+/**
+ * Handlebars Template Helpers
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+/*
+* @return String
+*/
+Handlebars.registerHelper( 'link', function( text, url ) {
+
+  text = Handlebars.Utils.escapeExpression( text );
+  url  = Handlebars.Utils.escapeExpression( url );
+
+  var result = '<a href="' + url + '">' + text + '</a>';
+
+  return new Handlebars.SafeString( result );
+});
+
+});
+
+;require.register("initialize", function(exports, require, module) {
+/**
+ * Application Initializer
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var application = require('Application');
+
+$(function() {
+
+	// Initialize Application
+	application.initialize();
+
+	// Start Backbone router
+  	Backbone.history.start();
+  	init();
+});
+
+});
+
+;require.register("routers/ApplicationRouter", function(exports, require, module) {
+/**
+ * Backbone Primary Router
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Router = require('core/Router');
+var application = require('Application');
+
+var ApplicationRouter = Router.extend({
+
+	//--------------------------------------
+  	//+ Routes
+  	//--------------------------------------
+  	
+  	routes: {
+      '': 'home'
+  	},
+
+  	//--------------------------------------
+  	//+ Route Handlers
+  	//--------------------------------------
+
+  	home: function() {
+      $( 'body' ).html( application.homeView.render().el );
+  	}
+});
+
+module.exports = ApplicationRouter;
+});
+
+;require.register("utils/BackboneView", function(exports, require, module) {
+/**
+ * View Description
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var View     = require('core/View');
+var template = require('templates/HomeViewTemplate');
+
+var BackboneView = View.extend({
+
+  	/*
+   	 * @private
+	 */
+	id: 'view',
+	/*
+   	 * @private
+   	*/
+	template: template,
+	
+
+	//--------------------------------------
+  	//+ INHERITED / OVERRIDES
+  	//--------------------------------------
+
+	/*
+	 * @private
+	 */
+	initialize: function() {
+		this.render = _.bind( this.render, this );
+	},
+
+	/*
+	 * @private
+	 */
+	render: function() {
+		this.$el.html( this.template({
+			content: "View Content"
+		}));
+
+		return this;
+	}
+
+	//--------------------------------------
+	//+ PUBLIC METHODS / GETTERS / SETTERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ EVENT HANDLERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ PRIVATE AND PROTECTED METHODS
+	//--------------------------------------
+
+});
+
+module.exports = BackboneView;
+});
+
+;require.register("views/HomeView", function(exports, require, module) {
+/**
+ * View Description
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var View     = require('core/View');
+var template = require('templates/homeViewTemplate');
+
+var HomeView = View.extend({
+
+  	/*
+   	 * @private
+	 */
+	id: 'home-view',
+	/*
+   	 * @private
+   	*/
+	template: template,
+
+
+	//--------------------------------------
+  	//+ INHERITED / OVERRIDES
+  	//--------------------------------------
+
+	/*
+	 * @private
+	 */
+	initialize: function() {
+		_.bindAll( this );
+	},
+
+	/*
+	 * @private
+	 */
+	 
+	events: {
+		
+		'click .navbar-brand': 'drawCanvas' 
+	},
+	render: function() {
+		this.$el.html( this.template({}));
+
+		return this;
+	},
+	
+	drawCanvas: function () {
+	  console.log('loaded');
+	  // todo: refactor to OO js
+	  init();
+	},
+	    
+	onApplicationInitialized: function(){
+	    drawCanvas();
+	}
+	
+	    
+	//--------------------------------------
+	//+ PUBLIC METHODS / GETTERS / SETTERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ EVENT HANDLERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ PRIVATE AND PROTECTED METHODS
+	//--------------------------------------
+
+});
+
+module.exports = HomeView;
+
+
+});
+
+;
+//# sourceMappingURL=app.js.map

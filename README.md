@@ -6,7 +6,7 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 A current live demo may be seen on [demo](http://kos.appgee.net) (Open-Alpha version)
 
-[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa)
+[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa)[![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa)
 
 ## Requirements
 
