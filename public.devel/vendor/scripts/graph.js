@@ -40,7 +40,7 @@ var Log = {
       this.elem = $('#log');
     }      
     this.elem.attr("style", "opacity:0;")    
-    this.elem.text('done');
+    // this.elem.text('done');
   }
 };
 
