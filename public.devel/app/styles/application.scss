@@ -161,12 +161,16 @@ a {
     text-align:center;
 }
 #infovis {
-    position:relative;
+
+   position:relative;
+   width:inherit;
+   height:inherit;
+   margin:auto;
+   overflow:hidden;
+   cursor:move;
+    /*      
     width:600px;
-    height:400px;
-    margin:auto;
-    overflow:hidden;
-    cursor:move;
+    height:400px;*/
 }
 /*TOOLTIPS*/
 .tip {

@@ -225,7 +225,6 @@ function init(){
                 delete node.data.$color;
             }
         },
-        
         //This method is called right before plotting
         //an edge. It's useful for changing an individual edge
         //style properties before plotting it.
@@ -242,7 +241,22 @@ function init(){
                 delete adj.data.$color;
                 delete adj.data.$lineWidth;
             }
+        },
+        onPlaceLabel: function(label, node, controllers){          
+            //override label styles
+            var style = label.style;  
+            if (node.selected) {    
+              style.color = '#23A4FF';
+              style.fontSize = '16px';
+            }
+            else {
+              style.color = '#ccc';
+              style.fontSize = '14px';
+            }
+            // show the label and let the canvas clip it
+            style.display = ''; 
         }
+
     });
     //load json data
     st.loadJSON(eval( '(' + json + ')' ));
