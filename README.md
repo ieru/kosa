@@ -6,7 +6,7 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 A current live demo may be seen on [demo](http://kos.appgee.net) (Open-Alpha version)
 
-[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa)[![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa)
+[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa)
 
 ## Requirements
 
@@ -20,8 +20,7 @@ A current live demo may be seen on [demo](http://kos.appgee.net) (Open-Alpha ver
 - First step is to install a graph-based database: 4-store has been used
 - Intallation can be accomplished from a debian-like system running: 
 
-( More info on installing 4store, here:
-http://4store.org/trac/wiki/Install
+For more info on installing 4store: [4store Wiki](http://4store.org/trac/wiki/Install)
 
 ```
 $ sudo apt-get install 4-store
@@ -72,7 +71,7 @@ $ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontolo
 $ ruby _loader.rb co_010 co_010_ontology.rdf
 ...
 ...
-<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type..
+<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#...
 <http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label...
 
 Loading ./co_010_ontology.rdf into co_010 in 4store
@@ -142,6 +141,26 @@ http://localhost:4568
 ..Voila..
 
 ```
+## javascript, templates & css changes
+
+Since Front and Back are now completely separated, to modify html, javascript or
+styles follow these steps:
+    
+    
+    Download and install [node.js](http://nodejs.org/download/)
+    
+    $ sudo npm install -g brunch
+    
+    $ cd __YOUR_SITE_DIR__/public.dev
+    __YOUR_SITE_DIR__/public.dev$ sudo npm start
+    
+    > package-name@0.0.1 start /home/www/kos/public.dev
+    > brunch build --production
+    
+    09 Nov 06:17:20 - info: compiled 30 files and 2 cached into 7 files, copied 13 in 4256ms
+    
+    ( refresh your browser )
+
 
 ## Troubleshooting
 
@@ -157,15 +176,18 @@ http://localhost:4568
 
 ## Links
 
+- [HTML5 Canvas](http://www.w3.org/html/logo/)
 - [Ruby](https://www.ruby-lang.org)
 - [Sinatra](http://www.sinatrarb.com/)
 - [4-store](http://4store.org/)
-- [HTML5 Canvas](http://www.w3.org/html/logo/)
-- [Bootstrap 3](http://getbootstrap.com/)
+- [Backbonejs](http://backbonejs.org/)
+- [Handlebarjs](http://handlebarsjs.com/)
+- [SASS](http://sass-lang.com/)
+- [Bootstrap 3.0](http://getbootstrap.com/)
 
 ## Licence
 
-Copyright University of Alcala. Licenced under GNU/ GPL version 2 Licence.  
-RDF Tool on this application is based on RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
+Copyright University of Alcala, 2013. Licensed unced under GNU/GPL version 2 Licence.  
+RDF Tool on this application is based on ruby RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
 
 
