@@ -138,7 +138,8 @@ function init(){
         //nodes or edges
         Navigation: {
           enable:true,
-          panning:true
+          panning:true,
+          zppming:10
 	},
         Node: {
             height: 20,
