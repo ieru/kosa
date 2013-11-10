@@ -1,20 +1,20 @@
-## KOSaggregator
+### KOSaggregator
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
-## Demo
+### Demo
 
 A current live demo may be seen on [demo](http://kos.appgee.net) (Open-Alpha version)
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa)
 
-## Requirements
+### Requirements
 
 - Ruby 
 - ImageMagick
 - 4-store
 
-## Installation
+### Installation
 
 
 - First step is to install a graph-based database: 4-store has been used
@@ -141,7 +141,7 @@ http://localhost:4568
 ..Voila..
 
 ```
-## javascript, templates & css changes
+### javascript, templates & css changes
 
 Since Front and Back are now completely separated, to modify html, javascript or
 styles follow these steps:
@@ -162,19 +162,19 @@ styles follow these steps:
     ( refresh your browser )
 
 
-## Troubleshooting
+### Troubleshooting
 
 [Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
 
-## Todo List
+### Todo List
 
 [TODO-LIST](https://github.com/ieru/kosa/wiki/TODO-LIST)
 
-## API documentation
+### API documentation
 
 [API-documentation](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
 
-## Links
+### Links
 
 - [HTML5 Canvas](http://www.w3.org/html/logo/)
 - [Ruby](https://www.ruby-lang.org)
@@ -185,7 +185,7 @@ styles follow these steps:
 - [SASS](http://sass-lang.com/)
 - [Bootstrap 3.0](http://getbootstrap.com/)
 
-## Licence
+### Licence
 
 Copyright University of Alcala, 2013. Licensed unced under GNU/GPL version 2 Licence.  
 RDF Tool on this application is based on ruby RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
