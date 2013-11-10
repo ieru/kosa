@@ -3,23 +3,25 @@
 #\ -w -p 4568
 $:.unshift(File.expand_path('../lib',  __FILE__))
 
+ 
+
 require 'rubygems' || Gem.clear_paths
 require 'bundler'
 Bundler.setup
 
+require "sinatra"
+require "haml"
+# require "KOSa"
+
 require 'rack/cache'
-require 'rdf/kosa'
 require 'logger'
 
 set :logging, false
 set :raise_errors, true
-
 set :show_exceptions, true
-
 set :static, true
 
 set :root, File.dirname(__FILE__) 
-
 set :environment, (ENV['RACK_ENV'] || 'production').to_sym
 
 APP_ROOT = File.dirname(__FILE__)
@@ -41,4 +43,5 @@ use Rack::Cache,
 
 disable :run, :reload
 
-run RDF::Kosa::Application
+# run RDF::Kosa::Application
+run Sinatra::Application
