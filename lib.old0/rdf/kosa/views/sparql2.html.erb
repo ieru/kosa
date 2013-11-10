@@ -1,0 +1,106 @@
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Navigational Browser</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+           <!--
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+            -->
+          </ul>
+          
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/tools">RDF Tools</a></li>
+            <li class="active"><a href="#">SPARQL API query form</a></li>
+            <li><a href="/signin">Sign in</a></li>
+            <!--
+            <li><a href="navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top</a></li>
+            -->
+          </ul>
+         
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h2 class="h2">SPARQL API query form</h2>
+        
+    
+        
+        <form  id="form">
+         <div class="container text-center"> 
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+               <textarea id="query" class="form-control" rows="12">PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT * WHERE {
+  ?s ?p ?o } LIMIT 50</textarea>
+            </div>
+          </div>
+         </div>
+         <div class="container text-center">
+          <div class="row">
+            <button class="btn btn-default" id="clear">Reset Form</button>
+            <button class="btn btn-primary" id="run">Run Query</button>
+          </div>
+         </div>
+        </form>
+     </div>
+     
+     <div id="result" class="bs-docs-section">
+      <div class="bs-callout bs-callout-warning">
+      <h4>Results</h4>
+      <p>No results yet. Run Query!</p>
+      </div>
+     </div>       
+
+    <!--
+      <div class="col-lg-12">
+       
+       <h2 class="h2">Results</h2>
+       -->
+        <!-- result is loaded here -->       
+        <!--
+        <p id="result">No results yet. Run Query!</p>
+       </div>
+     </div> 
+     -->
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/js/jquery.js"></script>
+    <!--<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js"></script>-->
+    <script src="/js/sparql.js?as4d"></script>
+    <script src="/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

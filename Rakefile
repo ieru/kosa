@@ -1,38 +1,5 @@
 require 'rubygems'
 require 'fileutils'
-require 'yard'
-
-task :yard => [:clean_doc, :readme]
-
-YARD::Rake::YardocTask.new do |y|
-  y.files = Dir.glob("lib/**/*.rb") +
-            Dir.glob("vendor/bundler/**/rdf*/lib/**/*.rb") +
-            Dir.glob("vendor/bundler/**/json-ld*/lib/**/*.rb") +
-            Dir.glob("vendor/bundler/**/sparql*/lib/**/*.rb") +
-            Dir.glob("vendor/bundler/**/spira*/lib/**/*.rb") +
-            Dir.glob("vendor/bundler/**/sxp*/lib/**/*.rb") +
-            ["-"] +
-            Dir.glob("*-README")
-end
-
-desc "Clean documentation"
-task :clean_doc do
-  FileUtils.rm_rf 'doc'
-end
-
-desc "Create README links"
-task :readme do
-  dir = File.expand_path("../", __FILE__)
-  Dir.glob("readmes/*").each {|d| FileUtils.rm d}
-  Dir.glob('vendor/bundler/**/README').each do |path|
-    d = path.split('/')[-2]
-    next unless d
-    d.sub!(/-([a-z0-9]{12})$/, '')
-    d.sub!(/-\d+\.\d+(?:\.\d+)$/, '')
-    puts "link #{path} to readmes/#{d}"
-    FileUtils.ln_s "#{dir}/#{path}", "#{dir}/readmes/#{d}" unless File.exist?("#{dir}/readmes/#{d}")
-  end
-end
 
 namespace :cache do
   desc 'Clear document cache'
@@ -41,37 +8,7 @@ namespace :cache do
   end
 end
 
-desc "Create DOAP links"
-task :doap do
-  require 'linkeddata'
-  require 'rdf/trig'
-  require 'json/ld'
-  require 'rdf/json'
-  require 'rdf/microdata'
-  require 'equivalent-xml'
-  require 'yaml'
-
-  g = RDF::Graph.new
-  Dir.glob('vendor/bundler/**/etc/doap.*') do |path|
-    begin
-      next if path =~ %r(/rdf-\d.*\.(nq|nt)$)
-      puts "load #{path}"
-      g.load(path)
-    rescue
-      puts "#{$!}"
-    end
-  end
-  RDF::NTriples::Writer.open("etc/doap.nt") {|w| w << g}
-  puts "dumped ntriples"
-
-  frame = File.open(File.expand_path("../etc/doap-frame.jsonld", __FILE__))
-  JSON::LD::API.fromRDF(g.each_statement.to_a) do |expanded|
-    puts "expanded"
-    JSON::LD::API.frame(expanded, frame) do |framed|
-      puts "frame"
-      File.open("etc/doap.jsonld", "w") do |f|
-        f.write(framed.to_json(JSON::LD::JSON_STATE))
-      end
-    end
-  end
+desc "Sample task"
+task :task1 do
+  # require '..'
 end
