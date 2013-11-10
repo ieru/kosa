@@ -174,7 +174,7 @@ styles follow these steps:
 
 [API-documentation](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
 
-### Links
+### Resources
 
 - [HTML5 Canvas](http://www.w3.org/html/logo/)
 - [Ruby](https://www.ruby-lang.org)
@@ -185,9 +185,14 @@ styles follow these steps:
 - [SASS](http://sass-lang.com/)
 - [Bootstrap 3.0](http://getbootstrap.com/)
 
-### Licence
+### Author
 
-Copyright University of Alcala, 2013. Licensed unced under GNU/GPL version 2 Licence.  
-RDF Tool on this application is based on ruby RDF:Distiller gem. Refer to https://github.com/gkellogg/rdf-distiller for Licence info.
+University of Alcala
+
+### 'License'
+
+This is free and unemcumbered software released into the public domain. For more information, see the accompanying UNLICENSE file.
+
+If you're unfamiliar with public domain, that means it's perfectly fine to start with this skeleton and code away, later relicensing as you see fit.
 
 

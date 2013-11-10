@@ -6,7 +6,7 @@ $:.unshift(File.expand_path('../lib',  __FILE__))
 require "rubygems"
 require "bundler/setup"
 require "sinatra"
-# require "haml"
+require "haml"
 # require "app"
  
 
