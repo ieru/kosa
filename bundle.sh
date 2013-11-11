@@ -1,3 +1,3 @@
 #!/bin/sh
 
-rvm all do bundle install --deployment
+rvm all do bundle install

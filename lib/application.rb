@@ -3,8 +3,14 @@
 require 'rubygems'
 
 require 'sinatra'
-require 'sinatra/sparql'
+# require 'sinatra/sparql'
 require 'sinatra/respond_to'
+
+
+require 'rdf'
+require 'data_objects'
+require 'do_sqlite3'
+require 'rdf/do'
 
 # require 'rdf/4store'
 # require 'uri'
@@ -15,18 +21,27 @@ require 'yajl'
 # require 'sparql/client'
 
 require 'siren'
+include RDF
 
-# Databases adapters here:
-require 'dm-core'
-require 'dm-migrations/adapters/dm-sqlite-adapter'
+# Databases adapters here: 
+# --> MOVE to SpiraORM ¿?
+# require 'dm-core'
+# require 'dm-migrations/adapters/dm-sqlite-adapter'
 
 #
 # RelDBs:
+
 #
+# Datamapper removed, since deprecated: 
 # DataMapper.setup(:default, "sqlite3::memory:")
-  
-  DataMapper::setup(:default, ENV['DATABASE_URL'] ||
-     "sqlite3://#{File.join(File.dirname(__FILE__), 'tmp', 'triples.db')}")
+#  DataMapper::setup(:default, ENV['DATABASE_URL'] ||
+#     "sqlite3://#{File.join(File.dirname(__FILE__), 'tmp', 'kosa.db')}")
+
+repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FILE__), 'kosa.db')}')
+# repo = RDF::DataObjects::Repository.new 'postgres://postgres@server/database'
+# heroku_repo = RDF::DataObjects::Repository.new(ENV['DATABASE_URL'])
+
+# repo.load('http://datagraph.org/jhacker/foaf.nt')
 
 
 
