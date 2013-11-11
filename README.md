@@ -1,4 +1,4 @@
-### KOSaggregator
+### [KOSaggregator]()
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
@@ -144,15 +144,15 @@ http://localhost:4568
 ### javascript, templates & css changes
 
 Since Front and Back are now completely separated, to modify html, javascript or
-styles follow these steps:
+styles follow these steps:  
+
     
-    
-    Download and install [node.js](http://nodejs.org/download/)
+Download and install [node.js](http://nodejs.org/download/)
     
     $ sudo npm install -g brunch
     
     $ cd __YOUR_SITE_DIR__/public.dev
-    __YOUR_SITE_DIR__/public.dev$ sudo npm start
+    $ sudo npm start
     
     > package-name@0.0.1 start /home/www/kos/public.dev
     > brunch build --production

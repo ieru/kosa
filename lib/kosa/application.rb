@@ -1,64 +1,41 @@
 # encoding: UTF-8
 
-
-#
-#				MAIN APP!
-#
 require 'rubygems'
-require 'sinatra/sparql'
-require 'sinatra/partials'
-require 'sinatra/respond_to'
 
-require 'tempfile'
-require 'rdf/turtle'
+require 'sinatra'
+# require 'sinatra/base'
 
-require 'erubis'
-require 'linkeddata'
-# require 'rdf/kosa/extensions'
-require 'rdf/4store'
-require 'uri'
-# require 'nokogiri'
-require 'json'
-require 'yajl'
+# require 'sinatra/sparql'
+# require 'sinatra/respond_to'
 
-require 'net/http'
-require 'rest_client'
-require 'sparql/client'
+# require 'rdf/4store'
+# require 'uri'
+# require 'json'
+# require 'yajl'
+# require 'net/http'
+# require 'rest_client'
+# require 'sparql/client'
 
-# require 'json_select'
-# require 'jsonpath'
 
-# require 'siren'
-
-# require 'fileutils'
-
-# require 'pp'
-
-# require 'erb'
-
-# Relational Databases Adapters here:
-
+# Databases adapters here:
 # require 'dm-core'
 # require 'dm-migrations/adapters/dm-sqlite-adapter'
 
-#
-#				SOME CONFIG!
-#
+module kosa
+  class Application < Sinatra::Base
 
-#set :environment, :production
-#set :sessions, true
-#set :dump_errors, false
-#set :show_exceptions, false
-#set :raise_errors, true
-
-# Main Class 
-class Application < Sinatra::Base
-
-  get '/api' do
-    "a"
-    # {}.to_json
+    get '/' do
+       "aaaa"
+       # {}.to_json
+    end
+    
   end
 end
+
+
+
+
+
 
 =begin
 #

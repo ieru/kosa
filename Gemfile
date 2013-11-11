@@ -26,8 +26,7 @@ gem 'sinatra-respond_to', :git => "git://github.com/gkellogg/sinatra-respond_to.
 
 gem 'rdf-raptor'
 gem 'rest-client'
-
-# gem 'fileutils'
+gem 'fileutils'
 
 # database adapters
 gem 'dm-core'
