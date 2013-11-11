@@ -14,49 +14,367 @@ require 'yajl'
 # require 'rest_client'
 # require 'sparql/client'
 
+require 'siren'
 
 # Databases adapters here:
 require 'dm-core'
 require 'dm-migrations/adapters/dm-sqlite-adapter'
 
-get '/test' do
-  "test"
-end
+#
+# RelDBs:
+#
+# DataMapper.setup(:default, "sqlite3::memory:")
+  
+  DataMapper::setup(:default, ENV['DATABASE_URL'] ||
+     "sqlite3://#{File.join(File.dirname(__FILE__), 'tmp', 'triples.db')}")
 
-get '/api' do
-  {}.to_json
-end
 
+
+    # Helper module to avoid confussion between JSON, RDF::JSON gems
+    module JSON2
+      include ::JSON
+      module_function :parse
+    end
+
+
+    # module kosa
+
+
+    get '/test' do
+        "test"
+    end
+
+    get '/api' do
+        {}.to_json
+    end
+
+    #
+    # API
+    #
+    
+    # first node in a tree
+    get '/api/gettopconcepts' do
+      lang = params[:lang]
+      node = params[:node]
+      getTopConcepts(node, lang)
+    end
+
+    # first node in a tree
+    get '/api/gettopconceptsnumchilds' do
+      lang = params[:lang]
+      node = params[:node]
+      getTopConceptsNumChilds(node, lang)
+    end
+    
+    # data from one node
+    get '/api/getconcept' do
+      lang = params[:lang]
+      node = params[:node]
+      getConcept(node, lang)
+    end
+    
+    # all nodes JSON object
+    get '/api/getconcepts' do
+      lang = params[:lang]
+      getConcepts(lang)
+    end
+    
+    # Parent nodes
+    get '/api/getbroaderconcepts' do
+      lang = params[:lang]
+      node = params[:node]
+      getBroaderConcepts(node, lang)
+    end
+    
+    # node children. Returns {} if no children
+    get '/api/getnarrowerconcepts' do
+      lang = params[:lang]
+      node = params[:node]
+      getNarrowerConcepts(node, lang)
+    end
+
+    # number of children of the given node. Returns {0} if no children
+    get '/api/getnarrowerconceptsnumchilds' do
+      lang = params[:lang]
+      node = params[:node]
+      getNarrowerConceptsNumChilds(node, lang)
+    end
+    
+    get '/api/getrelatedconcepts' do
+      lang = params[:lang]
+      node = params[:node]
+      getRelatedConcepts(node, lang)
+    end
+    
+
+=begin
+    #
+    # basic CRUD
+    #
+    
+    # Index // List
+    get '/api/triples' do
+      content_type 'application/json'
+      { 'content' => Array(Triples.all) }.to_json
+    end
+    
+    # Create
+    post '/api/triples' do
+      opts = Triples.parse_json(request.body.read) rescue nil
+      halt(401, 'Invalid Format') if opts.nil?
+    
+      triple = Triples.new(opts)
+      halt(500, 'Could not save triple') unless triple.save
+    
+      response['Location'] = triple.url
+      response.status = 201
+    end
+    
+    # Read (:id)
+    get '/api/triples/:id' do
+      triple = Triples.get(params[:id]) rescue nil
+      halt(404, 'Not Found') if triple.nil?
+    
+      content_type 'application/json'
+      { 'content' => triple }.to_json
+    end
+    
+    # Update (:id)
+    put '/api/triples/:id' do
+      triple = Triples.get(params[:id]) rescue nil
+      halt(404, 'Not Found') if triple.nil?
+    
+      opts = Triples.parse_json(request.body.read) rescue nil
+      halt(401, 'Invalid Format') if opts.nil?
+    
+      triple.description = opts[:description]
+      triple.is_done = opts[:is_done]
+      triple.save
+    
+      response['Content-Type'] = 'application/json'
+      { 'content' => triple }.to_json
+    end
+    
+    # Delete (:id)
+    delete '/api/triples/:id' do
+      triple = Triples.get(params[:id]) rescue nil
+      triple.destroy unless triple.nil?
+    end
+
+=end
+
+    def getTopConcepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        # return JSONSelect("*:root").matches(json_string)
+        # {}.to_json
+        # json_string = getJson
+        # json = JSON2.parse("["+json_string+"]") 
+        
+        # v1: json_string = getJson
+        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-term-parents/", "CO_010:0000000")
+        
+        parser = Yajl::Parser.new
+        json = parser.parse(json_string)
+                
+        ## Siren.query("$[={'aa':'@.name'}]", json).to_json
+        
+        
+        # v1: Siren.query("$[=name]", json).to_json
+        Siren.query("$[0][0]", json).to_json        
+      end
+    end
+
+
+    def getTopConceptsNumChilds(node=nil, lang="en")
+      if node.nil?
+        [0].to_json
+      else
+        # return JSONSelect("*:root").matches(json_string)
+        # {}.to_json
+        # json_string = getJson
+        # json = EXTERNAL.parse("["+json_string+"]") 
+        
+        json_string = getJson
+
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
+                
+        # Siren.query("$[={'aa':'@.name'}]", json).to_json
+        Siren.query("$[? children != null][=children.size]", json).to_json
+      end
+    end
+
+
+
+    def getConcept(node=nil, lang="en")
+      if node.nil? 
+        {}.to_json
+      else
+        # value = '\'*:val("'+node.to_s+'")\''
+        # value = ":val('cluster')"
+        # return JSONSelect(":has(.name:val(cluster))").matches(json_string)
+        # value = "'$..*[?(@.name="+node.to_s+")]'"
+        # value.to_s
+        # JsonPath.on(json_string, "$..*[?(@.name='cluster')]").to_json
+        # JsonPath.on(json_string, "$..children[?(@.name='"+node+"')].children.*").to_json
+        # JsonPath.on(json_string, "$.*[?(@.size=2023)]").to_json
+        # {}.to_json
+        # Siren.query("$..name[? @ ~ '"+node+"' ]", json_string).to_json
+        
+        # json = Siren.parse(json_string) # very slow parser, using standard JSON
+        
+        # Siren.query("$..name[? @ = '"+node+"']", json).to_json
+        # Siren.query("$..children", json).to_json
+        # Siren.query("$..children[= @[0]][? @.name = '"+node.to_s+"']", json).to_json
+        # [? @.name = '"+node+"']
+        # works on 1rst level
+        # Siren.query("$.children[? @.name = '"+node.to_s+"'][= @.children ]", json).to_json
+        # Siren.query("$..children[0][= @][? @.name = '"+node+"]']", json).to_json
+        # Siren.query("$..children[0:@.size-1:1][? @.size > 1][= @ ]", json).to_json
+        
+
+        # json_string = getJson
+        
+        # json = Siren.parse(json_string)
+        # json = EXTERNAL.parse("["+json_string+"]") 
+        
+        json_string = getJson
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
+        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @]", json).to_json
+     end
+    end
+
+    def getConcepts(lang="en")
+      # a = {"aa": "bb"}.to_json
+      content_type 'application/json'
+      return getJson
+      # parsed = JSON.parse(a)
+      # parsed["a"]
+      # json
+      # {}.to_json
+      # File.dirname(__FILE__).to_s
+      # File.dirname(__FILE__)
+      # json_path.to_s
+      # file.to_s
+    end
+
+
+    def getNarrowerConcepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        # JSONSelect(':root').matches(json)
+        # {}.to_json
+
+        # json = Siren.parse(json_string)
+        # json = EXTERNAL.parse("["+json_string+"]") 
+
+        # json_string = getJson
+        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
+        
+        parser = Yajl::Parser.new
+        json = parser.parse(json_string)
+        json.to_json
+        # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
+      end
+    end
+
+    def getNarrowerConceptsNumChilds(node=nil, lang="en")
+      if node.nil?
+        [0].to_json
+      else
+        # JSONSelect(':root').matches(json)
+        # {}.to_json
+
+        # json = Siren.parse(json_string)
+        # json = EXTERNAL.parse("["+json_string+"]") 
+
+        json_string = getUrlJson(node)
+        parser = Yajl::Parser.new
+        json = parser.parse("["+json_string+"]")
+
+        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @.children.size]", json).to_json
+      end
+    end
+
+
+    # Not implemented Yet
+    def getBroaderConcepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        # JSONSelect(':root').matches(json)
+        {}.to_json
+      end
+    end
+
+    # Not implemented Yet
+    def getRelatedConcepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        # JSONSelect(':root').matches(json)
+        {}.to_json
+      end
+    end
+
+
+    # dummy method with test JSON data <--- this should be retrieved from database
+    def getJson
+      json_file = File.dirname(__FILE__) + "/../public/json/test_json.json"
+      if File.exists?(json_file)
+        json = File.read(json_file)
+        # json
+        return json
+      else 
+        return {}.to_json
+      end
+    end
+
+
+    def getJsonFromExternalAPI(uri, node)
+      url = uri + node
+      resp = Net::HTTP.get_response(URI.parse(url))
+      return resp.body
+    end
+    
+
+    # recurse function to search a node within a JSON
+    # Complexity O(TOTAL_NODES) 
+    def transversalJsonSearch(json_string, function)
+      parser = Yajl::Parser.new
+      json_string = getJson
+      json = parser.parse("["+json_string+"]")
+      # json = JSON2.parse(json_string)
+      return extract_list(json)
+      # JSON2.parse(json).each do |node|
+    #    node.to_s + '<br>'
+     # end
+      #JSON2.parse(json).each_with_index do |node, indx|
+    #     node[indx].to_json
+         # indx.to_s
+     # end 
+    end
+
+
+    # end
 
 
 
 =begin
-#
-# In case we need a Relational DB
-#
-DataMapper.setup(:default, "sqlite3::memory:")
 
-# DataMapper::setup(:default, ENV['DATABASE_URL'] ||
-#  "sqlite3://#{File.join(File.dirname(__FILE__), 'tmp', 'triples.db')}")
-
-
-
-#
-# Helper module to avoid confussion between JSON, RDF::JSON gems
-#
-
-module EXTERNAL
-  include ::JSON
-  module_function :parse
-end
 
 #
 # Main module
 #
 
-module RDF::Kosa 
- # Class Triples
- class Triples
+ 
+
+# Class Triples
+class Triples
 
   include DataMapper::Resource
 
@@ -91,8 +409,9 @@ module RDF::Kosa
 
     ret
   end
+end
 
- end
+
 
  # Main Class 
  class Application < Sinatra::Base
@@ -220,49 +539,7 @@ module RDF::Kosa
 =end
     
 =begin
-    #
-    # temmporal method with dummy JSON data <--- this should be stores within a class
-    #
-    def getJson
-      json_file = File.dirname(__FILE__) + "/../../../public/json/test_data2.json"
-      if File.exists?(json_file)
-        json = File.read(json_file)
-        # json
-        return json
-      else 
-        return {}.to_json
-      end
-      
-    end
 
-    def getJsonFromExternalAPI(uri, node)
-      url = uri + node
-      
-      resp = Net::HTTP.get_response(URI.parse(url))
-      return resp.body
-      
-    end
-    
-
-    # recurse function to search a node within a JSON
-    # Complexity O(TOTAL_NODES) 
-    def transversalJsonSearch(json_string, function)
-      
-      parser = Yajl::Parser.new
-      json_string = getJson
-      json = parser.parse("["+json_string+"]")
-
-      # json = EXTERNAL.parse(json_string)
-      return extract_list(json)
-      # EXTERNAL.parse(json).each do |node|
-    #    node.to_s + '<br>'
-     # end
-      
-      #EXTERNAL.parse(json).each_with_index do |node, indx|
-    #     node[indx].to_json
-         # indx.to_s
-     # end 
-    end
 
 =end
 =begin
@@ -271,9 +548,7 @@ module RDF::Kosa
         v.is_a?(Hash) ? extract_list(v, (k == "children")) : (collect ? v : nil)
       end.compact.flatten
     end
-=end
 
-=begin
     #
     # Not used, used Siren Ruby Gem to move along the JSON 
     #
@@ -297,296 +572,11 @@ module RDF::Kosa
       end
       nil
     end
-    
-
-    def getTopConcepts(node=nil, lang="en")
-    
-      
-      if node.nil?
-        {}.to_json
-      else
-        # return JSONSelect("*:root").matches(json_string)
-        # {}.to_json
-        # json_string = getJson
-        # json = EXTERNAL.parse("["+json_string+"]") 
-        
-        
-
-        
-        # v1: json_string = getJson
-        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-term-parents/", "CO_010:0000000")
-        
-        parser = Yajl::Parser.new
-        json = parser.parse(json_string)
-                
-        ## Siren.query("$[={'aa':'@.name'}]", json).to_json
-        
-        
-        # v1: Siren.query("$[=name]", json).to_json
-        Siren.query("$[0][0]", json).to_json
-        
-      end
-    end
-
-    def getTopConceptsNumChilds(node=nil, lang="en")
-      if node.nil?
-        [0].to_json
-      else
-        # return JSONSelect("*:root").matches(json_string)
-        # {}.to_json
-        # json_string = getJson
-        # json = EXTERNAL.parse("["+json_string+"]") 
-        
-        
-        
-        json_string = getJson
-        
-        
-        parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-                
-        # Siren.query("$[={'aa':'@.name'}]", json).to_json
-        Siren.query("$[? children != null][=children.size]", json).to_json
-
-      end
-    end
-
-    def getConcept(node=nil, lang="en")
-    
-      if node.nil? 
-        {}.to_json
-      else
-        # value = '\'*:val("'+node.to_s+'")\''
-        # value = ":val('cluster')"
-        # return JSONSelect(":has(.name:val(cluster))").matches(json_string)
-        # value = "'$..*[?(@.name="+node.to_s+")]'"
-        # value.to_s
-        # JsonPath.on(json_string, "$..*[?(@.name='cluster')]").to_json
-        # JsonPath.on(json_string, "$..children[?(@.name='"+node+"')].children.*").to_json
-        # JsonPath.on(json_string, "$.*[?(@.size=2023)]").to_json
-        # {}.to_json
-        # Siren.query("$..name[? @ ~ '"+node+"' ]", json_string).to_json
-        
-        # json = Siren.parse(json_string) # very slow parser, using standard JSON
-        
-        # Siren.query("$..name[? @ = '"+node+"']", json).to_json
-        # Siren.query("$..children", json).to_json
-        # Siren.query("$..children[= @[0]][? @.name = '"+node.to_s+"']", json).to_json
-        # [? @.name = '"+node+"']
-        # works on 1rst level
-        # Siren.query("$.children[? @.name = '"+node.to_s+"'][= @.children ]", json).to_json
-        # Siren.query("$..children[0][= @][? @.name = '"+node+"]']", json).to_json
-        # Siren.query("$..children[0:@.size-1:1][? @.size > 1][= @ ]", json).to_json
-        
-
-        # json_string = getJson
-        
-        # json = Siren.parse(json_string)
-        # json = EXTERNAL.parse("["+json_string+"]") 
-        
-        json_string = getJson
-        parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-
-        
-
-        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @]", json).to_json
-        
-      end
-
-    end
-
-    def getConcepts(lang="en")
-      # a = {"aa": "bb"}.to_json
-      content_type 'application/json'
-      return getJson
-
-      # parsed = JSON.parse(a)
-      # parsed["a"]
-      # json
-      # {}.to_json
-      # File.dirname(__FILE__).to_s
-      # File.dirname(__FILE__)
-      # json_path.to_s
-      # file.to_s
-    end
-
-
-    def getNarrowerConcepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        # JSONSelect(':root').matches(json)
-        # {}.to_json
-
-        # json = Siren.parse(json_string)
-        # json = EXTERNAL.parse("["+json_string+"]") 
-
-        # json_string = getJson
-        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
-        
-        parser = Yajl::Parser.new
-        json = parser.parse(json_string)
-        json.to_json
-        # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
-      end
-    end
-
-    def getNarrowerConceptsNumChilds(node=nil, lang="en")
-      if node.nil?
-        [0].to_json
-      else
-        # JSONSelect(':root').matches(json)
-        # {}.to_json
-
-        # json = Siren.parse(json_string)
-        # json = EXTERNAL.parse("["+json_string+"]") 
-
-        json_string = getUrlJson(node)
-        parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-
-        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @.children.size]", json).to_json
-      end
-    end
-
-
-    # Not implemented Yet
-    def getBroaderConcepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        # JSONSelect(':root').matches(json)
-        {}.to_json
-      end
-    end
-
-    # Not implemented Yet
-    def getRelatedConcepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        # JSONSelect(':root').matches(json)
-        {}.to_json
-      end
-    end
-
-
-    #
-    #				RESTful API!
-    #
-    
-    # first node in a tree
-    get "/api/gettopconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getTopConcepts(node, lang)
-    end
-
-    # first node in a tree
-    get "/api/gettopconceptsnumchilds" do
-      lang = params[:lang]
-      node = params[:node]
-      getTopConceptsNumChilds(node, lang)
-    end
-    
-    # data from one node
-    get "/api/getconcept" do
-      lang = params[:lang]
-      node = params[:node]
-      getConcept(node, lang)
-    end
-    
-    # all nodes JSON object
-    get "/api/getconcepts" do
-      lang = params[:lang]
-      getConcepts(lang)
-    end
-    
-    # Parent nodes
-    get "/api/getbroaderconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getBroaderConcepts(node, lang)
-    end
-    
-    # node children. Returns {} if no children
-    get "/api/getnarrowerconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getNarrowerConcepts(node, lang)
-    end
-
-    # number of children of eacho of the children of the given node. Returns {0} if no children
-    get "/api/getnarrowerconceptsnumchilds" do
-      lang = params[:lang]
-      node = params[:node]
-      getNarrowerConceptsNumChilds(node, lang)
-    end
-    
-    get "/api/getrelatedconcepts" do
-      lang = params[:lang]
-      node = params[:node]
-      getRelatedConcepts(node, lang)
-    end
-    
-
-    
-    #
-    #				REST CRUD! (uses Triples Class)
-    #
-    
-    # Index // List
-    get "/api/triples" do
-      content_type 'application/json'
-      { 'content' => Array(Triples.all) }.to_json
-    end
-    
-    # Create
-    post "/api/triples" do
-      opts = Triples.parse_json(request.body.read) rescue nil
-      halt(401, 'Invalid Format') if opts.nil?
-    
-      triple = Triples.new(opts)
-      halt(500, 'Could not save triple') unless triple.save
-    
-      response['Location'] = triple.url
-      response.status = 201
-    end
-    
-    # Read (:id)
-    get "/api/triples/:id" do
-      triple = Triples.get(params[:id]) rescue nil
-      halt(404, 'Not Found') if triple.nil?
-    
-      content_type 'application/json'
-      { 'content' => triple }.to_json
-    end
-    
-    # Update (:id)
-    put "/api/triples/:id" do
-      triple = Triples.get(params[:id]) rescue nil
-      halt(404, 'Not Found') if triple.nil?
-    
-      opts = Triples.parse_json(request.body.read) rescue nil
-      halt(401, 'Invalid Format') if opts.nil?
-    
-      triple.description = opts[:description]
-      triple.is_done = opts[:is_done]
-      triple.save
-    
-      response['Content-Type'] = 'application/json'
-      { 'content' => triple }.to_json
-    end
-    
-    # Delete (:id)
-    delete "/api/triples/:id" do
-      triple = Triples.get(params[:id]) rescue nil
-      triple.destroy unless triple.nil?
-    end
+=end    
 
 
 
+=begin
     
     #
     #				SPARQL API!
@@ -647,9 +637,6 @@ module RDF::Kosa
       queryString = params[:q]
       sparqlService queryString
     end
-
-   
-    
 
 
 
@@ -763,7 +750,7 @@ module RDF::Kosa
         # @output.force_encoding('UTF-8') if @output
 
       #
-      #				IMPORT!
+      #	IMPORT
       #
 
 
@@ -982,9 +969,6 @@ module RDF::Kosa
     end
   end
 
-
-
-    
 end 
 # module
 =end
