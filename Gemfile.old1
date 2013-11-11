@@ -1,0 +1,8 @@
+# Gemfile
+source "https://rubygems.org"
+ 
+ gem "sinatra"
+ 
+ # development Gems
+ gem 'better_errors'
+ gem 'binding_of_caller'
