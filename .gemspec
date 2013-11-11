@@ -12,17 +12,17 @@ Gem::Specification.new do |s|
   s.summary            = 'A lightweight aggregator of Knowledge Organization Systems (KOS)'
   s.description        = s.summary
 
-  s.authors            = ['uah.es', 'Gregg Kellogg']
+  s.authors            = ['www.uah.es']
   s.email              = ''
 
   s.platform           = Gem::Platform::RUBY
-   s.files              = %w(README.md) + Dir.glob('lib/**/*.rb')
+  s.files              = %w(README.md) + Dir.glob('lib/*.rb')
   s.bindir             = %q(bin)
   s.executables        = %w()
   s.default_executable = s.executables.first
   s.require_paths      = %w(lib)
   s.extensions         = %w()
-  s.test_files         = %w()
+  s.test_files         = Dir.glob('spec/*.rb')
   s.has_rdoc           = false
 
   s.required_ruby_version      = '>= 1.8.7'
@@ -48,6 +48,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency  'rspec',              '>= 2.12.0'
   s.add_development_dependency  'rack-test',          '>= 0.6.2'
   s.add_development_dependency  'bundler'
-  s.add_development_dependency  'rdf-do'
+#  s.add_development_dependency  'rdf-do'
   s.post_install_message        = nil
 end

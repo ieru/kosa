@@ -9,11 +9,19 @@ describe RDF::Kosa::Application do
   end
 
   describe "/" do
-    it "gets HTML" do
+    it "gets OK response from /" do
       get '/'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should be_ok
       #last_response.body.should match %r{Ruby Linked Data Service}
+    end
+  end
+  describe "/test" do
+    it "gets a OK response from /test, and content is what should be expected" do
+      get '/test'
+      last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
+      last_response.should be_ok
+      last_response.body.should match %r{test}
     end
   end
 =begin

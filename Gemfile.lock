@@ -233,9 +233,6 @@ GEM
     rack-test (0.6.2)
       rack (>= 1.0)
     rake (10.1.0)
-    rdf-do (1.0.0)
-      data_objects (>= 0.10.11)
-      rdf (>= 1.0)
     rdf-raptor (1.0.1)
       ffi (>= 1.0)
       rdf (>= 1.0.0)
@@ -291,7 +288,6 @@ DEPENDENCIES
   rdf!
   rdf-4store!
   rdf-aggregate-repo!
-  rdf-do
   rdf-isomorphic!
   rdf-json!
   rdf-microdata!

@@ -3,36 +3,29 @@
 require 'rubygems'
 
 require 'sinatra'
-# require 'sinatra/base'
-
-# require 'sinatra/sparql'
-# require 'sinatra/respond_to'
+require 'sinatra/sparql'
+require 'sinatra/respond_to'
 
 # require 'rdf/4store'
 # require 'uri'
-# require 'json'
-# require 'yajl'
+require 'json'
+require 'yajl'
 # require 'net/http'
 # require 'rest_client'
 # require 'sparql/client'
 
 
 # Databases adapters here:
-# require 'dm-core'
-# require 'dm-migrations/adapters/dm-sqlite-adapter'
+require 'dm-core'
+require 'dm-migrations/adapters/dm-sqlite-adapter'
 
-module kosa
-  class Application < Sinatra::Base
-
-    get '/' do
-       "aaaa"
-       # {}.to_json
-    end
-    
-  end
+get '/test' do
+  "test"
 end
 
-
+get '/api' do
+  {}.to_json
+end
 
 
 
