@@ -152,12 +152,12 @@ Download and install [node.js](http://nodejs.org/download/)
     $ sudo npm install -g brunch
     
     $ cd __YOUR_SITE_DIR__/public.dev
-    $ sudo npm start
-    
-    > package-name@0.0.1 start /home/www/kos/public.dev
-    > brunch build --production
-    
-    09 Nov 06:17:20 - info: compiled 30 files and 2 cached into 7 files, copied 13 in 4256ms
+    $ ./deploy.sh
+
+    Compiling assets ...
+    11 Nov 05:57:39 - info: compiled 30 files and 2 cached into 7 files, copied 14 in 3905ms
+    Deploying assets ...
+    Done. Created ./../public
     
     ( refresh your browser )
 
