@@ -39,7 +39,6 @@ var HomeView = View.extend({
 	 
 	events: {
 		
-		'click .navbar-brand': 'drawCanvas' 
 	},
 	render: function() {
 		this.$el.html( this.template({}));
