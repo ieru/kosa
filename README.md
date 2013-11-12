@@ -11,11 +11,12 @@ The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alp
 ### Requirements
 
 - Ruby
-- PostgreSQL & Heroku PostgreHQ, Casandra, MongoDB, RedStore, Sesame ( Optional, Exchangeable )
-- ImageMagick ( Optional )
-- 4-store ( Optional )
+- ImageMagick 
+- 4-store
+- PostgreSQL & Heroku PostgreHQ, Casandra, MongoDB, RedStore, Sesame (Optional, Exchangeable)
+- SQLite, Virtuoso, AllegroGraph (Optional, Exchangeable)
 
-### Installation ( Deprected, writing new doc )
+### Installation
 
 
 - First step is to install a graph-based database: 4-store has been used
