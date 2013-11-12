@@ -17,4 +17,6 @@ $(function() {
 	// Start Backbone router
   	Backbone.history.start();
   	init();
+  	application.homeview
+  	
 });
