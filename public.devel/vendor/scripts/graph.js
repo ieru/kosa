@@ -156,7 +156,7 @@ function init(){
         Edge: {
             type: 'bezier',
             lineWidth: 2,
-            color: '#ccc',
+            color: '#000000',
             // color:'#23A4FF',
             overridable: true
         },
@@ -204,7 +204,7 @@ function init(){
     	    // style.backgroundColor = '#1a1a1a';
             style.fontSize = '12px';
             style.textAlign= 'center';
-            style.textDecoration = 'underline';
+            style.textDecoration = 'none';
             style.paddingTop = '0';
         },
         
@@ -218,6 +218,7 @@ function init(){
             //root node and the selected node.
             if (node.selected) {
                 node.data.$color = "#ff7";
+
                 // (jul) focus
                 // node.data.$color = "#23A4FF";
                 
@@ -249,10 +250,12 @@ function init(){
             if (node.selected) {    
               style.color = '#23A4FF';
               style.fontSize = '16px';
+              style.fontWeight = 'bold';
             }
             else {
-              style.color = '#ccc';
+              style.color = '#000000';
               style.fontSize = '14px';
+              style.fontWeight = 'normal';
             }
             // show the label and let the canvas clip it
             style.display = ''; 

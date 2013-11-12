@@ -21,6 +21,7 @@ exports.config =
           'vendor/scripts/backbone-mediator.js',
           'vendor/scripts/backbone.super.js',
           'vendor/scripts/jit.js',
+          'vendor/scripts/select2.min.js',
           'vendor/scripts/graph.js'
         ]
 
@@ -34,6 +35,7 @@ exports.config =
         # after: ['vendor/styles/helpers.css']
         before: [
           'vendor/styles/bootstrap.css',
+          'vendor/styles/select2.css',
           'vendor/styles/navbar-fixed-top.css'
         ]
         
