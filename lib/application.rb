@@ -3,47 +3,63 @@
 require 'rubygems'
 
 require 'sinatra'
-# require 'sinatra/sparql'
+require 'sinatra/sparql'
 require 'sinatra/respond_to'
 
 
 require 'rdf'
-require 'data_objects'
-require 'do_sqlite3'
-require 'rdf/do'
+#require 'rdf/do'
+require 'rdf/4store'
+#require 'rdf-agraph'
+require 'rdfs'
+#require 'data_objects'
+#require 'do_sqlite3'
+#require 'do_postgres'
 
-# require 'rdf/4store'
+
 # require 'uri'
 require 'json'
 require 'yajl'
 # require 'net/http'
 # require 'rest_client'
 # require 'sparql/client'
-
+require 'equivalent-xml'
 require 'siren'
-include RDF
 
-# Databases adapters here: 
-# --> MOVE to SpiraORM ¿?
-# require 'dm-core'
-# require 'dm-migrations/adapters/dm-sqlite-adapter'
+class Kosa < Sinatra::Base
 
-#
-# RelDBs:
+  attr_accessor :repo
+  
+  def initialize 
+    @repo = RDF::FourStore::Repository.new('http://localhost:8008/')
+    # @repo = RDF::DataObjects::Repository.new('sqlite3:kosa.db')
+    # repo = RDF::DataObjects::Repository.new 'postgres://postgres@server/database'
+    # repo = RDF::DataObjects::Repository.new(ENV['DATABASE_URL']) #(Heroku)
+    # url = "http://user:passwd@localhost:10035/repositories/example"
+    # repo = RDF::AllegroGraph::Repository.new(url, :create => true)
 
-#
-# Datamapper removed, since deprecated: 
-# DataMapper.setup(:default, "sqlite3::memory:")
-#  DataMapper::setup(:default, ENV['DATABASE_URL'] ||
-#     "sqlite3://#{File.join(File.dirname(__FILE__), 'tmp', 'kosa.db')}")
+  end
 
-repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FILE__), 'kosa.db')}')
-# repo = RDF::DataObjects::Repository.new 'postgres://postgres@server/database'
-# heroku_repo = RDF::DataObjects::Repository.new(ENV['DATABASE_URL'])
-
-# repo.load('http://datagraph.org/jhacker/foaf.nt')
-
-
+  #
+  # RDF::Repository API:
+  #
+ 
+  # repository.readable?
+  # repository.writable?
+  # repository.empty?
+  # repository.count  
+  # repository.has_statement?(statement)
+  # repository.each_statement { |statement| statement.inspect! }
+  # repository.insert(*statements)
+  # repository.insert(statement)
+  # repository.insert([subject, predicate, object])
+  # repository << statement
+  # repository << [subject, predicate, object]
+  # repository.delete(*statements)
+  # repository.delete(statement)
+  # repository.delete([subject, predicate, object])
+  # repository.clear!
+ 
 
     # Helper module to avoid confussion between JSON, RDF::JSON gems
     module JSON2
@@ -182,21 +198,10 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       if node.nil?
         {}.to_json
       else
-        # return JSONSelect("*:root").matches(json_string)
-        # {}.to_json
-        # json_string = getJson
-        # json = JSON2.parse("["+json_string+"]") 
-        
-        # v1: json_string = getJson
         json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-term-parents/", "CO_010:0000000")
         
         parser = Yajl::Parser.new
         json = parser.parse(json_string)
-                
-        ## Siren.query("$[={'aa':'@.name'}]", json).to_json
-        
-        
-        # v1: Siren.query("$[=name]", json).to_json
         Siren.query("$[0][0]", json).to_json        
       end
     end
@@ -206,17 +211,12 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       if node.nil?
         [0].to_json
       else
-        # return JSONSelect("*:root").matches(json_string)
-        # {}.to_json
-        # json_string = getJson
-        # json = EXTERNAL.parse("["+json_string+"]") 
         
         json_string = getJson
 
         parser = Yajl::Parser.new
         json = parser.parse("["+json_string+"]")
                 
-        # Siren.query("$[={'aa':'@.name'}]", json).to_json
         Siren.query("$[? children != null][=children.size]", json).to_json
       end
     end
@@ -227,33 +227,6 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       if node.nil? 
         {}.to_json
       else
-        # value = '\'*:val("'+node.to_s+'")\''
-        # value = ":val('cluster')"
-        # return JSONSelect(":has(.name:val(cluster))").matches(json_string)
-        # value = "'$..*[?(@.name="+node.to_s+")]'"
-        # value.to_s
-        # JsonPath.on(json_string, "$..*[?(@.name='cluster')]").to_json
-        # JsonPath.on(json_string, "$..children[?(@.name='"+node+"')].children.*").to_json
-        # JsonPath.on(json_string, "$.*[?(@.size=2023)]").to_json
-        # {}.to_json
-        # Siren.query("$..name[? @ ~ '"+node+"' ]", json_string).to_json
-        
-        # json = Siren.parse(json_string) # very slow parser, using standard JSON
-        
-        # Siren.query("$..name[? @ = '"+node+"']", json).to_json
-        # Siren.query("$..children", json).to_json
-        # Siren.query("$..children[= @[0]][? @.name = '"+node.to_s+"']", json).to_json
-        # [? @.name = '"+node+"']
-        # works on 1rst level
-        # Siren.query("$.children[? @.name = '"+node.to_s+"'][= @.children ]", json).to_json
-        # Siren.query("$..children[0][= @][? @.name = '"+node+"]']", json).to_json
-        # Siren.query("$..children[0:@.size-1:1][? @.size > 1][= @ ]", json).to_json
-        
-
-        # json_string = getJson
-        
-        # json = Siren.parse(json_string)
-        # json = EXTERNAL.parse("["+json_string+"]") 
         
         json_string = getJson
         parser = Yajl::Parser.new
@@ -266,14 +239,6 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       # a = {"aa": "bb"}.to_json
       content_type 'application/json'
       return getJson
-      # parsed = JSON.parse(a)
-      # parsed["a"]
-      # json
-      # {}.to_json
-      # File.dirname(__FILE__).to_s
-      # File.dirname(__FILE__)
-      # json_path.to_s
-      # file.to_s
     end
 
 
@@ -281,19 +246,45 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       if node.nil?
         {}.to_json
       else
-        # JSONSelect(':root').matches(json)
-        # {}.to_json
-
-        # json = Siren.parse(json_string)
-        # json = EXTERNAL.parse("["+json_string+"]") 
-
-        # json_string = getJson
-        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
         
-        parser = Yajl::Parser.new
-        json = parser.parse(json_string)
-        json.to_json
-        # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
+        # Consult Adapter's Specific Respository syntax (http://rdf.rubyforge.org/RDF/Repository.html)
+        # to create queries. eg: DataObjects (SQLite or Postgres)->  http://rdf.rubyforge.org/do/RDF/DataObjects/Repository.html
+        # , AllegroGraph->http://rdf-agraph.rubyforge.org/ ... etc
+        
+        # AllegroGraph query syntax
+        #list = repo.build_query do |q|
+        #   q.pattern [:subject, RDFS.subClassOf,  node.to_s]
+        #end.map do |u|
+        #  {:child => u.subject}
+        #end
+          
+        # list = repo.query([:subject, RDF::RDFS.subClassOf,  node]).map do |u|
+        # list = repo.query([:s, RDF::SKOS.broader , :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        
+        query = RDF::Query.new do
+          pattern [:s, RDF::RDFS.label, :label]
+          pattern [:s, RDF::SKOS.broader, :o]
+        end
+        
+        # list = repo.query([:s, RDF::RDFS.label, :slabel][:o, RDF::RDFS.label, :olabel][:s, RDF::SKOS.broader, :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        # list = query.execute(repo).map { |w| {'parent'=>w.s, 'parent_name'=> w.label, 'child'=>w.o }  }
+        
+        # list.to_json
+        
+        repo.uri.to_s
+        
+        #list.class.name
+        #list.map { |o| {o.s, o.p, o.o} }.to_json
+        
+
+        
+        # Cropontology Proxy   
+        # json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
+        # parser = Yajl::Parser.new
+        # json = parser.parse(json_string)
+        # json.to_json
+        # # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
       end
     end
 
@@ -301,16 +292,9 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       if node.nil?
         [0].to_json
       else
-        # JSONSelect(':root').matches(json)
-        # {}.to_json
-
-        # json = Siren.parse(json_string)
-        # json = EXTERNAL.parse("["+json_string+"]") 
-
         json_string = getUrlJson(node)
         parser = Yajl::Parser.new
         json = parser.parse("["+json_string+"]")
-
         Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @.children.size]", json).to_json
       end
     end
@@ -321,7 +305,6 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       if node.nil?
         {}.to_json
       else
-        # JSONSelect(':root').matches(json)
         {}.to_json
       end
     end
@@ -331,7 +314,6 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       if node.nil?
         {}.to_json
       else
-        # JSONSelect(':root').matches(json)
         {}.to_json
       end
     end
@@ -356,9 +338,12 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
       return resp.body
     end
     
+   # end
 
-    # recurse function to search a node within a JSON
-    # Complexity O(TOTAL_NODES) 
+
+end
+   
+=begin
     def transversalJsonSearch(json_string, function)
       parser = Yajl::Parser.new
       json_string = getJson
@@ -375,20 +360,6 @@ repo = RDF::DataObjects::Repository.new('sqlite3://#{File.join(File.dirname(__FI
     end
 
 
-    # end
-
-
-
-=begin
-
-
-#
-# Main module
-#
-
- 
-
-# Class Triples
 class Triples
 
   include DataMapper::Resource

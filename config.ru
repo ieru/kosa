@@ -24,7 +24,7 @@ require File.expand_path '../lib/application.rb', __FILE__
 # require 'kosa'
 
 # Global config
-set :logging, false
+set :logging, true
 set :raise_errors, true
 set :show_exceptions, true
 set :static, true
@@ -50,4 +50,8 @@ use Rack::Cache,
 disable :run, :reload
 
 # Bootstrap
-run Sinatra::Application
+# classic:
+# run Sinatra::Application
+
+# modular:
+run Kosa

@@ -4,17 +4,18 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 ### Demo
 
-A current live demo may be seen on [demo](http://kos.appgee.net) (Open-Alpha version)
+The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alpha version)
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa)
 
 ### Requirements
 
-- Ruby 
-- ImageMagick
-- 4-store
+- Ruby
+- PostgreSQL & Heroku PostgreHQ, Casandra, MongoDB, RedStore, Sesame ( Optional, Exchangeable )
+- ImageMagick ( Optional )
+- 4-store ( Optional )
 
-### Installation
+### Installation ( Deprected, writing new doc )
 
 
 - First step is to install a graph-based database: 4-store has been used
@@ -180,6 +181,8 @@ Download and install [node.js](http://nodejs.org/download/)
 - [Ruby](https://www.ruby-lang.org)
 - [Sinatra](http://www.sinatrarb.com/)
 - [4-store](http://4store.org/)
+- [SQLite]() 
+- [PostgreSQL]() & [Heroku]() PostgreHQ,[Casandra](), [MongoDB](), [RedStore](), [Sesame](), [AllegroGraph]()
 - [Backbonejs](http://backbonejs.org/)
 - [Handlebarjs](http://handlebarsjs.com/)
 - [SASS](http://sass-lang.com/)
