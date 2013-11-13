@@ -2,9 +2,72 @@
 /.yardoc/
 /*.log
 /.bundle/
-/vendor/
-/cache/
-/readmes/
-/doc/
-/public/
-/import/data/*
+vendor/**
+cache/**
+cache/**/*
+readmes/*
+doc/*
+public/*
+import/data/*
+
+# eclipse
+*.pydevproject
+.project
+.metadata
+bin/**
+#tmp/**
+#tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+.buildpath
+
+# sublimetext
+/*.sublime-project
+*.sublime-workspace
+
+# netbeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# textmate
+*.tmproj
+*.tmproject
+tmtags
+
+# Linux
+.*
+!.gitignore
+!.htaccess
+*~
+
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+
+
