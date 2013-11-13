@@ -20,13 +20,14 @@ var Collection = Backbone.Collection.extend({
 	//--------------------------------------
   	//+ PUBLIC METHODS / GETTERS / SETTERS
   	//--------------------------------------
-  	model: Model
+  	model: Model,
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------
-    url: 'api/test',
+    url: '/api/test',
     parse: function (response){
-      return response[0].items;
+      return response.id
+      // console.log("hola");
     }
   	//--------------------------------------
   	//+ PRIVATE AND PROTECTED METHODS
