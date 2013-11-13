@@ -143,7 +143,7 @@ function init(){
 	},
         Node: {
             height: 20,
-            width: 40,
+            width: 80,
             //use a custom
             //node rendering function
             type: 'nodeline',
@@ -197,7 +197,7 @@ function init(){
             };
             //set label styles
             var style = label.style;
-            style.width = 40 + 'px';
+            style.width = 80 + 'px';
             style.height = 17 + 'px';            
             style.cursor = 'pointer';
             // style.color = 'black';
