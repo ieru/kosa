@@ -24,7 +24,10 @@ var Collection = Backbone.Collection.extend({
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------
-
+    url: 'api/test',
+    parse: function (response){
+      return response[0].items;
+    }
   	//--------------------------------------
   	//+ PRIVATE AND PROTECTED METHODS
   	//--------------------------------------
