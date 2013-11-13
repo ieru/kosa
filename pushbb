@@ -5,7 +5,6 @@ if [ "x$1" = "x" ];then
 	echo "$0 <commit message>"
 	exit 0
 fi	
-git add *
 git add .
 git commit -a  -m "$1"
 git push origin master
