@@ -3,11 +3,15 @@
 /*.log
 /.bundle/
 vendor/**
+cache/*
 cache/**
+cache/**/*
 cache/**/*
 readmes/*
 doc/*
 public/*
+public/**
+public/**/*
 import/data/*
 
 # eclipse

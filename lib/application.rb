@@ -6,25 +6,24 @@ require 'sinatra'
 require 'sinatra/sparql'
 require 'sinatra/respond_to'
 
-
 require 'rdf'
-#require 'rdf/do'
 require 'rdf/4store'
-#require 'rdf-agraph'
 require 'rdfs'
+#require 'rdf-agraph'
+#require 'rdf/do'
 #require 'data_objects'
 #require 'do_sqlite3'
 #require 'do_postgres'
 
 
-# require 'uri'
+require 'uri'
 require 'json'
 require 'yajl'
-# require 'net/http'
-# require 'rest_client'
-# require 'sparql/client'
 require 'equivalent-xml'
-require 'siren'
+#require 'siren'
+#require 'net/http'
+#require 'rest_client'
+#require 'sparql/client'
 
 class Kosa < Sinatra::Base
 
@@ -37,112 +36,248 @@ class Kosa < Sinatra::Base
     # repo = RDF::DataObjects::Repository.new(ENV['DATABASE_URL']) #(Heroku)
     # url = "http://user:passwd@localhost:10035/repositories/example"
     # repo = RDF::AllegroGraph::Repository.new(url, :create => true)
-
   end
 
-  #
-  # RDF::Repository API:
-  #
+
+    # RDF::Repository API:
  
-  # repository.readable?
-  # repository.writable?
-  # repository.empty?
-  # repository.count  
-  # repository.has_statement?(statement)
-  # repository.each_statement { |statement| statement.inspect! }
-  # repository.insert(*statements)
-  # repository.insert(statement)
-  # repository.insert([subject, predicate, object])
-  # repository << statement
-  # repository << [subject, predicate, object]
-  # repository.delete(*statements)
-  # repository.delete(statement)
-  # repository.delete([subject, predicate, object])
-  # repository.clear!
+    # repository.readable?
+    # repository.writable?
+    # repository.empty?
+    # repository.count  
+    # repository.has_statement?(statement)
+    # repository.each_statement { |statement| statement.inspect! }
+    # repository.insert(*statements)
+    # repository.insert(statement)
+    # repository.insert([subject, predicate, object])
+    # repository << statement
+    # repository << [subject, predicate, object]
+    # repository.delete(*statements)
+    # repository.delete(statement)
+    # repository.delete([subject, predicate, object])
+    # repository.clear!
  
 
-    # Helper module to avoid confussion between JSON, RDF::JSON gems
+    # Helper module to avoid confussion between JSON and RDF::JSON gems
     module JSON2
       include ::JSON
       module_function :parse
     end
 
 
-    # module kosa
+    #########################################################################################################
+    #########################################################################################################
+    
+    # api:
 
-
+    # test endpoint1 
     get '/test' do
         "test"
     end
     
+    # test endpoint2
     get '/api/test' do
         {:id=>'1', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1}.to_json
     end
     
+    # api index     
     get '/api' do
         {}.to_json
     end
 
-    #
-    # API
-    #
     
     # first node in a tree
     get '/api/gettopconcepts' do
       lang = params[:lang]
       node = params[:node]
-      getTopConcepts(node, lang)
+      get_top_concepts(node, lang)
     end
 
-    # first node in a tree
-    get '/api/gettopconceptsnumchilds' do
-      lang = params[:lang]
-      node = params[:node]
-      getTopConceptsNumChilds(node, lang)
-    end
-    
     # data from one node
     get '/api/getconcept' do
       lang = params[:lang]
       node = params[:node]
-      getConcept(node, lang)
+      get_concept(node, lang)
     end
     
     # all nodes JSON object
     get '/api/getconcepts' do
       lang = params[:lang]
-      getConcepts(lang)
+      get_concepts(lang)
     end
     
     # Parent nodes
     get '/api/getbroaderconcepts' do
       lang = params[:lang]
       node = params[:node]
-      getBroaderConcepts(node, lang)
+      get_broader_concepts(node, lang)
     end
     
     # node children. Returns {} if no children
     get '/api/getnarrowerconcepts' do
       lang = params[:lang]
       node = params[:node]
-      getNarrowerConcepts(node, lang)
+      get_narrower_concepts(node, lang)
     end
 
-    # number of children of the given node. Returns {0} if no children
-    get '/api/getnarrowerconceptsnumchilds' do
-      lang = params[:lang]
-      node = params[:node]
-      getNarrowerConceptsNumChilds(node, lang)
-    end
-    
     get '/api/getrelatedconcepts' do
       lang = params[:lang]
       node = params[:node]
-      getRelatedConcepts(node, lang)
+      get_related_concepts(node, lang)
     end
     
+  
+   # private methods
+   
+   # private
+  
+  
+    def get_top_concepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        {}.to_json
+        
+        # legacy: cropontology proxt
+        # json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-term-parents/", "CO_010:0000000")
+        # parser = Yajl::Parser.new
+        # json = parser.parse(json_string)
+        # Siren.query("$[0][0]", json).to_json        
+      end
+    end
 
+
+    def get_concept(node=nil, lang="en")
+      if node.nil? 
+        {}.to_json
+      else
+        {}.to_json
+        
+        # legacy: cropontology proxy
+        # json_string = getJson
+        # parser = Yajl::Parser.new
+        # json = parser.parse("["+json_string+"]")
+        # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @]", json).to_json
+     end
+    end
+
+    def get_concepts(lang="en")
+      # a = {"aa": "bb"}.to_json
+      return test_json
+    end
+
+
+    def get_narrower_concepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        
+        
+        # Consult Adapter's Specific Respository syntax (http://rdf.rubyforge.org/RDF/Repository.html)
+        # to create queries. eg: DataObjects (SQLite or Postgres)->  http://rdf.rubyforge.org/do/RDF/DataObjects/Repository.html
+        # , AllegroGraph->http://rdf-agraph.rubyforge.org/ ... etc        
+        # AllegroGraph query syntax:
+        #
+        # list = repo.build_query do |q|
+        #    q.pattern [:subject, RDFS.subClassOf,  node.to_s]
+        # end.map do |u|
+        #   {:child => u.subject}
+        # end
+        
+        # should work (?)      
+        # list = repo.query([:subject, RDF::RDFS.subClassOf,  node]).map do |u|
+        # list = repo.query([:s, RDF::SKOS.broader , :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        
+        node = remove_prefix(node)
+        
+        query = RDF::Query.new do
+          pattern [:s, RDF::RDFS.label, :label]
+          pattern [:s, RDF::SKOS.narrower, :o]
+        end
+        
+        # list = repo.query([:s, RDF::RDFS.label, :slabel][:o, RDF::RDFS.label, :olabel][:s, RDF::SKOS.broader, :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'name'=> w.label }  }
+        
+        list.to_json
+        
+        # {:name=>node, :children=>list.to_json}.to_json
+        
+
+        
+        # Cropontology Proxy   
+        # json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
+        # parser = Yajl::Parser.new
+        # json = parser.parse(json_string)
+        # json.to_json
+        # # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
+      end
+    end
+    
+    # Not implemented Yet
+    def get_broader_concepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        {}.to_json
+      end
+    end
+
+    # Not implemented Yet
+    def get_related_concepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        {}.to_json
+      end
+    end
+
+
+    # dummy method with test JSON data <--- this should be retrieved from database
+    def test_json
+      json_file = File.dirname(__FILE__) + "/../public/json/test_json.json"
+      if File.exists?(json_file)
+        json = File.read(json_file)
+        # json
+        return json
+      else 
+        return {}.to_json
+      end
+    end
+
+    # access external apis
+    def get_json_from_external_url(url, node)
+      url = url + node
+      resp = Net::HTTP.get_response(URI.parse(url))
+      return resp.body
+    end
+    
+    
+    # removes PREFIX from URIs 
+    def remove_prefix(node)
+      return node.to_s.split('/').last
+    end
+
+end
+
+
+
+
+
+
+
+   
 =begin
+
+
+
+    #################################################################################################################
+    #################################################################################################################
+    #################################################################################################################
+    
+    # todo: remove
+
+
     #
     # basic CRUD
     #
@@ -196,161 +331,7 @@ class Kosa < Sinatra::Base
       triple.destroy unless triple.nil?
     end
 
-=end
 
-    def getTopConcepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-term-parents/", "CO_010:0000000")
-        
-        parser = Yajl::Parser.new
-        json = parser.parse(json_string)
-        Siren.query("$[0][0]", json).to_json        
-      end
-    end
-
-
-    def getTopConceptsNumChilds(node=nil, lang="en")
-      if node.nil?
-        [0].to_json
-      else
-        
-        json_string = getJson
-
-        parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-                
-        Siren.query("$[? children != null][=children.size]", json).to_json
-      end
-    end
-
-
-
-    def getConcept(node=nil, lang="en")
-      if node.nil? 
-        {}.to_json
-      else
-        
-        json_string = getJson
-        parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @]", json).to_json
-     end
-    end
-
-    def getConcepts(lang="en")
-      # a = {"aa": "bb"}.to_json
-      content_type 'application/json'
-      return getJson
-    end
-
-
-    def getNarrowerConcepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        
-        # Consult Adapter's Specific Respository syntax (http://rdf.rubyforge.org/RDF/Repository.html)
-        # to create queries. eg: DataObjects (SQLite or Postgres)->  http://rdf.rubyforge.org/do/RDF/DataObjects/Repository.html
-        # , AllegroGraph->http://rdf-agraph.rubyforge.org/ ... etc
-        
-        # AllegroGraph query syntax
-        #list = repo.build_query do |q|
-        #   q.pattern [:subject, RDFS.subClassOf,  node.to_s]
-        #end.map do |u|
-        #  {:child => u.subject}
-        #end
-          
-        # list = repo.query([:subject, RDF::RDFS.subClassOf,  node]).map do |u|
-        # list = repo.query([:s, RDF::SKOS.broader , :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
-        
-        query = RDF::Query.new do
-          pattern [:s, RDF::RDFS.label, :label]
-          pattern [:s, RDF::SKOS.broader, :o]
-        end
-        
-        # list = repo.query([:s, RDF::RDFS.label, :slabel][:o, RDF::RDFS.label, :olabel][:s, RDF::SKOS.broader, :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
-        # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
-        list = query.execute(repo).map { |w| {'parent'=>w.s, 'parent_name'=> w.label, 'child'=>w.o }  }
-        
-        #list.to_json
-        
-        # repo.uri.to_s
-        repo.last.subject
-        
-        #list.class.name
-        #list.map { |o| {o.s, o.p, o.o} }.to_json
-        
-
-        
-        # Cropontology Proxy   
-        # json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
-        # parser = Yajl::Parser.new
-        # json = parser.parse(json_string)
-        # json.to_json
-        # # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
-      end
-    end
-
-    def getNarrowerConceptsNumChilds(node=nil, lang="en")
-      if node.nil?
-        [0].to_json
-      else
-        json_string = getUrlJson(node)
-        parser = Yajl::Parser.new
-        json = parser.parse("["+json_string+"]")
-        Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][= @.children.size]", json).to_json
-      end
-    end
-
-
-    # Not implemented Yet
-    def getBroaderConcepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        {}.to_json
-      end
-    end
-
-    # Not implemented Yet
-    def getRelatedConcepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        {}.to_json
-      end
-    end
-
-
-    # dummy method with test JSON data <--- this should be retrieved from database
-    def getJson
-      json_file = File.dirname(__FILE__) + "/../public/json/test_json.json"
-      if File.exists?(json_file)
-        json = File.read(json_file)
-        # json
-        return json
-      else 
-        return {}.to_json
-      end
-    end
-
-
-    def getJsonFromExternalAPI(uri, node)
-      url = uri + node
-      resp = Net::HTTP.get_response(URI.parse(url))
-      return resp.body
-    end
-    
-   # end
-   
-    def getss
-    end
-
-end
-   
-=begin
     def transversalJsonSearch(json_string, function)
       parser = Yajl::Parser.new
       json_string = getJson

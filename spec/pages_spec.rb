@@ -13,44 +13,16 @@ describe RDF::Kosa::Application do
       get '/'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should be_ok
-      #last_response.body.should match %r{Ruby Linked Data Service}
     end
   end
+  
   describe "/test" do
     it "gets a OK response from /test, and content is what should be expected" do
       get '/test'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should be_ok
-      last_response.body.should match %r{test}
-    end
-  end
-=begin
-  describe "import" do
-    it "gets HTML" do
-      get '/tools'
-      last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
-      last_response.should be_ok
-      #last_response.body.should match %r{Ruby Linked Data Service}
-    end
-  end
-
-  describe "sparql" do
-    it "gets HTML" do
-      get '/sparql'
-      last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
-      last_response.should be_ok
-      #last_response.body.should match %r{Ruby Linked Data Service}
-    end
-  end
-
-  describe "signin" do
-    it "gets HTML" do
-      get '/signin'
-      last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
-      last_response.should be_ok
-      #last_response.body.should match %r{Ruby Linked Data Service}
+      last_response.should match %r{test}
     end
   end
   
-=end
 end
