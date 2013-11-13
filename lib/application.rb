@@ -77,7 +77,7 @@ class Kosa < Sinatra::Base
     
     # test endpoint2
     get '/api/test' do
-        {:id=>'1', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1}.to_json
+        {:id=>'4', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1}.to_json
     end
     
     # api index     
