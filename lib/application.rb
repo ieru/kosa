@@ -274,10 +274,10 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         list = query.execute(repo).map { |w| {'parent'=>w.s, 'parent_name'=> w.label, 'child'=>w.o }  }
         
-        list.to_json
+        #list.to_json
         
         # repo.uri.to_s
-        # repo.last.subject
+        repo.last.subject
         
         #list.class.name
         #list.map { |o| {o.s, o.p, o.o} }.to_json

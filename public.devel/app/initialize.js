@@ -17,6 +17,7 @@ $(function() {
 	// Start Backbone router
   	Backbone.history.start();
   	// avoid race conditions
+  	
   	if ($('#infovis').length > 0) {
   	  init();
   	  application.homeView.initSearchBox();

@@ -17,22 +17,25 @@
   	//--------------------------------------
   	
   	routes: {
-      '': 'home',
-      '/api/getnarrowerconcepts/:node': 'getNarrowerConcepts'
-    },
+
+      ""					: "home",
+      "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts"
+      },
 
 
   	//--------------------------------------
   	//+ Route Handlers
   	//--------------------------------------
 
-  	home: function() {
+    home: function() {
 
-     $( 'body' ).html( application.homeView.render().el );
-   },
-   getNarrowerConcepts: function(node){
-     console.log(node);
-   }
+        $( 'body' ).html( application.homeView.render().el );
+    },
+   
+    getNarrowerConcepts: function (node){
+
+	 alert('aaaa');
+    }
  });
 
 

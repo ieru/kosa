@@ -10,7 +10,7 @@ if [ ! -f "./import/import.rb" ] || [ ! -x "./import/import.rb" ];then
   exit 1
 fi
 
-time ./import/import.rb $1
+time ruby -EBINARY ./import/import.rb $1
 
 
 
