@@ -1,1 +1,137 @@
-(function(){"use strict";var e=typeof window!="undefined"?window:global;if(typeof e.require=="function")return;var t={},n={},r=function(e,t){return{}.hasOwnProperty.call(e,t)},i=function(e,t){var n=[],r,i;/^\.\.?(\/|$)/.test(t)?r=[e,t].join("/").split("/"):r=t.split("/");for(var s=0,o=r.length;s<o;s++)i=r[s],i===".."?n.pop():i!=="."&&i!==""&&n.push(i);return n.join("/")},s=function(e){return e.split("/").slice(0,-1).join("/")},o=function(t){return function(n){var r=s(t),o=i(r,n);return e.require(o,t)}},u=function(e,t){var r={id:e,exports:{}};return n[e]=r,t(r.exports,o(e),r),r.exports},a=function(e,s){var o=i(e,".");s==null&&(s="/");if(r(n,o))return n[o].exports;if(r(t,o))return u(o,t[o]);var a=i(o,"./index");if(r(n,a))return n[a].exports;if(r(t,a))return u(a,t[a]);throw new Error('Cannot find module "'+e+'" from '+'"'+s+'"')},f=function(e,n){if(typeof e=="object")for(var i in e)r(e,i)&&(t[i]=e[i]);else t[e]=n},l=function(){var e=[];for(var n in t)r(t,n)&&e.push(n);return e};e.require=a,e.require.define=f,e.require.register=f,e.require.list=l,e.require.brunch=!0})(),require.register("test/test-helpers",function(e,t,n){var r=t("chai"),i=t("sinon-chai");r.use(i),n.exports={expect:r.expect,sinon:t("sinon")}}),require.register("test/views/HomeView_test",function(e,t,n){var r=t("views/HomeView"),i;describe("HomeView",function(){beforeEach(function(){i=new r,i.render()}),afterEach(function(){i.remove()}),it("Should display an artist",function(){expect(i.$el.find("#artist")).to.have.length(1)}),it("The artist should be Robert Ashley",function(){expect(i.$el.find("#artist").text()).to.equal("Robert Ashley")}),it("Should list nine operas",function(){expect(i.$el.find("#operas").find("li")).to.have.length(9)})})})
+(function(/*! Brunch !*/) {
+  'use strict';
+
+  var globals = typeof window !== 'undefined' ? window : global;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+
+  var has = function(object, name) {
+    return ({}).hasOwnProperty.call(object, name);
+  };
+
+  var expand = function(root, name) {
+    var results = [], parts, part;
+    if (/^\.\.?(\/|$)/.test(name)) {
+      parts = [root, name].join('/').split('/');
+    } else {
+      parts = name.split('/');
+    }
+    for (var i = 0, length = parts.length; i < length; i++) {
+      part = parts[i];
+      if (part === '..') {
+        results.pop();
+      } else if (part !== '.' && part !== '') {
+        results.push(part);
+      }
+    }
+    return results.join('/');
+  };
+
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function(name) {
+      var dir = dirname(path);
+      var absolute = expand(dir, name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var module = {id: name, exports: {}};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var require = function(name, loaderPath) {
+    var path = expand(name, '.');
+    if (loaderPath == null) loaderPath = '/';
+
+    if (has(cache, path)) return cache[path].exports;
+    if (has(modules, path)) return initModule(path, modules[path]);
+
+    var dirIndex = expand(path, './index');
+    if (has(cache, dirIndex)) return cache[dirIndex].exports;
+    if (has(modules, dirIndex)) return initModule(dirIndex, modules[dirIndex]);
+
+    throw new Error('Cannot find module "' + name + '" from '+ '"' + loaderPath + '"');
+  };
+
+  var define = function(bundle, fn) {
+    if (typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has(bundle, key)) {
+          modules[key] = bundle[key];
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+    }
+  };
+
+  var list = function() {
+    var result = [];
+    for (var item in modules) {
+      if (has(modules, item)) {
+        result.push(item);
+      }
+    }
+    return result;
+  };
+
+  globals.require = require;
+  globals.require.define = define;
+  globals.require.register = define;
+  globals.require.list = list;
+  globals.require.brunch = true;
+})();
+require.register("test/test-helpers", function(exports, require, module) {
+// This file will be automatically required when using `brunch test` command.
+var chai = require( 'chai' );
+var sinonChai = require( 'sinon-chai' );
+
+chai.use( sinonChai );
+
+module.exports = {
+  expect: chai.expect,
+  sinon: require( 'sinon' )
+};
+
+});
+
+;require.register("test/views/HomeView_test", function(exports, require, module) {
+var HomeView = require( 'views/HomeView' );
+var view;
+
+describe( 'HomeView', function() {
+  beforeEach( function() {
+    view = new HomeView();
+    view.render();
+  });
+
+  afterEach( function() { 
+    view.remove();
+  });
+    
+  it( 'Should display an artist', function() {
+    expect( view.$el.find('#artist') ).to.have.length( 1 );
+  });
+    
+  it( 'The artist should be Robert Ashley', function() {
+    expect( view.$el.find('#artist').text()).to.equal( 'Robert Ashley' );
+  });
+    
+  it( 'Should list nine operas', function() {
+    expect( view.$el.find('#operas').find('li')).to.have.length( 9 );
+  });
+    
+});
+});
+
+;
+//# sourceMappingURL=test.js.map

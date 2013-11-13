@@ -8,6 +8,7 @@
  */
 
  var Router = require('core/Router');
+ var Collection = require('core/Collection');
  var application = require('Application');
 
  var ApplicationRouter = Router.extend({
@@ -39,7 +40,7 @@
     test: function () {
       
       
-      var tree = new application.Collection();
+      var tree = new Collection();
       // tree.url = '/accounts';
       tree.fetch({
         success: function(response,xhr) {

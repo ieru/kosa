@@ -1,1 +1,650 @@
-(function(){"use strict";var e=typeof window!="undefined"?window:global;if(typeof e.require=="function")return;var t={},n={},r=function(e,t){return{}.hasOwnProperty.call(e,t)},i=function(e,t){var n=[],r,i;/^\.\.?(\/|$)/.test(t)?r=[e,t].join("/").split("/"):r=t.split("/");for(var s=0,o=r.length;s<o;s++)i=r[s],i===".."?n.pop():i!=="."&&i!==""&&n.push(i);return n.join("/")},s=function(e){return e.split("/").slice(0,-1).join("/")},o=function(t){return function(n){var r=s(t),o=i(r,n);return e.require(o,t)}},u=function(e,t){var r={id:e,exports:{}};return n[e]=r,t(r.exports,o(e),r),r.exports},a=function(e,s){var o=i(e,".");s==null&&(s="/");if(r(n,o))return n[o].exports;if(r(t,o))return u(o,t[o]);var a=i(o,"./index");if(r(n,a))return n[a].exports;if(r(t,a))return u(a,t[a]);throw new Error('Cannot find module "'+e+'" from '+'"'+s+'"')},f=function(e,n){if(typeof e=="object")for(var i in e)r(e,i)&&(t[i]=e[i]);else t[e]=n},l=function(){var e=[];for(var n in t)r(t,n)&&e.push(n);return e};e.require=a,e.require.define=f,e.require.register=f,e.require.list=l,e.require.brunch=!0})(),require.register("Application",function(e,t,n){var r={initialize:function(){var e=t("views/HomeView"),n=t("routers/ApplicationRouter");this.homeView=new e,this.applicationRouter=new n,typeof Object.freeze=="function"&&Object.freeze(this)}};n.exports=r}),require.register("config/ApplicationConfig",function(e,t,n){var r=function(){var e="/";return{BASE_URL:e}}.call();n.exports=r}),require.register("core/Collection",function(e,t,n){var r=Backbone.Collection.extend({model:Model,url:"/api/test",parse:function(e){return console.log("hola"),e.id}});n.exports=r}),require.register("core/Model",function(e,t,n){var r=Backbone.Model.extend({defaults:{id:"1",name:" ",children:[],related:[],childrenNumber:0,relatedNumber:0}});n.exports=r}),require.register("core/Router",function(e,t,n){var r=Backbone.Router.extend({routes:{},initialize:function(e){}});n.exports=r}),require.register("core/View",function(e,t,n){var r=Backbone.View.extend({template:function(){},initialize:function(){_.bindAll(this)},render:function(){return this.$el.html(this.template()),this}});n.exports=r}),require.register("events/Event",function(e,t,n){var r={APPLICATION_INITIALIZED:"onApplicationInitialized"};n.exports=r}),require.register("helpers/ViewHelper",function(e,t,n){Handlebars.registerHelper("link",function(e,t){e=Handlebars.Utils.escapeExpression(e),t=Handlebars.Utils.escapeExpression(t);var n='<a href="'+t+'">'+e+"</a>";return new Handlebars.SafeString(n)})}),require.register("initialize",function(e,t,n){var r=t("Application");$(function(){r.initialize(),Backbone.history.start(),$("#infovis").length>0&&(init(),r.homeView.initSearchBox())})}),require.register("routers/ApplicationRouter",function(e,t,n){var r=t("core/Router"),i=t("Application"),s=r.extend({routes:{"":"home","api/getnarrowerconcepts/:node":"getNarrowerConcepts","api/test":"test"},home:function(){$("body").html(i.homeView.render().el)},getNarrowerConcepts:function(e){alert("aaaa")},test:function(){var e=new i.Collection;e.fetch({success:function(e,t){console.log("Inside success"),console.log(e)},error:function(e){console.log(e)}})}});n.exports=s}),require.register("utils/BackboneView",function(e,t,n){var r=t("core/View"),i=t("templates/HomeViewTemplate"),s=r.extend({id:"view",template:i,initialize:function(){this.render=_.bind(this.render,this)},render:function(){return this.$el.html(this.template({content:"View Content"})),this}});n.exports=s}),require.register("views/HomeView",function(e,t,n){var r=t("core/View"),i=t("templates/homeViewTemplate"),s=r.extend({id:"home-view",template:i,initialize:function(){_.bindAll(this)},events:{},render:function(){return this.$el.html(this.template({})),this},initSearchBox:function(){sURL="/api",$("#selector").select2({width:"80%",placeholder:"Select user",minimumInputLength:1,ajax:{url:sURL,cache:!0,dataType:"json",data:function(e,t){return{q:e}},results:function(e,t){return{results:e}}},formatResult:function(e){return"aaa"},formatSelection:function(e){return"bbbb"},id:function(e){return"aaaa"},dropdownCssClass:"bigdrop"})}});n.exports=s})
+(function(/*! Brunch !*/) {
+  'use strict';
+
+  var globals = typeof window !== 'undefined' ? window : global;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+
+  var has = function(object, name) {
+    return ({}).hasOwnProperty.call(object, name);
+  };
+
+  var expand = function(root, name) {
+    var results = [], parts, part;
+    if (/^\.\.?(\/|$)/.test(name)) {
+      parts = [root, name].join('/').split('/');
+    } else {
+      parts = name.split('/');
+    }
+    for (var i = 0, length = parts.length; i < length; i++) {
+      part = parts[i];
+      if (part === '..') {
+        results.pop();
+      } else if (part !== '.' && part !== '') {
+        results.push(part);
+      }
+    }
+    return results.join('/');
+  };
+
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function(name) {
+      var dir = dirname(path);
+      var absolute = expand(dir, name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var module = {id: name, exports: {}};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var require = function(name, loaderPath) {
+    var path = expand(name, '.');
+    if (loaderPath == null) loaderPath = '/';
+
+    if (has(cache, path)) return cache[path].exports;
+    if (has(modules, path)) return initModule(path, modules[path]);
+
+    var dirIndex = expand(path, './index');
+    if (has(cache, dirIndex)) return cache[dirIndex].exports;
+    if (has(modules, dirIndex)) return initModule(dirIndex, modules[dirIndex]);
+
+    throw new Error('Cannot find module "' + name + '" from '+ '"' + loaderPath + '"');
+  };
+
+  var define = function(bundle, fn) {
+    if (typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has(bundle, key)) {
+          modules[key] = bundle[key];
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+    }
+  };
+
+  var list = function() {
+    var result = [];
+    for (var item in modules) {
+      if (has(modules, item)) {
+        result.push(item);
+      }
+    }
+    return result;
+  };
+
+  globals.require = require;
+  globals.require.define = define;
+  globals.require.register = define;
+  globals.require.list = list;
+  globals.require.brunch = true;
+})();
+require.register("Application", function(exports, require, module) {
+/**
+ * Application Bootstrapper
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Application = {
+
+    /**
+     * Initialize the app
+     * 
+     */
+    initialize: function() {
+
+        // Import views
+        var HomeView = require('views/HomeView');
+        var ApplicationRouter = require('routers/ApplicationRouter');
+
+        // Initialize views
+        this.homeView = new HomeView();
+        this.applicationRouter = new ApplicationRouter();
+        
+
+        if (typeof Object.freeze === 'function') Object.freeze(this);
+    }
+}
+
+module.exports = Application;
+
+});
+
+;require.register("config/ApplicationConfig", function(exports, require, module) {
+/**
+ * Application Configuration
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var ApplicationConfig = (function() {
+
+	/*
+   	 * @private
+	 */
+	var _baseUrl = "/";
+
+	/*
+   	 * Public interface
+	 */
+	return {
+		BASE_URL: _baseUrl
+	}
+
+}).call()
+
+module.exports = ApplicationConfig;
+});
+
+;require.register("core/Collection", function(exports, require, module) {
+/**
+ * Base Class for all Backbone Collections
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+var Model = require('core/Model');
+
+var Collection = Backbone.Collection.extend({
+
+	//--------------------------------------
+	//+ PUBLIC PROPERTIES / CONSTANTS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ INHERITED / OVERRIDES
+	//--------------------------------------
+	
+	//--------------------------------------
+  	//+ PUBLIC METHODS / GETTERS / SETTERS
+  	//--------------------------------------
+  	model: Model,
+  	//--------------------------------------
+  	//+ EVENT HANDLERS
+  	//--------------------------------------
+    url: '/api/test',
+    parse: function (response){
+      console.log("hola");
+      return response.id
+    }
+  	//--------------------------------------
+  	//+ PRIVATE AND PROTECTED METHODS
+  	//--------------------------------------
+
+});
+
+module.exports = Collection;
+});
+
+;require.register("core/Model", function(exports, require, module) {
+/**
+ * Base Class for all Backbone Models
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Model = Backbone.Model.extend({
+
+	//--------------------------------------
+	//+ PUBLIC PROPERTIES / CONSTANTS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ INHERITED / OVERRIDES
+	//--------------------------------------
+	
+	//--------------------------------------
+  	//+ PUBLIC METHODS / GETTERS / SETTERS
+  	//--------------------------------------
+  		defaults:{
+  			id: "1",
+  			name: " ",
+	  		children: [],
+	  		related: [],
+	  		childrenNumber:0,
+	  		relatedNumber:0
+  		}
+  		
+
+
+  	//--------------------------------------
+  	//+ EVENT HANDLERS
+  	//--------------------------------------
+
+  	//--------------------------------------
+  	//+ PRIVATE AND PROTECTED METHODS
+  	//--------------------------------------
+  
+});
+
+module.exports = Model;
+
+});
+
+;require.register("core/Router", function(exports, require, module) {
+/**
+ * Backbone Primary Router
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Router = Backbone.Router.extend({
+
+	//--------------------------------------
+    //+ INHERITED / OVERRIDES
+    //--------------------------------------
+    
+	routes: {},
+
+    /**
+     * Initializes the Base router
+     * @param  {Object} options 
+     * 
+     */
+    initialize: function( options ) {
+
+    }
+});
+
+module.exports = Router;
+});
+
+;require.register("core/View", function(exports, require, module) {
+/**
+ * View Base Class
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var View = Backbone.View.extend({
+
+  //--------------------------------------
+  //+ PUBLIC PROPERTIES / CONSTANTS
+  //--------------------------------------
+
+  /*
+   * @private
+   */
+  template: function() {},
+  
+
+  //--------------------------------------
+  //+ INHERITED / OVERRIDES
+  //--------------------------------------
+  
+  /*
+   * @private
+   */
+  initialize: function() {
+    _.bindAll( this );
+  },
+
+  /*
+   * @private
+   */
+  render: function() {
+    this.$el.html( this.template() );
+    
+    return this;
+  },
+
+  //--------------------------------------
+  //+ PUBLIC METHODS / GETTERS / SETTERS
+  //--------------------------------------
+
+  //--------------------------------------
+  //+ EVENT HANDLERS
+  //--------------------------------------
+
+  //--------------------------------------
+  //+ PRIVATE AND PROTECTED METHODS
+  //--------------------------------------
+
+});
+
+module.exports = View;
+
+});
+
+;require.register("events/Event", function(exports, require, module) {
+/**
+ * General events
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var Event = {
+	
+	/*
+   	 * Public interface
+	 */
+	APPLICATION_INITIALIZED: 'onApplicationInitialized'
+	
+
+}
+
+module.exports = Event;
+});
+
+;require.register("helpers/ViewHelper", function(exports, require, module) {
+/**
+ * Handlebars Template Helpers
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+/*
+* @return String
+*/
+Handlebars.registerHelper( 'link', function( text, url ) {
+
+  text = Handlebars.Utils.escapeExpression( text );
+  url  = Handlebars.Utils.escapeExpression( url );
+
+  var result = '<a href="' + url + '">' + text + '</a>';
+
+  return new Handlebars.SafeString( result );
+});
+
+});
+
+;require.register("initialize", function(exports, require, module) {
+/**
+ * Application Initializer
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var application = require('Application');
+
+$(function() {
+
+	// Initialize Application
+	application.initialize();
+
+	// Start Backbone router
+  	Backbone.history.start();
+  	// avoid race conditions
+  	
+  	if ($('#infovis').length > 0) {
+  	  init();
+  	  application.homeView.initSearchBox();
+  	}
+});
+
+});
+
+;require.register("routers/ApplicationRouter", function(exports, require, module) {
+/**
+ * Backbone Primary Router
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+ var Router = require('core/Router');
+ var Collection = require('core/Collection');
+ var application = require('Application');
+
+ var ApplicationRouter = Router.extend({
+
+	//--------------------------------------
+  	//+ Routes
+  	//--------------------------------------
+  	
+  	routes: {
+
+      ""					: "home",
+      "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
+      "api/test"				: "test"
+    },
+
+
+  	//--------------------------------------
+  	//+ Route Handlers
+  	//--------------------------------------
+
+    home: function() {
+
+      $( 'body' ).html( application.homeView.render().el );
+    },
+    
+    getNarrowerConcepts: function (node){
+      alert('aaaa');
+    },
+    test: function () {
+      
+      
+      var tree = new Collection();
+      // tree.url = '/accounts';
+      tree.fetch({
+        success: function(response,xhr) {
+    	     console.log("Inside success");
+    	     console.log(response);
+    	},
+    	error: function (errorResponse) {
+    	    console.log(errorResponse)
+    	}
+     });
+     
+    	    		            
+    }
+  });
+
+
+ module.exports = ApplicationRouter;
+
+});
+
+;require.register("utils/BackboneView", function(exports, require, module) {
+/**
+ * View Description
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var View     = require('core/View');
+var template = require('templates/HomeViewTemplate');
+
+var BackboneView = View.extend({
+
+  	/*
+   	 * @private
+	 */
+	id: 'view',
+	/*
+   	 * @private
+   	*/
+	template: template,
+	
+
+	//--------------------------------------
+  	//+ INHERITED / OVERRIDES
+  	//--------------------------------------
+
+	/*
+	 * @private
+	 */
+	initialize: function() {
+		this.render = _.bind( this.render, this );
+	},
+
+	/*
+	 * @private
+	 */
+	render: function() {
+		this.$el.html( this.template({
+			content: "View Content"
+		}));
+
+		return this;
+	}
+
+	//--------------------------------------
+	//+ PUBLIC METHODS / GETTERS / SETTERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ EVENT HANDLERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ PRIVATE AND PROTECTED METHODS
+	//--------------------------------------
+
+});
+
+module.exports = BackboneView;
+});
+
+;require.register("views/HomeView", function(exports, require, module) {
+/**
+ * View Description
+ * 
+ * @langversion JavaScript
+ * 
+ * @author 
+ * @since  
+ */
+
+var View     = require('core/View');
+var template = require('templates/homeViewTemplate');
+
+var HomeView = View.extend({
+
+  	/*
+   	 * @private
+	 */
+	id: 'home-view',
+	/*
+   	 * @private
+   	*/
+	template: template,
+
+
+	//--------------------------------------
+  	//+ INHERITED / OVERRIDES
+  	//--------------------------------------
+
+	/*
+	 * @private
+	 */
+	initialize: function() {
+		_.bindAll( this );
+	},
+
+	/*
+	 * @private
+	 */
+	 
+	events: {
+		
+	},
+	render: function() {
+		this.$el.html( this.template({}));
+
+		return this;
+	},
+	initSearchBox: function(){
+
+                            // sURL = HMP.core.getCallURL('users_json');
+                            sURL = '/api'
+                            $("#selector").select2({
+                                width: '80%',
+                                placeholder: "Select user",
+                                minimumInputLength: 1,
+                                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                                    url: sURL,
+                                    cache: true,
+                                    dataType : 'json',
+                                    data: function (term, page) {
+                                        return {
+                                            q: term
+                                        };
+                                    },
+                                    results: function (data, page) {
+                                        return {
+                                            results: data
+                                        };
+                                    }
+                                },
+                                formatResult: function(item) {
+                                    return "aaa";
+                                },
+                                formatSelection: function(item) {
+                                    return "bbbb";
+                                },
+                                id: function (obj) {
+                                  return "aaaa";
+                                },
+                                dropdownCssClass: "bigdrop"
+                                // escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
+                            });
+		
+	}
+	
+	    
+	//--------------------------------------
+	//+ PUBLIC METHODS / GETTERS / SETTERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ EVENT HANDLERS
+	//--------------------------------------
+
+	//--------------------------------------
+	//+ PRIVATE AND PROTECTED METHODS
+	//--------------------------------------
+
+});
+
+module.exports = HomeView;
+
+
+});
+
+;
+//# sourceMappingURL=app.js.map

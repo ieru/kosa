@@ -6,6 +6,7 @@
  * @author 
  * @since  
  */
+var Model = require('core/Model');
 
 var Collection = Backbone.Collection.extend({
 
