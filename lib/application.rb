@@ -201,9 +201,10 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
-        #list = query.execute(repo).limit(10).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
+        list = query.execute(repo).limit(10)
+        list = list.map { |w| {'id'=>w.s.to_uri.root, 'child'=> w.o }  }
         
-        list.first.to_s
+        #list.first.s.to_s
         
         #list.to_json
         
@@ -258,10 +259,16 @@ class Kosa < Sinatra::Base
       return resp.body
     end
     
-    
+    # @todo: check this 
     # removes PREFIX from URIs 
     def remove_prefix(node)
       return node.to_s.split('/').last
+    end
+    
+    # @todo: check this
+    # get PREFIX by removing the literal
+    def get_prefix(uri)
+      return uri.gsub(uri.to_s.split('/').last, "")
     end
 
 end

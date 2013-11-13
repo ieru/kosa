@@ -589,7 +589,24 @@ var HomeView = View.extend({
 	},
 	
 	render: function() {
-		this.$el.html( this.template({}));
+		this.$el.html( this.template(
+		{
+		'relatedList': [ 
+		{
+		'name':'related1',
+		'id': 'idd1'
+		},
+		{
+		'name':'related2',
+				'id': 'idd2'
+		},
+		{
+		'name':'related3',
+		'id': 'idd3'
+		}
+		]
+		
+		}));
 
 		return this;
 	},
