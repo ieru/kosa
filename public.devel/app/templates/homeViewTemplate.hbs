@@ -58,11 +58,11 @@
           <span style="font-size:25px; background-color:#393939;" class="label label-default">Navigational</span><br><br>
           <h4 class="h4 col-md-12 text-info" >Related terms</h4>
           <div class="col-md-10">
-            {{#list relatedList}
-              <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+            {{#relatedList}}
+              <button class="btn btn-default btn-xs" type="button" id="{{id}}">
                 {{name}}
               </button>
-            {/list}}
+            {{/relatedList}}
         </div>
       </div>
       <div style="margin-top:20px;" class="col-md-4">
