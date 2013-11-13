@@ -20,7 +20,7 @@
 
       ""					: "home",
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts"
-      },
+    },
 
 
   	//--------------------------------------
@@ -29,14 +29,12 @@
 
     home: function() {
 
-        $( 'body' ).html( application.homeView.render().el );
+      $( 'body' ).html( application.homeView.render().el );
     },
-   
     getNarrowerConcepts: function (node){
-
-	 alert('aaaa');
+      alert('aaaa');
     }
- });
+  });
 
 
  module.exports = ApplicationRouter;
