@@ -20,6 +20,15 @@ var Model = Backbone.Model.extend({
 	//--------------------------------------
   	//+ PUBLIC METHODS / GETTERS / SETTERS
   	//--------------------------------------
+  		defaults:{
+  			id: " ",
+	  		children: "[]",
+	  		related: "[]",
+	  		childrenNumber:0,
+	  		relatedNumber:0
+  		}
+  		
+
 
   	//--------------------------------------
   	//+ EVENT HANDLERS
