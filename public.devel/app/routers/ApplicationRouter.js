@@ -19,7 +19,8 @@
   	routes: {
 
       ""					: "home",
-      "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts"
+      "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
+      "api/test"				: "test"
     },
 
 
@@ -31,8 +32,26 @@
 
       $( 'body' ).html( application.homeView.render().el );
     },
+    
     getNarrowerConcepts: function (node){
       alert('aaaa');
+    },
+    test: function () {
+      
+      
+      var tree = new application.Collection();
+      // tree.url = '/accounts';
+      tree.fetch({
+        success: function(response,xhr) {
+    	     console.log("Inside success");
+    	     console.log(response);
+    	},
+    	error: function (errorResponse) {
+    	    console.log(errorResponse)
+    	}
+     });
+     
+    	    		            
     }
   });
 
