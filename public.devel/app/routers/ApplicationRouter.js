@@ -28,7 +28,7 @@ var ApplicationRouter = Router.extend({
   	home: function() {
       $( 'body' ).html( application.homeView.render().el );
   	}
-    getnarrowerconcepts: function(){
+    getNarrowerConcepts: function(){
 
     };
 });
