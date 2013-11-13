@@ -21,10 +21,10 @@ var Model = Backbone.Model.extend({
   	//+ PUBLIC METHODS / GETTERS / SETTERS
   	//--------------------------------------
   		defaults:{
-  			id: " ",
-  			name: " ",
-	  		children: "[]",
-	  		related: "[]",
+  			id: "1",
+  			name: "",
+	  		children: [],
+	  		related: [],
 	  		childrenNumber:0,
 	  		relatedNumber:0
   		}
