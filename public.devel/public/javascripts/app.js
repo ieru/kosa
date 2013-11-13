@@ -185,7 +185,8 @@ var Collection = Backbone.Collection.extend({
     url: '/api/test',
     parse: function (response){
       console.log("hola");
-      return response.id
+      console.dir(response);
+      return response
     }
   	//--------------------------------------
   	//+ PRIVATE AND PROTECTED METHODS
@@ -226,6 +227,7 @@ var Model = Backbone.Model.extend({
 	  		related: [],
 	  		childrenNumber:0,
 	  		relatedNumber:0
+        
   		}
   		
 
