@@ -9,6 +9,7 @@
 
 var View     = require('core/View');
 var template = require('templates/homeViewTemplate');
+var Event    = require('events/Event');
 
 var HomeView = View.extend({
 
@@ -38,10 +39,29 @@ var HomeView = View.extend({
 	 */
 	 
 	events: {
-		
+	
+		'click .btn.btn-default.btn-xs'	:		'onTriggerNodeClick'
 	},
+	
 	render: function() {
-		this.$el.html( this.template({}));
+		this.$el.html( this.template(
+		{
+		'relatedList': [ 
+		{
+		'name':'related1',
+		'id': 'idd1'
+		},
+		{
+		'name':'related2',
+				'id': 'idd2'
+		},
+		{
+		'name':'related3',
+		'id': 'idd3'
+		}
+		]
+		
+		}));
 
 		return this;
 	},
@@ -82,7 +102,7 @@ var HomeView = View.extend({
                                 // escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
                             });
 		
-	}
+	},
 	
 	    
 	//--------------------------------------
@@ -92,7 +112,12 @@ var HomeView = View.extend({
 	//--------------------------------------
 	//+ EVENT HANDLERS
 	//--------------------------------------
-
+	
+	onTriggerNodeClick: function () {
+	    
+	    alert('trigger test');
+	}
+	
 	//--------------------------------------
 	//+ PRIVATE AND PROTECTED METHODS
 	//--------------------------------------
