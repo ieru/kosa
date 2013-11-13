@@ -19,7 +19,7 @@
   	routes: {
       '': 'home',
       '/api/getnarrowerconcepts/:node': 'getNarrowerConcepts'
-  	},
+    },
 
 
   	//--------------------------------------
