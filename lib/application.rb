@@ -340,7 +340,8 @@ class Kosa < Sinatra::Base
     end
     
    # end
-
+   
+    def get
 
 end
    
