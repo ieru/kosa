@@ -17,5 +17,5 @@ $(function() {
 	// Start Backbone router
   	Backbone.history.start();
   	init();
-  	application.homeView.initSelect2();
+  	application.homeView.initSearchBox();
 });
