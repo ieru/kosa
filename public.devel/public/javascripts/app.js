@@ -596,7 +596,8 @@ var HomeView = View.extend({
                             sURL = '/api'
                             $("#selector").select2({
                                 width: '80%',
-                                placeholder: "Select user",
+                                placeholder: "Search ...",
+                                allowClear: true,
                                 minimumInputLength: 1,
                                 ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
                                     url: sURL,
