@@ -74,7 +74,11 @@ class Kosa < Sinatra::Base
     get '/test' do
         "test"
     end
-
+    
+    get '/api/test' do
+        {:id=>'1', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1}.to_json
+    end
+    
     get '/api' do
         {}.to_json
     end
@@ -341,7 +345,8 @@ class Kosa < Sinatra::Base
     
    # end
    
-    def get
+    def getss
+    end
 
 end
    
