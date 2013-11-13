@@ -26,7 +26,7 @@ var Collection = Backbone.Collection.extend({
   	//--------------------------------------
     url: 'api/test',
     parse: function (response){
-      return response[0].items;
+      return response;
     }
   	//--------------------------------------
   	//+ PRIVATE AND PROTECTED METHODS

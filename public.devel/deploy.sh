@@ -13,6 +13,8 @@ echo "Compiling assets ..."
 $BRUNCH build --production
 RES=$?
 
+echo "resultado: ${RES}"
+
 if [ $RES -ne 0 ];then
   echo "Error compiling assets...stopping"
   exit 1

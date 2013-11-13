@@ -22,7 +22,7 @@ var Model = Backbone.Model.extend({
   	//--------------------------------------
   		defaults:{
   			id: "1",
-  			name: "",
+  			name: " ",
 	  		children: [],
 	  		related: [],
 	  		childrenNumber:0,
