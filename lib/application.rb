@@ -191,14 +191,17 @@ class Kosa < Sinatra::Base
         node = remove_prefix(node)
         
         query = RDF::Query.new do
-          pattern [:s, RDF::RDFS.subClassOf, :o]
+          pattern [:s, :p, :o]
         end
+        #pattern [:s, RDF::RDFS.subClassOf, :o]
         #pattern [:s, RDF::RDFS.label, :label]
         #pattern [:s, RDF::SKOS.narrower, :o]
         
         # list = repo.query([:s, RDF::RDFS.label, :slabel][:o, RDF::RDFS.label, :olabel][:s, RDF::SKOS.broader, :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
-        list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
+        # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
+        
+        list = query.execute(repo).limit(10).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o, 'relation'=> w.p }  }
         
         list.to_json
         
