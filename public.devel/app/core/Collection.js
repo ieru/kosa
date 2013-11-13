@@ -20,7 +20,7 @@ var Collection = Backbone.Collection.extend({
 	//--------------------------------------
   	//+ PUBLIC METHODS / GETTERS / SETTERS
   	//--------------------------------------
-
+  	model: Model
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------

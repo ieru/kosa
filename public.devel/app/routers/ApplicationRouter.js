@@ -7,10 +7,10 @@
  * @since  
  */
 
-var Router = require('core/Router');
-var application = require('Application');
+ var Router = require('core/Router');
+ var application = require('Application');
 
-var ApplicationRouter = Router.extend({
+ var ApplicationRouter = Router.extend({
 
 	//--------------------------------------
   	//+ Routes
@@ -21,16 +21,19 @@ var ApplicationRouter = Router.extend({
       '/api/getnarrowerconcepts/:node': 'getNarrowerConcepts'
   	},
 
+
   	//--------------------------------------
   	//+ Route Handlers
   	//--------------------------------------
 
   	home: function() {
-           $( 'body' ).html( application.homeView.render().el );
-  	},
-        getNarrowerConcepts: function(node){
-           console.log( node );
-        }
-});
 
-module.exports = ApplicationRouter;
+     $( 'body' ).html( application.homeView.render().el );
+   },
+   getNarrowerConcepts: function(node){
+     console.log(node);
+   }
+ });
+
+
+ module.exports = ApplicationRouter;
