@@ -27,6 +27,7 @@ var Model = Backbone.Model.extend({
 	  		related: [],
 	  		childrenNumber:0,
 	  		relatedNumber:0
+        
   		}
   		
 
