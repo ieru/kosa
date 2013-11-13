@@ -198,7 +198,7 @@ function init(){
             //set label styles
             var style = label.style;
             style.width = 80 + 'px';
-            style.height = 17 + 'px';            
+            style.height = 'auto';            
             style.cursor = 'pointer';
             // style.color = 'black';
     	    // style.backgroundColor = '#1a1a1a';
