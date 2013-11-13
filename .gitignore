@@ -2,9 +2,9 @@
 /.yardoc/
 /*.log
 /.bundle/
-/vendor/
+vendor
 /cache/
 /readmes/
 /doc/
 /public/
-/import/data/*
+import/data/*
