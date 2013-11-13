@@ -129,7 +129,7 @@ function init(){
         //set animation transition type
         transition: $jit.Trans.Quart.easeInOut,
         //set distance between node and its children
-        levelDistance: 60,
+        levelDistance: 100,
         //set max levels to show. Useful when used with
         //the request method for requesting trees of specific depth
         levelsToShow: 1,
@@ -198,7 +198,7 @@ function init(){
             //set label styles
             var style = label.style;
             style.width = 80 + 'px';
-            style.height = 17 + 'px';            
+            style.height = 'auto';            
             style.cursor = 'pointer';
             // style.color = 'black';
     	    // style.backgroundColor = '#1a1a1a';
