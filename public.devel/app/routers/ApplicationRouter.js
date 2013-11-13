@@ -18,7 +18,7 @@ var ApplicationRouter = Router.extend({
   	
   	routes: {
       '': 'home',
-      'api/getnarrowerconcepts?node=a': 'getNarrowerConcepts',
+      'api/getnarrowerconcepts/:node': 'getNarrowerConcepts'
   	},
 
   	//--------------------------------------
@@ -26,11 +26,11 @@ var ApplicationRouter = Router.extend({
   	//--------------------------------------
 
   	home: function() {
-      $( 'body' ).html( application.homeView.render().el );
-  	}
-    getNarrowerConcepts: function(){
-
-    };
+           $( 'body' ).html( application.homeView.render().el );
+  	},
+        getNarrowerConcepts: function(node){
+           console.log(node);
+        }
 });
 
 module.exports = ApplicationRouter;
