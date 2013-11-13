@@ -10,7 +10,8 @@ if [ "x${BRUNCH}" = "x" ];then
 fi
 
 echo "Compiling assets ..."
-$BRUNCH build --production
+# $BRUNCH build --production
+$BRUNCH build
 RES=$?
 
 echo "resultado: ${RES}"
