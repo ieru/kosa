@@ -10,7 +10,7 @@
 var View     = require('core/View');
 var template = require('templates/homeViewTemplate');
 var Event    = require('events/Event');
-var Router    = require('routers/ApplicationRouter');
+var Router   = require('routers/ApplicationRouter');
 
 var HomeView = View.extend({
 
@@ -36,7 +36,7 @@ var HomeView = View.extend({
 
 	initialize: function() {
 		_.bindAll( this );
-    		this.route = new Router();
+    		
 	},
 
 	/*
@@ -50,7 +50,10 @@ var HomeView = View.extend({
 	},
 	
 	render: function() {
-        this.route.navigate("api/getnarrowerconcepts/node", {trigger:true});
+	
+		this.route = new Router();
+    		this.route.navigate("api/getnarrowerconcepts/node", {trigger:true});
+		
 		this.$el.html( this.template(
 		{
 		'relatedList': [ 
