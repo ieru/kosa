@@ -585,7 +585,8 @@ var HomeView = View.extend({
 	 
 	events: {
 	
-		'click .btn.btn-default.btn-xs'	:		'onTriggerNodeClick'
+		'click .btn.btn-default.btn-xs'	:		'onTriggerNodeClick',
+		'click .breadcrumb-click'	:		'onBreadcrumbClick'
 	},
 	
 	render: function() {
@@ -604,7 +605,23 @@ var HomeView = View.extend({
 		'name':'related3',
 		'id': 'idd3'
 		}
-		]
+		],
+		'breadcrumb': [ 
+		{
+		'name':'node1',
+		'id': 'node13'
+		},
+		{
+		'name':'node2',
+		'id': 'node125'
+		},
+		{
+		'name':'node3',
+		'id': 'node165'
+		}
+		],
+		
+		
 		
 		}));
 
@@ -661,7 +678,25 @@ var HomeView = View.extend({
 	onTriggerNodeClick: function () {
 	    
 	    alert('trigger test');
+	},
+
+	onBreadcrumbClick: function (e) {
+	
+	    e.stopImmediatePropagation();
+	    
+	    var dataId = $(e.currentTarget).data('id');
+	    // var id = clickedEl.attr("id");
+	    // $('#'+e.target.id).trigger('click');
+	
+	    console.log(dataId);
+	    $('#'+dataId).trigger('click');
+	    
+	    //e.preventDefault();
+	    //e.stopImmediatePropagation();
+	    
+	
 	}
+
 	
 	//--------------------------------------
 	//+ PRIVATE AND PROTECTED METHODS
