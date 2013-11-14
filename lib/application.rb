@@ -221,11 +221,11 @@ class Kosa < Sinatra::Base
         
                 
         query_children = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, uri]
+          pattern [:s, RDF::SKOS.narrower, :o]
         end
 
         query_related = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, uri]
+          pattern [:s, RDF::SKOS.narrower, :o]
         end
         
         #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]        
@@ -237,11 +237,15 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
-        children = query_children.execute(repo).distinct.limit(100).map { |w| { :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 } }
+        children = query_children.optimize.execute(repo, {:o => uri}).distinct.limit(100).map { |w| { 
+          :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+        } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
         
-        related = query_related.execute(repo).distinct.limit(100).map { |w| { :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0} }
+        related = query_related.optimize.execute(repo, {:o => uri}).distinct.limit(100).map { |w| { 
+          :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
+        } }
         
         #list.first.s.to_uri.root.to_s + list.first.s.to_s
                 
