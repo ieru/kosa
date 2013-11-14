@@ -206,7 +206,8 @@ function Graph() {
    };
 */
   var getTree = function() {
-  
+            newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
+            console.dir(newNode);
             return {
                 'name': 'dolor ipsum sit amed',
                 'id': Math.random(10000),
@@ -278,7 +279,7 @@ function Graph() {
           
           Edge: {
               type: 'bezier',
-              lineWidth: 1,
+              lineWidth: 2,
               color: '#000000',
               // color:'#23A4FF',
               overridable: true
@@ -504,7 +505,6 @@ var Collection = Backbone.Collection.extend({
   	//--------------------------------------
     url: '/api/test',
     parse: function (response){
-      console.log("hola");
       console.dir(response);
       return response
     }
