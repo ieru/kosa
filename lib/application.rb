@@ -202,7 +202,7 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
         list = query.execute(repo).limit(10)
-        list = list.map { |w| {'id'=>w.s.to_uri.root, 'child'=> w.o }  }
+        list = list.map { |w| {'id'=>w.s.to_uri.root, 'child'=> w.s.to_uri }  }
         
         #list.first.s.to_s
         
