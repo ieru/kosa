@@ -27,7 +27,6 @@ var Collection = Backbone.Collection.extend({
   	//--------------------------------------
     url: '/api/test',
     parse: function (response){
-      console.log("hola");
       console.dir(response);
       return response
     }

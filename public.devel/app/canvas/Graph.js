@@ -136,7 +136,7 @@ function Graph() {
           
           Edge: {
               type: 'bezier',
-              lineWidth: 1,
+              lineWidth: 2,
               color: '#000000',
               // color:'#23A4FF',
               overridable: true
