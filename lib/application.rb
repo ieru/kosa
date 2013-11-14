@@ -223,6 +223,92 @@ class Kosa < Sinatra::Base
                 
         query_children = RDF::Query.new do
           pattern [:s, RDF::SKOS.narrower, :o]
+        end
+        
+
+        query_related = RDF::Query.new do
+          pattern [:s, RDF::SKOS.narrower, :o]
+        end
+        
+        #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]        
+        #pattern [:s, RDF::RDFS.subClassOf, :o]
+        #pattern [:s, RDF::SKOS.prefLabel, :label]
+        #pattern [:s, RDF::RDFS.label, :label]
+        #pattern [:s, RDF::SKOS.narrower, :o]
+        
+        # list = repo.query([:s, RDF::RDFS.label, :slabel][:o, RDF::RDFS.label, :olabel][:s, RDF::SKOS.broader, :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
+        
+        children = query_children.optimize!
+        # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
+        children_count = 0;
+        children_list = children.execute(repo, {:s => uri}).distinct.limit(soft_limit).map { |w| { 
+          :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+        } }
+        
+        # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
+=begin
+        related = query_related.optimize!
+        related_count = related.execute(repo, {:o => uri}).count
+        related_list = related.execute(repo, {:o => uri}).limit(soft_limit).map { |w| { 
+          :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
+        } }
+=end    
+
+        #list.first.s.to_uri.root.to_s + list.first.s.to_s
+                
+        # list.to_json
+        
+        {:name=>node, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>children_count}.to_json
+        # "#{prefix}/#{node}"
+
+        
+        # Cropontology Proxy   
+        # json_string = getJsonFromExternalAPI("http://www.cropontology.org/get-children/", node)
+        # parser = Yajl::Parser.new
+        # json = parser.parse(json_string)
+        # json.to_json
+        # # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
+      end
+    end
+
+
+    def get_broader_concepts(node=nil, lang="en")
+      if node.nil?
+        {}.to_json
+      else
+        
+        
+        # Consult Adapter's Specific Respository syntax (http://rdf.rubyforge.org/RDF/Repository.html)
+        # to create queries. eg: DataObjects (SQLite or Postgres)->  http://rdf.rubyforge.org/do/RDF/DataObjects/Repository.html
+        # , AllegroGraph->http://rdf-agraph.rubyforge.org/ ... etc        
+        # AllegroGraph query syntax:
+        #
+        # list = repo.build_query do |q|
+        #    q.pattern [:subject, RDFS.subClassOf,  node.to_s]
+        # end.map do |u|
+        #   {:child => u.subject}
+        # end
+        
+        # should work (?)      
+        # list = repo.query([:subject, RDF::RDFS.subClassOf,  node]).map do |u|
+        # list = repo.query([:s, RDF::SKOS.broader , :o]).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
+        
+        node = remove_prefix(node)
+        
+        uri = prefix + '/' + node
+        
+        # has_narrowers at AGROVOC:
+        # .../c_12848 --> c_1473
+
+        if !uri.valid?
+          {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
+        end
+        
+                
+        query_children = RDF::Query.new do
+          pattern [:s, RDF::SKOS.narrower, :o]
           pattern [:s, RDF::SKOS.prefLabel, :label]
         end
         
@@ -271,16 +357,8 @@ class Kosa < Sinatra::Base
         # # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
       end
     end
-    
-    # Not implemented Yet
-    def get_broader_concepts(node=nil, lang="en")
-      if node.nil?
-        {}.to_json
-      else
-        {}.to_json
-      end
-    end
 
+    
     # Not implemented Yet
     def get_related_concepts(node=nil, lang="en")
       if node.nil?

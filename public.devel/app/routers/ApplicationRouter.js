@@ -23,6 +23,7 @@
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
       "api/test"				: "test"
     },
+//r.navigate('where-is', { trigger: true });
 
 
   	//--------------------------------------
@@ -37,9 +38,12 @@
     getNarrowerConcepts: function (node){
       alert('aaaa');
     },
+    
     test: function () {
       
+       application.Graph.getTree();      
       
+      /*
       var tree = new Collection();
       // tree.url = '/accounts';
       tree.fetch({
@@ -51,7 +55,7 @@
     	    console.log(errorResponse)
     	}
      });
-     
+     */
     	    		            
     }
   });

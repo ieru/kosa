@@ -21,7 +21,7 @@ var Application = {
 
 
         // Import Navigational
-        var Graph = require('canvas/Graph');
+        var Graph = require('views/GraphView');
 
         // Initialize views
         this.homeView = new HomeView();
