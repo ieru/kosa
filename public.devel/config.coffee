@@ -21,8 +21,10 @@ exports.config =
           'vendor/scripts/backbone-mediator.js',
           'vendor/scripts/backbone.super.js',
           'vendor/scripts/jit.js',
-          'vendor/scripts/select2.min.js',
-          'vendor/scripts/graph.js'
+          'vendor/scripts/select2.min.js'
+          # 'vendor/scripts/graph.js'
+        ]
+        after: [
         ]
 
     stylesheets:

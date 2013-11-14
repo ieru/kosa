@@ -19,10 +19,16 @@ var Application = {
         var HomeView = require('views/HomeView');
         var ApplicationRouter = require('routers/ApplicationRouter');
 
+
+        // Import Navigational
+        var Graph = require('canvas/Graph');
+
         // Initialize views
         this.homeView = new HomeView();
         this.applicationRouter = new ApplicationRouter();
-        
+
+        // Initialize Navigational
+        this.graph = new Graph;
 
         if (typeof Object.freeze === 'function') Object.freeze(this);
     }

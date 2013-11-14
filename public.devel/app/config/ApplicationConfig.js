@@ -21,6 +21,6 @@ var ApplicationConfig = (function() {
 		BASE_URL: _baseUrl
 	}
 
-}).call()
+}).call();
 
 module.exports = ApplicationConfig;
