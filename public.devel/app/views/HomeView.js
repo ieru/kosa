@@ -45,7 +45,7 @@ var HomeView = View.extend({
 	},
 	
 	render: function() {
-        this.navigate("/#/api/getnarrowerconcepts/node", {trigger:true});
+        this.navigate("api/getnarrowerconcepts/node", {trigger:true});
 		this.$el.html( this.template(
 		{
 		'relatedList': [ 
