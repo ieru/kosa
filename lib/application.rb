@@ -27,10 +27,14 @@ require 'equivalent-xml'
 
 class Kosa < Sinatra::Base
 
-  attr_accessor :repo
-  
+  attr_accessor :repo, :prefix, :root
+ 
   def initialize 
+  
+    @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
     @repo = RDF::FourStore::Repository.new('http://localhost:8008/')
+    @root = ''
+    
     # @repo = RDF::DataObjects::Repository.new('sqlite3:kosa.db')
     # repo = RDF::DataObjects::Repository.new 'postgres://postgres@server/database'
     # repo = RDF::DataObjects::Repository.new(ENV['DATABASE_URL']) #(Heroku)
@@ -57,6 +61,22 @@ class Kosa < Sinatra::Base
     # repository.delete([subject, predicate, object])
     # repository.clear!
  
+    # Get Root (SPARQL 1.1)
+    
+    # SELECT ?cls1
+    #  WHERE{
+    #    ?cls1 a owl:Class .
+    #    FILTER NOT EXISTS { ?cls1 rdfs:subClassOf ?cls2 .}
+    # }
+
+    # Get ROOT (SPARQL)
+    
+    # SELECT ?cls1
+    #  WHERE{
+    #     ?cls1 a owl:Class .
+    #     OPTIONAL{ ?cls1 rdfs:subClassOf ?cls2 .}
+    #     FILTER(!BOUND(?cls2))
+    # }
 
     # Helper module to avoid confussion between JSON and RDF::JSON gems
     module JSON2
@@ -190,9 +210,25 @@ class Kosa < Sinatra::Base
         
         node = remove_prefix(node)
         
-        query = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, :o]
+        uri = prefix + '/' + node
+        
+        # has_narrowers at AGROVOC:
+        # .../c_12848 --> c_1473
+
+        if !uri.valid?
+          {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
+        
+                
+        query_children = RDF::Query.new do
+          pattern [:s, RDF::SKOS.narrower, uri]
+        end
+
+        query_related = RDF::Query.new do
+          pattern [:s, RDF::SKOS.narrower, uri]
+        end
+        
+        #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]        
         #pattern [:s, RDF::RDFS.subClassOf, :o]
         #pattern [:s, RDF::RDFS.label, :label]
         #pattern [:s, RDF::SKOS.narrower, :o]
@@ -201,15 +237,18 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
-        list = query.execute(repo).limit(10)
-        list = list.map { |w| {'id'=>w.s.to_uri.root, 'child'=> w.s.to_uri }  }
+        children = query_children.execute(repo).distinct.limit(100).map { |w| { :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 } }
         
-        #list.first.s.to_s
+        # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
         
-        #list.to_json
+        related = query_related.execute(repo).distinct.limit(100).map { |w| { :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0} }
         
-        # {:name=>node, :children=>list.to_json}.to_json
+        #list.first.s.to_uri.root.to_s + list.first.s.to_s
+                
+        # list.to_json
         
+        {:name=>node, :id=>node, :children=>children, :related=>related, :children_number=>children.count, :related_number=>related.count}.to_json
+        # "#{prefix}/#{node}"
 
         
         # Cropontology Proxy   
