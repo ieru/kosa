@@ -28,7 +28,15 @@ var Application = {
         this.applicationRouter = new ApplicationRouter();
 
         // Initialize Navigational
-        this.graph = new Graph;
+        this.graph = new Graph();
+        
+        /* 
+        if ($('#infovis').length > 0) {
+        this.graph.init();
+        this.homeView.initSearchBox();
+        }
+        */
+
 
         if (typeof Object.freeze === 'function') Object.freeze(this);
     }

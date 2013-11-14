@@ -142,6 +142,7 @@ function Graph() {
           //Here we just use a client-side tree generator (the getTree function).
           request: function(nodeId, level, onComplete) {
             var ans = getTree(nodeId, level);
+            console.dir(ans);
             onComplete.onComplete(nodeId, ans);  
           },
           

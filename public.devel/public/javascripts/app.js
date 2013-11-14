@@ -121,7 +121,15 @@ var Application = {
         this.applicationRouter = new ApplicationRouter();
 
         // Initialize Navigational
-        this.graph = new Graph;
+        this.graph = new Graph();
+        
+        /* 
+        if ($('#infovis').length > 0) {
+        this.graph.init();
+        this.homeView.initSearchBox();
+        }
+        */
+
 
         if (typeof Object.freeze === 'function') Object.freeze(this);
     }
@@ -276,6 +284,7 @@ function Graph() {
           //Here we just use a client-side tree generator (the getTree function).
           request: function(nodeId, level, onComplete) {
             var ans = getTree(nodeId, level);
+            console.dir(ans);
             onComplete.onComplete(nodeId, ans);  
           },
           
@@ -650,7 +659,7 @@ var Event = {
 	/*
    	 * Public interface
 	 */
-	APPLICATION_INITIALIZED			: 'onApplicationInitialized',
+	APPLICATION_INITIALIZED			: 'onApplicationInitialized'
 
 
 }
@@ -702,6 +711,7 @@ $(function() {
 
 	// Start Backbone router
   	Backbone.history.start();
+  	
   	
   	if ($('#infovis').length > 0) {
   	  application.graph.init();

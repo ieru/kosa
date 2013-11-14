@@ -17,6 +17,7 @@ $(function() {
 	// Start Backbone router
   	Backbone.history.start();
   	
+  	
   	if ($('#infovis').length > 0) {
   	  application.graph.init();
   	  application.homeView.initSearchBox();

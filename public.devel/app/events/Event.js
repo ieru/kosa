@@ -12,7 +12,7 @@ var Event = {
 	/*
    	 * Public interface
 	 */
-	APPLICATION_INITIALIZED			: 'onApplicationInitialized',
+	APPLICATION_INITIALIZED			: 'onApplicationInitialized'
 
 
 }
