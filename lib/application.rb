@@ -27,10 +27,11 @@ require 'equivalent-xml'
 
 class Kosa < Sinatra::Base
 
-  attr_accessor :repo, :prefix, :root
+  attr_accessor :repo, :prefix, :root, :soft_limit
  
   def initialize 
   
+    @soft_limit = 10
     @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
     @repo = RDF::FourStore::Repository.new('http://localhost:8008/')
     @root = ''
@@ -222,10 +223,13 @@ class Kosa < Sinatra::Base
                 
         query_children = RDF::Query.new do
           pattern [:s, RDF::SKOS.narrower, :o]
+          pattern [:s, RDF::SKOS.prefLabel, :label]
         end
+        
 
         query_related = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, :o]
+          pattern [:s, RDF::RDFS.subClassOf, :o]
+          pattern [:s, RDF::SKOS.prefLabel, :label]
         end
         
         #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]        
@@ -237,21 +241,25 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
-        children = query_children.optimize.execute(repo, {:o => uri}).distinct.limit(100).map { |w| { 
-          :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+        children = query_children.optimize!
+        children_count = children.execute(repo, {:o => uri}).count
+        children_list = children.execute(repo, {:o => uri}).distinct.limit(soft_limit).map { |w| { 
+          :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
         
-        related = query_related.optimize.execute(repo, {:o => uri}).distinct.limit(100).map { |w| { 
-          :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
+        related = query_related.optimize!
+        related_count = related.execute(repo, {:o => uri}).count
+        related_list = related.execute(repo, {:o => uri}).distinct.limit(soft_limit).map { |w| { 
+          :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
         } }
         
         #list.first.s.to_uri.root.to_s + list.first.s.to_s
                 
         # list.to_json
         
-        {:name=>node, :id=>node, :children=>children, :related=>related, :children_number=>children.count, :related_number=>related.count}.to_json
+        {:name=>node, :id=>node, :children=>children_list, :related=>related_list, :children_number=>children_count, :related_number=>related_count}.to_json
         # "#{prefix}/#{node}"
 
         
@@ -327,7 +335,6 @@ end
 
 
 
-    #################################################################################################################
     #################################################################################################################
     #################################################################################################################
     
