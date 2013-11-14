@@ -206,8 +206,8 @@ function Graph() {
    };
 */
   var getTree = function() {
-            newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
-            console.dir(newNode);
+            // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
+            // console.dir(newNode);
             return {
                 'name': 'dolor ipsum sit amed',
                 'id': Math.random(10000),
@@ -910,6 +910,7 @@ var HomeView = View.extend({
 	},
 	
 	render: function() {
+        Application.navigate("http://kos.appgee.net/api/getnarrowerconcepts?node=c_1329377502888", {trigger:true});
 		this.$el.html( this.template(
 		{
 		'relatedList': [ 

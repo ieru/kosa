@@ -64,8 +64,8 @@ function Graph() {
    };
 */
   var getTree = function() {
-            newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
-            console.dir(newNode);
+            // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
+            // console.dir(newNode);
             return {
                 'name': 'dolor ipsum sit amed',
                 'id': Math.random(10000),
