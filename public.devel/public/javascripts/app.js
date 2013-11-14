@@ -257,6 +257,7 @@ var Model = Backbone.Model.extend({
 
 module.exports = Model;
 
+<<<<<<< HEAD
 });
 
 ;require.register("core/Router", function(exports, require, module) {
@@ -305,6 +306,36 @@ var View = Backbone.View.extend({
   //--------------------------------------
   //+ PUBLIC PROPERTIES / CONSTANTS
   //--------------------------------------
+=======
+/*   
+   var getTree = function() {
+          var i = 0;
+          return function(nodeId, level) {
+            var subtree = eval('(' + json.replace(/id:\"([a-zA-Z0-9]+)\"/g, 
+            function(all, match) {
+              return "id:\"" + match + "_" + i + "\""  
+            }) + ')');
+            $jit.json.prune(subtree, level); i++;
+            
+            return {
+                'id': nodeId,
+                'children': subtree.children,
+                'related': subtree.children
+            };
+          };
+   };
+*/
+  var getTree = function() {
+            // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
+            // console.dir(newNode);
+            return {
+                'name': 'dolor ipsum sit amed',
+                'id': Math.random(10000),
+                'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
+                'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
+            };
+  };
+>>>>>>> 780506105bc675854de56fcbaa6574f76d165bdb
 
   /*
    * @private
@@ -920,6 +951,7 @@ var HomeView = View.extend({
 	},
 	
 	render: function() {
+        Application.navigate("http://kos.appgee.net/api/getnarrowerconcepts?node=c_1329377502888", {trigger:true});
 		this.$el.html( this.template(
 		{
 		'relatedList': [ 
