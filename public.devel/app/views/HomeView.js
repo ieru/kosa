@@ -32,7 +32,6 @@ var HomeView = View.extend({
 	 * @private
 	 */
 
-        route: null,
 
 	initialize: function() {
 		_.bindAll( this );
@@ -51,8 +50,8 @@ var HomeView = View.extend({
 	
 	render: function() {
 	
-		this.route = new Router();
-    		this.route.navigate("api/getnarrowerconcepts/node", {trigger:true});
+		var route = new Router();
+    		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
 		
 		this.$el.html( this.template(
 		{
