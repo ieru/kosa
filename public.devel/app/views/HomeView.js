@@ -36,7 +36,7 @@ var HomeView = View.extend({
 
 	initialize: function() {
 		_.bindAll( this );
-        this.router = new Router;
+    		this.route = new Router();
 	},
 
 	/*
