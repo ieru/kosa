@@ -910,7 +910,7 @@ var HomeView = View.extend({
 	},
 	
 	render: function() {
-        Application.navigate("http://kos.appgee.net/api/getnarrowerconcepts?node=c_1329377502888", {trigger:true});
+        this.navigate("/#/api/getnarrowerconcepts/node", {trigger:true});
 		this.$el.html( this.template(
 		{
 		'relatedList': [ 
