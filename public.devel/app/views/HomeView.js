@@ -56,7 +56,7 @@ var HomeView = View.extend({
   //   		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
 
       var tree = new Collection();
-      tree.url = 'api/test';
+      tree.url = 'api/getnarrowerconcepts/c_1521';
       tree.fetch({
         success: function(response,xhr) {
              console.log("Inside success");
@@ -70,33 +70,34 @@ var HomeView = View.extend({
 		
 		this.$el.html( this.template(
 		{
-		'relatedList': [ 
-		{
-		'name':'related1',
-		'id': 'idd1'
-		},
-		{
-		'name':'related2',
-				'id': 'idd2'
-		},
-		{
-		'name':'related3',
-		'id': 'idd3'
-		}
-		],
-		'breadcrumb': [ 
-		{
-		'name':'node1',
-		'id': 'node13'
-		},
-		{
-		'name':'node2',
-		'id': 'node125'
-		},
-		{
-		'name':'node3',
-		'id': 'node165'
-		}
+		'relatedList': [ +
+            response.related +
+		// {
+		// 'name':'related1',
+		// 'id': 'idd1'
+		// },
+		// {
+		// 'name':'related2',
+		// 		'id': 'idd2'
+		// },
+		// {
+		// 'name':'related3',
+		// 'id': 'idd3'
+		// }
+		// ],
+		// 'breadcrumb': [ 
+		// {
+		// 'name':'node1',
+		// 'id': 'node13'
+		// },
+		// {
+		// 'name':'node2',
+		// 'id': 'node125'
+		// },
+		// {
+		// 'name':'node3',
+		// 'id': 'node165'
+		// }
 		],
 		
 		
