@@ -911,23 +911,35 @@ var HomeView = View.extend({
   //   		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
 
       var tree = new Collection();
-      var nodeRead;
-      tree.url = 'api/getnarrowerconcepts/c_1521';
+      var nodeRead, related, children;
+      
+      tree.url = '/api/getnarrowerconcepts?node=c_1521';
       tree.fetch({
         success: function(response,xhr) {
-            nodeRead=response;
-             console.log("Inside success");
-             console.log(response);
+             nodeRead = response;
+             // console.log("Inside success");
+             // console.log(response);
         },
         error: function (errorResponse) {
+            console.log('error');
             console.log(errorResponse)
         }
      });
+                 
      
-		
+    		if (typeof nodeRead != 'undefined' && nodeRead !== null) {
+    		  related = nodeRead.related;
+    		  children = nodeRead.children;
+    		  
+    		} else {
+    		  related = [];
+    		  children = [];
+    		}
+    		
+		// console.dir (related);
 		this.$el.html( this.template(
 		{
-		'relatedList': nodeRead.related
+		'relatedList': related,
             
 		// {
 		// 'name':'related1',
@@ -942,21 +954,19 @@ var HomeView = View.extend({
 		// 'id': 'idd3'
 		// }
 		// ],
-		// 'breadcrumb': [ 
-		// {
-		// 'name':'node1',
-		// 'id': 'node13'
-		// },
-		// {
-		// 'name':'node2',
-		// 'id': 'node125'
-		// },
-		// {
-		// 'name':'node3',
-		// 'id': 'node165'
-		// }
-		
-		
+		'breadcrumb': [ 
+		{
+		  'name':'node1',
+		  'id': 'node13'
+		},
+		{
+		  'name':'node2',
+		  'id': 'node125'
+		},
+		{
+		  'name':'node3',
+		  'id': 'node165'
+		}]
 		}));
 
 		return this;
