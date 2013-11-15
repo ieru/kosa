@@ -50,8 +50,21 @@ var HomeView = View.extend({
 	
 	render: function() {
 	
-		var route = new Router();
-    		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
+		// var route = new Router();
+  //   		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
+
+      var tree = new Collection();
+      tree.url = 'api/test';
+      tree.fetch({
+        success: function(response,xhr) {
+             console.log("Inside success");
+             console.log(response);
+        },
+        error: function (errorResponse) {
+            console.log(errorResponse)
+        }
+     });
+     
 		
 		this.$el.html( this.template(
 		{
