@@ -112,7 +112,7 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = "", stack1, foundHelper;
-  buffer += "\n              <button class=\"btn btn-default btn-xs\" type=\"button\" id=\"";
+  buffer += "\n              <button class=\"btn btn-default btn-xs related-click\" type=\"button\" data-id=\"";
   foundHelper = helpers.id;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
   else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }

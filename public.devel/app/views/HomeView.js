@@ -34,9 +34,13 @@ var HomeView = View.extend({
 	 * @private
 	 */
 
-
 	initialize: function() {
-		_.bindAll( this );
+	    _.bindAll( this );
+
+            this.collection = new Collection();
+            this.triggerNodeClick('c_1521');
+            this.collection.on('reset', this.render, this);
+	    // this.router = new Router();
     		
 	},
 
@@ -46,127 +50,98 @@ var HomeView = View.extend({
 	 
 	events: {
 	
-		'click .btn.btn-default.btn-xs'	:		'onTriggerNodeClick',
-		'click .breadcrumb-click'	:		'onBreadcrumbClick'
+		'click .related-click'	:		'onTriggerNodeClick',
+		'click .breadcrumb-click':		'onBreadcrumbClick'
 	},
 	
 	render: function() {
-	
-		// var route = new Router();
-  //   		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
-
-      var tree = new Collection();
-      var nodeRead, related, children;
-      
-      tree.url = '/api/getnarrowerconcepts?node=c_1521';
-      tree.fetch({
-        success: function(response,xhr) {
-             nodeRead = response;
-             // console.log("Inside success");
-             // console.log(response);
-
-		// console.dir (related);
-		this.$el.html( this.template(
-		{
-		'relatedList': related,
-            
-		// {
-		// 'name':'related1',
-		// 'id': 'idd1'
-		// },
-		// {
-		// 'name':'related2',
-		// 		'id': 'idd2'
-		// },
-		// {
-		// 'name':'related3',
-		// 'id': 'idd3'
-		// }
-		// ],
-		'breadcrumb': [ 
-		{
-		  'name':'node1',
-		  'id': 'node13'
-		},
-		{
-		  'name':'node2',
-		  'id': 'node125'
-		},
-		{
-		  'name':'node3',
-		  'id': 'node165'
-		}]
-		}));
-
-        },
-        error: function (errorResponse) {
-            // console.log('error');
-            // console.log(errorResponse)
-
-		// console.dir (related);
-		this.$el.html( this.template(
-		{
-		'relatedList': [{'name':'no-data', 'id':'no-id'}],
-            
-		// {
-		// 'name':'related1',
-		// 'id': 'idd1'
-		// },
-		// {
-		// 'name':'related2',
-		// 		'id': 'idd2'
-		// },
-		// {
-		// 'name':'related3',
-		// 'id': 'idd3'
-		// }
-		// ],
-		'breadcrumb': [ 
-		{
-		  'name':'node1',
-		  'id': 'node13'
-		},
-		{
-		  'name':'node2',
-		  'id': 'node125'
-		},
-		{
-		  'name':'node3',
-		  'id': 'node165'
-		}]
-		}));
-
-        }
-     });
-                 
-     
+	    var self = this;	
+            // self.router.navigate("api/getnarrowerconcepts/node", {trigger:true});
 
 		return this;
 	},
-	initSearchBox: function(){
+	
+	triggerNodeClick: function(node) {
+	    
+	    var self = this, related, children, breadcrumb;
+	    
+	    
+	    self.collection.url = '/api/getnarrowerconcepts?node='+ node; // 'c_1521';
+            self.collection.fetch({
+              success: function(response,xhr) {
+                 
+                 // console.dir(response);
+		
+		 related = ( typeof response == 'object' ) ? related : [];
 
-                            // sURL = HMP.core.getCallURL('users_json');
-                            sURL = '/api'
-                            $("#selector").select2({
-                                width: '80%',
-                                placeholder: "Search ...",
-                                allowClear: true,
-                                minimumInputLength: 1,
-                                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-                                    url: sURL,
-                                    cache: true,
-                                    dataType : 'json',
-                                    data: function (term, page) {
-                                        return {
-                                            q: term
-                                        };
-                                    },
-                                    results: function (data, page) {
-                                        return {
-                                            results: data
-                                        };
-                                    }
+		 $(self.el).html(self.template({
+		  'relatedList': response.related,
+		  'breadcrumb': 
+		  [{
+		    'name':'node1',
+		    'id': 'node13'
+		  },
+		  {
+		    'name':'node2',
+		    'id': 'node125'
+		  },
+		  {
+		    'name':'node3',
+		    'id': 'node165'
+		  }]
+		}));
+
+            },
+            error: function (errorResponse) {
+                console.log('error triggerNodeClick');
+                // console.log(errorResponse)
+
+		// console.dir (related);
+		$(self.el).html( self.template({
+		'relatedList': [{'name':'test', 'id':'test'}],
+		'breadcrumb': [ 
+		{
+		  'name':'node1',
+		  'id': 'node13'
+		},
+		{
+		  'name':'node2',
+		  'id': 'node125'
+		},
+		{
+		  'name':'node3',
+		  'id': 'node165'
+		}]
+		}));
+
+              }
+           });
+	},
+	
+	initSearchBox: function(){
+                // sURL = HMP.core.getCallURL('users_json');
+                sURL = '/api'
+                $("#selector").select2({
+                        width: '80%',
+                        placeholder: "Search ...",
+                        allowClear: true,
+                        minimumInputLength: 1,
+                        ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+                                url: sURL,
+                                cache: true,
+                                dataType : 'json',
+                                data: function (term, page) {
+                                    return {
+                                       q: term
+                                    };
                                 },
+                                results: function (data, page) {
+                                    return {
+                                       results: data
+                                    };
+                                   }
+                                },
+                                /*
                                 formatResult: function(item) {
                                     return "aaa";
                                 },
@@ -176,9 +151,10 @@ var HomeView = View.extend({
                                 id: function (obj) {
                                   return "aaaa";
                                 },
+                                */
                                 dropdownCssClass: "bigdrop"
                                 // escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
-                            });
+                        });
 		
 	},
 	
