@@ -72,8 +72,8 @@ var HomeView = View.extend({
 		
 		this.$el.html( this.template(
 		{
-		'relatedList': [ +
-            response.related +
+		'relatedList': nodeRead.related;
+            
 		// {
 		// 'name':'related1',
 		// 'id': 'idd1'
@@ -100,8 +100,6 @@ var HomeView = View.extend({
 		// 'name':'node3',
 		// 'id': 'node165'
 		// }
-		],
-		
 		
 		
 		}));
