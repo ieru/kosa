@@ -15,20 +15,18 @@ var Application = {
      */
     initialize: function() {
 
-        // Import views
+        // Imports
         var HomeView = require('views/HomeView');
         var ApplicationRouter = require('routers/ApplicationRouter');
+        var Events = require('events/Event');
+        var GraphView = require('views/GraphView');
+        var GraphCollection = require('collections/GraphCollection');
 
-
-        // Import Navigational
-        var Graph = require('views/GraphView');
-
-        // Initialize views
+        // Initialize
+        this.graphView = new GraphView();
         this.homeView = new HomeView();
         this.applicationRouter = new ApplicationRouter();
 
-        // Initialize Navigational
-        this.graph = new Graph();
         
         /* 
         if ($('#infovis').length > 0) {

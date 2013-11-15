@@ -9,13 +9,10 @@
 
 var View     = require('core/View');
 var template = require('templates/homeViewTemplate');
-var Event    = require('events/Event');
-var Router   = require('routers/ApplicationRouter');
-var Collection = require('core/Collection');
-
+var Collection = require('core/Collection'); 
 
 var HomeView = View.extend({
-
+         
   	/*
    	 * @private
 	 */
@@ -25,7 +22,8 @@ var HomeView = View.extend({
    	*/
 	template: template,
 
-
+	currentNode:'c_1521',
+	
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
   	//--------------------------------------
@@ -36,10 +34,12 @@ var HomeView = View.extend({
 
 	initialize: function() {
 	    _.bindAll( this );
-
+	    
+	    console.log('type test');            
+            console.log(typeof application);
             this.collection = new Collection();
-            this.triggerNodeClick('c_1521');
-            this.collection.on('reset', this.render, this);
+            this.onNodeClick();
+            this.collection.on('reset', this.onNodeClick, this);
 	    // this.router = new Router();
     		
 	},
@@ -54,6 +54,7 @@ var HomeView = View.extend({
 		'click .breadcrumb-click':		'onBreadcrumbClick'
 	},
 	
+	
 	render: function() {
 	    var self = this;	
             // self.router.navigate("api/getnarrowerconcepts/node", {trigger:true});
@@ -61,20 +62,24 @@ var HomeView = View.extend({
 		return this;
 	},
 	
-	triggerNodeClick: function(node) {
+	
+	
+	onNodeClick: function() {
 	    
 	    var self = this, related, children, breadcrumb;
 	    
 	    
-	    self.collection.url = '/api/getnarrowerconcepts?node='+ node; // 'c_1521';
+	    self.collection.url = '/api/getnarrowerconcepts?node='+ self.currentNode; // 'c_1521';
             self.collection.fetch({
               success: function(response,xhr) {
                  
                  // console.dir(response);
 		
 		 related = ( typeof response == 'object' ) ? related : [];
-
-		 $(self.el).html(self.template({
+		 
+		 console.dir(response);
+		 
+		 self.$el.html(self.template({
 		  'relatedList': response.related,
 		  'breadcrumb': 
 		  [{

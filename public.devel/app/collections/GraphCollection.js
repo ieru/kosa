@@ -6,9 +6,10 @@
  * @author 
  * @since  
  */
-var Model = require('core/Model');
+var GraphModel = require('models/GraphModel');
+var Collection = require('core/Collection');
 
-var Collection = Backbone.Collection.extend({
+var GraphCollection = Collection.extend({
 
 	//--------------------------------------
 	//+ PUBLIC PROPERTIES / CONSTANTS
@@ -21,15 +22,22 @@ var Collection = Backbone.Collection.extend({
 	//--------------------------------------
   	//+ PUBLIC METHODS / GETTERS / SETTERS
   	//--------------------------------------
-
+  	model: GraphModel,
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------
     
+	parse: function (response){
+	    console.log('Parse at GraphColletion');
+    	    console.dir(response);
+    	    
+            return response
+	}
+	
   	//--------------------------------------
   	//+ PRIVATE AND PROTECTED METHODS
   	//--------------------------------------
 
 });
 
-module.exports = Collection;
+module.exports = GraphCollection;

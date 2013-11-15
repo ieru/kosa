@@ -14,7 +14,7 @@ echo "Compiling assets ..."
 $BRUNCH build
 RES=$?
 
-echo "resultado: ${RES}"
+echo "Result: ${RES}"
 
 if [ $RES -ne 0 ];then
   echo "Error compiling assets...stopping"

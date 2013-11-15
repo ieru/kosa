@@ -1,14 +1,15 @@
 /**
- * Base Class for all Backbone Collections
+ * Base Class for all Backbone Models
  * 
  * @langversion JavaScript
  * 
  * @author 
  * @since  
  */
+
 var Model = require('core/Model');
 
-var Collection = Backbone.Collection.extend({
+var GraphModel = Model.extend({
 
 	//--------------------------------------
 	//+ PUBLIC PROPERTIES / CONSTANTS
@@ -21,15 +22,23 @@ var Collection = Backbone.Collection.extend({
 	//--------------------------------------
   	//+ PUBLIC METHODS / GETTERS / SETTERS
   	//--------------------------------------
+  	defaults:{
+  		id: null,
+  		name: "",
+		children: [],
+		related: [],
+		children_number:0,
+		related_number:0
+	}
 
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------
-    
+
   	//--------------------------------------
   	//+ PRIVATE AND PROTECTED METHODS
   	//--------------------------------------
-
+  
 });
 
-module.exports = Collection;
+module.exports = GraphModel;
