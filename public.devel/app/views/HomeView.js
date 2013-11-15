@@ -56,9 +56,11 @@ var HomeView = View.extend({
   //   		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
 
       var tree = new Collection();
+      var nodeRead;
       tree.url = 'api/getnarrowerconcepts/c_1521';
       tree.fetch({
         success: function(response,xhr) {
+            nodeRead=response;
              console.log("Inside success");
              console.log(response);
         },
