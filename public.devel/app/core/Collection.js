@@ -25,7 +25,7 @@ var Collection = Backbone.Collection.extend({
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------
-    url: '/api/test',
+    // url: '/api/test',
     
     parse: function (response){
       console.dir(response);

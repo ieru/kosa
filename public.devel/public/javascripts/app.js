@@ -196,7 +196,8 @@ var Collection = Backbone.Collection.extend({
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------
-    url: '/api/test',
+    // url: '/api/test',
+    
     parse: function (response){
       console.dir(response);
       return response
@@ -919,23 +920,7 @@ var HomeView = View.extend({
              nodeRead = response;
              // console.log("Inside success");
              // console.log(response);
-        },
-        error: function (errorResponse) {
-            console.log('error');
-            console.log(errorResponse)
-        }
-     });
-                 
-     
-    		if (typeof nodeRead != 'undefined' && nodeRead !== null) {
-    		  related = nodeRead.related;
-    		  children = nodeRead.children;
-    		  
-    		} else {
-    		  related = [];
-    		  children = [];
-    		}
-    		
+
 		// console.dir (related);
 		this.$el.html( this.template(
 		{
@@ -968,6 +953,49 @@ var HomeView = View.extend({
 		  'id': 'node165'
 		}]
 		}));
+
+        },
+        error: function (errorResponse) {
+            // console.log('error');
+            // console.log(errorResponse)
+
+		// console.dir (related);
+		this.$el.html( this.template(
+		{
+		'relatedList': [{'name':'no-data', 'id':'no-id'}],
+            
+		// {
+		// 'name':'related1',
+		// 'id': 'idd1'
+		// },
+		// {
+		// 'name':'related2',
+		// 		'id': 'idd2'
+		// },
+		// {
+		// 'name':'related3',
+		// 'id': 'idd3'
+		// }
+		// ],
+		'breadcrumb': [ 
+		{
+		  'name':'node1',
+		  'id': 'node13'
+		},
+		{
+		  'name':'node2',
+		  'id': 'node125'
+		},
+		{
+		  'name':'node3',
+		  'id': 'node165'
+		}]
+		}));
+
+        }
+     });
+                 
+     
 
 		return this;
 	},
