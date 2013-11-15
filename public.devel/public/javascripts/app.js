@@ -438,7 +438,6 @@ $(function() {
  */
 
  var Router = require('core/Router');
- var Collection = require('core/Collection');
  var application = require('Application');
 
  var ApplicationRouter = Router.extend({
@@ -453,7 +452,6 @@ $(function() {
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
       "api/test"				: "test"
     },
-//r.navigate('where-is', { trigger: true });
 
 
   	//--------------------------------------
@@ -466,27 +464,9 @@ $(function() {
     },
     
     getNarrowerConcepts: function (node){
-      alert('aaaa');
     },
     
-    test: function () {
-      
-       application.Graph.getTree();      
-      
-      /*
-      var tree = new Collection();
-      // tree.url = '/accounts';
-      tree.fetch({
-        success: function(response,xhr) {
-    	     console.log("Inside success");
-    	     console.log(response);
-    	},
-    	error: function (errorResponse) {
-    	    console.log(errorResponse)
-    	}
-     });
-     */
-    	    		            
+    test: function () {  
     }
   });
 
@@ -886,6 +866,8 @@ var View     = require('core/View');
 var template = require('templates/homeViewTemplate');
 var Event    = require('events/Event');
 var Router   = require('routers/ApplicationRouter');
+var Collection = require('core/Collection');
+
 
 var HomeView = View.extend({
 
@@ -925,40 +907,54 @@ var HomeView = View.extend({
 	
 	render: function() {
 	
-		var route = new Router();
-    		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
+		// var route = new Router();
+  //   		route.navigate("api/getnarrowerconcepts/node", {trigger:true});
+
+      var tree = new Collection();
+      var nodeRead;
+      tree.url = 'api/getnarrowerconcepts/c_1521';
+      tree.fetch({
+        success: function(response,xhr) {
+            nodeRead=response;
+             console.log("Inside success");
+             console.log(response);
+        },
+        error: function (errorResponse) {
+            console.log(errorResponse)
+        }
+     });
+     
 		
 		this.$el.html( this.template(
 		{
-		'relatedList': [ 
-		{
-		'name':'related1',
-		'id': 'idd1'
-		},
-		{
-		'name':'related2',
-				'id': 'idd2'
-		},
-		{
-		'name':'related3',
-		'id': 'idd3'
-		}
-		],
-		'breadcrumb': [ 
-		{
-		'name':'node1',
-		'id': 'node13'
-		},
-		{
-		'name':'node2',
-		'id': 'node125'
-		},
-		{
-		'name':'node3',
-		'id': 'node165'
-		}
-		],
-		
+		'relatedList': nodeRead.related
+            
+		// {
+		// 'name':'related1',
+		// 'id': 'idd1'
+		// },
+		// {
+		// 'name':'related2',
+		// 		'id': 'idd2'
+		// },
+		// {
+		// 'name':'related3',
+		// 'id': 'idd3'
+		// }
+		// ],
+		// 'breadcrumb': [ 
+		// {
+		// 'name':'node1',
+		// 'id': 'node13'
+		// },
+		// {
+		// 'name':'node2',
+		// 'id': 'node125'
+		// },
+		// {
+		// 'name':'node3',
+		// 'id': 'node165'
+		// }
 		
 		
 		}));

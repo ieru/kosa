@@ -8,7 +8,6 @@
  */
 
  var Router = require('core/Router');
- var Collection = require('core/Collection');
  var application = require('Application');
 
  var ApplicationRouter = Router.extend({
@@ -23,7 +22,6 @@
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
       "api/test"				: "test"
     },
-//r.navigate('where-is', { trigger: true });
 
 
   	//--------------------------------------
@@ -36,27 +34,9 @@
     },
     
     getNarrowerConcepts: function (node){
-      alert('aaaa');
     },
     
-    test: function () {
-      
-       application.Graph.getTree();      
-      
-      /*
-      var tree = new Collection();
-      // tree.url = '/accounts';
-      tree.fetch({
-        success: function(response,xhr) {
-    	     console.log("Inside success");
-    	     console.log(response);
-    	},
-    	error: function (errorResponse) {
-    	    console.log(errorResponse)
-    	}
-     });
-     */
-    	    		            
+    test: function () {  
     }
   });
 
