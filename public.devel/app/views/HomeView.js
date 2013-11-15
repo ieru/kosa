@@ -11,6 +11,8 @@ var View     = require('core/View');
 var template = require('templates/homeViewTemplate');
 var Event    = require('events/Event');
 var Router   = require('routers/ApplicationRouter');
+var Collection = require('core/Collection');
+
 
 var HomeView = View.extend({
 
