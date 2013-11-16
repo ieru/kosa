@@ -34,6 +34,7 @@ gem 'rdf-agraph'
 gem 'rdf-raptor'
 gem 'rdf-4store'
 #gem 'spira'
+gem 'coveralls', require: false
 
 gem 'sparql'
 #gem 'rest-client'
