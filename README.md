@@ -125,6 +125,8 @@ $ sudo bundle install
 (or '$ sudo rvm all do bundle install' -- if you use rvm -- )
 ```
 
+### Running a development server
+
 - Since the server has been installed using Rack, to run it, just type:
 
 ```
@@ -143,7 +145,21 @@ http://localhost:4568
 ..Voila..
 
 ```
-### javascript, templates & css changes
+
+### Running a Production Server
+
+A good option for Linux servers is to use NGINX as web server and Passenger as
+application server. You can deploy both servers by running the command below, 
+on a Debian/ Ubuntu box
+
+    # copy-and-paste all in one line
+    
+    curl -L https://raw.github.com/julianromerajuarez/ubuntu\
+    -debian-nginx-passenger-installer/master/install.sh | bash 
+
+you can get mor information on that script in this [link](https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer)
+
+### Javascript, templates & css changes
 
 Since Front and Back are now completely separated, to modify html, javascript or
 styles follow these steps:  
