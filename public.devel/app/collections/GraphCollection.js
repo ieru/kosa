@@ -18,6 +18,7 @@ var GraphCollection = Collection.extend({
 	//--------------------------------------
 	//+ INHERITED / OVERRIDES
 	//--------------------------------------
+	url: '/api/test',
 	
 	//--------------------------------------
   	//+ PUBLIC METHODS / GETTERS / SETTERS
@@ -26,12 +27,12 @@ var GraphCollection = Collection.extend({
   	//--------------------------------------
   	//+ EVENT HANDLERS
   	//--------------------------------------
-    
 	parse: function (response){
-	    console.log('Parse at GraphColletion');
-    	    console.dir(response);
+	    // console.log('Parse at GraphColletion');
+    	    // console.dir(response);
     	    
-            return response
+	    this.deferred = this.fetch();
+            return response;
 	}
 	
   	//--------------------------------------
