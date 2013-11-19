@@ -106,7 +106,7 @@ var HomeView = View.extend({
         },
         
 	afterInit: function () {
-	    this.initSearchBox();	    
+	    this.initSearchBox();
 	    this.initGraph();
 	},
 
@@ -428,7 +428,7 @@ var HomeView = View.extend({
                //set animation transition type
                transition: $jit.Trans.Quart.easeInOut,
                //set distance between node and its children
-               levelDistance: 80,
+               levelDistance: 90,
                //set max levels to show. Useful when used with
                //the request method for requesting trees of specific depth
                levelsToShow: 1,
@@ -438,8 +438,14 @@ var HomeView = View.extend({
                Navigation: {
                  enable:true,
                  panning:true,
-                 zppming:10
+                 zooming:10
        		},
+       	       Events: {
+       	         enable:true,
+       	         onTouchMove: function () {
+       	            alert('a');
+       	         }
+       	       },
                Node: {
                    height: 20,
                    width: 80,
@@ -455,7 +461,7 @@ var HomeView = View.extend({
                Edge: {
                    type: 'bezier',
                    lineWidth: 2,
-                   color: '#000000',
+                   color: '#444444',
                    // color:'#23A4FF',
                    overridable: true
                },
@@ -493,10 +499,8 @@ var HomeView = View.extend({
                    style.cursor = 'pointer';
                    // style.color = 'black';
            	    // style.backgroundColor = '#1a1a1a';
-                   style.fontSize = '12px';
+                   // style.fontSize = '12px';
                    style.textAlign= 'center';
-                   style.textDecoration = 'none';
-                   style.paddingTop = '0';
                },
                
                onBeforePlotNode: function(node){
@@ -517,10 +521,11 @@ var HomeView = View.extend({
                        // adj.data.$color = "#eed";
 
        		       adj.data.$color = "#23A4FF";
-                       adj.data.$lineWidth = 3;
+                       adj.data.$lineWidth = 4;
                         }
                    else {
-                       delete adj.data.$color;
+                       adj.data.$color = "#666";
+                       // delete adj.data.$color;
                        delete adj.data.$lineWidth;
                    }
                },
@@ -530,12 +535,14 @@ var HomeView = View.extend({
                    var style = label.style;  
                    if (node.selected) {    
                      style.color = '#23A4FF';
-                     style.fontSize = '16px';
+                     style.fontSize = '17px';
+                     style.lineHeight='17px';
                      style.fontWeight = 'bold';
                    }
                    else {
-                     style.color = '#000000';
-                     style.fontSize = '14px';
+                     style.color = '#666';
+                     style.fontSize = '13px';
+                     style.lineHeight='13px';
                      style.fontWeight = 'normal';
                    }
                    // show the label and let the canvas clip it
