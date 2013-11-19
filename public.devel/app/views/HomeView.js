@@ -10,6 +10,7 @@
 var View     = require('core/View');
 var template = require('templates/homeViewTemplate');
 var Collection = require('core/Collection'); 
+var GraphView  = require('views/GraphView'); 
 
 var HomeView = View.extend({
          
@@ -31,55 +32,109 @@ var HomeView = View.extend({
 	/*
 	 * @private
 	 */
-
-	initialize: function() {
-	    _.bindAll( this );
-	    
-	    console.log('type test');            
-            console.log(typeof application);
-            this.collection = new Collection();
-            this.onNodeClick();
-            this.collection.on('reset', this.onNodeClick, this);
-	    // this.router = new Router();
-    		
-	},
-
-	/*
-	 * @private
-	 */
 	 
 	events: {
 	
 		'click .related-click'	:		'onTriggerNodeClick',
 		'click .breadcrumb-click':		'onBreadcrumbClick'
 	},
-	
-	
-	render: function() {
-	    var self = this;	
-            // self.router.navigate("api/getnarrowerconcepts/node", {trigger:true});
 
-		return this;
+	/*
+	 * @private
+	 */
+
+	initialize: function() {
+	    
+            this.collection = new Collection();
+            this.graphView = new GraphView();
+            // this.initHome();
+            
+            // this.collection.on('reset', this.onNodeClick, this);
+	    // this.router = new Router();
+	    _.bindAll( this );
+    		
 	},
 	
 	
+	render: function() {
+	    // var self = this;	
+            // self.router.navigate("api/getnarrowerconcepts/node", {trigger:true});
+	    // this.graphView.initGraph();
+	    // console.log('render last');
+	    // this.graphView.initGraph();
+	    
+	    this.$el.html(this.template({'related':[], 'breadcrumb':[]}));    
+	    this.assign(this.graphView, '#infovis');
+	    
+	    this.fetchCollection();
+	    return this;
+	},
 	
-	onNodeClick: function() {
+	/*
+	initHome: function() {
+	    
+	    $(this.el).html( this.template({
+		'related': [],
+		'breadcrumb': []
+	    }));
+	
+	},*/
+	
+	// dry method for subviews
+	assign : function (view, selector) {
+	    view.setElement(this.$(selector)).render();
+	},
+	
+	fetchCollection: function (e) {
+	
+	    this.collection.url = '/api/getnarrowerconcepts?node='+ self.currentNode; // 'c_1521';
+            this.collection.fetch().done(function (){
+        	this.graphView().initGraph();
+            }).fail(function () {
+        	this.graphView().Spinner.hide();
+        	this.graphView().Log.write('Error retrieving data');
+            });
+	
+	},
+	
+	/*
+	onNodeClick: function(e) {
 	    
 	    var self = this, related, children, breadcrumb;
 	    
+	    e.preventDefault();
+	    e.stopPropagation();
 	    
 	    self.collection.url = '/api/getnarrowerconcepts?node='+ self.currentNode; // 'c_1521';
             self.collection.fetch({
               success: function(response,xhr) {
                  
-                 // console.dir(response);
+                 console.log('onNodeClick:');
+                 console.dir(response);
 		
-		 related = ( typeof response == 'object' ) ? related : [];
+		 // related = ( typeof response == 'object' ) ? related : [];
 		 
-		 console.dir(response);
+		 // console.dir(response);
 		 
-		 self.$el.html(self.template({
+		$(self.el).html( self.template({
+		'relatedList': [{'name':'test', 'id':'test'}],
+		'breadcrumb': [ 
+		{
+		  'name':'node1',
+		  'id': 'node13'
+		},
+		{
+		  'name':'node2',
+		  'id': 'node125'
+		},
+		{
+		  'name':'node3',
+		  'id': 'node165'
+		}]
+		}));
+		 */
+		 /*
+		 $(self.el).html(self.template({
 		  'relatedList': response.related,
 		  'breadcrumb': 
 		  [{
@@ -94,9 +149,12 @@ var HomeView = View.extend({
 		    'name':'node3',
 		    'id': 'node165'
 		  }]
-		}));
+		}));*/
 
+	    /*
             },
+            */
+            
             error: function (errorResponse) {
                 console.log('error triggerNodeClick');
                 // console.log(errorResponse)

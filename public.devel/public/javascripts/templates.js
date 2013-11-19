@@ -130,10 +130,10 @@ function program3(depth0,data) {
   if (!helpers.breadcrumb) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)}); }
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += " </div>\n    </div>\n    <div class=\"jumbotron\">\n      <div class=\"row\">\n        <div class=\"col-md-8\">\n          <span style=\"font-size:25px; background-color:#393939;\" class=\"label label-default\">Navigational</span><br><br>\n          <h4 class=\"h4 col-md-12 text-info\" >Related terms</h4>\n          <div class=\"col-md-10\">\n            ";
-  foundHelper = helpers.relatedList;
+  foundHelper = helpers.related;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},inverse:self.noop,fn:self.program(3, program3, data)}); }
-  else { stack1 = depth0.relatedList; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  if (!helpers.relatedList) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(3, program3, data)}); }
+  else { stack1 = depth0.related; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  if (!helpers.related) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(3, program3, data)}); }
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n        </div>\n      </div>\n      <div style=\"margin-top:20px;\" class=\"col-md-4\">\n        <p style=\"font-size:15px;\">Search</p>\n        <input type=\"text\" class=\"bigdrop select2-offscreen\" id=\"selector\" style=\"width:200px; margin-top:-40px;\" value=\"16340\" tabindex=\"-1\" placeholder=\"hola\">\n      </div>\n\n\n\n      <br>\n\n\n      <div class=\"col-md-1 col-md-offset-2 log-area\"><span class=\"label label-primary fade out\" id=\"log\"></span></div>\n\n    </div>\n\n    <!-- Navigational is loaded here -->       \n    <div id=\"infovis\" class=\"draggable-parent\">\n      <div id=\"spinner\" class=\"text-center\"> \n        <img src=\"/images/spinner.gif\" height=\"66\" width=\"66\" style=\"width:66px;height:66px;\" title=\"loading\"/>\n      </div>\n    </div>    \n    <p></p>\n\n\n    <p id=\"form\">\n      <a class=\"btn btn-primary\" id=\"button\">Reset View</a>\n      <a class=\"btn btn-default\" target=\"_blank\" href=\"https://github.com/ieru/kosa\">Go to Documentation &raquo;</a>\n    </p>\n  </div>\n\n\n</div>\n</div> <!-- /container -->\n";
   return buffer;});

@@ -19,11 +19,11 @@ var Application = {
         var HomeView = require('views/HomeView');
         var ApplicationRouter = require('routers/ApplicationRouter');
         var Events = require('events/Event');
-        var GraphView = require('views/GraphView');
+        // var GraphView = require('views/GraphView');
         var GraphCollection = require('collections/GraphCollection');
 
         // Initialize
-        this.graphView = new GraphView();
+        // this.graphView = new GraphView();
         this.homeView = new HomeView();
         this.applicationRouter = new ApplicationRouter();
 
