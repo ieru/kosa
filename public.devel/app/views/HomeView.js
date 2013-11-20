@@ -393,15 +393,17 @@ var HomeView = View.extend({
          */
      
         getTree: function(nodeId, level) {
-        		 render;
+        		 // render;
                  // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
                  // console.dir(newNode);
-                 return {
-                     'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
-                     'id': Math.random(10000),
-                     'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
-                     'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
-                 };
+                 return this.getNewNode(nodeId);
+                 // {
+
+                 //     'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
+                 //     'id': Math.random(10000),
+                 //     'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
+                 //     'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
+                 // };
         },
      
      
