@@ -310,11 +310,8 @@ class Kosa < Sinatra::Base
         
         query_children = RDF::Query.new({
           :s => {
-              RDF::DC11.date  => :dateSeq
-          },
-          :dateSeq => {
-              RDF.type => RDF.Seq,
-              RDF._1 => :dateLiteral
+              RDF::SKOS.narrower  => :o,
+              RDF::SKOS.prefLabel => :label
           }
         })
                 
@@ -340,8 +337,8 @@ class Kosa < Sinatra::Base
         
         children = query_children.optimize!
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_list = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.limit(soft_limit).map { |w| { 
-          :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+        children_list = children.execute(repo, {:s => uri}).filter{ |w|  w.name.language == lang }.limit(soft_limit).map { |w| { 
+          :name=> w.label, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
