@@ -221,15 +221,15 @@ class Kosa < Sinatra::Base
         end
         
                 
-        # query_children = RDF::Query.new do
-        #   pattern [:s, RDF::SKOS.narrower, :o]
-        # end
+        query_children = RDF::Query.new do
+           pattern [:s, RDF::SKOS.narrower, :o]
+        end
         
         # pattern [:s, RDF::SKOS.narrower, :o]
 
-        query_related = RDF::Query.new do
-          Pattern.new(:s, RDF:SKOS.narrower, :o).variable_terms
-        end
+        #query_related = RDF::Query.new do
+        #  Pattern.new(:s, RDF:SKOS.narrower, :o).variable_terms
+        #end
         
         #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]        
         #pattern [:s, RDF::RDFS.subClassOf, :o]
@@ -307,11 +307,21 @@ class Kosa < Sinatra::Base
           {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
+        
+        query_children = RDF::Query.new({
+          :s => {
+              RDF::DC11.date  => :dateSeq
+          },
+          :dateSeq => {
+              RDF.type => RDF.Seq,
+              RDF._1 => :dateLiteral
+          }
+        })
                 
-        query_children = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, :o]
-          pattern [:s, RDF::SKOS.prefLabel, :label]
-        end
+        # query_children = RDF::Query.new do
+        #   pattern [:s, RDF::SKOS.narrower, :o]
+        #   pattern [:s, RDF::SKOS.prefLabel, :label]
+        # end
         
 
         query_related = RDF::Query.new do
