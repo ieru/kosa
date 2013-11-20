@@ -5,15 +5,15 @@ if [ "x${1}" = "x" ];then
   exit 1
 fi
 
+sudo git add .
+sudo git commit -m $1
+
 if [ ! -d "lib" ] || [ ! -d "public.devel" ] || [ ! -f "Gemfile" ] || [ ! -f "config.ru" ];then
   echo "public.devel directory should exist"
   exit 1
 fi
 
 rm -rf ./public
-
-sudo git add .
-sudo git commit -m $1
 
 sudo git commit -a
 
