@@ -221,13 +221,14 @@ class Kosa < Sinatra::Base
         end
         
                 
-        query_children = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, :o]
-        end
+        # query_children = RDF::Query.new do
+        #   pattern [:s, RDF::SKOS.narrower, :o]
+        # end
         
+        # pattern [:s, RDF::SKOS.narrower, :o]
 
         query_related = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, :o]
+          Pattern.new(:s, RDF:SKOS.narrower, :o).variable_terms
         end
         
         #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]        
@@ -244,7 +245,7 @@ class Kosa < Sinatra::Base
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
         children_count = 0;
         children_list = children.execute(repo, {:s => uri}).distinct.limit(soft_limit).map { |w| { 
-          :name=> remove_prefix(w.s), :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+          :name=> remove_prefix(w.o), :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
@@ -252,7 +253,7 @@ class Kosa < Sinatra::Base
         related = query_related.optimize!
         related_count = related.execute(repo, {:o => uri}).count
         related_list = related.execute(repo, {:o => uri}).limit(soft_limit).map { |w| { 
-          :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
+          :name=> w.label, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0
         } }
 =end    
 
