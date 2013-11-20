@@ -664,6 +664,20 @@ var HomeView = View.extend({
 	    _.bindAll( this );
     		
 	},
+	 getNewNode: function(nodeId) {
+    	var self = this;
+    	self.collection = new GraphCollection();
+        self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
+        self.collection.fetch().done(function() {
+        var data = self.collection.toJSON();
+        	console.log( JSON.stringify( data, '', '  ' ) );
+        	self.afterInit();
+        });
+            
+        // this.afterRender();
+            
+        return self;
+    },
 	
         render: function() {
 	    var self = this;
@@ -711,20 +725,7 @@ var HomeView = View.extend({
             getNewNode(" ");
             return self;
         },
-    getNewNode: function(nodeId) {
-    	var self = this;
-    	self.collection = new GraphCollection();
-        self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
-        self.collection.fetch().done(function() {
-        var data = self.collection.toJSON();
-        	console.log( JSON.stringify( data, '', '  ' ) );
-        	self.afterInit();
-        });
-            
-        // this.afterRender();
-            
-        return self;
-    },
+   
         
 	afterInit: function () {
 	    this.initSearchBox();
