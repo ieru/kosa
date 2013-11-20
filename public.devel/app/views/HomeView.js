@@ -454,8 +454,8 @@ var HomeView = View.extend({
                //nodes or edges
                Navigation: {
                  enable:true,
-                 panning:true,
-                 zooming:10
+                 panning:true
+                 // zooming:10
        		},
        	       Events: {
        	         enable:true,
