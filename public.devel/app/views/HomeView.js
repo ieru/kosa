@@ -54,8 +54,8 @@ var HomeView = View.extend({
     	    this.collection = new GraphCollection();
             // this.once('getNewNode', this.getNewNode);
     	    // this.trigger('getNewNode','a');
-            this.getNewNode('');
-            this.collection.on('reset', this.onNewNode, this.currentNode);
+            // this.getNewNode('');
+            this.collection.on('reset', this.getNewNode, this.currentNode);
 	    // this.router = new Router();
 	    // this.render();
 	    _.bindAll( this );
