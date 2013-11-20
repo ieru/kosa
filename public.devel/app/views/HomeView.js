@@ -423,7 +423,9 @@ var HomeView = View.extend({
                transition: $jit.Trans.Quart.easeInOut,
                //set distance between node and its children
                levelDistance: function () {
-                 return Math.abs(Math.floor((Math.random()*1000)+1));
+                 var a = Math.abs(Math.floor((Math.random()*1000)+1));
+                 console.log(a);
+                 return a;
                },
                //set max levels to show. Useful when used with
                //the request method for requesting trees of specific depth
