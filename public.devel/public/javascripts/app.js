@@ -686,18 +686,24 @@ var HomeView = View.extend({
 
 	getNewNode: function(nodeId) {
     	    var self = this;
-    	    var data = {};
+    	    
     	    
             self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
-            self.collection.fetch().done(function() {
-        	var result = self.collection.toJSON();
+            self.collection.fetch()
+            .done(function() {
+        
+        	var data = self.collection.toJSON();
 //        	console.log( JSON.stringify( data, '', '  ' ) );
-        	data = JSON.stringify( result, '', '  ' );
-            }).fail(function (){
+        	return JSON.stringify( data, '', '  ' );
+            
+            })
+            .fail(function (){
                 self.Spinner.hide();
                 self.Log.write('Error retrieving data');
+                return {};
+            
             }); 
-            return data;
+            
         },
 
 	initNavigational: function(nodeId) {
