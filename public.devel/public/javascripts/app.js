@@ -692,7 +692,7 @@ var HomeView = View.extend({
             self.collection.fetch().done(function() {
         	var result = self.collection.toJSON();
 //        	console.log( JSON.stringify( data, '', '  ' ) );
-        	data = result;
+        	data = JSON.stringify( result, '', '  ' ) );
             }).fail(function (){
                 self.Spinner.hide();
                 self.Log.write('Error retrieving data');
