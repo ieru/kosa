@@ -160,8 +160,6 @@ var GraphCollection = Collection.extend({
 	parse: function (response){
 	    // console.log('Parse at GraphColletion');
     	    // console.dir(response);
-    	    
-	    this.deferred = this.fetch();
             return response;
 	}
 	
@@ -743,7 +741,8 @@ var HomeView = View.extend({
 	    e.stopPropagation();
 	    
 	    self.collection.url = '/api/getnarrowerconcepts?node='+ self.currentNode; // 'c_1521';
-            self.collection.fetch({
+            self.collection.
+            fetch({
               success: function(response,xhr) {
                  
                  console.log('onNodeClick:');

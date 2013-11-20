@@ -30,8 +30,6 @@ var GraphCollection = Collection.extend({
 	parse: function (response){
 	    // console.log('Parse at GraphColletion');
     	    // console.dir(response);
-    	    
-	    this.deferred = this.fetch();
             return response;
 	}
 	
