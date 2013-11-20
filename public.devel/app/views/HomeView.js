@@ -392,7 +392,7 @@ var HomeView = View.extend({
                  return {
 
                       'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
-                      'id': Math.random(10000),
+                      'id': Math.floor(Math.random(10000)),
                       'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
                       'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
                   };
