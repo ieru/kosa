@@ -396,7 +396,10 @@ var HomeView = View.extend({
         		 // render;
                  // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
                  // console.dir(newNode);
-                 return this.getNewNode(nodeId);
+                 var a = this.getNewNode(nodeId)[0];
+                
+                 console.log(a);
+                 return a;
                  // {
 
                  //     'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
