@@ -1071,7 +1071,7 @@ var HomeView = View.extend({
        	       Events: {
        	         enable:true,
        	         onClick: function (nodeId, eventInfo, e){
-       	            alert('nodeId: '+nodeId);
+       	            // alert('nodeId: '+nodeId);
        	         },
        	         onTouchMove: function (nodeId, eventInfo, e) {
        	            alert('a');
