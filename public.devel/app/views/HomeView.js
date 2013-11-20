@@ -371,7 +371,7 @@ var HomeView = View.extend({
         getTree: function(nodeId, level) {
                  // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
                  // console.dir(newNode);
-                var newNode = getNewNode(nodeId);
+                var newNode = this.getNewNode(nodeId);
                 console.dir(newNode);
                  return {
 
