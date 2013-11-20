@@ -9128,7 +9128,7 @@ $jit.ST= (function() {
             Move: {
         	    enable: true,
               offsetX: canvas.translateOffsetX + config.offsetX || 0,
-              offsetY: canvas.translateOffsetY + config.offsetY + Math.random()*100  || 0
+              offsetY: canvas.translateOffsetY + config.offsetY || 0
             },
             setRightLevelToShowConfig: false,
             onBeforeRequest: $.empty,
