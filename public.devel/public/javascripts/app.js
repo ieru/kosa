@@ -1026,7 +1026,7 @@ var HomeView = View.extend({
                //set animation transition type
                transition: $jit.Trans.Quart.easeInOut,
                //set distance between node and its children
-               levelDistance: Math.abs(Math.floor((Math.random()*1000)+1)),
+               levelDistance: 90,
                /*
                function () {
                  // var a = Math.abs(Math.floor((Math.random()*1000)+1));
