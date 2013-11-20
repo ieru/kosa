@@ -85,7 +85,7 @@ var HomeView = View.extend({
     	    
     	    
             self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
-            self.collection.fetch()
+            self.collection.fetch({async:false})
             .done(function() {
         
         	var data = self.collection.toJSON();
