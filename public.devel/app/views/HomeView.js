@@ -93,18 +93,32 @@ var HomeView = View.extend({
             // self.router.navigate("api/getnarrowerconcepts/node", {trigger:true});
             // this.initGraph();
             
-            self.collection = new GraphCollection();
-            self.collection.url = '/api/getnarrowerconcepts?node=aa';
-            self.collection.fetch().done(function() {
-                var data = self.collection.toJSON();
-                console.log( JSON.stringify( data, '', '  ' ) );
-                self.afterInit();
-            });
+            // self.collection = new GraphCollection();
+            // self.collection.url = '/api/getnarrowerconcepts?node=aa';
+            // self.collection.fetch().done(function() {
+            //     var data = self.collection.toJSON();
+            //     console.log( JSON.stringify( data, '', '  ' ) );
+            //     self.afterInit();
+            // });
             
             // this.afterRender();
-            
-            return this;
+            getNewNode(" ");
+            return self;
         },
+    getNewNode: function(nodeId) {
+    	var self = this;
+    	self.collection = new GraphCollection();
+        self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
+        self.collection.fetch().done(function() {
+        var data = self.collection.toJSON();
+        	console.log( JSON.stringify( data, '', '  ' ) );
+        	self.afterInit();
+        });
+            
+        // this.afterRender();
+            
+        return self;
+    }
         
 	afterInit: function () {
 	    this.initSearchBox();
@@ -378,6 +392,7 @@ var HomeView = View.extend({
          */
      
         getTree: function(nodeId, level) {
+        		 render;
                  // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
                  // console.dir(newNode);
                  return {
