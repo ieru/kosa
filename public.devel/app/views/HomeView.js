@@ -94,6 +94,7 @@ var HomeView = View.extend({
             // this.initGraph();
             
             self.collection = new GraphCollection();
+            self.collection.url = '/api/getnarrowerconcepts?node=aa';
             self.collection.fetch().done(function() {
                 var data = self.collection.toJSON();
                 console.log( JSON.stringify( data, '', '  ' ) );
