@@ -466,7 +466,10 @@ var HomeView = View.extend({
        		},
        	       Events: {
        	         enable:true,
-       	         onTouchMove: function () {
+       	         onClick: function (nodeId, eventInfo, e){
+       	            alert('nodeId: '+nodeId);
+       	         },
+       	         onTouchMove: function (nodeId, eventInfo, e) {
        	            alert('a');
        	         }
        	       },
@@ -493,7 +496,7 @@ var HomeView = View.extend({
                request: function(nodeId, level, onComplete) {
                                 
                  var ans = eval(self.getTree(nodeId, level));
-                 // console.log('a: '+nodeId+' b: '+level);
+                 console.log('id: '+nodeId+' level: '+level);
                  // console.dir(ans);
                  onComplete.onComplete(nodeId, ans);  
                },
