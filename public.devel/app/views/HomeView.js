@@ -118,7 +118,7 @@ var HomeView = View.extend({
         // this.afterRender();
             
         return self;
-    }
+    },
         
 	afterInit: function () {
 	    this.initSearchBox();
