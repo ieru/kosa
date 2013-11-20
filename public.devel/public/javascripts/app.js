@@ -686,18 +686,24 @@ var HomeView = View.extend({
 
 	getNewNode: function(nodeId) {
     	    var self = this;
-    	    var data = {};
+    	    
     	    
             self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
-            self.collection.fetch().done(function() {
-        	var result = self.collection.toJSON();
+            self.collection.fetch({async:false})
+            .done(function() {
+        
+        	var data = self.collection.toJSON();
 //        	console.log( JSON.stringify( data, '', '  ' ) );
-        	data = result;
-            }).fail(function (){
+        	return JSON.stringify( data, '', '  ' );
+            
+            })
+            .fail(function (){
                 self.Spinner.hide();
                 self.Log.write('Error retrieving data');
+                return {};
+            
             }); 
-            return data;
+            
         },
 
 	initNavigational: function(nodeId) {
@@ -1064,7 +1070,10 @@ var HomeView = View.extend({
        		},
        	       Events: {
        	         enable:true,
-       	         onTouchMove: function () {
+       	         onClick: function (nodeId, eventInfo, e){
+       	            alert('nodeId: '+nodeId);
+       	         },
+       	         onTouchMove: function (nodeId, eventInfo, e) {
        	            alert('a');
        	         }
        	       },
@@ -1091,7 +1100,7 @@ var HomeView = View.extend({
                request: function(nodeId, level, onComplete) {
                                 
                  var ans = eval(self.getTree(nodeId, level));
-                 // console.log('a: '+nodeId+' b: '+level);
+                 console.log('id: '+nodeId+' level: '+level);
                  // console.dir(ans);
                  onComplete.onComplete(nodeId, ans);  
                },
