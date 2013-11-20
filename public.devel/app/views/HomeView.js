@@ -116,7 +116,7 @@ var HomeView = View.extend({
             // });
             
             // this.afterRender();
-            self.getNewNode(" ");
+            self.getNewNode("a");
             return self;
         },
    
