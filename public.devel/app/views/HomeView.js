@@ -86,8 +86,8 @@ var HomeView = View.extend({
     	    var self = this;
     	    var data;
     	    
-    	
     	    self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
+    	    // set Backbone synchronous
             self.collection.fetch({async:false})
             .done(function() {
         
