@@ -121,7 +121,7 @@
          self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
          self.collection.fetch().done(function() {
           var data = self.collection.toJSON();
-          console.log( JSON.stringify( data, '', '  ' ) );
+          // console.log( JSON.stringify( data, '', '  ' ) );
           self.afterRender();
         }).fail(function (){
           self.Spinner.hide();
