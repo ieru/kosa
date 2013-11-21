@@ -690,7 +690,8 @@ var HomeView = View.extend({
     	    var self = this;
     	    
     	    
-            self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
+    	
+    	    self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
             self.collection.fetch({async:false})
             .done(function() {
         
@@ -711,6 +712,7 @@ var HomeView = View.extend({
 	initNavigational: function(nodeId) {
     	    var self = this;
     	    
+
             self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
             self.collection.fetch().done(function() {
             var data = self.collection.toJSON();
@@ -999,6 +1001,7 @@ var HomeView = View.extend({
         getTree: function(nodeId, level) {
                  // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
                  // console.dir(newNode);
+                // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
                 console.dir(newNode);
                  return {
@@ -1074,6 +1077,8 @@ var HomeView = View.extend({
        	         enable:true,
        	         onClick: function (nodeId, eventInfo, e){
        	            // alert('nodeId: '+nodeId);
+       	            self.Log.loading();
+       	
        	         },
        	         onTouchMove: function (nodeId, eventInfo, e) {
        	            alert('a');
@@ -1108,7 +1113,7 @@ var HomeView = View.extend({
                },
                
                onBeforeCompute: function(node){
-                   self.Log.loading();
+                   // self.Log.loading();
                },
                
                onAfterCompute: function(){
