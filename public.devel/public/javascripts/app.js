@@ -983,7 +983,7 @@ module.exports = BackboneView;
          // $.when(this.$el.html(compiled)).then(function (data, this) {
          // })
          
-         this.$el.html(compiled);
+	     this.$el.find('#relateds-container').html(relatedsTemplate);
          
          // return this;
          
@@ -1044,7 +1044,7 @@ module.exports = BackboneView;
                  // console.dir(newNode);
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
-                // this.updateRelated(newNode.related);
+                this.updateRelated(newNode.related);
                 // console.dir(newNode);
                  // return {
 
