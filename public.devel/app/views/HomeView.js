@@ -499,7 +499,7 @@ var HomeView = View.extend({
        	         }
        	       },
                Node: {
-                   height: 20,
+                   height: 30,
                    width: 80,
                    //use a custom
                    //node rendering function
