@@ -1,15 +1,16 @@
 $:.unshift File.expand_path("../../lib", __FILE__)
+
 require 'rubygems'
 require 'bundler/setup'
 require 'rspec'
 require 'rack/test'
-# require 'matchers'
+require 'matchers'
 require 'logger'
 require 'coveralls'
 
-Coveralls.wear!
-
 set :environment, :test
+
+Coveralls.wear!
 
 ::RSpec.configure do |c|
   c.filter_run :focus => true

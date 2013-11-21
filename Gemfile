@@ -40,6 +40,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rack-test'
   gem "redcarpet"
+  gem 'shoulda-matchers'
   
   gem "debugger" if RUBY_VERSION > "1.9"
   gem "rake"

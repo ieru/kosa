@@ -690,8 +690,8 @@ var HomeView = View.extend({
     	    var self = this;
     	    var data;
     	    
-    	
     	    self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
+    	    // set Backbone synchronous
             self.collection.fetch({async:false})
             .done(function() {
         
@@ -1013,22 +1013,22 @@ var HomeView = View.extend({
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
                 console.dir(newNode);
-                 return {
+                 // return {
 
-                      'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
-                      'id': Math.floor(Math.random()*1000+1),
-                      'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
-                      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
-                  };
+                 //      'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
+                 //      'id': Math.floor(Math.random()*1000+1),
+                 //      'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
+                 //      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
+                 //  };
 
-                 /*
+                 
                  return {
 
                       'name': newNode.name, //'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
                       'id': newNode.id, // Math.floor(Math.random(10000)),
                       'children': newNode.children, // [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
                       'related': newNode.related// [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
-                  };*/
+                  };
         },
      
      
