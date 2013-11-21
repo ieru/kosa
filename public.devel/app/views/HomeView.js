@@ -418,7 +418,7 @@ return JSON.stringify( data, '', '  ' );
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
-                console.dir(newNode);
+                // console.dir(newNode);
                  // return {
 
                  //      'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,

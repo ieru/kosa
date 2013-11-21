@@ -969,7 +969,7 @@ return JSON.stringify( data, '', '  ' );
         }));
 
 
-        }
+        },
 
         
         initGraph: function() {
