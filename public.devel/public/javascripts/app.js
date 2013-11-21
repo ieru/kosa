@@ -697,8 +697,8 @@ module.exports = BackboneView;
 
            data = self.collection.toJSON();
 //        	console.log( JSON.stringify( data, '', '  ' ) );
-return data;
-return JSON.stringify( data, '', '  ' );
+//	return data;
+// return JSON.stringify( data, '', '  ' );
 
 })
           .fail(function (){
@@ -1074,7 +1074,9 @@ return JSON.stringify( data, '', '  ' );
                      ctx.moveTo(algnPos.x, algnPos.y + height / 2);
                      ctx.lineTo(algnPos.x + width, algnPos.y + height / 2);
                    } else {
+                   
                      var _random = Math.abs(Math.floor(Math.random()*10)+1);
+                     console.log('y: '+algnPos.y+' random: '+_random);
                      ctx.moveTo(algnPos.x + width / 2, algnPos.y + _random);
                      ctx.lineTo(algnPos.x + width / 2, algnPos.y + _random + height);
                    }
