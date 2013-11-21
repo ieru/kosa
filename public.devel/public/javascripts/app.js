@@ -963,16 +963,21 @@ return JSON.stringify( data, '', '  ' );
         //--------------------------------------
 
         updateRelated: function (newRelated){
-         var self = this, related;
+        
 
-         var compiled = this.template({'related':[], 'breadcrumb':[]});
+         var compiled = this.template({'related':newRelated, 'breadcrumb':[]});
 
 
-         $.when(self.$el.html(compiled)).then(function (data, self) {
-         });
-         $(self.el).html( self.template({
-          'relatedList': newRelated
-        }));
+         // $.when(this.$el.html(compiled)).then(function (data, this) {
+         // })
+         
+         this.$el.html(compiled);
+         
+         // return this;
+         
+         // $(self.el).html( self.template({
+         //  'relatedList': newRelated
+         // }));
 
 
        },
@@ -1027,7 +1032,7 @@ return JSON.stringify( data, '', '  ' );
                  // console.dir(newNode);
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
-                this.updateRelated(newNode.related);
+                // this.updateRelated(newNode.related);
                 // console.dir(newNode);
                  // return {
 
@@ -1069,8 +1074,9 @@ return JSON.stringify( data, '', '  ' );
                      ctx.moveTo(algnPos.x, algnPos.y + height / 2);
                      ctx.lineTo(algnPos.x + width, algnPos.y + height / 2);
                    } else {
-                     ctx.moveTo(algnPos.x + width / 2, algnPos.y);
-                     ctx.lineTo(algnPos.x + width / 2, algnPos.y + height);
+                     var _random = Math.abs(Math.floor(Math.random()*10)+1);
+                     ctx.moveTo(algnPos.x + width / 2, algnPos.y + _random);
+                     ctx.lineTo(algnPos.x + width / 2, algnPos.y + _random + height);
                    }
                    ctx.stroke();
                  } 
