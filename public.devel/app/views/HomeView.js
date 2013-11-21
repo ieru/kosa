@@ -17,14 +17,14 @@
 
   	/*
    	 * @private
-     */
-     id: 'home-view',
+      */
+      id: 'home-view',
 	/*
    	 * @private
-     */
-     template: template,
+      */
+      template: template,
 
-     currentNode:'',
+      currentNode:'',
 
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
@@ -34,7 +34,7 @@
 	 * @private
 	 */
 	 
-  events: {
+   events: {
 
     'click .related-click'	:		'onTriggerNodeClick',
     'click .breadcrumb-click':		'onBreadcrumbClick'
@@ -46,7 +46,7 @@
 
 
 
-  initialize: function() {
+   initialize: function() {
 
 
 
@@ -360,15 +360,21 @@ return JSON.stringify( data, '', '  ' );
 
         updateRelated: function (newRelated){
          var self = this, related;
+
+         var compiled = this.template({'related':[], 'breadcrumb':[]});
+
+
+         $.when(self.$el.html(compiled)).then(function (data, self) {
+         });
          $(self.el).html( self.template({
           'relatedList': newRelated
         }));
 
 
-        },
+       },
 
-        
-        initGraph: function() {
+       
+       initGraph: function() {
 
          var ua = navigator.userAgent,
          iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
