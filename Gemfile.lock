@@ -222,4 +222,5 @@ DEPENDENCIES
   sinatra
   siren
   sparql
+  sparql-client
   yajl-ruby

@@ -14,7 +14,7 @@ require 'rdfs'
 #require 'data_objects'
 #require 'do_sqlite3'
 #require 'do_postgres'
-
+require 'sparql/client'
 
 require 'uri'
 require 'json'
@@ -27,13 +27,14 @@ require 'equivalent-xml'
 
 class Kosa < Sinatra::Base
 
-  attr_accessor :repo, :prefix, :root, :soft_limit
+  attr_accessor :repo, :prefix, :root, :soft_limit, :sparql
  
   def initialize 
   
     @soft_limit = 10
     @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
     @repo = RDF::FourStore::Repository.new('http://localhost:8008/')
+    @sparql = SPARQL::Client.new(repo)
     @root = ''
     
     # @repo = RDF::DataObjects::Repository.new('sqlite3:kosa.db')
@@ -309,14 +310,15 @@ class Kosa < Sinatra::Base
           {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
+        query_children = sparql.query("CONSTRUCT WHERE { ?s skos:narrower+ ?o }")
         
-        query_children = RDF::Query.new({
-          :s => {
-              RDF::SKOS.broder  => :o,
-              RDF::SKOS.prefLabel => :label,
-          }
-        })
-                
+        # query_children = RDF::Query.new({
+        #  :s => {
+        #       RDF::SKOS.broader  => :o,
+        #       RDF::SKOS.prefLabel => :label,
+        #   }
+        # })
+        #         
         # query_children = RDF::Query.new do
         #   pattern [:s, RDF::SKOS.narrower, :o]
         #   pattern [:s, RDF::SKOS.prefLabel, :label]
@@ -338,14 +340,14 @@ class Kosa < Sinatra::Base
         
         children = query_children.optimize!
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_list = children.execute(repo, {:s => uri}).filter{ |w|  w.name.language == lang }.limit(soft_limit).map { |w| { 
-          :name=> w.label, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+        children_list = children.execute(repo, {:s => uri}).limit(soft_limit).map { |w| { 
+          :name=> w.o, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
 =begin
         related = query_related.optimize!
-        related_count = related.execute(repo, {:o => uri}).count
+        related_count = related.execute(repo).count
         related_list = related.execute(repo, {:o => uri}).limit(soft_limit).map { |w| { 
           :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
         } }
@@ -354,7 +356,7 @@ class Kosa < Sinatra::Base
                 
         # list.to_json
         
-        {:name=>node, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>children_count}.to_json
+        {:name=>node, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0}.to_json
         # "#{prefix}/#{node}"
 
         

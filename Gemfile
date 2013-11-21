@@ -18,6 +18,7 @@ gem 'rdf-4store'
 gem 'coveralls', require: false
 
 gem 'sparql'
+gem 'sparql-client'
 #gem 'rest-client'
 gem 'fileutils'
 gem 'siren'
