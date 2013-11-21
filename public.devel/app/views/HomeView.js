@@ -78,7 +78,7 @@
      var breadcrumbTemplate = this.breadcrumbTemplate({'breadcrumb':[]});
 
      self.$el.html(homeTemplate);
-     self.$el.find('#relateds-container').html(relatedsTemplate);
+     self.$el.find('#related-container').html(relatedsTemplate);
      self.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
      
      
@@ -373,14 +373,13 @@
         updateRelated: function (newRelated){
         
 
-         var compiled = this.template({'related':newRelated, 'breadcrumb':[]});
          var relatedsTemplate = this.relatedsTemplate({'related':newRelated});
 
 
          // $.when(this.$el.html(compiled)).then(function (data, this) {
          // })
          
-	     this.$el.find('#relateds-container').html(relatedsTemplate);
+	     this.$el.find('#related-container').html(relatedsTemplate);
          
          // return this;
          
