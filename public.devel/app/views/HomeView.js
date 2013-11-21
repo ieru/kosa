@@ -359,16 +359,19 @@ return JSON.stringify( data, '', '  ' );
         //--------------------------------------
 
         updateRelated: function (newRelated){
-         var self = this, related;
+        
 
-         var compiled = this.template({'related':[], 'breadcrumb':[]});
+         var compiled = this.template({'related':newRelated, 'breadcrumb':[]});
 
 
-         $.when(self.$el.html(compiled)).then(function (data, self) {
+         $.when(this.$el.html(compiled)).then(function (data, this) {
          });
-         $(self.el).html( self.template({
-          'relatedList': newRelated
-        }));
+         
+         return this;
+         
+         // $(self.el).html( self.template({
+         //  'relatedList': newRelated
+         // }));
 
 
        },

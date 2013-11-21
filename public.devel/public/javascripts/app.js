@@ -621,14 +621,14 @@ module.exports = BackboneView;
 
   	/*
    	 * @private
-     */
-     id: 'home-view',
+      */
+      id: 'home-view',
 	/*
    	 * @private
-     */
-     template: template,
+      */
+      template: template,
 
-     currentNode:'',
+      currentNode:'',
 
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
@@ -638,7 +638,7 @@ module.exports = BackboneView;
 	 * @private
 	 */
 	 
-  events: {
+   events: {
 
     'click .related-click'	:		'onTriggerNodeClick',
     'click .breadcrumb-click':		'onBreadcrumbClick'
@@ -650,7 +650,7 @@ module.exports = BackboneView;
 
 
 
-  initialize: function() {
+   initialize: function() {
 
 
 
@@ -964,15 +964,21 @@ return JSON.stringify( data, '', '  ' );
 
         updateRelated: function (newRelated){
          var self = this, related;
+
+         var compiled = this.template({'related':[], 'breadcrumb':[]});
+
+
+         $.when(self.$el.html(compiled)).then(function (data, self) {
+         });
          $(self.el).html( self.template({
           'relatedList': newRelated
         }));
 
 
-        },
+       },
 
-        
-        initGraph: function() {
+       
+       initGraph: function() {
 
          var ua = navigator.userAgent,
          iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
@@ -1022,7 +1028,7 @@ return JSON.stringify( data, '', '  ' );
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
-                console.dir(newNode);
+                // console.dir(newNode);
                  // return {
 
                  //      'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
