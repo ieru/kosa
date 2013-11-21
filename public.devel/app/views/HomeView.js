@@ -428,7 +428,7 @@
                  // console.dir(newNode);
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
-                // this.updateRelated(newNode.related);
+                this.updateRelated(newNode.related);
                 // console.dir(newNode);
                  // return {
 
