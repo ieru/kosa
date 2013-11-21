@@ -575,7 +575,7 @@ var HomeView = View.extend({
                    if (adj.nodeFrom.selected && adj.nodeTo.selected) {
                        // adj.data.$color = "#eed";
 
-       		       adj.data.$color = "#23A4FF";
+       		       adj.data.$color = "#00FF00";
                        adj.data.$lineWidth = 4;
                         }
                    else {
