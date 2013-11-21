@@ -220,6 +220,8 @@ class Kosa < Sinatra::Base
           {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
+        
+        
                 
         query_children = RDF::Query.new do
            pattern [:s, RDF::SKOS.narrower, :o]
@@ -245,7 +247,7 @@ class Kosa < Sinatra::Base
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
         children_count = 0;
         children_list = children.execute(repo, {:s => uri}).distinct.limit(soft_limit).map { |w| { 
-          :name=> remove_prefix(w.o), :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+          :name=> remove_prefix(w.o), :id=>Random.new.rand(10000), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
