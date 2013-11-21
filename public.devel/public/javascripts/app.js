@@ -1006,10 +1006,10 @@ var HomeView = View.extend({
                 console.dir(newNode);
                  return {
 
-                      'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
-                      'id': Math.floor(Math.random(10000)),
-                      'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
-                      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
+                      'name': newNode.name; //'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
+                      'id': newNode.id; // Math.floor(Math.random(10000)),
+                      'children': newNode.children; // [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
+                      'related': newNode.related;// [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
                   };
         },
      
