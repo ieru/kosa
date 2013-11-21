@@ -4,11 +4,11 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rspec'
 require 'rack/test'
-require 'matchers'
+# require 'matchers'
 require 'logger'
 require 'coveralls'
 
-set :environment, :test
+# set :environment, :test
 
 Coveralls.wear!
 

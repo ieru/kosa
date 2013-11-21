@@ -2,7 +2,7 @@ $:.unshift "."
 
 require 'spec_helper'
 
-describe Kosa do
+describe "Kosa" do
   before(:each) do
     $debug_output = StringIO.new()
     $logger = Logger.new($debug_output)

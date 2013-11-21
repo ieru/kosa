@@ -27,6 +27,7 @@ gem 'equivalent-xml'
 gem 'json'
 gem 'yajl-ruby'
 
+gem 'rack-test'
 
 group :production do
   
@@ -34,13 +35,12 @@ end
 
 group :development, :test do
 
-  gem 'shotgun'
-  gem "wirble"
-  gem "syntax"
-  gem 'rspec'
-  gem 'rack-test'
-  gem "redcarpet"
-  gem 'shoulda-matchers'
+  # gem 'shotgun'
+  # gem "wirble"
+  # gem "syntax"
+  # gem 'rspec'
+  # gem 'rack-test'
+  # gem "redcarpet"
   
   gem "debugger" if RUBY_VERSION > "1.9"
   gem "rake"
