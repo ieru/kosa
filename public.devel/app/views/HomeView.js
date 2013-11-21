@@ -473,7 +473,7 @@ var HomeView = View.extend({
        	         enable:true,
        	         onClick: function (nodeId, eventInfo, e){
        	            // alert('nodeId: '+nodeId);
-       	            self.Log.loading();
+       	            // self.Log.loading();
        	
        	         },
        	         onTouchMove: function (nodeId, eventInfo, e) {
@@ -501,9 +501,12 @@ var HomeView = View.extend({
                },
                
                request: function(nodeId, level, onComplete) {
-                                
+                
+                 self.Log.loading();
+                 
                  var ans = eval(self.getTree(nodeId, level));
                  console.log('id: '+nodeId+' level: '+level);
+
                  // console.dir(ans);
                  onComplete.onComplete(nodeId, ans);  
                },
