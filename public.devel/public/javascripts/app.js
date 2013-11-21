@@ -688,24 +688,33 @@ var HomeView = View.extend({
 
 	getNewNode: function(nodeId) {
     	    var self = this;
-    	    
+    	    var data;
     	    
     	
     	    self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
             self.collection.fetch({async:false})
             .done(function() {
         
-        	var data = self.collection.toJSON();
+        	data = self.collection.toJSON();
 //        	console.log( JSON.stringify( data, '', '  ' ) );
+        	return data;
         	return JSON.stringify( data, '', '  ' );
             
             })
             .fail(function (){
                 self.Spinner.hide();
                 self.Log.write('Error retrieving data');
-                return {};
+                data = {};
             
             }); 
+
+            if (typeof data == 'object' && data.length > 0){
+        	return data[0];
+            } else {
+        	return {};
+            }
+            
+            
             
         },
 
@@ -1006,11 +1015,20 @@ var HomeView = View.extend({
                 console.dir(newNode);
                  return {
 
-                      'name': newNode.name; //'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
-                      'id': newNode.id; // Math.floor(Math.random(10000)),
-                      'children': newNode.children; // [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
-                      'related': newNode.related;// [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
+                      'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
+                      'id': Math.floor(Math.random()*1000+1),
+                      'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
+                      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
                   };
+
+                 /*
+                 return {
+
+                      'name': newNode.name, //'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
+                      'id': newNode.id, // Math.floor(Math.random(10000)),
+                      'children': newNode.children, // [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
+                      'related': newNode.related// [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
+                  };*/
         },
      
      
