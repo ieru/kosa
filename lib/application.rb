@@ -312,8 +312,8 @@ class Kosa < Sinatra::Base
         
         query_children = RDF::Query.new({
           :s => {
-              RDF::SKOS.narrower  => :o,
-              RDF::SKOS.prefLabel => :label
+              RDF::SKOS.broder  => :o,
+              RDF::SKOS.prefLabel => :label,
           }
         })
                 
@@ -323,10 +323,9 @@ class Kosa < Sinatra::Base
         # end
         
 
-        query_related = RDF::Query.new do
-          pattern [:s, RDF::SKOS.narrower, :o]
-          pattern [:s, RDF::SKOS.prefLabel, :label]
-        end
+        #query_related = RDF::Query.new do
+        #  pattern [:s, RDF::SKOS.narrower, :o]
+        #end
         
         #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]        
         #pattern [:s, RDF::RDFS.subClassOf, :o]
