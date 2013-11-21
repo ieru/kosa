@@ -7,6 +7,7 @@ require 'sinatra/sparql'
 require 'sinatra/respond_to'
 
 require 'rdf'
+require 'rdf/turtle' 
 require 'rdf/4store'
 require 'rdfs'
 #require 'rdf-agraph'
@@ -14,6 +15,7 @@ require 'rdfs'
 #require 'data_objects'
 #require 'do_sqlite3'
 #require 'do_postgres'
+require 'sparql'
 require 'sparql/client'
 
 require 'uri'
@@ -23,7 +25,6 @@ require 'equivalent-xml'
 #require 'siren'
 #require 'net/http'
 #require 'rest_client'
-#require 'sparql/client'
 
 class Kosa < Sinatra::Base
 
@@ -311,7 +312,9 @@ class Kosa < Sinatra::Base
         end
         
         query_children = sparql.query("CONSTRUCT WHERE { ?s skos:narrower+ ?o }")
-        
+
+        # query_children = sparql.construct().where([:s, RDF::SKOS.broader, :o])
+	        
         # query_children = RDF::Query.new({
         #  :s => {
         #       RDF::SKOS.broader  => :o,
