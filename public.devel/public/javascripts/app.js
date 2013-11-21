@@ -978,7 +978,7 @@ module.exports = BackboneView;
         
 
          var compiled = this.template({'related':newRelated, 'breadcrumb':[]});
-         var relatedsTemplate = this.relatedsTemplate({'related':[]});
+         var relatedsTemplate = this.relatedsTemplate({'related':newRelated});
 
 
          // $.when(this.$el.html(compiled)).then(function (data, this) {
