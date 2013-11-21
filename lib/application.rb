@@ -311,7 +311,7 @@ class Kosa < Sinatra::Base
           {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
-        query_children = sparql.query("CONSTRUCT WHERE { ?s skos:narrower+ ?o }")
+        query_children = sparql.query("CONSTRUCT { ?o } WHERE { "+ uri +" skos:narrower+ ?o }")
 
         # query_children = sparql.construct().where([:s, RDF::SKOS.broader, :o])
 	        
@@ -343,7 +343,7 @@ class Kosa < Sinatra::Base
         
         children = query_children.optimize!
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_list = children.execute(repo, {:s => uri}).limit(soft_limit).map { |w| { 
+        children_list = children.execute(repo).limit(soft_limit).map { |w| { 
           :name=> w.o, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
