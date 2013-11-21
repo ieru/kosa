@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in github-lod.gemspec
 gemspec :name => ""
 
+gem 'sinatra'
 gem 'rubygems-bundler'
 
 gem 'rdf'
@@ -26,8 +27,6 @@ gem 'equivalent-xml'
 gem 'json'
 gem 'yajl-ruby'
 
-gem 'rack-test'
-# gem 'matchers'
 
 group :production do
   
@@ -35,12 +34,12 @@ end
 
 group :development, :test do
 
-  # gem 'better_errors'
-  # gem 'binding_of_caller'
-  # gem 'shotgun'
-  # gem "wirble"
-  # gem "syntax"
-  # gem "redcarpet"
+  gem 'shotgun'
+  gem "wirble"
+  gem "syntax"
+  gem 'rspec'
+  gem 'rack-test'
+  gem "redcarpet"
   
   gem "debugger" if RUBY_VERSION > "1.9"
   gem "rake"
