@@ -374,6 +374,7 @@
         
 
          var compiled = this.template({'related':newRelated, 'breadcrumb':[]});
+         var relatedsTemplate = this.relatedsTemplate({'related':[]});
 
 
          // $.when(this.$el.html(compiled)).then(function (data, this) {
