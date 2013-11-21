@@ -50,7 +50,7 @@
 
     <!-- Main component for a primary marketing message or call to action -->
     <div class="row">
-      <div id="breadcrumb" class="col-md-12">{{#breadcrumb}} <a class="breadcrumb-click" href="#" data-id="{{id}}">{{name}}</a> &raquo; {{/breadcrumb}} </div>
+	<div id="breadcrumb-container"></div>    
     </div>
     <div class="jumbotron">
       <div class="row">
@@ -58,11 +58,7 @@
           <span style="font-size:25px; background-color:#393939;" class="label label-default">Navigational</span><br><br>
           <h4 class="h4 col-md-12 text-info" >Related terms</h4>
           <div class="col-md-10">
-            {{#related}}
-              <button class="btn btn-default btn-xs related-click" type="button" data-id="{{id}}">
-                {{name}}
-              </button>
-            {{/related}}
+	    <div id="related-container"></div>
         </div>
       </div>
       <div style="margin-top:20px;" class="col-md-4">

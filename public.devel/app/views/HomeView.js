@@ -9,8 +9,11 @@
 
 
  var View     = require('core/View');
- var template = require('templates/homeViewTemplate');
  var GraphCollection = require('collections/GraphCollection'); 
+
+ var HomeTemplate = require('templates/homeViewTemplate');
+ var RelatedsTemplate = require('templates/relatedsTemplate');
+ var BreadcrumbTemplate = require('templates/breadcrumbTemplate');
 
 
  var HomeView = View.extend({
@@ -22,7 +25,9 @@
 	/*
    	 * @private
       */
-      template: template,
+      homeTemplate: HomeTemplate,
+      relatedsTemplate: RelatedsTemplate,
+      breadcrumbTemplate: BreadcrumbTemplate,
 
       currentNode:'',
 
@@ -68,11 +73,18 @@
    render: function() {
      var self = this;
 
-     var compiled = this.template({'related':[], 'breadcrumb':[]});
+     var homeTemplate = this.homeTemplate();
+     var relatedsTemplate = this.relatedsTemplate({'related':[]});
+     var breadcrumbTemplate = this.breadcrumbTemplate({'breadcrumb':[]});
 
-
-     $.when(self.$el.html(compiled)).then(function (data, self) {
-     });
+     self.$el.html(homeTemplate);
+     self.$el.find('#relateds-container').html(relatedsTemplate);
+     self.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
+     
+     
+    
+     // $.when(self.$el.html(homeview)).then(function (data, self) {
+     // });
 
             // self.router.navigate("api/getnarrowerconcepts/node", {trigger:true});
 
@@ -428,7 +440,7 @@
                  // console.dir(newNode);
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
-                this.updateRelated(newNode.related);
+                // this.updateRelated(newNode.related);
                 // console.dir(newNode);
                  // return {
 

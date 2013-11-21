@@ -90,7 +90,7 @@
   globals.require.list = list;
   globals.require.brunch = true;
 })();
-require.register("templates/homeViewTemplate", function(exports, require, module) {
+require.register("templates/breadcrumbTemplate", function(exports, require, module) {
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   helpers = helpers || Handlebars.helpers;
   var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this, blockHelperMissing=helpers.blockHelperMissing;
@@ -109,33 +109,50 @@ function program1(depth0,data) {
   buffer += escapeExpression(stack1) + "</a> &raquo; ";
   return buffer;}
 
-function program3(depth0,data) {
-  
-  var buffer = "", stack1, foundHelper;
-  buffer += "\n              <button class=\"btn btn-default btn-xs related-click\" type=\"button\" data-id=\"";
-  foundHelper = helpers.id;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\">\n                ";
-  foundHelper = helpers.name;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
-  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  buffer += escapeExpression(stack1) + "\n              </button>\n            ";
-  return buffer;}
-
-  buffer += "    <!-- Fixed navbar -->\n    <div id=\"home-view\" class=\"navbar navbar-default navbar-fixed-top\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">Navigational Browser</a>\n        </div>\n        <div class=\"navbar-collapse collapse\">\n          <ul class=\"nav navbar-nav\">\n            <li class=\"active\"><a href=\"#\">Home</a></li>\n            <!--\n            <li><a href=\"#about\">About</a></li>\n            <li><a href=\"#contact\">Contact</a></li>\n            <li class=\"dropdown\">\n              <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Dropdown <b class=\"caret\"></b></a>\n              <ul class=\"dropdown-menu\">\n                <li><a href=\"#\">Action</a></li>\n                <li><a href=\"#\">Another action</a></li>\n                <li><a href=\"#\">Something else here</a></li>\n                <li class=\"divider\"></li>\n                <li class=\"dropdown-header\">Nav header</li>\n                <li><a href=\"#\">Separated link</a></li>\n                <li><a href=\"#\">One more separated link</a></li>\n              </ul>\n            </li>\n          -->\n        </ul>\n\n\n        <ul class=\"nav navbar-nav navbar-right\">\n          <!--<li><a href=\"/tools\">RDF Tools</a></li>-->\n          <!--<li><a href=\"/sparql\">SPARQL Query Form</a></li>-->\n          <li><a href=\"#\">SPARQL Query Form</a></li>          \n          <!--<li><a href=\"/signin\">Sign in</a></li>-->\n            <!--\n            <li><a href=\"navbar-static-top/\">Static top</a></li>\n            <li class=\"active\"><a href=\"./\">Fixed top</a></li>\n          -->\n        </ul>\n\n      </div><!--/.nav-collapse -->\n    </div>\n  </div>\n\n  <div class=\"container\">\n\n    <!-- Main component for a primary marketing message or call to action -->\n    <div class=\"row\">\n      <div id=\"breadcrumb\" class=\"col-md-12\">";
+  buffer += "<div id=\"breadcrumb\" class=\"col-md-12\">";
   foundHelper = helpers.breadcrumb;
   if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)}); }
   else { stack1 = depth0.breadcrumb; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
   if (!helpers.breadcrumb) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)}); }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += " </div>\n    </div>\n    <div class=\"jumbotron\">\n      <div class=\"row\">\n        <div class=\"col-md-8\">\n          <span style=\"font-size:25px; background-color:#393939;\" class=\"label label-default\">Navigational</span><br><br>\n          <h4 class=\"h4 col-md-12 text-info\" >Related terms</h4>\n          <div class=\"col-md-10\">\n            ";
+  buffer += " </div>\n";
+  return buffer;});
+});
+
+;require.register("templates/homeViewTemplate", function(exports, require, module) {
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  
+
+
+  return "    <!-- Fixed navbar -->\n    <div id=\"home-view\" class=\"navbar navbar-default navbar-fixed-top\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">Navigational Browser</a>\n        </div>\n        <div class=\"navbar-collapse collapse\">\n          <ul class=\"nav navbar-nav\">\n            <li class=\"active\"><a href=\"#\">Home</a></li>\n            <!--\n            <li><a href=\"#about\">About</a></li>\n            <li><a href=\"#contact\">Contact</a></li>\n            <li class=\"dropdown\">\n              <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">Dropdown <b class=\"caret\"></b></a>\n              <ul class=\"dropdown-menu\">\n                <li><a href=\"#\">Action</a></li>\n                <li><a href=\"#\">Another action</a></li>\n                <li><a href=\"#\">Something else here</a></li>\n                <li class=\"divider\"></li>\n                <li class=\"dropdown-header\">Nav header</li>\n                <li><a href=\"#\">Separated link</a></li>\n                <li><a href=\"#\">One more separated link</a></li>\n              </ul>\n            </li>\n          -->\n        </ul>\n\n\n        <ul class=\"nav navbar-nav navbar-right\">\n          <!--<li><a href=\"/tools\">RDF Tools</a></li>-->\n          <!--<li><a href=\"/sparql\">SPARQL Query Form</a></li>-->\n          <li><a href=\"#\">SPARQL Query Form</a></li>          \n          <!--<li><a href=\"/signin\">Sign in</a></li>-->\n            <!--\n            <li><a href=\"navbar-static-top/\">Static top</a></li>\n            <li class=\"active\"><a href=\"./\">Fixed top</a></li>\n          -->\n        </ul>\n\n      </div><!--/.nav-collapse -->\n    </div>\n  </div>\n\n  <div class=\"container\">\n\n    <!-- Main component for a primary marketing message or call to action -->\n    <div class=\"row\">\n	<div id=\"breadcrumb-container\"></div>    \n    </div>\n    <div class=\"jumbotron\">\n      <div class=\"row\">\n        <div class=\"col-md-8\">\n          <span style=\"font-size:25px; background-color:#393939;\" class=\"label label-default\">Navigational</span><br><br>\n          <h4 class=\"h4 col-md-12 text-info\" >Related terms</h4>\n          <div class=\"col-md-10\">\n	    <div id=\"related-container\"></div>\n        </div>\n      </div>\n      <div style=\"margin-top:20px;\" class=\"col-md-4\">\n        <p style=\"font-size:15px;\">Search</p>\n        <input type=\"text\" class=\"bigdrop select2-offscreen\" id=\"selector\" style=\"width:200px; margin-top:-40px;\" value=\"16340\" tabindex=\"-1\" placeholder=\"hola\">\n      </div>\n\n\n\n      <br>\n\n\n      <div class=\"col-md-1 col-md-offset-2 log-area\"><span class=\"label label-primary fade out\" id=\"log\"></span></div>\n\n    </div>\n    \n    \n    <!-- Navigational is loaded here -->       \n    <div id=\"infovis\" class=\"draggable-parent\">\n      <div id=\"spinner\" class=\"text-center\"> \n        <img src=\"/images/spinner.gif\" height=\"66\" width=\"66\" style=\"width:66px;height:66px;\" title=\"loading\"/>\n      </div>\n    </div>    \n\n    <p></p>\n\n\n    <p id=\"form\">\n      <a class=\"btn btn-primary\" id=\"button\">Reset View</a>\n      <a class=\"btn btn-default\" target=\"_blank\" href=\"https://github.com/ieru/kosa\">Go to Documentation &raquo;</a>\n    </p>\n  </div>\n\n\n</div>\n</div> <!-- /container -->\n";});
+});
+
+;require.register("templates/relatedsTemplate", function(exports, require, module) {
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  helpers = helpers || Handlebars.helpers;
+  var buffer = "", stack1, foundHelper, functionType="function", escapeExpression=this.escapeExpression, self=this, blockHelperMissing=helpers.blockHelperMissing;
+
+function program1(depth0,data) {
+  
+  var buffer = "", stack1, foundHelper;
+  buffer += "\n    <button class=\"btn btn-default btn-xs related-click\" type=\"button\" data-id=\"";
+  foundHelper = helpers.id;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.id; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\">\n        ";
+  foundHelper = helpers.name;
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{}}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
+  buffer += escapeExpression(stack1) + "\n    </button>\n";
+  return buffer;}
+
   foundHelper = helpers.related;
-  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},inverse:self.noop,fn:self.program(3, program3, data)}); }
+  if (foundHelper) { stack1 = foundHelper.call(depth0, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)}); }
   else { stack1 = depth0.related; stack1 = typeof stack1 === functionType ? stack1() : stack1; }
-  if (!helpers.related) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(3, program3, data)}); }
+  if (!helpers.related) { stack1 = blockHelperMissing.call(depth0, stack1, {hash:{},inverse:self.noop,fn:self.program(1, program1, data)}); }
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        </div>\n      </div>\n      <div style=\"margin-top:20px;\" class=\"col-md-4\">\n        <p style=\"font-size:15px;\">Search</p>\n        <input type=\"text\" class=\"bigdrop select2-offscreen\" id=\"selector\" style=\"width:200px; margin-top:-40px;\" value=\"16340\" tabindex=\"-1\" placeholder=\"hola\">\n      </div>\n\n\n\n      <br>\n\n\n      <div class=\"col-md-1 col-md-offset-2 log-area\"><span class=\"label label-primary fade out\" id=\"log\"></span></div>\n\n    </div>\n    \n    \n    <!-- Navigational is loaded here -->       \n    <div id=\"infovis\" class=\"draggable-parent\">\n      <div id=\"spinner\" class=\"text-center\"> \n        <img src=\"/images/spinner.gif\" height=\"66\" width=\"66\" style=\"width:66px;height:66px;\" title=\"loading\"/>\n      </div>\n    </div>    \n\n    <p></p>\n\n\n    <p id=\"form\">\n      <a class=\"btn btn-primary\" id=\"button\">Reset View</a>\n      <a class=\"btn btn-default\" target=\"_blank\" href=\"https://github.com/ieru/kosa\">Go to Documentation &raquo;</a>\n    </p>\n  </div>\n\n\n</div>\n</div> <!-- /container -->\n";
+  buffer += "\n";
   return buffer;});
 });
 
