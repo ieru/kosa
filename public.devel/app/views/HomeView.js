@@ -373,7 +373,6 @@
         updateRelated: function (newRelated){
         
 
-         var compiled = this.template({'related':newRelated, 'breadcrumb':[]});
          var relatedsTemplate = this.relatedsTemplate({'related':newRelated});
 
 
