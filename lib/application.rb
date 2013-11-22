@@ -341,20 +341,13 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
-        # children = query_children.optimize!
+        children = query_children
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_list = query_children.execute(repo).limit(soft_limit).map { |w| { 
+        children_list = children.execute(repo, {:s => uri}).limit(soft_limit).map { |w| { 
           :name=> w.o, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
-=begin
-        related = query_related.optimize!
-        related_count = related.execute(repo).count
-        related_list = related.execute(repo, {:o => uri}).limit(soft_limit).map { |w| { 
-          :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
-        } }
-=end    
         #list.first.s.to_uri.root.to_s + list.first.s.to_s
                 
         # list.to_json
