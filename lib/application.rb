@@ -280,6 +280,8 @@ class Kosa < Sinatra::Base
 
 
     def get_broader_concepts(node=nil, lang="en")
+    {}.to_json
+
       if node.nil?
         {}.to_json
       else
@@ -341,9 +343,9 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
-        children = query_children
+        # children = query_children
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_list = children.execute(repo, {:s => uri}).limit(soft_limit).map { |w| { 
+        children_list = query_children.execute(repo).limit(soft_limit).map { |w| { 
           :name=> w.o, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
@@ -363,6 +365,7 @@ class Kosa < Sinatra::Base
         # json.to_json
         # # Siren.query("$..[? (@.name != null) & (@.children != null) & (@.children[0] != null) & (@.name = '"+node.to_s+"')][=children][0][? @.name != null][= name]", json).to_json
       end
+
     end
 
     

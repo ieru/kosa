@@ -8141,65 +8141,67 @@ disabled look for disabled choices in the results dropdown
   box-sizing: border-box;
 }
 
-div.jumbotron {
-font-size: inherit;
-}
+
 #home-view {
   width: 1003px;
   margin: 0 auto;
 }
 */
-@media -sass-debug-info{filename{}line{font-family:\0000323}}
+@media -sass-debug-info{filename{}line{font-family:\0000321}}
+div.jumbotron {
+  font-size: inherit; }
+
+@media -sass-debug-info{filename{}line{font-family:\0000325}}
 #spinner {
   height: 500px;
   margin-top: 100px; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000327}}
+@media -sass-debug-info{filename{}line{font-family:\0000329}}
 #log.fade {
   -webkit-transition: all 1s ease-out;
   transition: all 1s ease-out; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000331}}
+@media -sass-debug-info{filename{}line{font-family:\0000333}}
 .log-area {
   text-align: center;
   font-size: 14px; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000335}}
+@media -sass-debug-info{filename{}line{font-family:\0000337}}
 .bs-callout {
   margin: 20px 0;
   padding: 15px 30px 15px 15px;
   border-left: 5px solid #eee; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000340}}
+@media -sass-debug-info{filename{}line{font-family:\0000342}}
 .bs-callout h4 {
   margin-top: 0; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000343}}
+@media -sass-debug-info{filename{}line{font-family:\0000345}}
 .bs-callout p:last-child {
   margin-bottom: 0; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000347}}
+@media -sass-debug-info{filename{}line{font-family:\0000349}}
 .bs-callout code,
 .bs-callout .highlight {
   background-color: #fff; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000350}}
+@media -sass-debug-info{filename{}line{font-family:\0000352}}
 .bs-callout-normal {
   background-color: #eee;
   padding: 48px 60px;
   border-radius: 6px; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000355}}
+@media -sass-debug-info{filename{}line{font-family:\0000357}}
 .bs-callout-danger {
   background-color: #fcf2f2;
   border-color: #dFb5b4; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000359}}
+@media -sass-debug-info{filename{}line{font-family:\0000361}}
 .bs-callout-warning {
   background-color: #fefbed;
   border-color: #f1e7bc; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000363}}
+@media -sass-debug-info{filename{}line{font-family:\0000365}}
 .bs-callout-info {
   background-color: #f0f7fd;
   border-color: #d0e3f0; }
@@ -8219,24 +8221,24 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
         - refactor to sass syntax
 
 **/
-@media -sass-debug-info{filename{}line{font-family:\0000383}}
+@media -sass-debug-info{filename{}line{font-family:\0000385}}
 .jit-autoadjust-label {
   padding: 15px; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000386}}
+@media -sass-debug-info{filename{}line{font-family:\0000388}}
 #infovis-label div.node {
   /*font-size: 12px !important;*/
   padding-top: 0 !important;
   /*line-height: 14px;*/
   background-color: #eee; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000392}}
+@media -sass-debug-info{filename{}line{font-family:\0000394}}
 #update, #restore {
   text-align: center;
   width: 100px;
   margin: 0px 35px 10px 35px; }
 
-@media -sass-debug-info{filename{}line{font-family:\0000397}}
+@media -sass-debug-info{filename{}line{font-family:\0000399}}
 .button {
   display: inline-block;
   outline: none;
@@ -8253,16 +8255,16 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
   -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); }
 
-@media -sass-debug-info{filename{}line{font-family:\00003113}}
+@media -sass-debug-info{filename{}line{font-family:\00003115}}
 .button:hover {
   text-decoration: none; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003116}}
+@media -sass-debug-info{filename{}line{font-family:\00003118}}
 .button:active {
   position: relative;
   top: 1px; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003120}}
+@media -sass-debug-info{filename{}line{font-family:\00003122}}
 .white {
   color: #606060;
   border: solid 1px #b7b7b7;
@@ -8271,32 +8273,32 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
   background: -moz-linear-gradient(top, white, #ededed);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed'); }
 
-@media -sass-debug-info{filename{}line{font-family:\00003128}}
+@media -sass-debug-info{filename{}line{font-family:\00003130}}
 .white:hover {
   background: #ededed;
   background: -webkit-gradient(linear, left top, left bottom, from(white), to(gainsboro));
   background: -moz-linear-gradient(top, white, gainsboro);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc'); }
 
-@media -sass-debug-info{filename{}line{font-family:\00003134}}
+@media -sass-debug-info{filename{}line{font-family:\00003136}}
 .white:active {
   color: #999;
   background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(white));
   background: -moz-linear-gradient(top, #ededed, white);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff'); }
 
-@media -sass-debug-info{filename{}line{font-family:\00003140}}
+@media -sass-debug-info{filename{}line{font-family:\00003142}}
 a {
   color: #23A4FF; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003143}}
+@media -sass-debug-info{filename{}line{font-family:\00003145}}
 #container {
   width: 1000px;
   height: 600px;
   margin: 0 auto;
   position: relative; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003149}}
+@media -sass-debug-info{filename{}line{font-family:\00003151}}
 #center-container {
   height: 600px;
   position: absolute;
@@ -8305,21 +8307,21 @@ a {
   background-color: #1a1a1a;
   color: #ccc; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003157}}
+@media -sass-debug-info{filename{}line{font-family:\00003159}}
 .text {
   margin: 7px; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003160}}
+@media -sass-debug-info{filename{}line{font-family:\00003162}}
 #inner-details {
   font-size: 0.8em;
   list-style: none;
   margin: 7px; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003165}}
+@media -sass-debug-info{filename{}line{font-family:\00003167}}
 #log {
   text-align: center; }
 
-@media -sass-debug-info{filename{}line{font-family:\00003168}}
+@media -sass-debug-info{filename{}line{font-family:\00003170}}
 #infovis {
   position: relative;
   width: inherit;
@@ -8332,7 +8334,7 @@ a {
   height:400px;*/ }
 
 /*TOOLTIPS*/
-@media -sass-debug-info{filename{}line{font-family:\00003181}}
+@media -sass-debug-info{filename{}line{font-family:\00003183}}
 .tip {
   color: #111;
   width: 139px;
