@@ -341,9 +341,9 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
         
-        children = query_children.optimize!
+        # children = query_children.optimize!
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_list = children.execute(repo).limit(soft_limit).map { |w| { 
+        children_list = query_children.execute(repo).limit(soft_limit).map { |w| { 
           :name=> w.o, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
