@@ -12,6 +12,9 @@
   box-sizing: border-box;
 }
 
+div.jumbotron {
+font-size: inherit;
+}
 #home-view {
   width: 1003px;
   margin: 0 auto;
