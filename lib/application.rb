@@ -311,7 +311,7 @@ class Kosa < Sinatra::Base
           {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
-        query_children = sparql.query("CONSTRUCT { ?o } WHERE { "+ uri +" skos:narrower+ ?o }")
+        query_children = sparql.query("CONSTRUCT WHERE { ?s skos:narrower ?o }")
 
         # query_children = sparql.construct().where([:s, RDF::SKOS.broader, :o])
 	        
