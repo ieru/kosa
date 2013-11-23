@@ -29,7 +29,8 @@
       relatedsTemplate: RelatedsTemplate,
       breadcrumbTemplate: BreadcrumbTemplate,
 
-      currentNode:'',
+      currentNode:'c_1329377502888',
+      currentLang:'DE',
 
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
@@ -60,7 +61,7 @@
      this.json = "{}"
      this.collection = new GraphCollection();
             // this.once('getNewNode', this.getNewNode);
-            this.initNavigational('');
+            this.initNavigational();
             // this.collection.on('reset', this.getNewNode, this.currentNode);
 	    // this.router = new Router();
 	    // this.render();
@@ -97,8 +98,10 @@
         getNewNode: function(nodeId) {
          var self = this;
          var data;
-
-         self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
+         if (typeof nodeId == 'undefined') {
+           nodeId = self.currentNode;
+         }
+         self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId + '&lang='+self.currentLang;
     	    // set Backbone synchronous
           self.collection.fetch({async:false})
           .done(function() {
@@ -130,7 +133,7 @@
          var self = this;
 
 
-         self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId;
+         self.collection.url = '/api/getnarrowerconcepts?node=' + self.currentNode+'&lang='+self.currentLang;
          self.collection.fetch().done(function() {
           var data = self.collection.toJSON();
           // console.log( JSON.stringify( data, '', '  ' ) );
