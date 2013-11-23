@@ -8,6 +8,7 @@
 /doc/
 /import/data/
 /public/
+/public.devel/public/
 
 # eclipse
 *.pydevproject
