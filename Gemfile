@@ -9,11 +9,22 @@ gem 'rubygems-bundler'
 gem 'rdf'
 gem 'rdfs'
 gem 'linkeddata'
-gem 'rdf-do'
-gem 'do_sqlite3'
-gem 'rdf-agraph'
-gem 'rdf-raptor'
+
+# Persistence Adapters ##
+#
+# SQLite3, PostgreSQL, Heroku
+# gem 'rdf-do'
+# gem 'do_sqlite3'
+#
+# AllegroGraph
+# gem 'rdf-agraph'
+#
+# 4Store
 gem 'rdf-4store'
+# place more  adapters below ..
+
+
+gem 'rdf-raptor'
 #gem 'spira'
 gem 'coveralls', require: false
 
