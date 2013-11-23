@@ -404,7 +404,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT DISTINCT ?x ?label 
 WHERE
 {
-    ?x skos:narrower <#{uri}>  .
+    ?x skos:broader <#{uri}>  .
     ?x skos:prefLabel  ?label .
     FILTER(langMatches(lang(?label), '#{lang}')) . 
 }
