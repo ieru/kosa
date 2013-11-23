@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Kosa by ieru</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Kosa</h1>
+        <p>A lightweight aggregator of Knowledge Organization Systems (KOS)</p>
+
+        <p class="view"><a href="https://github.com/ieru/kosa">View the Project on GitHub <small>ieru/kosa</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ieru/kosa/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ieru/kosa/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ieru/kosa">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a name="kosaggregator" class="anchor" href="#kosaggregator"><span class="octicon octicon-link"></span></a><a href="">KOSaggregator</a>
+</h3>
+
+<p>A lightweight aggregator of Knowledge Organization Systems (KOS)</p>
+
+<h3>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+<p>The current project snapshot may be seen <a href="http://kos.appgee.net">here</a> (Open-Alpha version)</p>
+
+<p><a href="https://travis-ci.org/ieru/kosa"><img src="https://travis-ci.org/ieru/kosa.png?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/ieru/kosa"><img src="https://codeclimate.com/github/ieru/kosa.png" alt="Code Climate"></a> <a href="https://coveralls.io/r/ieru/kosa"><img src="https://coveralls.io/repos/ieru/kosa/badge.png" alt="Coverage Status"></a></p>
+
+<h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+
+<ul>
+<li>Ruby</li>
+<li>ImageMagick </li>
+<li>4-store</li>
+<li>PostgreSQL &amp; Heroku PostgreHQ, Casandra, MongoDB, RedStore, Sesame (Optional, Exchangeable)</li>
+<li>SQLite, Virtuoso, AllegroGraph (Optional, Exchangeable)</li>
+</ul><h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
+
+<ul>
+<li>First step is to install a graph-based database: 4-store has been used</li>
+<li>Intallation can be accomplished from a debian-like system running: </li>
+</ul><p>For more info on installing 4store: <a href="http://4store.org/trac/wiki/Install">4store Wiki</a></p>
+
+<pre><code>$ sudo apt-get install 4-store
+</code></pre>
+
+<ul>
+<li>on Mac systems : </li>
+</ul><pre><code>(if using MacPorts)  
+$ sudo port install 4-store  
+
+</code></pre>
+
+<ul>
+<li>Create a 4store database, </li>
+</ul><pre><code>$ sudo 4s-backend-setup testDB
+$ sudo 4s-backend testDB
+</code></pre>
+
+<ul>
+<li>Run the database, listening on port 8008 (to do so, just type: )</li>
+</ul><pre><code>$ sudo 4s-httpd -p 8008 testDB  
+
+(if you want to test your installed database, point your browser to http://localhost:8008/test 
+You will access an SPARQL endpoint)
+</code></pre>
+
+<ul>
+<li>Install ruby on your machine, or ensure you have it installed</li>
+</ul><pre><code>$ ruby -v
+ruby 1.9 ...
+
+</code></pre>
+
+<ul>
+<li>Fill your database with some RDF dummy data (to test the endpoint)</li>
+</ul><pre><code>( in kosa directory: )
+
+$ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontology.rdf  
+
+( ruby _loader.rb &lt;ontology_name&gt; &lt;file_to_load&gt; )  
+
+$ ruby _loader.rb co_010 co_010_ontology.rdf
+...
+...
+&lt;http://www.cropontology.org/rdf/CO_010%3A0000000&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#...
+&lt;http://www.cropontology.org/rdf/CO_010%3A0000000&gt; &lt;http://www.w3.org/2000/01/rdf-schema#label...
+
+Loading ./co_010_ontology.rdf into co_010 in 4store
+
+...
+...
+
+</code></pre>
+
+<ul>
+<li>Clone, or download a zip of this repository. Clone may be done using:</li>
+</ul><pre><code>$ git clone https://github.com/ieru/kosa.git
+$ cd kosa
+</code></pre>
+
+<ul>
+<li>Before installing gems and runnig bundle install; install ImageMagick</li>
+</ul><p>For Mac Os:<br><a href="http://blog.paulopoiati.com/2013/01/28/installing-rmagick-in-mac-os-x-mountain-lion-with-homebrew/">rmagick installation fort MacOs</a></p>
+
+<p>For most Systems:<br>
+Download and install your OS version 
+Get more Info, and troubleshoouing, at vendor's link:
+<a href="http://www.imagemagick.org/script/binary-releases.php">http://www.imagemagick.org/script/binary-releases.php</a></p>
+
+<ul>
+<li>Install required gems with the command:</li>
+</ul><pre><code>
+Note: if you are using MacOs + RVM run this command first:
+
+$ sudo rvm osx-ssl-certs update all
+
+
+(use 'rvm all do gem install sinatra .....' , instead, if you have rvm installed)  
+
+$ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
+$ sudo gem install rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa
+$ sudo gem install rdf-rdfxml rdf-turtle rdf-trig rdf-xsd rdf-4store json-ld linkeddata
+$ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
+</code></pre>
+
+<ul>
+<li>Install bundle using: (it may be necessary to remove the Gemfile.lock file to rebuild the previous build)</li>
+</ul><pre><code>( from cloned KOS directory )
+$ sudo bundle install
+(or '$ sudo rvm all do bundle install' -- if you use rvm -- )
+</code></pre>
+
+<h3>
+<a name="running-a-development-server" class="anchor" href="#running-a-development-server"><span class="octicon octicon-link"></span></a>Running a development server</h3>
+
+<ul>
+<li>Since the server has been installed using Rack, to run it, just type:</li>
+</ul><pre><code>$ sudo rackup config.ru
+( use '$ sudo rvm all do rackup config.ru', if you are using rvm )
+...
+[2013-11-04 23:22:27] INFO  WEBrick 1.3.1
+[2013-11-04 23:22:27] INFO  ruby 1.9.2 (2012-04-20) [x86_64-darwin12.5.0]
+[2013-11-04 23:22:27] INFO  WEBrick::HTTPServer#start: pid=53704 port=4568
+
+
+Now, open your browser and write:
+
+http://localhost:4568
+
+..Voila..
+
+</code></pre>
+
+<h3>
+<a name="running-a-production-server" class="anchor" href="#running-a-production-server"><span class="octicon octicon-link"></span></a>Running a Production Server</h3>
+
+<p>A good option for Linux servers is to use NGINX as web server and Passenger as
+application server. You can deploy both servers by running the command below, 
+on a Debian/ Ubuntu box</p>
+
+<pre><code># copy-and-paste all in one line
+
+curl -L https://raw.github.com/julianromerajuarez/ubuntu\
+-debian-nginx-passenger-installer/master/install.sh | bash 
+</code></pre>
+
+<p>you can get mor information on that script in this <a href="https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer">link</a></p>
+
+<h3>
+<a name="javascript-templates--css-changes" class="anchor" href="#javascript-templates--css-changes"><span class="octicon octicon-link"></span></a>Javascript, templates &amp; css changes</h3>
+
+<p>Since Front and Back are now completely separated, to modify html, javascript or
+styles follow these steps:  </p>
+
+<p>Download and install <a href="http://nodejs.org/download/">node.js</a></p>
+
+<pre><code>$ sudo npm install -g brunch
+
+$ cd __YOUR_SITE_DIR__/public.dev
+$ ./deploy.sh
+
+Compiling assets ...
+11 Nov 05:57:39 - info: compiled 30 files and 2 cached into 7 files, copied 14 in 3905ms
+Deploying assets ...
+Done. Created ./../public
+
+( refresh your browser )
+</code></pre>
+
+<h3>
+<a name="troubleshooting" class="anchor" href="#troubleshooting"><span class="octicon octicon-link"></span></a>Troubleshooting</h3>
+
+<p><a href="https://github.com/ieru/kosa/wiki/Troubleshooting">Troubleshooting</a></p>
+
+<h3>
+<a name="todo-list" class="anchor" href="#todo-list"><span class="octicon octicon-link"></span></a>Todo List</h3>
+
+<p><a href="https://github.com/ieru/kosa/wiki/TODO-LIST">TODO-LIST</a></p>
+
+<h3>
+<a name="api-documentation" class="anchor" href="#api-documentation"><span class="octicon octicon-link"></span></a>API documentation</h3>
+
+<p><a href="https://github.com/ieru/kosa/wiki/RESTful-API-documentation">API-documentation</a></p>
+
+<h3>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h3>
+
+<ul>
+<li><a href="http://www.w3.org/html/logo/">HTML5 Canvas</a></li>
+<li><a href="https://www.ruby-lang.org">Ruby</a></li>
+<li><a href="http://www.sinatrarb.com/">Sinatra</a></li>
+<li><a href="http://4store.org/">4-store</a></li>
+<li>
+<a href="">SQLite</a> </li>
+<li>
+<a href="">PostgreSQL</a> &amp; <a href="">Heroku</a> PostgreHQ,<a href="">Casandra</a>, <a href="">MongoDB</a>, <a href="">RedStore</a>, <a href="">Sesame</a>, <a href="">AllegroGraph</a>
+</li>
+<li><a href="http://backbonejs.org/">Backbonejs</a></li>
+<li><a href="http://handlebarsjs.com/">Handlebarjs</a></li>
+<li><a href="http://sass-lang.com/">SASS</a></li>
+<li><a href="http://getbootstrap.com/">Bootstrap 3.0</a></li>
+</ul><h3>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h3>
+
+<p>University of Alcala</p>
+
+<h3>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>'License'</h3>
+
+<p>This is free and unemcumbered software released into the public domain. For more information, see the accompanying UNLICENSE file.</p>
+
+<p>If you're unfamiliar with public domain, that means it's perfectly fine to start with this skeleton and code away, later relicensing as you see fit.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ieru">ieru</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
