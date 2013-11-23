@@ -44,4 +44,4 @@ exports.config =
       defaultExtension: 'hbs'
       joinTo: 'javascripts/templates.min.js'
 
-  minify: no
+  minify: yes
