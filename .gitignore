@@ -2,25 +2,18 @@
 /.yardoc/
 /*.log
 /.bundle/
-vendor/**
-cache/*
-cache/**
-cache/**/*
-cache/**/*
-readmes/*
-doc/*
-public/*
-public/**
-public/**/*
-import/data/*
+vendor/
+cache/
+readmes/
+doc/
+public/
+import/data/
 
 # eclipse
 *.pydevproject
 .project
 .metadata
 bin/**
-#tmp/**
-#tmp/**/*
 *.tmp
 *.bak
 *.swp
