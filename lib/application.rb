@@ -176,15 +176,23 @@ class Kosa < Sinatra::Base
          LIMIT 1
         ")
 =end
-=begin
-        query = sparql.query("SELECT ?s ?p ?o  WHERE { ?s ?p ?o . } LIMIT 1 ")
-=end
+
+        query = sparql.query("
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        SELECT ?concept ?p ?lcc
+        WHERE {  
+            ?concept ?p ?lcc.
+            OPTIONAL { ?concept skos:broader ?broader }
+            FILTER (!bound(?broader))
+        } LIMIT 1
+        ")
+
 
         
-        query = RDF::Query.new({
-          :s => { RDF::SKOS.narrower => :o},
-          :o => { RDF::SKOS.prefLabel => :label}
-        })
+        #query = RDF::Query.new({
+        #  :s => { RDF::SKOS.narrower => :o},
+        #  :o => { RDF::SKOS.prefLabel => :label}
+        #})
 
         #pattern [:s, RDF::RDFS.label, :label, {:optional => true}]
         #pattern [:s, RDF::RDFS.subClassOf, :o]
@@ -196,13 +204,14 @@ class Kosa < Sinatra::Base
         # list = query.execute(repo).map { |w| {'a'=>w[0], 'b'=> w[1], 'c'=> w[2] }  }
         # list = query.execute(repo).map { |w| {'id'=>remove_prefix(w.s), 'child'=> w.o }  }
 
-	optimized_query = query.optimize!
-        # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_count = 0;
-        root = optimized_query.execute(repo).distinct.limit(1).map { |w| {
-          :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
-        } }
-
+	#optimized_query = query.optimize!
+        #children_count = 0;
+        #root = optimized_query.execute(repo).distinct.limit(1).map { |w| {
+        #  :name=> w.label, :id=>remove_prefix(w.s), :children=>[], :related=>[], :children_number=>0, :related_number=>0
+        #} }
+        root = query.map { |w|
+          {:a => w }
+        }
         encoder.encode(root)
 
     end
