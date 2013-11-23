@@ -253,23 +253,25 @@ class Kosa < Sinatra::Base
          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
          PREFIX agrovoc: <#{prefix}/>
          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-         SELECT DISTINCT ?x ?label 
+         SELECT DISTINCT ?x ?label
          WHERE
          {
             <#{uri}> skos:narrower ?x  .
             ?x a skos:Concept .
             ?x skos:prefLabel  ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
-         }
-         
-        ").offset(offset).limit(results_per_page)
+         }         
+        ")
+        children_count = query.count()
+        
+        children_query = query.offset(offset).limit(results_per_page)
         
         
-         children_list = query.map { |w|  
+        children_list = children_query.map { |w|  
           { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
-         } 
+        } 
         
-         encoder.encode({ :name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0 })
+         encoder.encode({ :name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>children_count, :related_number=>0 })
 	
       end
     end
@@ -318,13 +320,16 @@ class Kosa < Sinatra::Base
             ?x skos:prefLabel  ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
           }
-         ").offset(offset).limit(results_per_page)
+         ")
+         parents_count = query.count()
         
-         parents_list = query.map { |w|  
+         parents_query = query.offset(offset).limit(results_per_page)
+         
+         parents_list = parents_query.map { |w|  
           { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
          } 
         
-         encoder.encode({ :name=>uri, :id=>node, :children=>parents_list, :related=>parents_list, :children_number=>0, :related_number=>0 })
+         encoder.encode({ :name=>uri, :id=>node, :children=>parents_list, :related=>parents_list, :children_number=>parents_count, :related_number=>0 })
 
       end
     end
