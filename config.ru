@@ -5,23 +5,18 @@
 
 $:.unshift(File.expand_path('../lib',  __FILE__))
 
-# require 'lib/KOSa'
-# unless $LOAD_PATH.include? '.'
-#   $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__))
-# end
-   
  
 require 'rubygems' || Gem.clear_paths
 require 'bundler'
 Bundler.setup
 require 'sinatra'
-
+require 'dalli'
 require 'rack/cache'
 require 'logger'
 
 # Rackup stuff:
 require File.expand_path '../lib/application.rb', __FILE__
-# require 'kosa'
+
 
 # Global config
 set :logging, true
@@ -31,7 +26,10 @@ set :static, true
 set :root, File.dirname(__FILE__) 
 set :environment, (ENV['RACK_ENV'] || 'production').to_sym
 
-# logging:
+
+
+# LOGGING
+
 if settings.environment == :production
   puts "Mode set to #{settings.environment.inspect}, logging to sinatra.log"
   $logger = Logger.new('sinatra.log', 10, 3600*24*7)
@@ -41,17 +39,28 @@ else
   $logger.formatter = lambda {|severity, datetime, progname, msg| "#{msg}\n"}
 end
 
-# Cachestore
-use Rack::Cache,
+# CACHING
+
+# Defined in ENV on Heroku. To try locally, start memcached and uncomment:
+ENV["MEMCACHE_SERVERS"] = "localhost"
+if memcache_servers = ENV["MEMCACHE_SERVERS"]
+  use Rack::Cache,
+  :verbose=> true,
+  :metastore=>   "memcached://#{memcache_servers}",
+  :entitystore=> "memcached://#{memcache_servers}"
+else
+  # File Cachestore
+  use Rack::Cache,
   :verbose     => true,
   :metastore   => "file:" + File.expand_path("../cache/meta", __FILE__),
   :entitystore => "file:" + File.expand_path("../cache/body", __FILE__)
+end
+
 
 disable :run, :reload
 
 # Bootstrap
 # classic:
 # run Sinatra::Application
-
 # modular:
 run Kosa

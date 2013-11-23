@@ -16,8 +16,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.5)
-    agraph (0.2)
-      transport (~> 1.0.5)
     builder (3.2.2)
     bundler-unload (1.0.2)
     columnize (0.3.6)
@@ -27,8 +25,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    data_objects (0.10.13)
-      addressable (~> 2.1)
+    dalli (2.6.4)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -36,8 +33,6 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.5)
-    do_sqlite3 (0.10.13)
-      data_objects (= 0.10.13)
     docile (1.1.0)
     ebnf (0.3.1)
       rdf
@@ -96,13 +91,6 @@ GEM
       rdf (>= 0.2.2)
       sparql-client (>= 0.0.4)
     rdf-aggregate-repo (0.1.2)
-      rdf (>= 1.0)
-    rdf-agraph (0.4)
-      agraph (~> 0.2)
-      json (~> 1.7)
-      rdf (~> 1.0)
-    rdf-do (1.0.0)
-      data_objects (>= 0.10.11)
       rdf (>= 1.0)
     rdf-isomorphic (1.0.2)
       rdf (>= 1.0)
@@ -190,7 +178,6 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     tins (0.13.1)
-    transport (1.0.6)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -202,19 +189,16 @@ PLATFORMS
 DEPENDENCIES
   bundler
   coveralls
+  dalli
   debugger
-  do_sqlite3
   equivalent-xml
   fileutils
-  json
   kosa!
   linkeddata
   rack-test
   rake
   rdf
   rdf-4store
-  rdf-agraph
-  rdf-do
   rdf-raptor
   rdfs
   rspec (>= 2.12.0)

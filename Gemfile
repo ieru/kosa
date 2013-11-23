@@ -10,6 +10,8 @@ gem 'rdf'
 gem 'rdfs'
 gem 'linkeddata'
 
+gem 'dalli'
+
 # Persistence Adapters ##
 #
 # SQLite3, PostgreSQL, Heroku
@@ -36,13 +38,12 @@ gem 'siren'
 gem 'equivalent-xml'
 
 # yajl gem increases JSON parse ~ 1.9x -> https://github.com/brianmario/yajl-ruby
-gem 'json'
+# gem 'json'
 gem 'yajl-ruby'
 
 gem 'rack-test'
 
 group :production do
-  
 end
 
 group :development, :test do
