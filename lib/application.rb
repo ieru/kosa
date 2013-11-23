@@ -36,7 +36,7 @@ class Kosa < Sinatra::Base
    
   def initialize 
     
-    @soft_limit = 100
+    @soft_limit = 5000
     @results_per_page = 10
     
     
@@ -99,8 +99,8 @@ class Kosa < Sinatra::Base
     get '/api/getsimilarconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
       lang = params[:lang]
-      node = params[:node]
-      # get_similar_concepts(nodel, lang)
+      word = params[:word]
+      get_similar_concepts(word, lang)
     end
 
     # Parent nodes
@@ -276,6 +276,44 @@ class Kosa < Sinatra::Base
       end
     end
 
+
+    def get_similar_concepts(word=nil, lang=nil)
+    
+      # encoder = Yajl::Encoder.new
+
+      if word.nil?
+        encoder.encode({})
+      else
+        
+        if lang.nil? || !lang.length == 2
+          lang = 'EN'
+        else
+          lang = lang.upcase
+        end
+        
+        
+        query = sparql.query("
+          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX agrovoc: <#{prefix}/>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          SELECT DISTINCT ?label 
+          WHERE
+          {
+            ?x a skos:Concept .
+            ?x skos:prefLabel ?label .
+            FILTER(langMatches(lang(?label), '#{lang}')).
+            FILTER regex(?label, #{word}, 'i')
+          }
+         ").limit(soft_limit)
+         
+         list = query.map { |w|  
+          w.label
+         } 
+        
+         encoder.encode(list)
+
+      end
+    end
 
 
 
