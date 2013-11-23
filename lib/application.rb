@@ -99,8 +99,8 @@ class Kosa < Sinatra::Base
     get '/api/getsimilarconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
       lang = params[:lang]
-      word = params[:word]
-      get_similar_concepts(word, lang)
+      term = params[:term]
+      get_similar_concepts(term, lang)
     end
 
     # Parent nodes
@@ -277,11 +277,11 @@ class Kosa < Sinatra::Base
     end
 
 
-    def get_similar_concepts(word=nil, lang=nil)
+    def get_similar_concepts(term=nil, lang=nil)
     
       # encoder = Yajl::Encoder.new
 
-      if word.nil?
+      if term.nil?
         encoder.encode({})
       else
         
@@ -302,7 +302,7 @@ class Kosa < Sinatra::Base
             ?x a skos:Concept .
             ?x skos:prefLabel ?label .
             FILTER(langMatches(lang(?label), '#{lang}')).
-            FILTER regex(?label, #{word}, 'i')
+            FILTER regex(?label, #{term}, 'i')
           }
          ").limit(soft_limit)
          
