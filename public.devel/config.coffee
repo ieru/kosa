@@ -8,8 +8,8 @@ exports.config =
     javascripts:
       defaultExtension: 'js'
       joinTo:
-        'javascripts/app.js': /^app/
-        'javascripts/vendor.js': /^vendor/
+        'javascripts/app.min.js': /^app/
+        'javascripts/vendor.min.js': /^vendor/
         'test/javascripts/test.js': /^test(\/|\\)(?!vendor)/
         'test/javascripts/test-vendor.js': /^test(\/|\\)(?=vendor)/
       order:
@@ -42,6 +42,6 @@ exports.config =
         
     templates:
       defaultExtension: 'hbs'
-      joinTo: 'javascripts/templates.js'
+      joinTo: 'javascripts/templates.min.js'
 
   minify: no
