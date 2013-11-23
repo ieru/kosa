@@ -279,13 +279,17 @@ class Kosa < Sinatra::Base
     end
 
 
-    def get_broader_concepts(node=nil, lang="en")
+    def get_broader_concepts(node=nil, lang=nil)
     {}.to_json
 
       if node.nil?
         {}.to_json
       else
         
+        if lang.nil? || !lang.length == 2
+          lang = 'EN'
+        end
+    
         
         # Consult Adapter's Specific Respository syntax (http://rdf.rubyforge.org/RDF/Repository.html)
         # to create queries. eg: DataObjects (SQLite or Postgres)->  http://rdf.rubyforge.org/do/RDF/DataObjects/Repository.html
@@ -313,9 +317,53 @@ class Kosa < Sinatra::Base
           {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
-        query_children = sparql.query("CONSTRUCT WHERE { ?s skos:narrower ?o }")
+        # query_children = sparql.query("CONSTRUCT WHERE { <"+ uri +"> skos:narrower ?o } LIMIT 10")
+	# c_1329377502888
+=begin
+	query_children = sparql.query("
+	PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+	  CONSTRUCT {
+	    ?o ?label
+	  }
+	  WHERE { 
+	    <"+ uri +"> skos:broader ?o . 
+	    <"+ uri +"> skos:altLabel ?label . 
+	    } 
+	  LIMIT 10
+        ")
 
-        # query_children = sparql.construct().where([:s, RDF::SKOS.broader, :o])
+query_children = sparql.query("
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+SELECT ?s ?label ?o 
+WHERE
+{
+<#{uri}> skos:broader ?o .
+?o skos:altLabel ?label . FILTER(langMatches(lang(?label), '#{lang}')) . 
+FILTER isLiteral(?label) .
+}
+LIMIT 10
+")
+
+?x rdfs:subClassOf agrovoc:#{node} .
+
+=end
+
+query_children = sparql.query("
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX agrovoc: <#{prefix}/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT DISTINCT ?x ?label 
+WHERE
+{
+    ?x skos:narrower <#{uri}>  .
+    ?x skos:prefLabel  ?label .
+    FILTER(langMatches(lang(?label), '#{lang}')) . 
+}
+LIMIT 10
+")
+        
+	
+        # query_children = sparql.construct.where([:s, RDF::SKOS.broader, :o])
 	        
         # query_children = RDF::Query.new({
         #  :s => {
@@ -345,8 +393,8 @@ class Kosa < Sinatra::Base
         
         # children = query_children
         # children_count = children.execute(repo, {:o => uri}).filter{ |w|  w.name.language == lang }.count
-        children_list = query_children.execute(repo).limit(soft_limit).map { |w| { 
-          :name=> w.o, :id=>remove_prefix(w.o), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
+        children_list = query_children.map { | w | { 
+          :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
         } }
         
         # todo: language filter -> solutions.filter { |solution| solution.name.language == :es }
@@ -354,7 +402,7 @@ class Kosa < Sinatra::Base
                 
         # list.to_json
         
-        {:name=>node, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0}.to_json
+        {:name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0}.to_json
         # "#{prefix}/#{node}"
 
         
