@@ -19,3 +19,4 @@ Handlebars.registerHelper( 'link', function( text, url ) {
 
   return new Handlebars.SafeString( result );
 });
+

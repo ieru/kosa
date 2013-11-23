@@ -14,7 +14,7 @@
  var HomeTemplate = require('templates/homeViewTemplate');
  var RelatedsTemplate = require('templates/relatedsTemplate');
  var BreadcrumbTemplate = require('templates/breadcrumbTemplate');
-
+ var LanguagesTemplate = require('templates/languagesTemplate');
 
  var HomeView = View.extend({
 
@@ -28,9 +28,11 @@
       homeTemplate: HomeTemplate,
       relatedsTemplate: RelatedsTemplate,
       breadcrumbTemplate: BreadcrumbTemplate,
+      languagesTemplate: LanguagesTemplate,
 
       currentNode:'c_1329377502888',
-      currentLang:'DE',
+      currentLang:'EN',
+      currentLanguage: 'English',
 
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
@@ -77,12 +79,17 @@
      var homeTemplate = this.homeTemplate();
      var relatedsTemplate = this.relatedsTemplate({'related':[]});
      var breadcrumbTemplate = this.breadcrumbTemplate({'breadcrumb':[]});
+    
 
      self.$el.html(homeTemplate);
      self.$el.find('#related-container').html(relatedsTemplate);
      self.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
      
-     
+     $.get('/json/languages.json', function(data) {
+       var languagesTemplate = self.languagesTemplate({'languages':data});
+       self.$el.find('#language-container').html(languagesTemplate);    
+       self.initLanguages();
+     });
     
      // $.when(self.$el.html(homeview)).then(function (data, self) {
      // });
@@ -128,7 +135,35 @@
 
 
        },
-
+       initLanguages: function () {     
+         function format(state) {
+             if (!state.id) {
+               return state.text; 
+             }
+                 return "<img class='flag' width='16' height='16' src='images/flags/" + state.id.toLowerCase() + ".png'/>"+ state.text;
+         }
+         $("#language").select2({
+            formatResult: format,
+            formatSelection: format,
+            width: '255px',
+            escapeMarkup: function(m) { return m; }
+         });
+         $('#language').select2("val", this.currentLang.toLowerCase()); 
+         
+         $('#language').on('change', this.changeLanguage);
+       },
+       
+       changeLanguage: function (e) {
+         self = this;
+         self.currentLang = e.val.toUpperCase();
+         // self.currentLanguage = e.text;
+         // self.Log.write('Changed Language to: '+e.text);
+         // setTimeout(300, function() {
+         //   self.Log.done();
+         // });
+       },
+       
+       
        initNavigational: function(nodeId) {
          var self = this;
 
@@ -562,7 +597,7 @@
                    self.Log.loading();
 
                    var ans = eval(self.getTree(nodeId, level));
-                   console.log('id: '+nodeId+' level: '+level);
+                   // console.log('id: '+nodeId+' level: '+level);
 
                  // console.dir(ans);
                  onComplete.onComplete(nodeId, ans);  
