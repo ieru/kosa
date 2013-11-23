@@ -19,24 +19,29 @@ require 'sparql'
 require 'sparql/client'
 
 require 'uri'
-require 'json'
-require 'yajl'
+require 'yajl/json_gem'
 require 'equivalent-xml'
+
 #require 'siren'
 #require 'net/http'
 #require 'rest_client'
 
 class Kosa < Sinatra::Base
 
-  attr_accessor :repo, :prefix, :root, :soft_limit, :sparql
- 
+  attr_accessor :repo, :prefix, :root, :sparql
+  attr_reader :results_per_page, :solf_limit
+   
   def initialize 
-  
-    @soft_limit = 10
+    
+    @soft_limit = 100
+    @results_per_page = 10
+    
+    
     @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
     @repo = RDF::FourStore::Repository.new('http://localhost:8008/')
     @sparql = SPARQL::Client.new(repo)
     @root = ''
+
     
     # @repo = RDF::DataObjects::Repository.new('sqlite3:kosa.db')
     # repo = RDF::DataObjects::Repository.new 'postgres://postgres@server/database'
@@ -64,12 +69,12 @@ class Kosa < Sinatra::Base
     #     FILTER(!BOUND(?cls2))
     # }
 
+
     # Helper module to avoid confussion between JSON and RDF::JSON gems
     module JSON2
       include ::JSON
       module_function :parse
     end
-
 
 
     # test endpoint1 
@@ -88,33 +93,43 @@ class Kosa < Sinatra::Base
     end
     
     # first node in a tree
-    get '/api/gettopconcepts' do
+    get '/api/getsimilarconcepts' do
       lang = params[:lang]
-      get_top_concepts(lang)
+      node = params[:node]
+      # get_similar_concepts(nodel, lang)
     end
 
     # Parent nodes
     get '/api/getbroaderconcepts' do
       lang = params[:lang]
       node = params[:node]
-      get_broader_concepts(node, lang)
+      page = params[:page]
+      get_broader_concepts(node, lang, page)
     end
     
     # node children. Returns {} if no children
     get '/api/getnarrowerconcepts' do
       lang = params[:lang]
       node = params[:node]
-      get_narrower_concepts(node, lang)
+      page = params[:page]
+      get_narrower_concepts(node, lang, page)
+    end
+
+    # first node in a tree
+    get '/api/gettopconcepts' do
+      lang = params[:lang]
+      get_top_concepts(lang)
     end
 
   
    # private methods
-   
    # private
   
 
     def get_top_concepts(lang=nil)
 
+        encoder = Yajl::Encoder.new
+        
         if lang.nil? || !lang.length == 2
           lang = 'EN'
         end        
@@ -132,15 +147,14 @@ class Kosa < Sinatra::Base
            }
            FILTER (!bound(?super)) .
          }
-        ")
-        #.limit(1)
+        ").limit(1)
          
         
          #  FILTER (langMatches(lang(?label), '#{lang}')) .           
         
 	
         root = query_children.each_solution do |w| 
-            {:name => w.label, :id => remove_prefix(w.x)}.to_json
+            encoder.encode({:name => w.label, :id => remove_prefix(w.x)})
         end
         
         # {:name=>root, :id=>remove_prefix(root), :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
@@ -150,23 +164,32 @@ class Kosa < Sinatra::Base
 
   
 
-    def get_narrower_concepts(node=nil, lang=nil)
+    def get_narrower_concepts(node=nil, lang=nil, page=0)
+
+      
+      encoder = Yajl::Encoder.new
 
       if node.nil?
-        {}.to_json
+        encoder.encode(to_json)
       else
         
         if lang.nil? || !lang.length == 2
           lang = 'EN'
         end
     
+        if page.nil? || page.to_i < 0
+          page = 0
+        end
+        
+        offset = page * results_per_page
         
         node = remove_prefix(node)
         
         uri = prefix + '/' + node
         
         if !uri.valid?
-          {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
+        encoder.encode({})
+          # {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
         
@@ -177,66 +200,71 @@ class Kosa < Sinatra::Base
          SELECT DISTINCT ?x ?label 
          WHERE
          {
-            ?x skos:narrower <#{uri}>  .
+            <#{uri}> skos:narrower ?x  .
             ?x skos:prefLabel  ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
          }
-         LIMIT 10
-        ")
+         
+        ").offset(offset).limit(results_per_page)
         
         
+         children_list = query_children.map { |w|  
+          { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
+         } 
+        
+         encoder.encode({ :name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0 })
 	
-        children_list = query_children.map { | w | { 
-          :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
-        } }
-        
-        {:name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0}.to_json
-
       end
     end
 
 
 
 
-    def get_broader_concepts(node=nil, lang=nil)
+    def get_broader_concepts(node=nil, lang=nil, page=0)
     
+      encoder = Yajl::Encoder.new
+
       if node.nil?
-        {}.to_json
+        encoder.encode({})
       else
         
         if lang.nil? || !lang.length == 2
           lang = 'EN'
         end
-    
+        
+        if page.nil? || page.to_i < 0
+          page = 0
+        end
+        
+        offset = page * results_per_page
         
         node = remove_prefix(node)
         
         uri = prefix + '/' + node
         
         if !uri.valid?
-          {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
+          {}.to_json
+          # {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
         end
         
-query_children = sparql.query("
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX agrovoc: <#{prefix}/>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-SELECT DISTINCT ?x ?label 
-WHERE
-{
-    ?x skos:broader <#{uri}>  .
-    ?x skos:prefLabel  ?label .
-    FILTER(langMatches(lang(?label), '#{lang}')) . 
-}
-LIMIT 10
-")
+        query_children = sparql.query("
+          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX agrovoc: <#{prefix}/>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          SELECT DISTINCT ?x ?label 
+          WHERE
+          {
+            <#{uri}> skos:broader ?x  .
+            ?x skos:prefLabel  ?label .
+            FILTER(langMatches(lang(?label), '#{lang}')) . 
+          }
+         ").offset(offset).limit(results_per_page)
         
-	
-        children_list = query_children.map { | w | { 
-          :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 
-        } }
+         children_list = query_children.map { |w|  
+          { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
+         } 
         
-        {:name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0}.to_json
+         encoder.encode({ :name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>0, :related_number=>0 })
 
       end
     end
