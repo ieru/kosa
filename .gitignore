@@ -2,12 +2,12 @@
 /.yardoc/
 /*.log
 /.bundle/
-vendor/
-cache/
-readmes/
-doc/
-public/
-import/data/
+/vendor/
+/cache/
+/readmes/
+/doc/
+/public/
+/import/data/
 
 # eclipse
 *.pydevproject
