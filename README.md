@@ -1,4 +1,4 @@
-### [KOSaggregator]()
+### [KOSaggregator](http://ieru.github.io/kosa)
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
@@ -184,13 +184,9 @@ Download and install [node.js](http://nodejs.org/download/)
 
 [Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
 
-### Todo List
+### Documentation and API access
 
-[TODO-LIST](https://github.com/ieru/kosa/wiki/TODO-LIST)
-
-### API documentation
-
-[API-documentation](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
+[API documentation](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
 
 ### Resources
 
