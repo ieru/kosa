@@ -140,13 +140,13 @@
        	var relatedNumber = newRelated.length;
        	var relatedElementWidth = 100;
        	var relatedSpace = relatedNumber*relatedElementWidth;
-       	var relatedSpaceBeginning= canvasWidth/2 - relatedSpace/2;
+       	var relatedSpaceBeginning = canvasWidth/2 - relatedSpace/2;
        	var relatedHeight = 200;
        	var radioDiff = 14;
 
        	for (var i = 0; i < relatedNumber; i++) {
        		var relHeight = relatedHeight - radioDiff * Math.abs(Math.pow((i-Math.floor(relatedNumber/2)), 1.5));
-       		var relWidth = relatedSpaceBeginning + 1*relatedElementWidth;
+       		var relWidth = relatedSpaceBeginning + i*relatedElementWidth;
        		// pintar
        	};
 
