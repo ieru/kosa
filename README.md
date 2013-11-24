@@ -15,7 +15,7 @@ The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alp
 - 4-store
 - PostgreSQL & Heroku PostgreHQ, Casandra, MongoDB, RedStore, Sesame (Optional, Exchangeable)
 - SQLite, Virtuoso, AllegroGraph (Optional, Exchangeable)
-
+- Memcached (Optional, by default uses File Storage cache)
 ### Installation
 
 
@@ -200,6 +200,7 @@ Download and install [node.js](http://nodejs.org/download/)
 - [Handlebarjs](http://handlebarsjs.com/)
 - [SASS](http://sass-lang.com/)
 - [Bootstrap 3.0](http://getbootstrap.com/)
+- [Memcached](http://memcached.org/)
 
 ### Author
 
