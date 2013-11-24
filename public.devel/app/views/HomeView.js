@@ -142,7 +142,7 @@
        	var relatedSpace = relatedNumber*relatedElementWidth;
        	var canvasWidth = $(window).innerWidth();
        	var relatedSpaceBeginning = canvasWidth/2 - relatedSpace/2;
-       	var relatedHeight = 200;
+       	var relatedHeight = 300;
        	var radioDiff = 14;
 
        	for (var i = 0; i < relatedNumber; i++) {
