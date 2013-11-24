@@ -623,7 +623,7 @@
                  };
                    //set label styles
                    var style = label.style;
-                   style.width = 80 + 'px';
+                   style.width = 100 + 'px';
                    style.height = 'auto';            
                    style.cursor = 'pointer';
                    // style.color = 'black';
