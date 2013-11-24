@@ -7,6 +7,20 @@
  * @since  Month 00, 2012
  */
 
+ /* variables */
+
+$label-width: 100px;
+
+ /* sass */
+
+.related-label{
+  display:inline-block;
+  width: $label-width;
+  position:absolute;
+  top:-100;
+  left:-100;
+}
+
 .martop2 {
   margin-top: 2em;
 }
