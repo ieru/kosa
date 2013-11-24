@@ -1,4 +1,4 @@
-$:.unshift File.expand_path("../../lib", __FILE__)
+$:.unshift File.expand_path("../lib", __FILE__)
 
 require 'rubygems'
 require 'bundler/setup'
@@ -7,8 +7,9 @@ require 'rack/test'
 # require 'matchers'
 require 'logger'
 require 'coveralls'
+require 'application'
 
-# set :environment, :test
+set :environment, :test
 
 Coveralls.wear!
 

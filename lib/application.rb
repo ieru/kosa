@@ -32,7 +32,7 @@ require 'equivalent-xml'
 class Kosa < Sinatra::Base
   
   attr_accessor :repo, :prefix, :root, :sparql
-  attr_reader :results_per_page, :solf_limit, :encoder
+  attr_reader :results_per_page, :soft_limit, :encoder
    
   def initialize 
     
@@ -161,22 +161,22 @@ class Kosa < Sinatra::Base
          }
         ").limit(1)
 =end 
-=begin
+
         # changed query for 'the first node which has children'
         query = sparql.query("
          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
          SELECT DISTINCT ?x ?label
          WHERE
          {
-         ?x ?p ?y .
+         ?x ?p _:o
          ?x a skos:Concept .
-         ?x skos:prefLabel  ?label .
+         ?x skos:prefLabel ?label .
          FILTER(langMatches(lang(?label), 'DE')) .
          }
          LIMIT 1
         ")
-=end
 
+=begin
         query = sparql.query("
         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
         SELECT ?concept ?p ?lcc
@@ -186,7 +186,7 @@ class Kosa < Sinatra::Base
             FILTER (!bound(?broader))
         } LIMIT 1
         ")
-
+=end
 
         
         #query = RDF::Query.new({
@@ -299,10 +299,10 @@ class Kosa < Sinatra::Base
           SELECT DISTINCT ?label 
           WHERE
           {
-            ?x a skos:Concept .
-            ?x skos:prefLabel ?label .
+            _:x a skos:Concept .
+            _:x skos:prefLabel ?label .
             FILTER(langMatches(lang(?label), '#{lang}')).
-            FILTER regex(?label, #{term}, 'i')
+            FILTER(regex(?label, '#{term}', 'i'))
           }
          ").limit(soft_limit)
          
