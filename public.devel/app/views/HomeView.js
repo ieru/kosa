@@ -664,8 +664,8 @@
                      var style = label.style;  
                      if (node.selected) {    
                        style.color = '#23A4FF';
-                       style.fontSize = '17px';
-                       style.lineHeight='17px';
+                       style.fontSize = '15px';
+                       style.lineHeight='15px';
                        style.fontWeight = 'bold';
                      }
                      else {
