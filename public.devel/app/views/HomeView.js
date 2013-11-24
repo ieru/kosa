@@ -137,6 +137,8 @@
        },
 
        redrawRelated: function(newRelated){
+       	$("#relateds").empty();
+
        	var relatedNumber = newRelated.length;
        	var relatedElementWidth = 100;
        	var relatedSpace = relatedNumber*relatedElementWidth;
