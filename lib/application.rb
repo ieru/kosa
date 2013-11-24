@@ -169,7 +169,6 @@ class Kosa < Sinatra::Base
          WHERE
          {
          # ?x ?p ?o
-         # ?x a skos:Concept .
          ?x skos:prefLabel ?label .
          FILTER(langMatches(lang(?label), '#{lang}')) .
          }
@@ -257,7 +256,6 @@ class Kosa < Sinatra::Base
          WHERE
          {
             <#{uri}> skos:narrower ?x  .
-            # ?x a skos:Concept .
             ?x skos:prefLabel  ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
          }         
@@ -299,7 +297,6 @@ class Kosa < Sinatra::Base
           SELECT REDUCED ?label 
           WHERE
           {
-            # ?x a skos:Concept .
             ?x skos:prefLabel ?label .
             FILTER(langMatches(lang(?label), '#{lang}')).
             FILTER(contains(?label, '#{term}'))
@@ -355,7 +352,6 @@ class Kosa < Sinatra::Base
           WHERE
           {
             <#{uri}> skos:broader ?x  .
-            # ?x a skos:Concept .
             ?x skos:prefLabel  ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
           }
