@@ -140,7 +140,7 @@
        	var relatedNumber = newRelated.length;
        	var relatedElementWidth = 100;
        	var relatedSpace = relatedNumber*relatedElementWidth;
-       	var canvasWidth;
+       	var canvasWidth = $("div.jumbotron").innerWidth;
        	var relatedSpaceBeginning = canvasWidth/2 - relatedSpace/2;
        	var relatedHeight = 200;
        	var radioDiff = 14;
@@ -148,7 +148,7 @@
        	for (var i = 0; i < relatedNumber; i++) {
        		var relHeight = relatedHeight - radioDiff * Math.abs(Math.pow((i-Math.floor(relatedNumber/2)), 1.5));
        		var relWidth = relatedSpaceBeginning + i*relatedElementWidth;
-       		$("#relateds").append('<div class="related-label">' + newRelated[i].name + '</div>');
+       		$("#relateds").append('<div class="related-label" style="top:"' relatedHeight 'px; left:' + relWidth + 'px>' + newRelated[i].name + '</div>');
        	};
 
        },
