@@ -108,7 +108,7 @@
          if (typeof nodeId == 'undefined') {
            nodeId = self.currentNode;
          }
-         self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId + '&lang='+self.currentLang;
+         self.collection.url = '/api/getbroaderconcepts?node=' + nodeId + '&lang='+self.currentLang;
     	    // set Backbone synchronous
           self.collection.fetch({async:false})
           .done(function() {
@@ -138,7 +138,6 @@
 
        redrawRelated: function(newRelated){
        	$("#relateds").empty();
-
        	var relatedNumber = newRelated.length;
        	var relatedElementWidth = 100;
        	var relatedSpace = relatedNumber*relatedElementWidth;
