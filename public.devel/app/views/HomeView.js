@@ -495,6 +495,7 @@
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
+                this.redrawRelated(newNode.related);
                 // console.dir(newNode);
                  // return {
 
