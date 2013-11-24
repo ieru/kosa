@@ -290,6 +290,7 @@ class Kosa < Sinatra::Base
         end
         
         
+        
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX agrovoc: <#{prefix}/>
