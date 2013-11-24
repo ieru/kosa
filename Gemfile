@@ -26,9 +26,9 @@ gem 'sinatra-respond_to', :git => "git://github.com/gkellogg/sinatra-respond_to.
 gem 'sinatra'
 gem 'rubygems-bundler'
 
-gem 'rdf'
-gem 'rdfs'
-gem 'linkeddata'
+# gem 'rdf'
+# gem 'rdfs'
+# gem 'linkeddata'
 
 gem 'dalli'
 
@@ -42,7 +42,7 @@ gem 'dalli'
 # gem 'rdf-agraph'
 #
 # 4Store
-gem 'rdf-4store'
+# gem 'rdf-4store'
 # place more  adapters below ..
 
 
@@ -50,12 +50,11 @@ gem 'rdf-raptor'
 #gem 'spira'
 gem 'coveralls', require: false
 
-gem 'sparql'
-gem 'sparql-client'
-#gem 'rest-client'
+#gem 'sparql'
+#gem 'sparql-client'
+##gem 'rest-client'
 gem 'fileutils'
-gem 'siren'
-gem 'equivalent-xml'
+#gem 'equivalent-xml'
 
 # yajl gem increases JSON parse ~ 1.9x -> https://github.com/brianmario/yajl-ruby
 # gem 'json'
