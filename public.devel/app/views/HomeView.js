@@ -147,7 +147,7 @@
 
        	for (var i = 0; i < relatedNumber; i++) {
        		var relHeight = relatedHeight - radioDiff * Math.abs(Math.pow((i-Math.floor(relatedNumber/2)), 1.5));
-       		var relWidth = relatedSpaceBeginning + i*relatedElementWidth;
+       		var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
        		$("#relateds").append('<div class="related-label" style="top:"' + relatedHeight + 'px; left:' + relWidth + 'px>' + newRelated[i].name + '</div>');
        	};
 
