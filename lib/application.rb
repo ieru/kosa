@@ -165,13 +165,13 @@ class Kosa < Sinatra::Base
         # changed query for 'the first node which has children'
         query = sparql.query("
          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-         SELECT DISTINCT ?x ?label
+         SELECT REDUCED ?x ?label
          WHERE
          {
-         ?x ?p _:o
-         ?x a skos:Concept .
+         # ?x ?p ?o
+         # ?x a skos:Concept .
          ?x skos:prefLabel ?label .
-         FILTER(langMatches(lang(?label), 'DE')) .
+         FILTER(langMatches(lang(?label), '#{lang}')) .
          }
          LIMIT 1
         ")
@@ -253,11 +253,11 @@ class Kosa < Sinatra::Base
          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
          PREFIX agrovoc: <#{prefix}/>
          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-         SELECT DISTINCT ?x ?label
+         SELECT REDUCED ?x ?label
          WHERE
          {
             <#{uri}> skos:narrower ?x  .
-            ?x a skos:Concept .
+            # ?x a skos:Concept .
             ?x skos:prefLabel  ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
          }         
@@ -296,15 +296,16 @@ class Kosa < Sinatra::Base
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX agrovoc: <#{prefix}/>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT DISTINCT ?label 
+          SELECT REDUCED ?label 
           WHERE
           {
-            _:x a skos:Concept .
-            _:x skos:prefLabel ?label .
+            # ?x a skos:Concept .
+            ?x skos:prefLabel ?label .
             FILTER(langMatches(lang(?label), '#{lang}')).
-            FILTER(regex(?label, '#{term}', 'i'))
+            FILTER(contains(?label, '#{term}'))
           }
-         ").limit(soft_limit)
+          LIMIT 5
+         ")
          
          list = query.map { |w|  
           w.label
@@ -350,11 +351,11 @@ class Kosa < Sinatra::Base
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX agrovoc: <#{prefix}/>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT DISTINCT ?x ?label 
+          SELECT REDUCED ?x ?label 
           WHERE
           {
             <#{uri}> skos:broader ?x  .
-            ?x a skos:Concept .
+            # ?x a skos:Concept .
             ?x skos:prefLabel  ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
           }
