@@ -574,7 +574,7 @@
                 },
                 Node: {
                  height: 30,
-                 width: 80,
+                 width: 90,
                    //use a custom
                    //node rendering function
                    type: 'nodeline',
