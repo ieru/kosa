@@ -31,7 +31,7 @@
    	 languagesTemplate: LanguagesTemplate,
 
    	 currentNode:'c_4788',
-   	 currentLang:'EN',
+   	 currentLang:'DE',
    	 currentLanguage: 'English',
 
 	//--------------------------------------
@@ -212,122 +212,8 @@ initNavigational: function(nodeId) {
   	this.initGraph();
   },
 
-	/*
-	initHome: function() {
-	    
-	    $(this.el).html( this.template({
-		'related': [],
-		'breadcrumb': []
-	    }));
-	
-},*/
-
-	// dry method for subviews
-	// assign : function (view, selector) {
-	//     view.setElement(this.$(selector)).render();
-	// },
-	/*
-	fetchCollection: function (e) {
-	
-	    this.collection.url = '/api/getnarrowerconcepts?node='+ self.currentNode; // 'c_1521';
-            this.collection.fetch().done(function (){
-        	//this.graphView.initGraph();
-        	this.render();
-            }).fail(function () {
-        	this.graphView.Spinner.hide();
-        	this.graphView.Log.write('Error retrieving data');
-            });
-	
-},*/
-
-	/*
-	onNodeClick: function(e) {
-	    
-	    var self = this, related, children, breadcrumb;
-	    
-	    e.preventDefault();
-	    e.stopPropagation();
-	    
-	    self.collection.url = '/api/getnarrowerconcepts?node='+ self.currentNode; // 'c_1521';
-            self.collection.
-            fetch({
-              success: function(response,xhr) {
-                 
-                 console.log('onNodeClick:');
-                 console.dir(response);
-		
-		 // related = ( typeof response == 'object' ) ? related : [];
-		 
-		 // console.dir(response);
-		 
-		$(self.el).html( self.template({
-		'relatedList': [{'name':'test', 'id':'test'}],
-		'breadcrumb': [ 
-		{
-		  'name':'node1',
-		  'id': 'node13'
-		},
-		{
-		  'name':'node2',
-		  'id': 'node125'
-		},
-		{
-		  'name':'node3',
-		  'id': 'node165'
-		}]
-		}));
-*/
-		 /*
-		 $(self.el).html(self.template({
-		  'relatedList': response.related,
-		  'breadcrumb': 
-		  [{
-		    'name':'node1',
-		    'id': 'node13'
-		  },
-		  {
-		    'name':'node2',
-		    'id': 'node125'
-		  },
-		  {
-		    'name':'node3',
-		    'id': 'node165'
-		  }]
-		}));*/
-
-	    /*
             },
             
-            
-            
-            error: function (errorResponse) {
-                console.log('error triggerNodeClick');
-                // console.log(errorResponse)
-
-		// console.dir (related);
-		$(self.el).html( self.template({
-		'relatedList': [{'name':'test', 'id':'test'}],
-		'breadcrumb': [ 
-		{
-		  'name':'node1',
-		  'id': 'node13'
-		},
-		{
-		  'name':'node2',
-		  'id': 'node125'
-		},
-		{
-		  'name':'node3',
-		  'id': 'node165'
-		}]
-		}));
-
-              }
-           });
-           
-	},
-	*/
-	
 	initSearchBox: function(){
                 // sURL = HMP.core.getCallURL('users_json');
                 sURL = '/api'
@@ -377,14 +263,24 @@ initNavigational: function(nodeId) {
 	//+ EVENT HANDLERS
 	//--------------------------------------
 	
-	onTriggerNodeClick: function () {
+	onTriggerNodeClick: function (e) {
 
-		alert('trigger test');
+            // alert('trigger test');
+
+	    e.stopImmediatePropagation();
+
+	    var dataId = $(e.currentTarget).data('id');
+	    // var id = clickedEl.attr("id");
+	    // $('#'+e.target.id).trigger('click');
+
+	    console.log(dataId);
+	    $('#'+dataId).trigger('click');
+
 	},
 
 	onBreadcrumbClick: function (e) {
 
-		e.stopImmediatePropagation();
+	    e.stopImmediatePropagation();
 
 		var dataId = $(e.currentTarget).data('id');
 	    // var id = clickedEl.attr("id");
