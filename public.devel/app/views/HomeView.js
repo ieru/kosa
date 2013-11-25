@@ -30,9 +30,9 @@
    	 breadcrumbTemplate: BreadcrumbTemplate,
    	 languagesTemplate: LanguagesTemplate,
 
-   	 currentNode:'c_1329377502888',
-   	 currentLang:'EN',
-   	 currentLanguage: 'English',
+         currentNode:'c_4788',
+         currentLang:'EN',
+         currentLanguage: 'English',
 
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
