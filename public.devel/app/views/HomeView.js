@@ -146,11 +146,14 @@
     		var relatedHeight = 350;
     		var radioDiff = 14;
 
+                var test = this.graph.canvas.getCtx();
     		for (var i = 0; i < relatedNumber; i++) {
     			var relHeight = relatedHeight + radioDiff * Math.floor(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
-    			this.graph.fx.edgeHelper.line.render({ 'x': 10, 'y': 30 }, { 'x': relWidth, 'y': relHeight }, this.graph.canvas);
+    			test.moveTo(100,100);
+    			test.lineTo(relWidth,relHeight);
+    			test.stroke();
     		};
 
     	},
