@@ -150,7 +150,7 @@
     			var relHeight = relatedHeight + radioDiff * Math.floor(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
-    			this.edgeHelper.line.render({ x: 10, y: 30 }, { x: relWidth, y: relHeight }, self.graph);
+    			this.graph.edgeHelper.line.render({ x: 10, y: 30 }, { x: relWidth, y: relHeight }, self.graph);
     		};
 
     	},
