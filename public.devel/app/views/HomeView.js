@@ -642,7 +642,7 @@ initGraph: function() {
                	label.id = node.id;            
                	label.innerHTML = node.name;
                	label.onclick = function(){
-               		if (label.id!='+') {
+               		if (label.id!=0) {
                			self.graph.onClick(node.id);
                		};
                	};
