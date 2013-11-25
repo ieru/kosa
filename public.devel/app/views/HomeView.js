@@ -148,7 +148,7 @@
 
                 var test = this.graph.canvas.getCtx();
     		for (var i = 0; i < relatedNumber; i++) {
-    			var relHeight = relatedHeight + radioDiff * Math.floor(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
+    			var relHeight = relatedHeight + radioDiff * Math.round(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
 
