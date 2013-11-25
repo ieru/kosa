@@ -30,7 +30,7 @@
       breadcrumbTemplate: BreadcrumbTemplate,
       languagesTemplate: LanguagesTemplate,
 
-      currentNode:'c_1329377502888',
+      currentNode:'c_4788',
       currentLang:'EN',
       currentLanguage: 'English',
 
