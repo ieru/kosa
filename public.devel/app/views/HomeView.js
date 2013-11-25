@@ -108,7 +108,7 @@
          if (typeof nodeId == 'undefined') {
            nodeId = self.currentNode;
          }
-         self.collection.url = '/api/getbroaderconcepts?node=' + nodeId + '&lang='+self.currentLang;
+         self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId + '&lang='+self.currentLang;
     	    // set Backbone synchronous
           self.collection.fetch({async:false})
           .done(function() {
