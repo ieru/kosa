@@ -151,9 +151,13 @@
     			var relHeight = relatedHeight + radioDiff * Math.floor(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
+
     			test.moveTo(100,100);
     			test.lineTo(relWidth,relHeight);
     			test.stroke();
+    			// this.graph.canvas.getContext("2d").moveTo(100,100);
+    			// this.graph.canvas.getContext("2d").lineTo(relWidth,relHeight);
+    			// this.graph.canvas.getContext("2d").stroke;
     		};
 
     	},

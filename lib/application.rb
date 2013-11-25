@@ -36,8 +36,8 @@ class Kosa < Sinatra::Base
    
   def initialize 
     
-    @soft_limit = 5000
-    @results_per_page = 10
+    @soft_limit = 1000
+    @results_per_page = 5
     
     
     @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
