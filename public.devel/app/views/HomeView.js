@@ -136,7 +136,7 @@
 
     	},
 
-    	redrawRelated: function(newRelated){
+    	redrawRelated: function(newRelated, canvas){
     		$("#relateds").empty();
     		var relatedNumber = newRelated.length;
     		var relatedElementWidth = 150;
@@ -146,15 +146,16 @@
     		var relatedHeight = 350;
     		var radioDiff = 14;
 
-                var test = this.graph.canvas.getCtx();
+                console.dir($jit);
+                $jit.util.empty;
     		for (var i = 0; i < relatedNumber; i++) {
     			var relHeight = relatedHeight + radioDiff * Math.round(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
 
-    			test.moveTo(100,100);
-    			test.lineTo(relWidth,relHeight);
-    			test.stroke();
+    			// test.moveTo(100,100);
+    			// test.lineTo(relWidth,relHeight);
+    			// test.stroke();
     			// this.graph.canvas.getContext("2d").moveTo(100,100);
     			// this.graph.canvas.getContext("2d").lineTo(relWidth,relHeight);
     			// this.graph.canvas.getContext("2d").stroke;
@@ -265,15 +266,12 @@ initNavigational: function(nodeId) {
 	
 	onTriggerNodeClick: function (e) {
 
-            // alert('trigger test');
 
 	    e.stopImmediatePropagation();
-
+	    
 	    var dataId = $(e.currentTarget).data('id');
-	    // var id = clickedEl.attr("id");
-	    // $('#'+e.target.id).trigger('click');
-
-	    console.log(dataId);
+	    // this.currentNode = dataId;
+	    // this.draw();
 	    $('#'+dataId).trigger('click');
 
 	},
@@ -314,7 +312,7 @@ initNavigational: function(nodeId) {
          useGradients: '', 
          nativeTextSupport: '', 
          animate: '', 
-         graph: '',
+         graph: false,
          json: '',
 
          breadCrumbs: null,
@@ -351,7 +349,7 @@ this.$el.find('#related-container').html(relatedsTemplate);
 },
 
 
-initGraph: function() {
+       initGraph: function() {
 
 	var ua = navigator.userAgent,
 	iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
