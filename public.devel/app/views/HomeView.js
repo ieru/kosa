@@ -212,7 +212,7 @@ initNavigational: function(nodeId) {
   	this.initGraph();
   },
 
-            },
+        
             
 	initSearchBox: function(){
                 // sURL = HMP.core.getCallURL('users_json');
