@@ -1,6 +1,7 @@
 # #!/usr/bin/env ruby -EBINARY
 require 'rdf'
 require 'rdf/4store'
+require 'rdf/'
 require 'rdf/ntriples'
 #require 'data_objects'
 #require 'do_sqlite3'
@@ -25,7 +26,7 @@ repo = RDF::FourStore::Repository.new('http://127.0.0.1:8008/')
 count = repo.count
 puts "Loading data... (this may take some time)"
 
-RDF::Reader.open('./import/data/'+ARGV[0]) do |reader|
+RDF::Reader.open(ARGV[0]) do |reader|
   reader.each_statement do |statement|
     repo.insert(statement)
   end
