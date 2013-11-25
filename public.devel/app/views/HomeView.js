@@ -266,15 +266,12 @@ initNavigational: function(nodeId) {
 	
 	onTriggerNodeClick: function (e) {
 
-            // alert('trigger test');
 
 	    e.stopImmediatePropagation();
-
+	    
 	    var dataId = $(e.currentTarget).data('id');
-	    // var id = clickedEl.attr("id");
-	    // $('#'+e.target.id).trigger('click');
-
-	    console.log(dataId);
+	    // this.currentNode = dataId;
+	    // this.draw();
 	    $('#'+dataId).trigger('click');
 
 	},
@@ -315,7 +312,7 @@ initNavigational: function(nodeId) {
          useGradients: '', 
          nativeTextSupport: '', 
          animate: '', 
-         graph: '',
+         graph: false,
          json: '',
 
          breadCrumbs: null,
@@ -352,7 +349,7 @@ this.$el.find('#related-container').html(relatedsTemplate);
 },
 
 
-initGraph: function() {
+       initGraph: function() {
 
 	var ua = navigator.userAgent,
 	iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
