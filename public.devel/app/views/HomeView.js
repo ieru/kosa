@@ -395,13 +395,13 @@ initGraph: function() {
             };
             */
 
-            getTree: function(nodeId, level) {
+            getTree: function(nodeId, level, canvas) {
                  // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
                  // console.dir(newNode);
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
-                this.redrawRelated(newNode.related);
+                this.redrawRelated(newNode.related, canvas);
                 // console.dir(newNode);
                  // return {
 
@@ -520,7 +520,7 @@ initGraph: function() {
 
                	self.Log.loading();
 
-               	var ans = eval(self.getTree(nodeId, level));
+               	var ans = eval(self.getTree(nodeId, level, this));
                    // console.log('id: '+nodeId+' level: '+level);
 
                  // console.dir(ans);
