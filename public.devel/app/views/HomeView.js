@@ -510,7 +510,8 @@ initGraph: function() {
                  //      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
                  //  };
 
-                 
+                newNode.children.push(+);
+
                  return {
 
                       'name': newNode.name, //'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
