@@ -150,7 +150,9 @@
     			var relHeight = relatedHeight + radioDiff * Math.floor(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
-    			this.graph.fx.edgeHelper.line.render({ x: 10, y: 30 }, { x: relWidth, y: relHeight }, this.graph.canvas);
+    			this.graph.canvas.getContext("2d").moveTo(100,100);
+    			this.graph.canvas.getContext("2d").lineTo(relWidth,relHeight);
+    			this.graph.canvas.getContext("2d").stroke;
     		};
 
     	},
