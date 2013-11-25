@@ -30,9 +30,9 @@
    	 breadcrumbTemplate: BreadcrumbTemplate,
    	 languagesTemplate: LanguagesTemplate,
 
-         currentNode:'c_4788',
-         currentLang:'EN',
-         currentLanguage: 'English',
+   	 currentNode:'c_4788',
+   	 currentLang:'EN',
+   	 currentLanguage: 'English',
 
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
@@ -150,9 +150,11 @@
     			var relHeight = relatedHeight + radioDiff * Math.floor(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
-    			document.getElementById("infovis-canvas").getContext('2d').moveTo(canvasWidth/2, 600);
-    			document.createElement('canvas').getContext('2d').lineTo(relWidth, relHeight);
-    			document.createElement('canvas').getContext('2d').stroke;
+    			var c=document.getElementById("infovis-canvas");
+    			var ctx=c.getContext("2d");
+    			ctx.moveTo(0,0);
+    			ctx.lineTo(200,100);
+    			ctx.stroke();
 
     		};
 
