@@ -150,7 +150,7 @@
     			var relHeight = relatedHeight + radioDiff * Math.floor(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
-    			document.getElementbyId(infovis-canvas).getContext('2d').moveTo(canvasWidth/2, 600);
+    			document.getElementbyId("infovis-canvas").getContext('2d').moveTo(canvasWidth/2, 600);
     			document.createElement('canvas').getContext('2d').lineTo(relWidth, relHeight);
     			document.createElement('canvas').getContext('2d').stroke;
 
