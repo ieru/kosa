@@ -139,7 +139,7 @@
     	redrawRelated: function(newRelated){
     		$("#relateds").empty();
     		var relatedNumber = newRelated.length;
-    		var relatedElementWidth = 100;
+    		var relatedElementWidth = 200;
     		var relatedSpace = relatedNumber*relatedElementWidth;
     		var canvasWidth = $(window).innerWidth();
     		var relatedSpaceBeginning = canvasWidth/2 - relatedSpace/2;
@@ -597,7 +597,7 @@ initGraph: function() {
        	    },
        	    Node: {
        	    	height: 30,
-       	    	width: 100,
+       	    	width: 200,
                    //use a custom
                    //node rendering function
                    type: 'nodeline',
