@@ -411,7 +411,7 @@ initGraph: function() {
                  //      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
                  //  };
 
-                 newNode.children.push({'name': '+','id': 0});
+                 newNode.children.push({'name': '+','id': 1234567890987654321});
 
                  return {
 
@@ -543,7 +543,7 @@ initGraph: function() {
                	label.id = node.id;            
                	label.innerHTML = node.name;
                	label.onclick = function(){
-               		if (label.id!=0) {
+               		if (label.id!=1234567890987654321) {
                			self.graph.onClick(node.id);
                		};
                	};
