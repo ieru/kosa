@@ -146,7 +146,8 @@
     		var relatedHeight = 350;
     		var radioDiff = 14;
 
-                console.dir(this.graph);
+                console.dir($jit);
+                $jit.util.empty;
     		for (var i = 0; i < relatedNumber; i++) {
     			var relHeight = relatedHeight + radioDiff * Math.round(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
