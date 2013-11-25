@@ -412,7 +412,7 @@ initGraph: function() {
                  //      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
                  //  };
 
-                 newNode.children.push({'name': '+','id': 1234567890987654321});
+                 //newNode.children.push({'name': '+','id': 1234567890987654321});
 
                  return {
 
