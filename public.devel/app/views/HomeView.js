@@ -576,7 +576,7 @@ initGraph: function() {
                        // adj.data.$color = "#eed";
 
                        adj.data.$color = "#23A4FF";
-                       adj.data.$lineWidth = 4;
+                       adj.data.$lineWidth = 3;
                    }
                    else {
                    	adj.data.$color = "#666";
