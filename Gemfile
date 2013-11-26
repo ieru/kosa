@@ -21,14 +21,11 @@ gem 'linkeddata',         :git => "git://github.com/ruby-rdf/linkeddata.git"
 gem 'sparql-client',      :git => "git://github.com/ruby-rdf/sparql-client.git"
 gem 'sparql',             :git => "git://github.com/ruby-rdf/sparql.git"
 gem 'sinatra-respond_to', :git => "git://github.com/gkellogg/sinatra-respond_to.git", :require => 'sinatra/respond_to'
-###gem 'rdfs', :git => "git@github.com:ruby-rdf/rdfs.git"
+gem 'rdf-virtuoso',	  :git => "git://github.com/digibib/rdf-virtuoso.git"
+gem 'rdf-sesame',	  :git => "git://github.com/ruby-rdf/rdf-sesame.git"
 
 gem 'sinatra'
 gem 'rubygems-bundler'
-
-# gem 'rdf'
-# gem 'rdfs'
-# gem 'linkeddata'
 
 gem 'dalli'
 
