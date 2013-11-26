@@ -1,7 +1,7 @@
 # #!/usr/bin/env ruby -EBINARY
 require 'rdf'
-# require 'rdf/4store'
-require 'rdf/sesame'
+require 'rdf/4store'
+require 'rdf/'
 require 'rdf/ntriples'
 #require 'data_objects'
 #require 'do_sqlite3'
@@ -16,12 +16,7 @@ if ARGV[0].nil?
   exit
 end
 
-url = "http://127.0.0.1:8888/openrdf-sesame/repositories/KOS"
-
-
-repo = RDF::Sesame::Repository.new(url)
-
-# repo = RDF::FourStore::Repository.new('http://127.0.0.1:8008/')
+repo = RDF::FourStore::Repository.new('http://127.0.0.1:8008/')
 # repo = RDF::DataObjects::Repository.new('sqlite3:kosa.db')
 # repo = RDF::DataObjects::Repository.new 'postgres://postgres@server/database'
 # heroku_repo = RDF::DataObjects::Repository.new(ENV['DATABASE_URL'])
