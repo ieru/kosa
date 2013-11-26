@@ -172,7 +172,7 @@
     		$("#language").select2({
     			formatResult: format,
     			formatSelection: format,
-    			width: '255px',
+    			width: '80%',
     			escapeMarkup: function(m) { return m; }
     		});
     		$('#language').select2("val", this.currentLang.toLowerCase()); 
