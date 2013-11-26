@@ -11,10 +11,10 @@
  var View     = require('core/View');
  var GraphCollection = require('collections/GraphCollection'); 
 
- var HomeTemplate = require('templates/homeViewTemplate');
- var RelatedsTemplate = require('templates/relatedsTemplate');
- var BreadcrumbTemplate = require('templates/breadcrumbTemplate');
- var LanguagesTemplate = require('templates/languagesTemplate');
+ var HomeTemplate = require('templates/HomeTemplate');
+ var RelatedsTemplate = require('templates/relateds');
+ var BreadcrumbTemplate = require('templates/breadcrumb');
+ var LanguagesTemplate = require('templates/languages');
 
  var HomeView = View.extend({
 

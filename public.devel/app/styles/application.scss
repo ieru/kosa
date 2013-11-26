@@ -21,7 +21,12 @@ $label-width: 100px;
   left:-100px;
   word-wrap: break-word;
 }
-
+.martop05 {
+  margin-top: 0.5em;
+}
+.martop1 {
+  margin-top: 1em;
+}
 .martop2 {
   margin-top: 2em;
 }
@@ -91,6 +96,7 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
         - refactor to sass syntax
 
 **/
+
 .jit-autoadjust-label {
   padding: 15px;
 }
