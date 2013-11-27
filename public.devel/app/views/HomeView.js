@@ -60,7 +60,7 @@
 
 
 	    // this.json= "{id:\"node02\", name:\"lorem ipsum dolor sit amet lorem ipsum dolor sit amet\", data:{}, children:[{id:\"node13\", name:\"lorem ipsum dolor sit amet\", data:{}, children:[{id:\"node24\", name:\"lorem ipsum dolor sit amet\", data:{}, children:[{id:\"node35\", name:\"3.5\", data:{}, children:[{id:\"node46\", name:\"4.6\", data:{}, children:[]}]}, {id:\"node37\", name:\"3.7\", data:{}, children:[{id:\"node48\", name:\"4.8\", data:{}, children:[]}, {id:\"node49\", name:\"4.9\", data:{}, children:[]}, {id:\"node410\", name:\"4.10\", data:{}, children:[]}, {id:\"node411\", name:\"4.11\", data:{}, children:[]}]}, {id:\"node312\", name:\"3.12\", data:{}, children:[{id:\"node413\", name:\"4.13\", data:{}, children:[]}]}, {id:\"node314\", name:\"3.14\", data:{}, children:[{id:\"node415\", name:\"4.15\", data:{}, children:[]}, {id:\"node416\", name:\"4.16\", data:{}, children:[]}, {id:\"node417\", name:\"4.17\", data:{}, children:[]}, {id:\"node418\", name:\"4.18\", data:{}, children:[]}]}, {id:\"node319\", name:\"3.19\", data:{}, children:[{id:\"node420\", name:\"4.20\", data:{}, children:[]}, {id:\"node421\", name:\"4.21\", data:{}, children:[]}]}]}, {id:\"node222\", name:\"2.22\", data:{}, children:[{id:\"node323\", name:\"3.23\", data:{}, children:[{id:\"node424\", name:\"4.24\", data:{}, children:[]}]}]}]}, {id:\"node125\", name:\"1.25\", data:{}, children:[{id:\"node226\", name:\"2.26\", data:{}, children:[{id:\"node327\", name:\"3.27\", data:{}, children:[{id:\"node428\", name:\"4.28\", data:{}, children:[]}, {id:\"node429\", name:\"4.29\", data:{}, children:[]}]}, {id:\"node330\", name:\"3.30\", data:{}, children:[{id:\"node431\", name:\"4.31\", data:{}, children:[]}]}, {id:\"node332\", name:\"3.32\", data:{}, children:[{id:\"node433\", name:\"4.33\", data:{}, children:[]}, {id:\"node434\", name:\"4.34\", data:{}, children:[]}, {id:\"node435\", name:\"4.35\", data:{}, children:[]}, {id:\"node436\", name:\"4.36\", data:{}, children:[]}]}]}, {id:\"node237\", name:\"2.37\", data:{}, children:[{id:\"node338\", name:\"3.38\", data:{}, children:[{id:\"node439\", name:\"4.39\", data:{}, children:[]}, {id:\"node440\", name:\"4.40\", data:{}, children:[]}, {id:\"node441\", name:\"4.41\", data:{}, children:[]}]}, {id:\"node342\", name:\"3.42\", data:{}, children:[{id:\"node443\", name:\"4.43\", data:{}, children:[]}]}, {id:\"node344\", name:\"3.44\", data:{}, children:[{id:\"node445\", name:\"4.45\", data:{}, children:[]}, {id:\"node446\", name:\"4.46\", data:{}, children:[]}, {id:\"node447\", name:\"4.47\", data:{}, children:[]}]}, {id:\"node348\", name:\"3.48\", data:{}, children:[{id:\"node449\", name:\"4.49\", data:{}, children:[]}, {id:\"node450\", name:\"4.50\", data:{}, children:[]}, {id:\"node451\", name:\"4.51\", data:{}, children:[]}, {id:\"node452\", name:\"4.52\", data:{}, children:[]}, {id:\"node453\", name:\"4.53\", data:{}, children:[]}]}, {id:\"node354\", name:\"3.54\", data:{}, children:[{id:\"node455\", name:\"4.55\", data:{}, children:[]}, {id:\"node456\", name:\"4.56\", data:{}, children:[]}, {id:\"node457\", name:\"4.57\", data:{}, children:[]}]}]}, {id:\"node258\", name:\"2.58\", data:{}, children:[{id:\"node359\", name:\"3.59\", data:{}, children:[{id:\"node460\", name:\"4.60\", data:{}, children:[]}, {id:\"node461\", name:\"4.61\", data:{}, children:[]}, {id:\"node462\", name:\"4.62\", data:{}, children:[]}, {id:\"node463\", name:\"4.63\", data:{}, children:[]}, {id:\"node464\", name:\"4.64\", data:{}, children:[]}]}]}]}, {id:\"node165\", name:\"1.65\", data:{}, children:[{id:\"node266\", name:\"2.66\", data:{}, children:[{id:\"node367\", name:\"3.67\", data:{}, children:[{id:\"node468\", name:\"4.68\", data:{}, children:[]}, {id:\"node469\", name:\"4.69\", data:{}, children:[]}, {id:\"node470\", name:\"4.70\", data:{}, children:[]}, {id:\"node471\", name:\"4.71\", data:{}, children:[]}]}, {id:\"node372\", name:\"3.72\", data:{}, children:[{id:\"node473\", name:\"4.73\", data:{}, children:[]}, {id:\"node474\", name:\"4.74\", data:{}, children:[]}, {id:\"node475\", name:\"4.75\", data:{}, children:[]}, {id:\"node476\", name:\"4.76\", data:{}, children:[]}]}, {id:\"node377\", name:\"3.77\", data:{}, children:[{id:\"node478\", name:\"4.78\", data:{}, children:[]}, {id:\"node479\", name:\"4.79\", data:{}, children:[]}]}, {id:\"node380\", name:\"3.80\", data:{}, children:[{id:\"node481\", name:\"4.81\", data:{}, children:[]}, {id:\"node482\", name:\"4.82\", data:{}, children:[]}]}]}, {id:\"node283\", name:\"2.83\", data:{}, children:[{id:\"node384\", name:\"3.84\", data:{}, children:[{id:\"node485\", name:\"4.85\", data:{}, children:[]}]}, {id:\"node386\", name:\"3.86\", data:{}, children:[{id:\"node487\", name:\"4.87\", data:{}, children:[]}, {id:\"node488\", name:\"4.88\", data:{}, children:[]}, {id:\"node489\", name:\"4.89\", data:{}, children:[]}, {id:\"node490\", name:\"4.90\", data:{}, children:[]}, {id:\"node491\", name:\"4.91\", data:{}, children:[]}]}, {id:\"node392\", name:\"3.92\", data:{}, children:[{id:\"node493\", name:\"4.93\", data:{}, children:[]}, {id:\"node494\", name:\"4.94\", data:{}, children:[]}, {id:\"node495\", name:\"4.95\", data:{}, children:[]}, {id:\"node496\", name:\"4.96\", data:{}, children:[]}]}, {id:\"node397\", name:\"3.97\", data:{}, children:[{id:\"node498\", name:\"4.98\", data:{}, children:[]}]}, {id:\"node399\", name:\"3.99\", data:{}, children:[{id:\"node4100\", name:\"4.100\", data:{}, children:[]}, {id:\"node4101\", name:\"4.101\", data:{}, children:[]}, {id:\"node4102\", name:\"4.102\", data:{}, children:[]}, {id:\"node4103\", name:\"4.103\", data:{}, children:[]}]}]}, {id:\"node2104\", name:\"2.104\", data:{}, children:[{id:\"node3105\", name:\"3.105\", data:{}, children:[{id:\"node4106\", name:\"4.106\", data:{}, children:[]}, {id:\"node4107\", name:\"4.107\", data:{}, children:[]}, {id:\"node4108\", name:\"4.108\", data:{}, children:[]}]}]}, {id:\"node2109\", name:\"2.109\", data:{}, children:[{id:\"node3110\", name:\"3.110\", data:{}, children:[{id:\"node4111\", name:\"4.111\", data:{}, children:[]}, {id:\"node4112\", name:\"4.112\", data:{}, children:[]}]}, {id:\"node3113\", name:\"3.113\", data:{}, children:[{id:\"node4114\", name:\"4.114\", data:{}, children:[]}, {id:\"node4115\", name:\"4.115\", data:{}, children:[]}, {id:\"node4116\", name:\"4.116\", data:{}, children:[]}]}, {id:\"node3117\", name:\"3.117\", data:{}, children:[{id:\"node4118\", name:\"4.118\", data:{}, children:[]}, {id:\"node4119\", name:\"4.119\", data:{}, children:[]}, {id:\"node4120\", name:\"4.120\", data:{}, children:[]}, {id:\"node4121\", name:\"4.121\", data:{}, children:[]}]}, {id:\"node3122\", name:\"3.122\", data:{}, children:[{id:\"node4123\", name:\"4.123\", data:{}, children:[]}, {id:\"node4124\", name:\"4.124\", data:{}, children:[]}]}]}, {id:\"node2125\", name:\"2.125\", data:{}, children:[{id:\"node3126\", name:\"3.126\", data:{}, children:[{id:\"node4127\", name:\"4.127\", data:{}, children:[]}, {id:\"node4128\", name:\"4.128\", data:{}, children:[]}, {id:\"node4129\", name:\"4.129\", data:{}, children:[]}]}]}]}, {id:\"node1130\", name:\"1.130\", data:{}, children:[{id:\"node2131\", name:\"2.131\", data:{}, children:[{id:\"node3132\", name:\"3.132\", data:{}, children:[{id:\"node4133\", name:\"4.133\", data:{}, children:[]}, {id:\"node4134\", name:\"4.134\", data:{}, children:[]}, {id:\"node4135\", name:\"4.135\", data:{}, children:[]}, {id:\"node4136\", name:\"4.136\", data:{}, children:[]}, {id:\"node4137\", name:\"4.137\", data:{}, children:[]}]}]}, {id:\"node2138\", name:\"2.138\", data:{}, children:[{id:\"node3139\", name:\"3.139\", data:{}, children:[{id:\"node4140\", name:\"4.140\", data:{}, children:[]}, {id:\"node4141\", name:\"4.141\", data:{}, children:[]}]}, {id:\"node3142\", name:\"3.142\", data:{}, children:[{id:\"node4143\", name:\"4.143\", data:{}, children:[]}, {id:\"node4144\", name:\"4.144\", data:{}, children:[]}, {id:\"node4145\", name:\"4.145\", data:{}, children:[]}, {id:\"node4146\", name:\"4.146\", data:{}, children:[]}, {id:\"node4147\", name:\"4.147\", data:{}, children:[]}]}]}]}]}";
-	    this.json = "{}"
+	    // this.json = "{}"
 	    this.collection = new GraphCollection();
             // this.once('getNewNode', this.getNewNode);
             this.initNavigational();
@@ -136,7 +136,7 @@
 
     	},
 
-    	redrawRelated: function(newRelated, canvas){
+    	redrawRelated: function(newRelated){
     		$("#relateds").empty();
     		var relatedNumber = newRelated.length;
     		var relatedElementWidth = 150;
@@ -313,8 +313,329 @@ initNavigational: function(nodeId) {
          nativeTextSupport: '', 
          animate: '', 
          graph: false,
-         json: '',
+         json: {},
 
+/*
+        json: {
+        "id": "347_0",
+        "name": "Nine Inch Nails",
+        "children": [{
+            "id": "126510_1",
+            "name": "Jerome Dillon",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "52163_2",
+                "name": "Howlin' Maggie",
+                "data": {
+                    "band": "Jerome Dillon",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "324134_3",
+                "name": "nearLY",
+                "data": {
+                    "band": "Jerome Dillon",
+                    "relation": "member of band"
+                },
+                "children": []
+            }]
+        }, {
+            "id": "173871_4",
+            "name": "Charlie Clouser",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": []
+        }, {
+            "id": "235952_5",
+            "name": "James Woolley",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": []
+        }, {
+            "id": "235951_6",
+            "name": "Jeff Ward",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "2382_7",
+                "name": "Ministry",
+                "data": {
+                    "band": "Jeff Ward",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "2415_8",
+                "name": "Revolting Cocks",
+                "data": {
+                    "band": "Jeff Ward",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "3963_9",
+                "name": "Pigface",
+                "data": {
+                    "band": "Jeff Ward",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "7848_10",
+                "name": "Lard",
+                "data": {
+                    "band": "Jeff Ward",
+                    "relation": "member of band"
+                },
+                "children": []
+            }]
+        }, {
+            "id": "235950_11",
+            "name": "Richard Patrick",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "1007_12",
+                "name": "Filter",
+                "data": {
+                    "band": "Richard Patrick",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "327924_13",
+                "name": "Army of Anyone",
+                "data": {
+                    "band": "Richard Patrick",
+                    "relation": "member of band"
+                },
+                "children": []
+            }]
+        }, {
+            "id": "2396_14",
+            "name": "Trent Reznor",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "3963_15",
+                "name": "Pigface",
+                "data": {
+                    "band": "Trent Reznor",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "32247_16",
+                "name": "1000 Homo DJs",
+                "data": {
+                    "band": "Trent Reznor",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "83761_17",
+                "name": "Option 30",
+                "data": {
+                    "band": "Trent Reznor",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "133257_18",
+                "name": "Exotic Birds",
+                "data": {
+                    "band": "Trent Reznor",
+                    "relation": "member of band"
+                },
+                "children": []
+            }]
+        }, {
+            "id": "36352_19",
+            "name": "Chris Vrenna",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "1013_20",
+                "name": "Stabbing Westward",
+                "data": {
+                    "band": "Chris Vrenna",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "3963_21",
+                "name": "Pigface",
+                "data": {
+                    "band": "Chris Vrenna",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "5752_22",
+                "name": "Jack Off Jill",
+                "data": {
+                    "band": "Chris Vrenna",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "33602_23",
+                "name": "Die Warzau",
+                "data": {
+                    "band": "Chris Vrenna",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "40485_24",
+                "name": "tweaker",
+                "data": {
+                    "band": "Chris Vrenna",
+                    "relation": "is person"
+                },
+                "children": []
+            }, {
+                "id": "133257_25",
+                "name": "Exotic Birds",
+                "data": {
+                    "band": "Chris Vrenna",
+                    "relation": "member of band"
+                },
+                "children": []
+            }]
+        }, {
+            "id": "236021_26",
+            "name": "Aaron North",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": []
+        }, {
+            "id": "236024_27",
+            "name": "Jeordie White",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "909_28",
+                "name": "A Perfect Circle",
+                "data": {
+                    "band": "Jeordie White",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "237377_29",
+                "name": "Twiggy Ramirez",
+                "data": {
+                    "band": "Jeordie White",
+                    "relation": "is person"
+                },
+                "children": []
+            }]
+        }, {
+            "id": "235953_30",
+            "name": "Robin Finck",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "1440_31",
+                "name": "Guns N' Roses",
+                "data": {
+                    "band": "Robin Finck",
+                    "relation": "member of band"
+                },
+                "children": []
+            }]
+        }, {
+            "id": "235955_32",
+            "name": "Danny Lohner",
+            "data": {
+                "band": "Nine Inch Nails",
+                "relation": "member of band"
+            },
+            "children": [{
+                "id": "909_33",
+                "name": "A Perfect Circle",
+                "data": {
+                    "band": "Danny Lohner",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "1695_34",
+                "name": "Killing Joke",
+                "data": {
+                    "band": "Danny Lohner",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "1938_35",
+                "name": "Methods of Mayhem",
+                "data": {
+                    "band": "Danny Lohner",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "5138_36",
+                "name": "Skrew",
+                "data": {
+                    "band": "Danny Lohner",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "53549_37",
+                "name": "Angkor Wat",
+                "data": {
+                    "band": "Danny Lohner",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "113510_38",
+                "name": "Puscifer",
+                "data": {
+                    "band": "Danny Lohner",
+                    "relation": "member of band"
+                },
+                "children": []
+            }, {
+                "id": "113512_39",
+                "name": "Renhold\u00ebr",
+                "data": {
+                    "band": "Danny Lohner",
+                    "relation": "is person"
+                },
+                "children": []
+            }]
+        }],
+        "data": []
+    },
+
+*/
          breadCrumbs: null,
 
 
@@ -399,7 +720,7 @@ this.$el.find('#related-container').html(relatedsTemplate);
                 // this.Log.loading();
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
-                this.redrawRelated(newNode.related, canvas);
+                this.redrawRelated(newNode.related);
                 // console.dir(newNode);
                  // return {
 
@@ -423,9 +744,97 @@ this.$el.find('#related-container').html(relatedsTemplate);
 
 
               draw: function (){
-
+	        
               	var self = this;
+	        
+               var infovis = document.getElementById('infovis');
+               var w = infovis.offsetWidth - 50, h = infovis.offsetHeight - 50;
+  
+  // console.dir('w: '+w+' h: '+h);
+           self.graph = new $jit.Hypertree({  
+  //id of the visualization container  
+  injectInto: 'infovis',  
+  //canvas width and height  
+  width: w,  
+  height: h,  
+  //Change node and edge styles such as  
+  //color, width and dimensions.  
+  Node: {  
+      dim: 9,  
+      color: "#f00"  
+  },  
+  Edge: {  
+      lineWidth: 2,  
+      color: "#088"  
+  },  
+  onBeforeCompute: function(node){  
+      // Log.write("centering");  
+  },  
+  //Attach event handlers and add text to the  
+  //labels. This method is only triggered on label  
+  //creation  
+  onCreateLabel: function(domElement, node){  
+      domElement.innerHTML = node.name;  
+      $jit.util.addEvent(domElement, 'click', function () {  
+          self.graph.onClick(node.id, {  
+              onComplete: function() {  
+                  self.graph.controller.onComplete();  
+              }  
+          });  
+      });  
+  },  
+  //Change node styles when labels are placed  
+  //or moved.  
+  onPlaceLabel: function(domElement, node){  
+      var style = domElement.style;  
+      style.display = '';  
+      style.cursor = 'pointer';  
+      if (node._depth <= 1) {  
+          style.fontSize = "0.8em";  
+          style.color = "#ddd";  
+  
+      } else if(node._depth == 2){  
+          style.fontSize = "0.7em";  
+          style.color = "#555";  
+  
+      } else {  
+          style.display = 'none';  
+      }  
+  
+      var left = parseInt(style.left);  
+      var w = domElement.offsetWidth;  
+      style.left = (left - w / 2) + 'px';  
+  },  
+    
+  onComplete: function(){  
+      self.Log.done();  
+        
+      //Build the right column relations list.  
+      //This is done by collecting the information (stored in the data property)   
+      //for all the nodes adjacent to the centered node.  
+      var node = self.graph.graph.getClosestNodeToOrigin("current");  
+      var html = "<h4>" + node.name + "</h4><b>Connections:</b>";  
+      html += "<ul>";  
+      node.eachAdjacency(function(adj){  
+          var child = adj.nodeTo;  
+          if (child.data) {  
+              var rel = (child.data.band == node.name) ? child.data.relation : node.data.relation;  
+              html += "<li>" + child.name + " " + "<div class=\"relation\">(relation: " + rel + ")</div></li>";  
+          }  
+      });  
+      html += "</ul>";  
+      // $jit.id('#relateds-container').innerHTML = html;  
+  }  
+});  
+//load JSON data.  
+self.graph.loadJSON(self.json);  
+//compute positions and plot.  
+self.graph.refresh();  
+//end
+    self.graph.controller.onComplete();
 
+
+/*
 
            //Implement a node rendering function called 'nodeline' that plots a straight line
            //when contracting or expanding a subtree.
@@ -465,12 +874,6 @@ this.$el.find('#related-container').html(relatedsTemplate);
                transition: $jit.Trans.Quart.easeInOut,
                //set distance between node and its children
                levelDistance: 90,
-               /*
-               function () {
-                 // var a = Math.abs(Math.floor((Math.random()*1000)+1));
-                 // console.log(a);
-                 return 200;
-             },*/
 
                //set max levels to show. Useful when used with
                //the request method for requesting trees of specific depth
@@ -491,7 +894,7 @@ this.$el.find('#related-container').html(relatedsTemplate);
 
        	        },
        	        onTouchMove: function (nodeId, eventInfo, e) {
-       	        	alert('a');
+       	        	//alert('a');
        	        }
        	    },
        	    Node: {
@@ -609,6 +1012,8 @@ this.$el.find('#related-container').html(relatedsTemplate);
            self.graph.compute();
            // emulate a click on the root node.
            self.graph.onClick(self.graph.root);
+
+*/
            
            return self;
        },

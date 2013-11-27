@@ -9,7 +9,8 @@ require 'sinatra'
 
 require 'rdf'
 require 'rdf/turtle' 
-require 'rdf/4store'
+# require 'rdf/4store'
+require 'rdf/sesame'
 # require 'rdfs'
 #require 'rdf-agraph'
 #require 'rdf/do'
@@ -41,7 +42,10 @@ class Kosa < Sinatra::Base
     
     
     @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
-    @repo = RDF::FourStore::Repository.new('http://localhost:8008/')
+    url = "http://127.0.0.1:8888/openrdf-sesame/repositories/KOS"
+    @repo = RDF::Sesame::Repository.new(url)
+    
+    # @repo = RDF::FourStore::Repository.new('http://localhost:8008/')
     @sparql = SPARQL::Client.new(repo)
     @root = ''
     @encoder = Yajl::Encoder.new
