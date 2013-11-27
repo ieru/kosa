@@ -136,7 +136,7 @@
 
     	},
 
-    	redrawRelated: function(newRelated, canvas){
+    	redrawRelated: function(newRelated){
     		$("#relateds").empty();
     		var relatedNumber = newRelated.length;
     		var relatedElementWidth = 150;
@@ -146,13 +146,17 @@
     		var relatedHeight = 350;
     		var radioDiff = 14;
 
-                console.dir($jit);
-                $jit.util.empty;
+                var graphReference = this.graph;
+                console.dir(this.graph);
+                var canvas = this.graph.canvas;
+    	        graphReference.fx.edgeHelper.line.render({ x: 10, y: 30 }, { x: 10, y: 50 }, canvas); 
+    		
     		for (var i = 0; i < relatedNumber; i++) {
     			var relHeight = relatedHeight + radioDiff * Math.round(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
     			var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
     			$("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
 
+                        // graph.edgeHelper.line.render({ x: 10, y: 30 }, { x: 10, y: 50 }, canvas); 
     			// test.moveTo(100,100);
     			// test.lineTo(relWidth,relHeight);
     			// test.stroke();
@@ -160,6 +164,7 @@
     			// this.graph.canvas.getContext("2d").lineTo(relWidth,relHeight);
     			// this.graph.canvas.getContext("2d").stroke;
     		};
+    		
 
     	},
     	initLanguages: function () {     
@@ -393,30 +398,24 @@ this.$el.find('#related-container').html(relatedsTemplate);
             };
             */
 
-            getTree: function(nodeId, level, canvas) {
+            getTree: function(nodeId, level) {
                  // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
                  // console.dir(newNode);
                 // this.Log.loading();
+                // console.dir(self.graph);
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
-                this.redrawRelated(newNode.related, canvas);
+                // this.redrawRelated(newNode.related);
                 // console.dir(newNode);
-                 // return {
 
-                 //      'name': 'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
-                 //      'id': Math.floor(Math.random()*1000+1),
-                 //      'children': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
-                 //      'related': [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
-                 //  };
-
-                 //newNode.children.push({'name': '+','id': 1234567890987654321});
+                 newNode.children.push({'name': '+','id': '_pag_'});
 
                  return {
 
-                      'name': newNode.name, //'dolor ipsum sit amed level: ' + level + ' nodeId: '+ nodeId,
+                      'name': newNode.name, 
                       'id': Math.floor(Math.random(10000)), // newNode.id, 
-                      'children': newNode.children, // [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}],
-                      'related': newNode.related// [{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)},{'name': 'dolor ipsum sit amed1','id': Math.random(10000)}]
+                      'children': newNode.children, 
+                      'related': newNode.related
                   };
               },
 
@@ -445,9 +444,11 @@ this.$el.find('#related-container').html(relatedsTemplate);
 
                      // var _random = Math.abs(Math.floor(Math.random()*100)+1);
                      // console.log('y: '+algnPos.y+' random: '+_random);
-                     ctx.moveTo(algnPos.x + width / 2, algnPos.y );
+                     ctx.moveTo(algnPos.x + width / 2, algnPos.y);
                      ctx.lineTo(algnPos.x + width / 2, algnPos.y + height);
+                      
                  }
+                 // ctx.save();
                  ctx.stroke();
              } 
          }
@@ -456,6 +457,7 @@ this.$el.find('#related-container').html(relatedsTemplate);
 
 
            //Create a new ST instance
+           // self.relateds = new $jit.Plot();
            self.graph = new $jit.ST({
            	injectInto: 'infovis',
            	orientation: 'bottom',
@@ -490,9 +492,12 @@ this.$el.find('#related-container').html(relatedsTemplate);
        	            // self.Log.loading();
 
        	        },
-       	        onTouchMove: function (nodeId, eventInfo, e) {
-       	        	alert('a');
-       	        }
+                //Implement the same handler for touchscreens
+                onTouchMove: function(node, eventInfo, e) {
+                    $jit.util.event.stop(e); //stop default touchmove event
+                       this.onDragMove(node, eventInfo, e);
+                }
+
        	    },
        	    Node: {
        	    	height: 30,
@@ -525,11 +530,12 @@ this.$el.find('#related-container').html(relatedsTemplate);
                  onComplete.onComplete(nodeId, ans);  
              },
 
-             onBeforeCompute: function(node){
+             onBeforeCompute: function(){
                    // self.Log.loading();
                },
 
-               onAfterCompute: function(){
+             onAfterCompute: function(){
+               // console.dir(nodeId);
                	self.Log.done();
                	self.Spinner.hide();
                },
