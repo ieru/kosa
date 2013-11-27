@@ -313,10 +313,10 @@ initNavigational: function(nodeId) {
          * @private
          */
 
-         labelType : '', 
-         useGradients: '', 
-         nativeTextSupport: '', 
-         animate: '', 
+         labelType : false, 
+         useGradients: false, 
+         nativeTextSupport: false, 
+         animate: false, 
          graph: false,
          json: '',
 
@@ -403,12 +403,21 @@ this.$el.find('#related-container').html(relatedsTemplate);
                  // console.dir(newNode);
                 // this.Log.loading();
                 // console.dir(self.graph);
+                console.log(level);
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
                 // this.redrawRelated(newNode.related);
                 // console.dir(newNode);
 
-                 newNode.children.push({'name': '+','id': '_pag_'});
+                 newNode.children.push({
+                    'name': '+',
+                    'id': '_pag_',
+                    'data': {
+                        '$color': '#70A35E',
+                        '$type': 'circle',
+                        '$dim': 8
+                    }
+                 });
 
                  return {
 
@@ -484,6 +493,11 @@ this.$el.find('#related-container').html(relatedsTemplate);
                	enable:true,
                	panning:true
                  // zooming:10
+             },
+             Label: {
+               type: self.labelType, //Native or HTML
+               //size: 10,
+               //style: 'bold'
              },
              Events: {
              	enable:true,
@@ -588,7 +602,21 @@ this.$el.find('#related-container').html(relatedsTemplate);
                        delete adj.data.$lineWidth;
                    }
                },
-
+               
+               // handler to change label
+               onCreateLabel: function(domElement, node){
+                 domElement.innerHTML = node.name;
+                 domElement.onclick = function(){
+        
+                    /*
+                    doc_rgraph[document_id].onClick(node.id, {
+                        onComplete: function() {
+                        Log.write("Done");
+                        }
+                    });
+                    */
+                  };
+                },
                onPlaceLabel: function(label, node, controllers){          
 
                	var style = label.style;  
