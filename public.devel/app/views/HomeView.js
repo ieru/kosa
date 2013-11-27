@@ -404,14 +404,15 @@ this.$el.find('#related-container').html(relatedsTemplate);
                 // this.Log.loading();
                 // console.dir(self.graph);
                 console.log(level);
+                var paginator_id = '_pag_'+ (Math.floor(Math.random()*100000)+1);
                 var newNode = this.getNewNode(nodeId);
                 this.updateRelated(newNode.related);
                 // this.redrawRelated(newNode.related);
                 // console.dir(newNode);
-
+                 
                  newNode.children.push({
                     'name': '+',
-                    'id': '_pag_',
+                    'id': paginator_id,
                     'data': {
                         '$color': '#23A4FF',
                         '$type': 'circle',
