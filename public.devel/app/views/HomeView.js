@@ -31,7 +31,7 @@
    	 languagesTemplate: LanguagesTemplate,
 
    	 currentNode:'c_4788',
-   	 currentLang:'DE',
+   	 currentLang:'EN',
    	 currentLanguage: 'English',
 
 	//--------------------------------------
@@ -413,9 +413,9 @@ this.$el.find('#related-container').html(relatedsTemplate);
                     'name': '+',
                     'id': '_pag_',
                     'data': {
-                        '$color': '#70A35E',
+                        '$color': '#23A4FF',
                         '$type': 'circle',
-                        '$dim': 8
+                        '$dim': 45
                     }
                  });
 
@@ -495,9 +495,10 @@ this.$el.find('#related-container').html(relatedsTemplate);
                  // zooming:10
              },
              Label: {
-               type: self.labelType, //Native or HTML
+               //type: self.labelType, //Native or HTML
                //size: 10,
                //style: 'bold'
+               //type: 'HTML'
              },
              Events: {
              	enable:true,
@@ -519,15 +520,15 @@ this.$el.find('#related-container').html(relatedsTemplate);
                    //use a custom
                    //node rendering function
                    type: 'nodeline',
-                   color:'#00DD00',
-                   lineWidth: 2,
+                   // color:'#00DD00',
+                   // lineWidth: 2,
                    align:"center",
                    overridable: true
                },
 
                Edge: {
                	type: 'bezier',
-               	lineWidth: 2,
+               	lineWidth: 1,
                	color: '#444444',
                    // color:'#23A4FF',
                    overridable: true
@@ -561,6 +562,7 @@ this.$el.find('#related-container').html(relatedsTemplate);
                	label.id = node.id;            
                	label.innerHTML = node.name;
                	label.onclick = function(){
+               	        console.log(label.id);
                		if (label.id!=1234567890987654321) {
                			self.graph.onClick(node.id);
                		};
@@ -579,13 +581,13 @@ this.$el.find('#related-container').html(relatedsTemplate);
                onBeforePlotNode: function(node){
 
                	if (node.selected) {
-               		node.data.$color = "#ff7";
+               		// node.data.$color = "#ff7";
 
                        // node.data.$color = "#23A4FF";
                        
                    }
                    else {
-                   	delete node.data.$color;
+                   	// delete node.data.$color;
                    }
                },
 
@@ -604,19 +606,22 @@ this.$el.find('#related-container').html(relatedsTemplate);
                },
                
                // handler to change label
+               /*
                onCreateLabel: function(domElement, node){
+                 
                  domElement.innerHTML = node.name;
                  domElement.onclick = function(){
         
-                    /*
-                    doc_rgraph[document_id].onClick(node.id, {
+                        doc_rgraph[document_id].onClick(node.id, {
                         onComplete: function() {
                         Log.write("Done");
                         }
                     });
-                    */
+                    
                   };
+                  
                 },
+                */
                onPlaceLabel: function(label, node, controllers){          
 
                	var style = label.style;  

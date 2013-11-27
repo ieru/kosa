@@ -108,7 +108,13 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
   padding-top:0 !important;
   /*line-height: 14px;*/
   word-wrap: break-word;
-  background-color:#eee;
+  /*background-color:#eee;*/
+  background-color:transparent;
+}
+#infovis-label div.node[id^='_pag_'] {
+    color: #fff !important; 
+    margin-top: 8px !important;
+    font-size: 30px !important; 
 }
 #update, #restore {
   text-align: center;
