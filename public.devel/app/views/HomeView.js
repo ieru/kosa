@@ -578,6 +578,20 @@ initNavigational: function() {
                 }
 
        	    },
+       	    Tips: {
+       	       enable: true,
+       	       onShow: function (tip, node){
+       	          if (node.id.substring(0, 6) === '_pag_r') {
+       	            tip.innerHTML = 'Click here to see more terms of this ontology';
+       	          } else if (node.id.substring(0, 6) === '_pag_l') {
+       	            tip.innerHTML = 'Click here to see more terms of this ontology';
+       	          
+       	          } else {
+       	            tip.innerHTML = node.name;
+       	          
+       	          }
+       	       }                                
+       	    },
        	    Node: {
        	    	height: 30,
        	    	width: 150,
