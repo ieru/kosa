@@ -13,6 +13,12 @@ $label-width: 100px;
 
  /* sass */
 
+.tright {
+  text-align: right;
+}
+.tleft {
+  text-align: left;
+}
 .related-label{
   display:inline-block;
   width: $label-width;
@@ -104,11 +110,8 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
   padding: 15px;
 }
 #infovis-label div.node{
-  /*font-size: 12px !important;*/
   padding-top:0 !important;
-  /*line-height: 14px;*/
   word-wrap: break-word;
-  /*background-color:#eee;*/
   background-color:transparent;
 }
 #infovis-label div.node[id^='_pag_'] {
@@ -169,12 +172,12 @@ a {
 }
 #container {
     width: 1000px;
-    height: 600px;
+    height: 400px;
     margin:0 auto;
     position:relative;
 }
 #center-container {
-    height:600px;
+    height:500px;
     position:absolute;
     top:0;
     left:200px;
@@ -196,13 +199,10 @@ a {
 
    position:relative;
    width:inherit;
-   height:inherit;
+   height:500px;
    margin:auto;
    overflow:hidden;
    cursor:move;
-    /*      
-    width:600px;
-    height:400px;*/
 }
 /*TOOLTIPS*/
 .tip {

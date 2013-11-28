@@ -182,7 +182,7 @@
     		$("#language").select2({
     			formatResult: format,
     			formatSelection: format,
-    			width: '80%',
+    			width: '100%',
     			escapeMarkup: function(m) { return m; }
     		});
     		$('#language').select2("val", this.currentLang.toLowerCase()); 
@@ -198,7 +198,7 @@
 	  // Saying hello to garbage collection
 	  self.graph = undefined;
 	  $('#infovis').html('');
-	  $('#infovis').css('height', '600px');
+	  $('#infovis').css('height', '500px');
 	  // .append('<div id="spinner" class="text-center" style="display:none;"><img src="/images/spinner.gif" height="66" width="66" style="width:66px;height:66px;" title="loading"></div>');
 	  self.initNavigational();
 	
@@ -244,7 +244,7 @@ initNavigational: function(nodeId) {
                 // sURL = HMP.core.getCallURL('users_json');
                 sURL = '/api'
                 $("#selector").select2({
-                	width: '80%',
+                	width: '100%',
                 	placeholder: "Search ...",
                 	allowClear: true,
                 	minimumInputLength: 1,
@@ -358,20 +358,9 @@ initNavigational: function(nodeId) {
 
         	var relatedsTemplate = this.relatedsTemplate({'related':newRelated});
 
-
-         // $.when(this.$el.html(compiled)).then(function (data, this) {
-         // })
-
-this.$el.find('#related-container').html(relatedsTemplate);
-
-         // return this;
-         
-         // $(self.el).html( self.template({
-         //  'relatedList': newRelated
-         // }));
-
-
-},
+                // commented out
+                // this.$el.find('#related-container').html(relatedsTemplate);
+       },
 
        initializeScreen: function () {
        
@@ -436,15 +425,16 @@ this.$el.find('#related-container').html(relatedsTemplate);
 */
             
             getTree: function(nodeId, level) {
-                console.log(level);
+                // console.log(level);
                 var paginator_id = '_pag_' + nodeId;
+                var pag = 0;
                 // (Math.floor(Math.random()*100000)+1);
                 var newSubtree = this.getNewSubtree(nodeId, pag);
                 this.updateRelated(newSubtree.related);
                 // this.redrawRelated(newSubtree.related);
                 // console.dir(newSubtree);
                  
-                 newNode.children.push({
+                 newSubtree.children.push({
                     'name': '+',
                     'id': paginator_id,
                     'data': {
@@ -456,10 +446,10 @@ this.$el.find('#related-container').html(relatedsTemplate);
 
                  return {
 
-                      'name': newNode.name, 
+                      'name': newSubtree.name, 
                       'id': Math.floor(Math.random(10000)), // newNode.id, 
-                      'children': newNode.children, 
-                      'related': newNode.related
+                      'children': newSubtree.children, 
+                      'related': newSubtree.related
                   };
               }, 
               
