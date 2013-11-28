@@ -250,7 +250,7 @@ initNavigational: function() {
                 	width: '100%',
                 	placeholder: "Search ...",
                 	allowClear: true,
-                	minimumInputLength: 1,
+                	minimumInputLength: 3,
                         ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
                         url: sURL,
                         cache: true,
@@ -444,7 +444,7 @@ initNavigational: function() {
                     'data': {
                         /*'$color': '#23A4FF',
                         '$color': '#428BCA',*/
-                        '$color': '#aaa',
+                        '$color': '#777',
                         '$type': 'circle',
                         '$dim': 40
                     }
@@ -460,7 +460,7 @@ initNavigational: function() {
                     'data': {
                         /*'$color': '#23A4FF',
                         '$color': '#428BCA',*/
-                        '$color': '#aaa',
+                        '$color': '#777',
                         '$type': 'circle',
                         '$dim': 40
                     }
