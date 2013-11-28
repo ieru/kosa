@@ -3,35 +3,39 @@
 # require 'rubygems'
 
 require 'sinatra'
-# require 'sinatra/sparql'
-# require 'sinatra/respond_to'
-# add caching to Sinatra
 
+# todo remove
+#require 'sinatra/sparql'
+#require 'sinatra/respond_to'
+
+# rdf and rdf syntaxes
 require 'rdf'
 require 'rdf/turtle' 
-require 'rdf/4store'
 
-# require 'rdfs'
+# database adapters
+#require 'rdf/4store'
+require 'rdf/sesame'
 #require 'rdf-agraph'
 #require 'rdf/do'
 #require 'data_objects'
 #require 'do_sqlite3'
 #require 'do_postgres'
 
+# rdf related gems
 require 'sparql'
 require 'sparql/client'
-
 require 'uri'
+
+# xml, json parsing
 require 'yajl/json_gem'
 require 'equivalent-xml'
 
-#require 'siren'
+# network access
 #require 'net/http'
 #require 'rest_client'
 
 # Config.
 Repository = 'KOS'
-
 
 # main class
 class Kosa < Sinatra::Base

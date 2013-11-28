@@ -1,4 +1,4 @@
-### [KOSaggregator](http://ieru.github.io/kosa)
+### [KOS aggregator (kosa)](http://ieru.github.io/kosa)
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
@@ -12,12 +12,12 @@ The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alp
 
 - Ruby
 - ImageMagick 
-- 4-store
+- 4-store (Update: using sesame as main database) 
 - PostgreSQL & Heroku PostgreHQ, Casandra, MongoDB, RedStore, Sesame (Optional, Exchangeable)
 - SQLite, Virtuoso, AllegroGraph (Optional, Exchangeable)
-- Memcached (Optional, by default uses File Storage cache)
-### Installation
+- Memcached (Optional, by default FileStore Cache is used)
 
+### Installation (Update with the new Sesame+ElasticsearchIndexer config)
 
 - First step is to install a graph-based database: 4-store has been used
 - Intallation can be accomplished from a debian-like system running: 

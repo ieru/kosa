@@ -98,6 +98,14 @@ GIT
       rdf-xsd (>= 1.0)
 
 GIT
+  remote: git://github.com/ruby-rdf/rdf-sesame.git
+  revision: f40908ed72502bf8170ad96874744c8c1d384f3a
+  specs:
+    rdf-sesame (0.4.2)
+      json_pure (~> 1.8)
+      rdf (~> 1.0)
+
+GIT
   remote: git://github.com/ruby-rdf/rdf-trig.git
   revision: 439f229b34a1f8ca362484015fde9eabf2e90679
   specs:
@@ -281,6 +289,7 @@ DEPENDENCIES
   rdf-raptor
   rdf-rdfa!
   rdf-rdfxml!
+  rdf-sesame!
   rdf-trig!
   rdf-turtle!
   rdf-xsd!
