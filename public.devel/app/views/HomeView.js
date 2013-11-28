@@ -83,7 +83,8 @@
 
 
 		self.$el.html(homeTemplate);
-		self.$el.find('#related-container').html(relatedsTemplate);
+		// commented out
+		// self.$el.find('#related-container').html(relatedsTemplate);
 		self.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
 
 		$.get('/json/languages.json', function(data) {
@@ -103,13 +104,16 @@
     	},
 
 
-    	getNewNode: function(nodeId) {
+    	getNewSubtree: function(nodeId, pag) {
     		var self = this;
     		var data;
     		if (typeof nodeId == 'undefined') {
     			nodeId = self.currentNode;
     		}
-    		self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId + '&lang='+self.currentLang;
+    		if (typeof pag == 'undefined') {
+    		  pag = 0;
+    		}
+    		self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId + '&lang='+self.currentLang+ '&pag='+pag;
     	    // set Backbone synchronous
     	    self.collection.fetch({async:false})
     	    .done(function() {
@@ -394,7 +398,7 @@ this.$el.find('#related-container').html(relatedsTemplate);
         //--------------------------------------
 
 
-         /*   
+          /*         
           var getTree = function() {
                var i = 0;
                return function(nodeId, level) {
@@ -412,18 +416,33 @@ this.$el.find('#related-container').html(relatedsTemplate);
                };
             };
             */
-
+/*
+          var getTree = function() {
+               var i = 0;
+               return function(nodeId, level) {
+                 var subtree = eval('(' + json.replace(/id:\"([a-zA-Z0-9]+)\"/g, 
+                 function(all, match) {
+                   return "id:\"" + match + "_" + i + "\""  
+                 }) + ')');
+                 $jit.json.prune(subtree, level); i++;
+                 
+                 return {
+                     'id': nodeId,
+                     'children': subtree.children,
+                     'related': subtree.children
+                 };
+               };
+            };
+*/
+            
             getTree: function(nodeId, level) {
-                 // newNode=JSON.parse("http://kos.appgee.net/api/getnarrowerconcepts?node=c_3");
-                 // console.dir(newNode);
-                // this.Log.loading();
-                // console.dir(self.graph);
                 console.log(level);
-                var paginator_id = '_pag_'+ (Math.floor(Math.random()*100000)+1);
-                var newNode = this.getNewNode(nodeId);
-                this.updateRelated(newNode.related);
-                // this.redrawRelated(newNode.related);
-                // console.dir(newNode);
+                var paginator_id = '_pag_' + nodeId;
+                // (Math.floor(Math.random()*100000)+1);
+                var newSubtree = this.getNewSubtree(nodeId, pag);
+                this.updateRelated(newSubtree.related);
+                // this.redrawRelated(newSubtree.related);
+                // console.dir(newSubtree);
                  
                  newNode.children.push({
                     'name': '+',
@@ -442,7 +461,8 @@ this.$el.find('#related-container').html(relatedsTemplate);
                       'children': newNode.children, 
                       'related': newNode.related
                   };
-              },
+              }, 
+              
 
 
 
@@ -578,9 +598,11 @@ this.$el.find('#related-container').html(relatedsTemplate);
                	label.id = node.id;            
                	label.innerHTML = node.name;
                	label.onclick = function(){
-               	        console.log(label.id);
-               		if (label.id!=1234567890987654321) {
-               			self.graph.onClick(node.id);
+               	        console.log(label.id.substring(0, 5));
+               		if (label.id.substring(0, 5) != '_pag_') {
+               		    self.graph.onClick(node.id);
+               		} else {
+               		    alert('+ pag');
                		};
                	};
                    //set label styles
