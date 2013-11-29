@@ -392,8 +392,16 @@
 
         getTree: function(nodeId, level) {
 
-              var pag = this.pagesStore[nodeId];              
-              var tree = this.getNewSubtree(nodeId, pag);
+              var pag, tree;
+              console.log(typeof this.pagesStore[nodeId]);
+              if ( typeof this.pagesStore[nodeId] === 'undefined') {
+                  
+                  this.pagesStore[nodeId] = 1;
+              } 
+              pag = this.pagesStore[nodeId];              
+              
+              
+              tree = this.getNewSubtree(nodeId, pag);
               return this.addSubtreeAndPagers(nodeId, tree);
         },
 
@@ -555,7 +563,9 @@
                       self.paginateForwards(label.id);
 
                   } else {
-                      alert('- pag');
+                      self.Log.write("Retrieving data, please wait...");    
+                      
+                      self.paginateBackwards(label.id);
                   };
                 };
                    //set label styles
