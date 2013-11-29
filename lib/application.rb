@@ -35,7 +35,9 @@ require 'equivalent-xml'
 #require 'rest_client'
 
 # Config.
-Repository = 'KOS'
+# Repository = 'KOS' # <-- Agrovoc
+Repository = 'cropontology'
+
 
 # main class
 class Kosa < Sinatra::Base
@@ -51,7 +53,8 @@ class Kosa < Sinatra::Base
     @results_per_page = 5
     
     
-    @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
+    # @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
+    @prefix = RDF::URI.new('http://www.cropontology.org/rdf')
     
     url = "http://127.0.0.1:8888/openrdf-sesame/repositories/#{Repository}"
     @repo = RDF::Sesame::Repository.new(url)

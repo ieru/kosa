@@ -10,7 +10,8 @@ require 'rdf/ntriples'
 require 'fileutils'
 
 # config 
-Onntology = 'KOS'
+# Onntology = 'KOS' # <-- agrovoc
+Ontology = 'cropontology'
 
 # ruby import.rb
 

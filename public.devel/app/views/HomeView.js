@@ -26,7 +26,8 @@
      * @private
      */
 
-     currentNode:'c_4788',
+     // currentNode:'c_4788',
+     currentNode: 'CO_010%3A0000000',
      currentLang:'EN',
      // stores current page number on each level
      pagesStore:[], 
