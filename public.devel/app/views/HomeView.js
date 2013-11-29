@@ -27,7 +27,7 @@
      */
 
      currentNode:'c_4788',
-     currentLang:'EN',
+     currentLang:'DE',
      // stores current page number on each level
      pagesStore:[], 
      // pagination semaphores    
@@ -390,12 +390,19 @@
         //+ PRIVATE METHODS
         //--------------------------------------
 
+        getTree: function(nodeId, level) {
 
-            getTree: function(nodeId, level) {
+              var pag = this.pagesStore[nodeId];              
+              var tree = this.getNewSubtree(nodeId, pag);
+              return this.addSubtreeAndPagers(nodeId, tree);
+        },
+
+            
+        addSubtreeAndPagers: function(nodeId, tree) {
               var paginator_right = '_pag_r_' + nodeId;
               var paginator_left = '_pag_l_' + nodeId;
               var pag = this.pagesStore[nodeId];
-              var tree = this.getNewSubtree(nodeId, pag);
+              
               var newSubtreeCenter = tree.children;
                  
               var pages = tree.pages;
@@ -405,15 +412,6 @@
               var name = tree.name;
               var parent;
               
-              // return function(nodeId, level) {
-
-                
-                // ffs, this shouldnt happen
-                /*
-                if (pag != page) {
-                  return {}
-                }*/
-                
                 
                 
                 if (pages > 0){
@@ -427,8 +425,6 @@
                      'related': [],
                      'related_count':0,
                      'data': {
-                        /*'$color': '#23A4FF',
-                        '$color': '#428BCA',*/
                         '$color': '#777',
                         '$type': 'circle',
                         '$dim': 40
@@ -445,8 +441,6 @@
                      'related':[],
                      'related_count':0,
                      'data': {
-                        /*'$color': '#23A4FF',
-                        '$color': '#428BCA',*/
                         '$color': '#777',
                         '$type': 'circle',
                         '$dim': 40
@@ -464,13 +458,6 @@
                 // this.updateRelated(newSubtree);
                  
                  
-                 // parentId = this.computeParentHelper(nodeId);
-                 
-                 // console.dir(this.graph.graph.getNode(parentId));
-                 
-                 // if (typeof this.json[parent]
-                 // $jit.json.prune(tree, level);
-    
                  return {
 
                       'name': name, 
@@ -480,7 +467,6 @@
                       'pages':pages,
                       'page':page
                  };
-                // };
               }, 
               
 
@@ -821,27 +807,102 @@
    paginateForwardsUpdate: function(parentNode, newSubtree) {
    
       var self = this;
-      console.dir(newSubtree);
-      console.log(parentNode);
+      
+      var node = self.graph.graph.getNode(parentNode);
+      
+      var name = node.name;
+      var pages = node.pages;
+      var page = self.pagesStore[parentNode];
+      var related = [];
+      
       // removing old subtree  
       self.graph.removeSubtree(parentNode, false, 'animate', {  
         hideLabels: false,  
         onComplete: function() {    
           
-          // self.Log.write("subtree removed");     
-        }
-      });  
-      
-      newSubtree.id = parentNode;
-      // adding new subtree 
-        self.graph.addSubtree(newSubtree, 'animate', {  
+              newSubtree.id = parentNode;
+              
+              newSubtree.children = self.addSubtreeAndPagers(parentNode, newSubtree);
+                /*          
+                pages = newSubtree.pages;
+                page = newSubtree.page;
+                
+                console.dir(pages);                
+                console.dir(page);
+                
+                if (pages > 0){
+                
+                if (page < pages) {
+            
+                newSubtreeRight = [{
+                     'name': '&raquo;',
+                     'id': paginator_right,
+                     'children': [],
+                     'pages':0,
+                     'related': [],
+                     'related_count':0,
+                     'data': {
+                        '$color': '#777',
+                        '$type': 'circle',
+                        '$dim': 40
+                     }
+                    }];
+                 newSubtreeRight.id = parentNode;
+                 self.graph.addSubtree(newSubtreeRight, 'animate', {  
+                   hideLabels: false,  
+                   onComplete: function() {  
+                    // self.Log.write("subtree added");  
+                    self.Log.done();
+                    self.levelLocked[parentNode] = false;
+                    }
+                 });
+              
+                }
+
+               
+                 
+                 if (page > 1) {
+                   newSubtreeLeft = [{
+                     'name': '&laquo;',
+                     'id': paginator_left,
+                     'children': [],
+                     'pages':0,
+                     'related':[],
+                     'related_count':0,
+                     'data': {
+                        '$color': '#777',
+                        '$type': 'circle',
+                        '$dim': 40
+                     }
+                  }];
+                  
+                   newSubtreeLeft.id = parentNode;
+                   self.graph.addSubtree(newSubtreeLeft, 'animate', {  
+                   hideLabels: false,  
+                   onComplete: function() {  
+                    // self.Log.write("subtree added");  
+                    self.Log.done();
+                    self.levelLocked[parentNode] = false;
+                    }
+                 });
+  
+                 }
+             }
+             */
+              // adding new subtree 
+              self.graph.addSubtree(newSubtree, 'animate', {  
                 hideLabels: false,  
                 onComplete: function() {  
                     // self.Log.write("subtree added");  
                     self.Log.done();
-                    self.levelLocked[parentNode] = false;
+                    // self.levelLocked[parentNode] = false;
                 }  
-        });  
+              });
+
+
+        }
+      });  
+      
         
       return self;
    }
