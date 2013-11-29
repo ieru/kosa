@@ -194,7 +194,7 @@
     		self = this;
     		self.currentLang = e.val.toUpperCase();
          // self.currentLanguage = e.text;
-          self.Log.write('Changed language, graph re-started');
+          self.Log.write('Changed language, retriving data...');
 	  // Saying hello to garbage collection
 	  self.graph = undefined;
 	  $('#infovis').html('');
@@ -204,10 +204,12 @@
 	
 	      
           // self.Log.write('Re-setting language');
+          /*
           setTimeout(function() {
 	    // $('#infovis').append('<div id="spinner" class="text-center" style="display:none;"><img src="/images/spinner.gif" height="66" width="66" style="width:66px;height:66px;" title="loading"></div>');
             self.Log.done();
           }, 3400);
+          */
           // return self;
 },
 
@@ -248,7 +250,6 @@ initNavigational: function() {
                 sURL = '/api'
                 $("#selector").select2({
                 	width: '100%',
-                	placeholder: "Search ...",
                 	allowClear: true,
                 	minimumInputLength: 3,
                         ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
