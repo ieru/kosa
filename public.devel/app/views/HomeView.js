@@ -398,76 +398,6 @@
         },
 
             
-        addSubtreeAndPagers: function(nodeId, tree) {
-              var paginator_right = '_pag_r_' + nodeId;
-              var paginator_left = '_pag_l_' + nodeId;
-              var pag = this.pagesStore[nodeId];
-              
-              var newSubtreeCenter = tree.children;
-                 
-              var pages = tree.pages;
-              var page = tree.page;
-              var newSubtree, newSubtreeRight = [], newSubtreeLeft = [];
-              var id = tree.id;
-              var name = tree.name;
-              var parent;
-              
-                
-                
-                if (pages > 0){
-                
-                 if (page < pages) {
-                   newSubtreeRight = [{
-                     'name': '&raquo;',
-                     'id': paginator_right,
-                     'children': [],
-                     'pages':0,
-                     'related': [],
-                     'related_count':0,
-                     'data': {
-                        '$color': '#777',
-                        '$type': 'circle',
-                        '$dim': 40
-                     }
-                    }];
-                 } 
-                 
-                 if (page > 1) {
-                   newSubtreeLeft = [{
-                     'name': '&laquo;',
-                     'id': paginator_left,
-                     'children': [],
-                     'pages':0,
-                     'related':[],
-                     'related_count':0,
-                     'data': {
-                        '$color': '#777',
-                        '$type': 'circle',
-                        '$dim': 40
-                     }
-                  }];
-                 }
-                }
-                
-                newSubtree = newSubtreeLeft.concat(
-                  newSubtreeCenter,
-                  newSubtreeRight
-                );
-                
-                // commented out
-                // this.updateRelated(newSubtree);
-                 
-                 
-                 return {
-
-                      'name': name, 
-                      'id': id, // Math.floor(Math.random(10000)), // newNode.id, 
-                      'children': newSubtree, 
-                      'related': [],
-                      'pages':pages,
-                      'page':page
-                 };
-              }, 
               
 
 
@@ -619,16 +549,13 @@
                   if (label.id.substring(0, 7) != '_pag_l_' && label.id.substring(0, 7) != '_pag_r_') {
                       self.graph.onClick(node.id);
                   } else if (label.id.substring(0, 7) === '_pag_r_'){
-                      // console.dir(self.json);
-                      // console.dir(node.id);
-                      // console.dir($jit.json.getParent(self.json, node.id));
-                      // alert('+ pag');
-                      // if(!removing) {  
-                        self.paginateForwards(label.id);
-                      // }  
+
+                      self.Log.write("Retrieving data, please wait...");    
+                      
+                      self.paginateForwards(label.id);
 
                   } else {
-                      // alert('- pag');
+                      alert('- pag');
                   };
                 };
                    //set label styles
@@ -786,10 +713,13 @@
 
       var parentNode = this.computeParentNode(node);
       var subtree;
-      if ( typeof this.levelLocked[node] === 'undefined' || 
+      console.log(parentNode);
+      console.log(this.levelLocked[parentNode]);
+      
+      if ( typeof this.levelLocked[parentNode] === 'undefined' || 
            this.levelLocked[parentNode] === false) {
         // semaphore set to on
-        this.levelLocked[node] = true;
+        this.levelLocked[parentNode] = true;
         
         // increment current page num.
         if (typeof this.pagesStore[parentNode] === 'undefined') {
@@ -797,13 +727,41 @@
         }
         this.pagesStore[parentNode] += 1;
         
-        this.Log.write("Retrieving next page...");    
+        this.Log.write("Retrieving data, please wait...");    
         subtree = this.getNewSubtree(parentNode);
         
         this.paginateForwardsUpdate(parentNode, subtree);
       }
         
    },   
+   
+   paginateBackwards: function(node) {
+
+      var parentNode = this.computeParentNode(node);
+      var subtree;
+      console.log(parentNode);
+      console.log(this.levelLocked[parentNode]);
+      
+      if ( typeof this.levelLocked[parentNode] === 'undefined' || 
+           this.levelLocked[parentNode] === false) {
+        // semaphore set to on
+        this.levelLocked[parentNode] = true;
+        
+        // increment current page num.
+        if (typeof this.pagesStore[parentNode] === 'undefined') {
+           this.pagesStore[parentNode]= 1;
+        }
+        this.pagesStore[parentNode] -= 1;
+        
+        this.Log.write("Retrieving data, please wait...");    
+        subtree = this.getNewSubtree(parentNode);
+        
+        this.paginateForwardsUpdate(parentNode, subtree);
+      }
+        
+   },   
+   
+   
    paginateForwardsUpdate: function(parentNode, newSubtree) {
    
       var self = this;
@@ -820,21 +778,49 @@
         hideLabels: false,  
         onComplete: function() {    
           
-              newSubtree.id = parentNode;
+              // newSubtree.id = parentNode;
               
-              newSubtree.children = self.addSubtreeAndPagers(parentNode, newSubtree);
-                /*          
-                pages = newSubtree.pages;
-                page = newSubtree.page;
+              newSubtree = self.addSubtreeAndPagers(parentNode, newSubtree);
+              
+
+              // adding new subtree 
+              self.graph.addSubtree(newSubtree, 'animate', {  
+                hideLabels: false,  
+                onComplete: function() {  
+                    // self.Log.write("subtree added");  
+                    self.Log.done();
+                    self.levelLocked[parentNode] = false;
+                }  
+              });
+
+
+        }
+      });  
+      
+        
+      return self;
+   },
+
+   addSubtreeAndPagers: function(nodeId, tree) {
+              var paginator_right = '_pag_r_' + nodeId;
+              var paginator_left = '_pag_l_' + nodeId;
+              var pag = this.pagesStore[nodeId];
+              
+              var newSubtreeCenter = tree.children;
+                 
+              var pages = tree.pages;
+              var page = tree.page;
+              var newSubtree, newSubtreeRight = [], newSubtreeLeft = [];
+              var id = tree.id;
+              var name = tree.name;
+              var parent;
+              
                 
-                console.dir(pages);                
-                console.dir(page);
                 
                 if (pages > 0){
                 
-                if (page < pages) {
-            
-                newSubtreeRight = [{
+                 if (page < pages) {
+                   newSubtreeRight = [{
                      'name': '&raquo;',
                      'id': paginator_right,
                      'children': [],
@@ -847,19 +833,7 @@
                         '$dim': 40
                      }
                     }];
-                 newSubtreeRight.id = parentNode;
-                 self.graph.addSubtree(newSubtreeRight, 'animate', {  
-                   hideLabels: false,  
-                   onComplete: function() {  
-                    // self.Log.write("subtree added");  
-                    self.Log.done();
-                    self.levelLocked[parentNode] = false;
-                    }
-                 });
-              
-                }
-
-               
+                 } 
                  
                  if (page > 1) {
                    newSubtreeLeft = [{
@@ -875,37 +849,30 @@
                         '$dim': 40
                      }
                   }];
-                  
-                   newSubtreeLeft.id = parentNode;
-                   self.graph.addSubtree(newSubtreeLeft, 'animate', {  
-                   hideLabels: false,  
-                   onComplete: function() {  
-                    // self.Log.write("subtree added");  
-                    self.Log.done();
-                    self.levelLocked[parentNode] = false;
-                    }
-                 });
-  
                  }
-             }
-             */
-              // adding new subtree 
-              self.graph.addSubtree(newSubtree, 'animate', {  
-                hideLabels: false,  
-                onComplete: function() {  
-                    // self.Log.write("subtree added");  
-                    self.Log.done();
-                    // self.levelLocked[parentNode] = false;
-                }  
-              });
+                }
+                
+                newSubtree = newSubtreeLeft.concat(
+                  newSubtreeCenter,
+                  newSubtreeRight
+                );
+                
+                // commented out
+                // this.updateRelated(newSubtree);
+                 
+                 
+                 return {
 
-
-        }
-      });  
-      
-        
-      return self;
-   }
+                      'name': name, 
+                      'id': id, // Math.floor(Math.random(10000)), // newNode.id, 
+                      'children': newSubtree, 
+                      'related': [],
+                      'pages':pages,
+                      'page':page
+                 };
+        } 
+   
+   
 });
 
 
