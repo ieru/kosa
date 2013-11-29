@@ -27,7 +27,7 @@
      */
 
      currentNode:'c_4788',
-     currentLang:'DE',
+     currentLang:'EN',
      // stores current page number on each level
      pagesStore:[], 
      // pagination semaphores    
@@ -550,6 +550,12 @@
                //Use this method to add event handlers and styles to
                //your node.
                onCreateLabel: function(label, node){
+               
+                var m = {
+                    offsetX: self.graph.canvas.translateOffsetX,
+                    offsetY: self.graph.canvas.translateOffsetY + 90
+                };
+                
                 label.id = node.id;            
                 label.innerHTML = node.name;
                 label.onclick = function(){
