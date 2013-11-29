@@ -374,7 +374,7 @@
            this.useGradients = nativeCanvasSupport;
            this.animate = !(iStuff || !nativeCanvasSupport);
            
-           this.json = "{}";
+           this.json = "{'name':'root'}";
 
        },
 
@@ -384,45 +384,7 @@
         //--------------------------------------
 
 
-          /*         
-          var getTree = function() {
-               var i = 0;
-               return function(nodeId, level) {
-                 var subtree = eval('(' + json.replace(/id:\"([a-zA-Z0-9]+)\"/g, 
-                 function(all, match) {
-                   return "id:\"" + match + "_" + i + "\""  
-                 }) + ')');
-                 $jit.json.prune(subtree, level); i++;
-                 
-                 return {
-                     'id': nodeId,
-                     'children': subtree.children,
-                     'related': subtree.children
-                 };
-               };
-            };
-            */
-/*
-          var getTree = function() {
-               var i = 0;
-               return function(nodeId, level) {
-                 var subtree = eval('(' + json.replace(/id:\"([a-zA-Z0-9]+)\"/g, 
-                 function(all, match) {
-                   return "id:\"" + match + "_" + i + "\""  
-                 }) + ')');
-                 $jit.json.prune(subtree, level); i++;
-                 
-                 return {
-                     'id': nodeId,
-                     'children': subtree.children,
-                     'related': subtree.children
-                 };
-               };
-            };
-*/
-            
             getTree: function(nodeId, level) {
-              // console.log(level);
               var paginator_right = '_pag_r_' + nodeId;
               var paginator_left = '_pag_l_' + nodeId;
               var pag = this.pagesStore[nodeId];
@@ -434,12 +396,10 @@
               var newSubtree, newSubtreeRight = [], newSubtreeLeft = [];
               var id = tree.id;
               var name = tree.name;
-              var i = 0;
+              
               // return function(nodeId, level) {
 
                 
-                console.dir(tree);
-                console.log (' page: '+page+'/' +pages);
                 // ffs, this shouldnt happen
                 /*
                 if (pag != page) {
@@ -495,7 +455,7 @@
                 // commented out
                 // this.updateRelated(newSubtree);
 
-                 $jit.json.prune(tree, level); i++;
+                 $jit.json.prune(tree, level);
     
                  return {
 
@@ -599,9 +559,9 @@
             Tips: {
                enable: true,
                onShow: function (tip, node){
-                  if (node.id.substring(0, 6) === '_pag_r') {
+                  if (typeof node.id != 'undefined' && node.id.substring(0, 6) === '_pag_r') {
                     tip.innerHTML = 'Click here to see more terms of this ontology';
-                  } else if (node.id.substring(0, 6) === '_pag_l') {
+                  } else if (typeof node.id != 'undefined' && node.id.substring(0, 6) === '_pag_l') {
                     tip.innerHTML = 'Click here to see more terms of this ontology';
                   
                   } else {
