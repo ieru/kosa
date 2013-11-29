@@ -23,12 +23,13 @@ var GraphModel = Model.extend({
   	//+ PUBLIC METHODS / GETTERS / SETTERS
   	//--------------------------------------
   	defaults:{
-  		id: null,
-  		name: "",
+  		id: 'root',
+  		name: 'root',
 		children: [],
 		related: [],
-		children_number:0,
-		related_number:0
+		pages:0,
+		page:1,
+		related_count:0
 	}
 
   	//--------------------------------------

@@ -349,10 +349,10 @@ class Kosa < Sinatra::Base
            if ylabel.nil?
              ylabel = w.ylabel
            end
-           { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
+           { :name=> w.label, :id=>remove_prefix(w.x), :pages=>0, :related_count=>0, :children=>[], :related=>[] }
          } 
         
-         return encoder.encode({ :name=>ylabel, :id=>node, :children=>parents_list, :related=>parents_list, :children_pages=>pages, :page=>page, :related_number=>0 })
+         return encoder.encode({ :name=>ylabel, :id=>node, :pages=>pages, :page=>page, :related_count=>0, :children=>parents_list, :related=>parents_list })
     end
 
     # @todo: check this 
