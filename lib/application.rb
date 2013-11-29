@@ -45,7 +45,9 @@ class Kosa < Sinatra::Base
    
   def initialize 
     
-    @soft_limit = 1000
+    # maximun number of result on query ~= 10pages
+    @soft_limit = 50
+    # elements on a tree level
     @results_per_page = 5
     
     
@@ -86,12 +88,6 @@ class Kosa < Sinatra::Base
     # }
 
 
-    # Helper module to avoid confussion between JSON and RDF::JSON gems
-    # module JSON2
-    #   include ::JSON
-    #   module_function :parse
-    # end
-
 
     # test endpoint1 
     get '/test' do
@@ -122,7 +118,8 @@ class Kosa < Sinatra::Base
       lang = params[:lang]
       node = params[:node]
       page = params[:page]
-      get_broader_concepts(node, lang, page)
+      concept = 'broader'
+      get_concepts(concept, node, lang, page)
     end
     
     # node children. Returns {} if no children
@@ -131,7 +128,8 @@ class Kosa < Sinatra::Base
       lang = params[:lang]
       node = params[:node]
       page = params[:page]
-      get_narrower_concepts(node, lang, page)
+      concept = 'narrower'
+      get_concepts(concept, node, lang, page)
     end
 
     # first node in a tree
@@ -228,66 +226,6 @@ class Kosa < Sinatra::Base
 
     end
 
-  
-
-    def get_narrower_concepts(node=nil, lang=nil, page=0)
-
-      
-      # encoder = Yajl::Encoder.new
-      
-      if node.nil?
-        encoder.encode(to_json)
-      else
-        
-        if lang.nil? || !lang.length == 2
-          lang = 'EN'
-        else
-          lang = lang.upcase
-        end
-    
-        if page.nil? || page.to_i < 0
-          page = 0
-        end
-        
-        offset = page * results_per_page
-        
-        node = remove_prefix(node)
-        
-        uri = prefix + '/' + node
-        
-        if !uri.valid?
-        encoder.encode({})
-          # {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
-        end
-        
-        
-        query = sparql.query("
-         PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-         PREFIX agrovoc: <#{prefix}/>
-         PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-         SELECT REDUCED ?x ?label
-         WHERE
-         {
-            <#{uri}> skos:narrower ?x  .
-            ?x skos:prefLabel  ?label .
-            FILTER(langMatches(lang(?label), '#{lang}')) . 
-         }         
-        ")
-        children_count = query.count()
-        
-        children_query = query.offset(offset).limit(results_per_page)
-        
-        
-        children_list = children_query.map { |w|  
-          { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
-        } 
-        
-         encoder.encode({ :name=>uri, :id=>node, :children=>children_list, :related=>children_list, :children_number=>children_count, :related_number=>0 })
-	
-      end
-    end
-
-
     def get_similar_concepts(term=nil, lang=nil)
     
       # encoder = Yajl::Encoder.new
@@ -319,7 +257,7 @@ class Kosa < Sinatra::Base
          ")
          
          list = query.map { |w|  
-          w.label
+           { :text => w.label, :id => remove_prefix(w.label) }
          } 
         
          encoder.encode(list)
@@ -328,14 +266,21 @@ class Kosa < Sinatra::Base
     end
 
 
-
-    def get_broader_concepts(node=nil, lang=nil, page=0)
+    # passed type arg to Dry the method
+    def get_concepts(type=nil,node=nil, lang=nil, page=nil)
     
       # encoder = Yajl::Encoder.new
 
-      if node.nil?
-        encoder.encode({})
-      else
+        if node.nil?
+          # return null to save resources
+          return encoder.encode({})
+        end 
+        
+        if type.nil?
+          # return null to save resources
+          type = 'narrower'
+        end 
+        
         
         if lang.nil? || !lang.length == 2
           lang = 'EN'
@@ -343,44 +288,71 @@ class Kosa < Sinatra::Base
           lang = lang.upcase
         end
         
-        if page.nil? || page.to_i < 0
-          page = 0
+        if page.nil? 
+          page = 1
+        else
+          page = page.to_i
+          if page.to_i < 1
+            # stop execution to save resources
+            return {}.to_json
+          end
         end
         
-        offset = page * results_per_page
+        offset = (page - 1) * results_per_page
         
         node = remove_prefix(node)
         
         uri = prefix + '/' + node
         
         if !uri.valid?
-          {}.to_json
-          # {:name=>'', :id=>'', :children=>[], :related=>[], :children_number=>0, :related_number=>0}.to_json
+          # return empty, and stop to save resources
+          return {}.to_json
         end
         
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX agrovoc: <#{prefix}/>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT REDUCED ?x ?label 
+          SELECT REDUCED ?x ?label ?ylabel 
           WHERE
           {
-            <#{uri}> skos:broader ?x  .
-            ?x skos:prefLabel  ?label .
+            <#{uri}> skos:#{type} ?x .
+            <#{uri}> skos:prefLabel ?ylabel .
+            ?x skos:prefLabel ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
+            FILTER(langMatches(lang(?ylabel), '#{lang}')) . 
           }
+          LIMIT #{soft_limit}
          ")
-         parents_count = query.count()
-        
+         count = query.count()        
          parents_query = query.offset(offset).limit(results_per_page)
+        
+         pages = count.divmod results_per_page
+         
+         modulus = pages[1].floor
+         pages = pages[0].floor
+         
+         if !modulus.eql? 0
+           pages += 1
+         end
+         
+
+        if page > pages
+          # return empty, and stop to save resources
+          return {}.to_json
+        end
+
+         ylabel = nil
          
          parents_list = parents_query.map { |w|  
-          { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
+         
+           if ylabel.nil?
+             ylabel = w.ylabel
+           end
+           { :name=> w.label, :id=>remove_prefix(w.x), :children=>[], :related=>[], :children_number=>0, :related_number=>0 }
          } 
         
-         encoder.encode({ :name=>uri, :id=>node, :children=>parents_list, :related=>parents_list, :children_number=>parents_count, :related_number=>0 })
-
-      end
+         return encoder.encode({ :name=>ylabel, :id=>node, :children=>parents_list, :related=>parents_list, :children_pages=>pages, :page=>page, :related_number=>0 })
     end
 
     # @todo: check this 
