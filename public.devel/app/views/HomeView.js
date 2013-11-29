@@ -711,31 +711,21 @@
 
    paginateForwards: function(node) {
 
-      var parentNode = this.computeParentNode(node);
-      var subtree;
-      console.log(parentNode);
-      console.log(this.levelLocked[parentNode]);
-      
-      if ( typeof this.levelLocked[parentNode] === 'undefined' || 
-           this.levelLocked[parentNode] === false) {
-        // semaphore set to on
-        this.levelLocked[parentNode] = true;
-        
-        // increment current page num.
-        if (typeof this.pagesStore[parentNode] === 'undefined') {
-           this.pagesStore[parentNode]= 1;
-        }
-        this.pagesStore[parentNode] += 1;
-        
-        this.Log.write("Retrieving data, please wait...");    
-        subtree = this.getNewSubtree(parentNode);
-        
-        this.paginateForwardsUpdate(parentNode, subtree);
-      }
-        
+      this.paginate(node, function (a) { 
+        return a + 1; 
+      });        
+              
    },   
    
    paginateBackwards: function(node) {
+
+      this.paginate(node, function (a) { 
+        return a - 1; 
+      });        
+   },   
+   
+
+   paginate: function(node, fx) {
 
       var parentNode = this.computeParentNode(node);
       var subtree;
@@ -751,18 +741,24 @@
         if (typeof this.pagesStore[parentNode] === 'undefined') {
            this.pagesStore[parentNode]= 1;
         }
-        this.pagesStore[parentNode] -= 1;
+        if ( typeof fx === 'function' ) {
+          this.pagesStore[parentNode] = fx(this.pagesStore[parentNode]);
+        } else {
+          // use default
+          this.pagesStore[parentNode] += 1; 
+        }
+        
         
         this.Log.write("Retrieving data, please wait...");    
         subtree = this.getNewSubtree(parentNode);
         
-        this.paginateForwardsUpdate(parentNode, subtree);
+        this.paginateUpdate(parentNode, subtree);
       }
         
    },   
+
    
-   
-   paginateForwardsUpdate: function(parentNode, newSubtree) {
+   paginateUpdate: function(parentNode, newSubtree) {
    
       var self = this;
       
