@@ -117,7 +117,7 @@ class Kosa < Sinatra::Base
       cache_control :public, max_age: 1800  # 30 mins.
       lang = params[:lang]
       node = params[:node]
-      page = params[:page]
+      page = params[:pag]
       concept = 'broader'
       get_concepts(concept, node, lang, page)
     end
@@ -127,7 +127,7 @@ class Kosa < Sinatra::Base
       cache_control :public, max_age: 1800  # 30 mins.
       lang = params[:lang]
       node = params[:node]
-      page = params[:page]
+      page = params[:pag]
       concept = 'narrower'
       get_concepts(concept, node, lang, page)
     end
@@ -292,7 +292,7 @@ class Kosa < Sinatra::Base
           page = 1
         else
           page = page.to_i
-          if page.to_i < 1
+          if page < 1
             # stop execution to save resources
             return {}.to_json
           end

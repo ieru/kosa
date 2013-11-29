@@ -8,7 +8,7 @@
  */
 
 
- var View     = require('core/View');
+ var View = require('core/View');
  var GraphCollection = require('collections/GraphCollection'); 
 
  var HomeTemplate = require('templates/HomeTemplate');
@@ -25,14 +25,20 @@
     /*
      * @private
      */
+
+     currentNode:'c_4788',
+     currentLang:'EN',
+     // stores current page number on each level
+     pagesStore:[], 
+     // pagination semaphores    
+     levelLocked:[],
+
+
      homeTemplate: HomeTemplate,
      relatedsTemplate: RelatedsTemplate,
      breadcrumbTemplate: BreadcrumbTemplate,
      languagesTemplate: LanguagesTemplate,
 
-     currentNode:'c_4788',
-     currentLang:'EN',
-     pagesStore:[],     
 
     //--------------------------------------
     //+ INHERITED / OVERRIDES
@@ -99,7 +105,7 @@
       getNewSubtree: function(nodeId) {
         var self = this;
         var data;
-        if (typeof nodeId == 'undefined') {
+        if (typeof nodeId === 'undefined') {
           nodeId = self.currentNode;
           self.pagesStore[nodeId] = 1;
         }
@@ -111,10 +117,8 @@
           // set Backbone to synchronous mode
           self.collection.fetch({async:false})
           .done(function() {
-
-            data = self.collection.toJSON();
-
-      })
+            data = self.collection.toJSON();            
+          })
           .fail(function (){
             self.Spinner.hide();
             self.Log.write('Error retrieving data');
@@ -122,9 +126,12 @@
 
           }); 
 
-          if (typeof data == 'object' && data.length > 0){
 
-            return data[0];            
+
+          if (typeof data === 'object' && data.length > 0){
+    
+            return data[0];
+                    
           } else {
           
             return {};
@@ -374,7 +381,7 @@
            this.useGradients = nativeCanvasSupport;
            this.animate = !(iStuff || !nativeCanvasSupport);
            
-           this.json = "{'name':'root'}";
+           this.json = {'name':'root', 'id': this.currentNode, 'children': [], 'related': []};
 
        },
 
@@ -396,6 +403,7 @@
               var newSubtree, newSubtreeRight = [], newSubtreeLeft = [];
               var id = tree.id;
               var name = tree.name;
+              var parent;
               
               // return function(nodeId, level) {
 
@@ -454,8 +462,14 @@
                 
                 // commented out
                 // this.updateRelated(newSubtree);
-
-                 $jit.json.prune(tree, level);
+                 
+                 
+                 // parentId = this.computeParentHelper(nodeId);
+                 
+                 // console.dir(this.graph.graph.getNode(parentId));
+                 
+                 // if (typeof this.json[parent]
+                 // $jit.json.prune(tree, level);
     
                  return {
 
@@ -505,8 +519,9 @@
          }
      }
  });
-
-
+           // semaphores
+           var removing = false;
+           
            //Create a new ST instance
            // self.relateds = new $jit.Plot();
            self.graph = new $jit.ST({
@@ -618,9 +633,16 @@
                   if (label.id.substring(0, 7) != '_pag_l_' && label.id.substring(0, 7) != '_pag_r_') {
                       self.graph.onClick(node.id);
                   } else if (label.id.substring(0, 7) === '_pag_r_'){
-                      alert('+ pag');
+                      // console.dir(self.json);
+                      // console.dir(node.id);
+                      // console.dir($jit.json.getParent(self.json, node.id));
+                      // alert('+ pag');
+                      // if(!removing) {  
+                        self.paginateForwards(label.id);
+                      // }  
+
                   } else {
-                      alert('- pag');
+                      // alert('- pag');
                   };
                 };
                    //set label styles
@@ -699,7 +721,8 @@
            });
 
            // load json data
-           self.graph.loadJSON(eval( '(' + self.json + ')' ));
+           // self.graph.loadJSON(eval( '(' + self.json + ')' ));
+           self.graph.loadJSON(self.json);
            // compute node positions and layout
            self.graph.compute();
            // emulate a click on the root node.
@@ -762,9 +785,66 @@
       }
       this.elem.attr("style", "display:none;");
     } 
+   },
+   
+   // Helpers 
+   
+   computeParentNode: function (node) {
+     
+     var parent = node.replace(/_pag_(l|r)_/g,'');
+     
+     return parent;
+   },
+
+   paginateForwards: function(node) {
+
+      var parentNode = this.computeParentNode(node);
+      var subtree;
+      if ( typeof this.levelLocked[node] === 'undefined' || 
+           this.levelLocked[parentNode] === false) {
+        // semaphore set to on
+        this.levelLocked[node] = true;
+        
+        // increment current page num.
+        if (typeof this.pagesStore[parentNode] === 'undefined') {
+           this.pagesStore[parentNode]= 1;
+        }
+        this.pagesStore[parentNode] += 1;
+        
+        this.Log.write("Retrieving next page...");    
+        subtree = this.getNewSubtree(parentNode);
+        
+        this.paginateForwardsUpdate(parentNode, subtree);
+      }
+        
+   },   
+   paginateForwardsUpdate: function(parentNode, newSubtree) {
+   
+      var self = this;
+      console.dir(newSubtree);
+      console.log(parentNode);
+      // removing old subtree  
+      self.graph.removeSubtree(parentNode, false, 'animate', {  
+        hideLabels: false,  
+        onComplete: function() {    
+          
+          // self.Log.write("subtree removed");     
+        }
+      });  
+      
+      newSubtree.id = parentNode;
+      // adding new subtree 
+        self.graph.addSubtree(newSubtree, 'animate', {  
+                hideLabels: false,  
+                onComplete: function() {  
+                    // self.Log.write("subtree added");  
+                    self.Log.done();
+                    self.levelLocked[parentNode] = false;
+                }  
+        });  
+        
+      return self;
    }
-
-
 });
 
 
