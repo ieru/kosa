@@ -114,7 +114,7 @@
         
         pag = self.pagesStore[nodeId];
 
-        self.collection.url = '/api/getnarrowerconcepts?node=' + nodeId + '&lang='+self.currentLang+ '&pag='+pag;
+        self.collection.url = '/api/getnarrowerconcepts?uri=' + escape(nodeId) + '&lang='+self.currentLang+ '&pag='+pag;
           // set Backbone to synchronous mode
           self.collection.fetch({async:false})
           .done(function() {
@@ -178,13 +178,15 @@
           if (!state.id) {
             return state.text; 
           }
-          return "<img class='flag' width='16' height='16' src='images/flags/" + state.id.toLowerCase() + ".png'/>"+ state.text;
+          // commented out flags
+          // return "<img class='flag' width='16' height='16' src='images/flags/" + state.id.toLowerCase() + ".png'/>"+ state.text;
+          return state.text;
         }
         $("#language").select2({
-          formatResult: format,
-          formatSelection: format,
-          width: '100%',
-          escapeMarkup: function(m) { return m; }
+           formatResult: format,
+           formatSelection: format,
+           width: '100%',
+           escapeMarkup: function(m) { return m; }
         });
         $('#language').select2("val", this.currentLang.toLowerCase()); 
 
@@ -219,7 +221,7 @@
     var self = this;
 
 
-    self.collection.url = '/api/getnarrowerconcepts?node=' + self.currentNode+'&lang='+self.currentLang;
+    self.collection.url = '/api/getnarrowerconcepts?uri=' + escape(self.currentNode) +'&lang='+self.currentLang;
     self.collection.fetch().done(function() {
     // var data = self.collection.toJSON();
     // data.name = 'root';
@@ -768,6 +770,14 @@
         
         this.Log.write("Retrieving data, please wait...");    
         subtree = this.getNewSubtree(parentNode);
+        
+        // verify ids ar valid
+        /*
+        _.map(subtree.children,function (obj) { 
+          var newObj;
+          newObj.id = escape(newObj.id);
+          return newObj;
+        });*/
         
         this.paginateUpdate(parentNode, subtree);
       }

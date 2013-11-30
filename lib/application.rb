@@ -3,6 +3,7 @@
 # require 'rubygems'
 
 require 'sinatra'
+require 'open-uri'
 
 # todo remove
 #require 'sinatra/sparql'
@@ -119,20 +120,21 @@ class Kosa < Sinatra::Base
     get '/api/getbroaderconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
       lang = params[:lang]
-      node = params[:node]
+      uri = params[:uri]
       page = params[:pag]
+      # Not used on Cropontology 
       concept = 'broader'
-      get_concepts(concept, node, lang, page)
+      get_concepts(concept, uri, lang, page)
     end
     
     # node children. Returns {} if no children
     get '/api/getnarrowerconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
       lang = params[:lang]
-      node = params[:node]
+      uri = params[:uri]
       page = params[:pag]
-      concept = 'narrower'
-      get_concepts(concept, node, lang, page)
+      concept = 'broader'
+      get_concepts(concept, uri, lang, page)
     end
 
     # first node in a tree
@@ -183,7 +185,8 @@ class Kosa < Sinatra::Base
          WHERE
          {
          # ?x ?p ?o
-         ?x skos:prefLabel ?label .
+         # ?x skos:prefLabel ?label .
+         ?x rdfs:label ?label .
          FILTER(langMatches(lang(?label), '#{lang}')) .
          }
          LIMIT 1
@@ -247,12 +250,12 @@ class Kosa < Sinatra::Base
         
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-          PREFIX agrovoc: <#{prefix}/>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
           SELECT REDUCED ?label 
           WHERE
           {
-            ?x skos:prefLabel ?label .
+            # ?x skos:prefLabel ?label .
+            ?x rdfs:label ?label
             FILTER(langMatches(lang(?label), '#{lang}')).
             FILTER(contains(?label, '#{term}'))
           }
@@ -270,13 +273,13 @@ class Kosa < Sinatra::Base
 
 
     # passed type arg to Dry the method
-    def get_concepts(type=nil,node=nil, lang=nil, page=nil)
+    def get_concepts(type=nil,uri=nil, lang=nil, page=nil)
     
       # encoder = Yajl::Encoder.new
 
-        if node.nil?
+        if uri.nil?
           # return null to save resources
-          return encoder.encode({})
+          return encoder.encode({:error=>'No uri selected'})
         end 
         
         if type.nil?
@@ -297,35 +300,44 @@ class Kosa < Sinatra::Base
           page = page.to_i
           if page < 1
             # stop execution to save resources
-            return {}.to_json
+            return encoder.encode({:error=>'Page not valid', :uri=>uri})
           end
         end
         
         offset = (page - 1) * results_per_page
         
-        node = remove_prefix(node)
+        id = remove_prefix(uri)
         
-        uri = prefix + '/' + node
+        # uri = prefix + '/' + node
         
-        if !uri.valid?
+        rdf_uri = RDF::URI.new(uri)
+        
+        if !rdf_uri.valid?
           # return empty, and stop to save resources
-          return {}.to_json
+          return encoder.encode({:error=>'not valid uri', :uri=>uri})
         end
+
+        # url_uri = prefix + '/' + CGI::escape(node.to_s)
         
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-          PREFIX agrovoc: <#{prefix}/>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT REDUCED ?x ?label ?ylabel 
+          # SELECT DISTINCT ?x ?label ?ylabel 
+          SELECT DISTINCT ?x ?label ?ylabel
           WHERE
           {
-            <#{uri}> skos:#{type} ?x .
-            <#{uri}> skos:prefLabel ?ylabel .
-            ?x skos:prefLabel ?label .
+            # Agrovoc:
+            # <#{uri}> skos:prefLabel ?ylabel .
+            # ?x skos:prefLabel ?label .
+            # <#{uri}> skos:#{type} ?x .
+            
+            ?x skos:#{type} <#{uri}> .
+            <#{uri}> rdfs:label ?ylabel .
+            ?x rdfs:label ?label .
             FILTER(langMatches(lang(?label), '#{lang}')) . 
             FILTER(langMatches(lang(?ylabel), '#{lang}')) . 
           }
-          LIMIT #{soft_limit}
+          # LIMIT #{soft_limit}
          ")
          count = query.count()        
          parents_query = query.offset(offset).limit(results_per_page)
@@ -342,7 +354,7 @@ class Kosa < Sinatra::Base
 
         if page > pages
           # return empty, and stop to save resources
-          return {}.to_json
+          return encoder.encode({:uri=>uri})
         end
 
          ylabel = nil
@@ -352,16 +364,19 @@ class Kosa < Sinatra::Base
            if ylabel.nil?
              ylabel = w.ylabel
            end
-           { :name=> w.label, :id=>remove_prefix(w.x), :pages=>0, :related_count=>0, :children=>[], :related=>[] }
+           id = 
+           { :name=> w.label, :id=>remove_prefix(w.x), :uri=>w.x.to_s, :pages=>0, :related_count=>0, :children=>[], :related=>[] }
          } 
         
-         return encoder.encode({ :name=>ylabel, :id=>node, :pages=>pages, :page=>page, :related_count=>0, :children=>parents_list, :related=>parents_list })
+         return encoder.encode({ :name=>ylabel, :id=>id, :uri=>uri.to_s, :pages=>pages, :page=>page, :related_count=>0, :children=>parents_list, :related=>parents_list })
     end
 
     # @todo: check this 
     # removes PREFIX from URIs 
-    def remove_prefix(node)
-      return node.to_s.split('/').last
+    def remove_prefix(uri)
+      
+      newUri = uri.to_s.split('/').last.gsub(/[^\w\d]+/,'');
+      return newUri
     end
     
     # @todo: check this
