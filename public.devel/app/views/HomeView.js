@@ -35,7 +35,7 @@
      // currentUri:'http://......./c_4788',
      
      // Cropontology's
-     currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000372',
+     currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000',
      currentLang:'EN',
      
      pagesStore:[], // stores current page number on each level
@@ -127,8 +127,14 @@
 
         var self = this;
         var data, uri = '';
-                
-        if (typeof nodeId === 'undefined') {
+
+        if (nodeId.toString().substring(0, 5) === '_pag_') {
+           
+           // we have clicked on an arrow, change to parent node
+           return {};
+        }
+                        
+        if (typeof self.pagesStore[nodeId] === 'undefined') {
         
           self.pagesStore[self.currentId] = 1;
         }
@@ -140,7 +146,10 @@
         if (typeof self.idToUri[nodeId] !== 'undefined') {
           uri = self.idToUri[nodeId];
         }
-        
+console.log(nodeId);
+console.dir(self.uriToId);
+console.dir(self.idToUri);
+
         self.collection.url = '/api/getnarrowerconcepts?uri=' + encodeURI(uri)         
             + '&lang='+self.currentLang+ '&pag='+pag;
         
@@ -519,7 +528,10 @@
                 self.Log.loading();
 
                 var response = self.getTree(nodeId, level);
-                callback.onComplete(nodeId, response);  
+                
+                if (typeof response.id !== 'undefined') {
+                  callback.onComplete(nodeId, response);  
+                }
              },
 
              onBeforeCompute: function(id){
@@ -542,9 +554,10 @@
                 label.id = node.id;            
                 label.innerHTML = node.name;
                 label.onclick = function(){
-                  // go backwards arrow
+                  // normal node
                   if (label.id.toString().substring(0, 7) != '_pag_l_' && label.id.toString().substring(0, 7) != '_pag_r_') {
-                      console.log(node.id);
+
+                      self.currentId = node.id;
                       self.graph.onClick(node.id);
                   // go forwards arrow
                   } else if (label.id.toString().substring(0, 7) === '_pag_r_'){
@@ -552,11 +565,10 @@
                       var id;
                       self.Log.write("Retrieving data, please wait...");    
                       id = self.getParentId(label.id);
-                      console.log(id.toString());
                       
-                      // self.paginateForwards(label.id);                      
-                      self.graph.onClick(id, {Move: m})
-                  } else { // normal node
+                      self.paginateForwards(label.id);                      
+                      // self.graph.onClick(label.id, {Move: m});
+                  } else { // go backwards
                   
                       self.Log.write("Retrieving data, please wait...");                          
                       self.paginateBackwards(label.id);
@@ -766,35 +778,29 @@
    addIdsFromUris: function (tree) {
 
         var self = this;
-// console.dir(tree);
         var newTree = _.map(tree,function (obj) { 
           
           var uri = obj.uri;
-// console.dir(uri);
+
           if (typeof obj.uri !== 'undefined') {
 
-// console.log(self.uriToId[uri]);            
+
             if (typeof self.uriToId[uri] === 'undefined') {
               
               // add Id if it doesnt exists on array
               var id = self.generateId();
-// console.log(id);
+
               while (typeof self.uriToId[uri] === 'undefined') {
+
                 self.uriToId[uri] = id;
                 self.idToUri[id] = uri;
-// console.log('asigned '+ uri + ' '+self.uriToId[uri] )
-// console.log('asigned '+ id + ' '+self.idToUri[id] )
                 obj.id = id;
                 id = self.generateId();
-// console.log(uri);
               }
             } else {
-              // Id already exists
               obj.id = self.uriToId[obj.uri];
             }
-            
           }  
-          
         });
    
         return tree;
@@ -804,6 +810,7 @@
    generateId: function () {
    
      var randomId = Math.floor(Math.random()*10000 +1); 
+     randomId = 'c_' + randomId;
      return randomId;
    },
    
@@ -813,7 +820,8 @@
       var self = this;
       
       var node = self.graph.graph.getNode(parentNode);
-      
+      console.dir(node);
+      console.log(parentNode);
       var name = node.name;
       var pages = node.pages;
       var page = self.pagesStore[parentNode];
@@ -831,9 +839,9 @@
               self.graph.addSubtree(newSubtree, 'animate', {  
                 hideLabels: false,  
                 onComplete: function() {  
-                    // self.Log.write("subtree added");  
                     self.Log.done();
                     self.levelLocked[parentNode] = false;
+                    self.graph.onClick(parentNode);
                 }  
               });
         }

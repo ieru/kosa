@@ -25,10 +25,7 @@ gem 'rdf-sesame', 	  :git => "git://github.com/ruby-rdf/rdf-sesame.git"
 
 gem 'sinatra'
 gem 'rubygems-bundler'
-
-# gem 'rdf'
-# gem 'rdfs'
-# gem 'linkeddata'
+gem 'sanitize'
 
 gem 'dalli'
 
@@ -47,17 +44,11 @@ gem 'dalli'
 
 
 gem 'rdf-raptor'
-#gem 'spira'
 gem 'coveralls', require: false
 
-#gem 'sparql'
-#gem 'sparql-client'
-##gem 'rest-client'
 gem 'fileutils'
-#gem 'equivalent-xml'
 
 # yajl gem increases JSON parse ~ 1.9x -> https://github.com/brianmario/yajl-ruby
-# gem 'json'
 gem 'yajl-ruby'
 
 gem 'rack-test'

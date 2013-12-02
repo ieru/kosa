@@ -2,6 +2,7 @@
 
 require 'sinatra'
 require 'uri'
+require 'sanitize'
 
 # rdf and rdf syntaxes
 require 'rdf'
@@ -46,7 +47,7 @@ class Kosa < Sinatra::Base
     @soft_limit = 70
     
     # elements on a tree level
-    @results_per_page = 2
+    @results_per_page = 4
     
     
     # @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
@@ -76,28 +77,30 @@ class Kosa < Sinatra::Base
     
     # test endpoint2
     get '/api/test' do
-        {:id=>'4', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1}.to_json
+        encoder.encode({:id=>'4', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1})
     end
     
     # api index     
     get '/api' do
-        {}.to_json
+        encoder.encode({})
     end
     
     # first node in a tree
     get '/api/getsimilarconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
-      lang = params[:lang]
-      term = params[:term]
+      
+      lang = Sanitize.clean(params[:lang])
+      term = Sanitize.clean(params[:term])
       get_similar_concepts(term, lang)
     end
 
     # Parent nodes
     get '/api/getbroaderconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
-      lang = params[:lang]
-      uri = params[:uri]
-      page = params[:pag]
+      
+      lang = Sanitize.clean(params[:lang])
+      uri = Sanitize.clean(params[:uri])
+      page = Sanitize.clean(params[:pag])
       # Not used on Cropontology 
       concept = 'broader'
       get_concepts(concept, uri, lang, page)
@@ -106,9 +109,10 @@ class Kosa < Sinatra::Base
     # node children. Returns {} if no children
     get '/api/getnarrowerconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
-      lang = params[:lang]
-      uri = params[:uri]
-      page = params[:pag]
+      
+      lang = Sanitize.clean(params[:lang])
+      uri = Sanitize.clean(params[:uri])
+      page = Sanitize.clean(params[:pag])
       concept = 'broader'
       get_concepts(concept, uri, lang, page)
     end
@@ -116,7 +120,8 @@ class Kosa < Sinatra::Base
     # first node in a tree
     get '/api/gettopconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
-      lang = params[:lang]
+      
+      lang = Sanitize.clean(params[:lang])
       get_top_concepts(lang)
     end
 
@@ -126,35 +131,14 @@ class Kosa < Sinatra::Base
   
 
     def get_top_concepts(lang=nil)
-        cache_control :public, max_age: 1800  # 30 mins.
-
-        
-        
-        if lang.nil? || !lang.length == 2
-          lang = 'EN'
-        else
-          lang = lang.upcase
-        end   
-                
-        query = sparql.query("
-        
-        #
-        # not implemented
-        #
-        ")
-
-        
-        root = query.map { |w|
-          {:a => w }
-        }
-        encoder.encode(root)
-
+      
+      # Not Implemented
+      
+      return encoder.encode({})
     end
 
     def get_similar_concepts(term=nil, lang=nil)
     
-      # encoder = Yajl::Encoder.new
-
       if term.nil?
         encoder.encode({})
       else
@@ -182,7 +166,7 @@ class Kosa < Sinatra::Base
          ")
          
          list = query.map { |w|  
-           { :text => w.label, :id => remove_prefix(w.label) }
+           { :text => w.label, :uri => w.x }
          } 
         
          encoder.encode(list)
