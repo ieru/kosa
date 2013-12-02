@@ -132,13 +132,11 @@
         var data, uri = '';
 
         if (nodeId.toString().substring(0, 5) === '_pag_') {
-           
            // we have clicked on an arrow, change to parent node
            return {};
         }
                         
-        if (typeof self.pagesStore[nodeId] === 'undefined') {
-        
+        if (typeof self.pagesStore[nodeId] === 'undefined') {    
           self.pagesStore[self.currentId] = 1;
         }
         
@@ -148,6 +146,12 @@
         
         if (typeof self.idToUri[nodeId] !== 'undefined') {
           uri = self.idToUri[nodeId];
+    
+        } else {
+         // map uri and dom's id <-- less mem, more performance
+          self.idToUri[self.currentId] = self.currentUri;
+          self.uriToId[self.currentUri] = self.currentId;
+          uri = self.idToUri[self.currentId];
         }
 
         self.collection.url = '/api/getnarrowerconcepts?uri=' + encodeURI(uri)         
@@ -230,23 +234,10 @@
         });
         $('#language').select2("val", this.currentLang.toLowerCase()); 
 
-        $('#language').on('change', this.changeLanguage);
+        $('#language').on('change', this.onChangeLanguage);
       },
 
 
-      changeLanguage: function (e) {
-
-        self = this;
-        self.currentLang = e.val.toUpperCase();        
-        self.Log.write('Changed language, retriving data...');
-        // Saying hello to garbage collection
-        self.graph = undefined;
-        $('#infovis').html('');
-        $('#infovis').css('height', '500px');
-        // .append('<div id="spinner" class="text-center" style="display:none;"><img src="/images/spinner.gif" height="66" width="66" style="width:66px;height:66px;" title="loading"></div>');
-        self.initNavigational();
-  
-  },
 
 
   initNavigational: function() {
@@ -281,7 +272,7 @@
             
    initSearchBox: function(){
 
-                sURL = '/api/getsimilarconcepts?lang='+this.currentLang+'&term='
+                sURL = '/api/getsimilarconcepts?lang='+this.currentLang
                 $("#selector").select2({
                   width: '100%',
                   allowClear: true,
@@ -292,7 +283,7 @@
                         dataType : 'json',
                         data: function (term, page) {
                           return {
-                            q: term
+                            'term': term
                           };
                         },
                         results: function (data, page) {
@@ -350,10 +341,35 @@
     var dataId = $(e.currentTarget).data('id');
 
       $('#'+dataId).trigger('click');
-      
-      
 
   },
+  
+  onSearchTerm: function (e) {
+
+    this.resetStatus();
+    this.currentUri = e.val;      
+    this.Log.write('Accessing term, retriving data...');
+    // Saying hello to garbage collection
+    this.graph = {};
+    $('#infovis').html('');
+    $('#infovis').css('height', '500px');
+    $('#infovis-canvaswidget').remove();
+    this.initNavigational();
+
+  },
+
+  onChangeLanguage: function (e) {
+
+    this.currentLang = e.val.toUpperCase();        
+    this.Log.write('Changed language, retriving data...');
+    // Saying hello to garbage collection
+    this.graph = undefined;
+    $('#infovis').html('');
+    $('#infovis').css('height', '500px');
+    this.initNavigational();
+  
+  },
+
 
 
   //--------------------------------------
@@ -413,7 +429,6 @@
               
               tree = this.getNewSubtree(nodeId, pag);
             
-console.dir(tree);                
               this.updateRootNode(tree);
               
               return this.addSubtreeAndPagers(nodeId, tree);
@@ -563,6 +578,7 @@ console.dir(tree);
 
                 var response = self.getTree(nodeId, level);
                 
+                console.dir(response);
                 if (typeof response.id !== 'undefined') {
                   callback.onComplete(nodeId, response);  
                 }
@@ -582,7 +598,7 @@ console.dir(tree);
                
                 var m = {
                     offsetX: self.graph.canvas.translateOffsetX,
-                    offsetY: self.graph.canvas.translateOffsetY + 100
+                    offsetY: self.graph.canvas.translateOffsetY + 180
                 };
                 
                 label.id = node.id;            
@@ -591,17 +607,13 @@ console.dir(tree);
                   // normal node
                   if (label.id.toString().substring(0, 7) != '_pag_l_' && label.id.toString().substring(0, 7) != '_pag_r_') {
 
-                      self.currentId = node.id;
+                      // self.currentId = node.id;
                       self.graph.onClick(node.id);
                   // go forwards arrow
                   } else if (label.id.toString().substring(0, 7) === '_pag_r_'){
                       
-                      var id;
                       self.Log.write("Retrieving data, please wait...");    
-                      id = self.getParentId(label.id);
-                      
                       self.paginateForwards(label.id);                      
-                      // self.graph.onClick(label.id, {Move: m});
                   } else { // go backwards
                   
                       self.Log.write("Retrieving data, please wait...");                          
@@ -613,9 +625,6 @@ console.dir(tree);
                    style.width = 150 + 'px';
                    style.height = 'auto';            
                    style.cursor = 'pointer';
-                   // style.color = 'black';
-                // style.backgroundColor = '#1a1a1a';
-                   // style.fontSize = '12px';
                    style.textAlign= 'center';
                },
 
@@ -853,7 +862,7 @@ console.dir(tree);
    generateId: function () {
    
      var randomId = Math.floor(Math.random()*10000 +1); 
-     randomId = 'c_' + randomId;
+     randomId = 'c_' + randomId + (Math.floor(Math.random()*10000 +1)); 
      return randomId;
    },
    
@@ -881,10 +890,16 @@ console.dir(tree);
               // adding new subtree 
               self.graph.addSubtree(newSubtree, 'animate', {  
                 hideLabels: false,  
-                onComplete: function() {  
+                onComplete: function() {
+                
+                    var m = {
+                      offsetX: self.graph.canvas.translateOffsetX,
+                      offsetY: self.graph.canvas.translateOffsetY + 100
+                    };
+  
                     self.Log.done();
                     self.levelLocked[parentNode] = false;
-                    self.graph.onClick(parentNode);
+                    self.graph.onClick(parentNode, {Move: m});
                 }  
               });
         }
@@ -994,6 +1009,14 @@ console.dir(tree);
               
               // update root's ...
               // ...
+        },
+        
+        resetStatus: function () {
+        
+           this.uriToId = [];
+           this.idToUri = [];
+           this.pagesStore = [];
+           this.currentId = '1';
         }
    
    
