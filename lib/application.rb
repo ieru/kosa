@@ -154,7 +154,7 @@ class Kosa < Sinatra::Base
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT REDUCED ?label 
+          SELECT REDUCED ?x ?label 
           WHERE
           {
             # ?x skos:prefLabel ?label .
@@ -162,7 +162,7 @@ class Kosa < Sinatra::Base
             FILTER(langMatches(lang(?label), '#{lang}')).
             FILTER(contains(?label, '#{term}'))
           }
-          LIMIT 5
+          LIMIT #{soft_limit}
          ")
          
          list = query.map { |w|  

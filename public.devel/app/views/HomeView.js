@@ -281,7 +281,7 @@
             
    initSearchBox: function(){
 
-                sURL = '/api'
+                sURL = '/api/getsimilarconcepts?lang='+this.currentLang+'&term='
                 $("#selector").select2({
                   width: '100%',
                   allowClear: true,
@@ -301,20 +301,23 @@
                           };
                         }
                     },
-                                /*
-                                formatResult: function(item) {
-                                    return "aaa";
-                                },
-                                formatSelection: function(item) {
-                                    return "bbbb";
-                                },
-                                id: function (obj) {
-                                  return "aaaa";
-                                },
-                                */
-                                dropdownCssClass: "bigdrop",
-                                escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
-                            });
+                            
+                    formatResult: function(item) {
+                        return item.text;
+                    },
+                    formatSelection: function(item) {
+                        return item.text;
+                    },
+                    id: function (obj) {
+                        return obj.uri;
+                    },
+                                
+                    dropdownCssClass: "bigdrop",
+                    // escapeMarkup: function (m) { return m; } // we do not want to escape markup since we are displaying html in results
+                });
+                
+                $('#selector').on('change', this.onSearchTerm);
+
 
   },
 
@@ -444,8 +447,33 @@ console.dir(tree);
                  ctx.stroke();
                  } 
                }
-             }
-           });
+             },
+
+             'roundrect': { 
+                'render': function(node, canvas, animating) { 
+                    var pos = node.pos.getc(true), nconfig = this.node, data = node.data; 
+                    var width  = nconfig.width, height = nconfig.height; 
+                    var algnPos = this.getAlignedPos(pos, width, height); 
+                    var ctx = canvas.getCtx(), ort = this.config.orientation; 
+                    ctx.beginPath(); 
+                    var r = 10; //corner radius 
+                    var x = algnPos.x; 
+                    var y = algnPos.y; 
+                    var h = height; 
+                    var w = width; 
+                    ctx.moveTo(x + r, y); 
+                    ctx.lineTo(x + w - r, y); 
+                    ctx.quadraticCurveTo(x + w, y, x + w, y + r); 
+                    ctx.lineTo(x + w, y + h - r); 
+                    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h); 
+                    ctx.lineTo(x + r, y + h); 
+                    ctx.quadraticCurveTo(x, y + h, x, y + h - r); 
+                    ctx.lineTo(x, y + r); 
+                    ctx.quadraticCurveTo(x, y, x + r, y); 
+                    ctx.fill(); 
+                } 
+             } 
+          });
               
         },
 
@@ -475,18 +503,9 @@ console.dir(tree);
                  // zooming:10
              },
              
-             Label: {
-               //type: self.labelType, //Native or HTML
-               //size: 10,
-               //style: 'bold'
-               //type: 'HTML'
-             },
-             
              Events: {
                enable:true,
                onClick: function (nodeId, eventInfo, e){
-                    // alert('nodeId: '+nodeId);
-                    // self.Log.loading();
 
                },    
                 //Implement handler for TouchScreens
@@ -526,7 +545,7 @@ console.dir(tree);
               width: 150,
                    //use a custom
                    //node rendering function
-                   type: 'nodeline',
+                   type: 'nodeline', // roundrect, nodeline
                    align:"center",
                    overridable: true
                },
