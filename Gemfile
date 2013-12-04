@@ -30,6 +30,7 @@ gem 'sanitize'
 
 gem 'dalli'
 
+
 # Persistence Adapters ##
 #
 # SQLite3, PostgreSQL, Heroku
