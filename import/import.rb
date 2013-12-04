@@ -1,5 +1,6 @@
 # #!/usr/bin/env ruby -EBINARY
 require 'rdf'
+require 'linkeddata'
 #require 'rdf/4store'
 require 'rdf/sesame'
 require 'rdf/ntriples'
@@ -11,7 +12,8 @@ require 'fileutils'
 
 # config 
 # Onntology = 'KOS' # <-- agrovoc
-Ontology = 'cropontology'
+# Ontology = 'cropontology'
+Ontology = 'oedunet'
 
 # ruby import.rb
 

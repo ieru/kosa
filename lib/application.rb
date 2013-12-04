@@ -32,7 +32,8 @@ require 'equivalent-xml'
 
 # Config.
 # Repository = 'KOS' # <-- Agrovoc
-Repository = 'cropontology'
+# Repository = 'cropontology'
+Repository = 'oedunet'
 
 
 # main class
