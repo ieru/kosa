@@ -27,9 +27,7 @@ gem 'sinatra'
 gem 'rubygems-bundler'
 gem 'sanitize'
 
-
 gem 'dalli'
-
 
 # Persistence Adapters ##
 #
