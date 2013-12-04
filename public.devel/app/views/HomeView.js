@@ -35,7 +35,8 @@
      // currentUri:'http://......./c_4788',
      
      // Cropontology's
-     currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000',
+     // currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000',
+     currentUri: 'http://MoKi_light#ActionLearning',
      currentLang:'EN',
      
      pagesStore:[], // stores current page number on each level
@@ -1017,6 +1018,7 @@
            this.idToUri = [];
            this.pagesStore = [];
            this.currentId = '1';
+           this.rootUri = '';
         }
    
    
