@@ -103,7 +103,7 @@ class Kosa < Sinatra::Base
       uri = Sanitize.clean(params[:uri])
       page = Sanitize.clean(params[:pag])
       # Not used on Cropontology 
-      concept = 'broader'
+      concept = 'rdfs:Class'
       get_concepts(concept, uri, lang, page)
     end
     
@@ -114,7 +114,7 @@ class Kosa < Sinatra::Base
       lang = Sanitize.clean(params[:lang])
       uri = Sanitize.clean(params[:uri])
       page = Sanitize.clean(params[:pag])
-      concept = 'broader'
+      concept = 'rdfs:subClassOf'
       get_concepts(concept, uri, lang, page)
     end
 
@@ -160,7 +160,7 @@ class Kosa < Sinatra::Base
           {
             # ?x skos:prefLabel ?label .
             ?x rdfs:label ?label
-            FILTER(langMatches(lang(?label), '#{lang}')).
+            # FILTER(langMatches(lang(?label), '#{lang}')).
             FILTER(contains(?label, '#{term}'))
           }
           LIMIT #{soft_limit}
@@ -224,22 +224,16 @@ class Kosa < Sinatra::Base
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          # SELECT DISTINCT ?x ?label ?ylabel 
           SELECT DISTINCT ?x ?label ?ylabel
           WHERE
           {
-            # Agrovoc:
-            # <#{uri}> skos:prefLabel ?ylabel .
-            # ?x skos:prefLabel ?label .
-            # <#{uri}> skos:#{type} ?x .
-            
-            ?x skos:#{type} <#{uri}> .
+            <#{uri}> #{type} ?x .
             <#{uri}> rdfs:label ?ylabel .
             ?x rdfs:label ?label .
-            FILTER(langMatches(lang(?label), '#{lang}')) . 
-            FILTER(langMatches(lang(?ylabel), '#{lang}')) . 
+            #FILTER(langMatches(lang(?label), '#{lang}')) . 
+            #FILTER(langMatches(lang(?ylabel), '#{lang}')) . 
           }
-          # LIMIT #{soft_limit}
+          LIMIT #{soft_limit}
          ")
          
          count = query.count()        

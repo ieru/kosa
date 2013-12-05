@@ -155,7 +155,7 @@
           uri = self.idToUri[self.currentId];
         }
 
-        self.collection.url = '/api/getnarrowerconcepts?uri=' + encodeURI(uri)         
+        self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(uri)         
             + '&lang='+self.currentLang+ '&pag='+pag;
         
           
@@ -245,7 +245,7 @@
 
       var self = this;
       
-      self.collection.url = '/api/getnarrowerconcepts?uri=' + encodeURI(self.currentUri) +'&lang='+self.currentLang;
+      self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(self.currentUri) +'&lang='+self.currentLang;
       self.collection.fetch().done(function() {
 
          self.afterRender();
@@ -1019,7 +1019,16 @@
            this.pagesStore = [];
            this.currentId = '1';
            this.rootUri = '';
-        }
+        },
+        
+        customEncode: function (inText) {
+          
+          var outText = encodeURI(inText);
+          outText = outText.replace(/\#/gi, '%23');
+          console.log(outText);
+          // console.log(encodeURI(inText));
+          return outText;
+        } 
    
    
 }); // Backbone View end
