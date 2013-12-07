@@ -11,49 +11,18 @@ The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alp
 ### Requirements
 
 - Ruby
-- ImageMagick 
-- 4-store (Update: using sesame as main database) 
-- PostgreSQL & Heroku PostgreHQ, Casandra, MongoDB, RedStore, Sesame (Optional, Exchangeable)
-- SQLite, Virtuoso, AllegroGraph (Optional, Exchangeable)
-- Memcached (Optional, by default FileStore Cache is used)
+- Sesame + Indexer
 
-### Installation (Update with the new Sesame+ElasticsearchIndexer config)
+### Optional requirements
 
-- First step is to install a graph-based database: 4-store has been used
-- Intallation can be accomplished from a debian-like system running: 
+- SQLite, PostgreSQL, Casandra, MongoDB, RedStore, 4-store
+- Virtuoso, AllegroGraph
+- Memcached (by default FileStore-Cache is used)
 
-For more info on installing 4store: [4store Wiki](http://4store.org/trac/wiki/Install)
-
-```
-$ sudo apt-get install 4-store
-```
-
-- on Mac systems : 
+### Installation
 
 
-```
-(if using MacPorts)  
-$ sudo port install 4-store  
-
-```
-
-- Create a 4store database, 
-
-```
-$ sudo 4s-backend-setup testDB
-$ sudo 4s-backend testDB
-```
-
-- Run the database, listening on port 8008 (to do so, just type: )
-
-```
-$ sudo 4s-httpd -p 8008 testDB  
-
-(if you want to test your installed database, point your browser to http://localhost:8008/test 
-You will access an SPARQL endpoint)
-```
-
-- Install ruby on your machine, or ensure you have it installed
+- Install ruby
 
 ```
 $ ruby -v
@@ -61,55 +30,30 @@ ruby 1.9 ...
 
 ```
 
+- Install a database (Sesame by default)
+
+```
+TBD
+```
+
 - Fill your database with some RDF dummy data (to test the endpoint)
 
 ```
-( in kosa directory: )
-
-$ wget http://www.cropontology.org/ontology/CO_010/Germplasm/nt -O co_010_ontology.rdf  
-
-( ruby _loader.rb <ontology_name> <file_to_load> )  
-
-$ ruby _loader.rb co_010 co_010_ontology.rdf
-...
-...
-<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/1999/02/22-rdf-syntax-ns#...
-<http://www.cropontology.org/rdf/CO_010%3A0000000> <http://www.w3.org/2000/01/rdf-schema#label...
-
-Loading ./co_010_ontology.rdf into co_010 in 4store
-
-...
-...
-
+TBD
 ```
 
-- Clone, or download a zip of this repository. Clone may be done using:
+- Install Kosa:
 
 ```
 $ git clone https://github.com/ieru/kosa.git
 $ cd kosa
 ```
 
-- Before installing gems and runnig bundle install; install ImageMagick
-
-For Mac Os:  
-[rmagick installation fort MacOs](http://blog.paulopoiati.com/2013/01/28/installing-rmagick-in-mac-os-x-mountain-lion-with-homebrew/)
-
-For most Systems:  
-Download and install your OS version 
-Get more Info, and troubleshoouing, at vendor's link:
-http://www.imagemagick.org/script/binary-releases.php
-
 - Install required gems with the command:
 
 ```
 
-Note: if you are using MacOs + RVM run this command first:
-
-$ sudo rvm osx-ssl-certs update all
-
-
-(use 'rvm all do gem install sinatra .....' , instead, if you have rvm installed)  
+(use 'rvm all do gem install __GEMS BELOW__')  
 
 $ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
 $ sudo gem install rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa
@@ -117,17 +61,18 @@ $ sudo gem install rdf-rdfxml rdf-turtle rdf-trig rdf-xsd rdf-4store json-ld lin
 $ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
 ```
 
-- Install bundle using: (it may be necessary to remove the Gemfile.lock file to rebuild the previous build)
+- Create 'bundle' 
 
 ```
-( from cloned KOS directory )
+( from kosa directory )
 $ sudo bundle install
+
 (or '$ sudo rvm all do bundle install' -- if you use rvm -- )
 ```
 
-### Running a development server
+### Running on a Development server
 
-- Since the server has been installed using Rack, to run it, just type:
+- Since the server has been installed using Rack, just type:
 
 ```
 $ sudo rackup config.ru
@@ -142,22 +87,20 @@ Now, open your browser and write:
 
 http://localhost:4568
 
-..Voila..
-
 ```
 
-### Running a Production Server
+### Running on a Production Server
 
-A good option for Linux servers is to use NGINX as web server and Passenger as
-application server. You can deploy both servers by running the command below, 
-on a Debian/ Ubuntu box
+
+A good option for Linux servers is to use NGINX + Passenger. You can deploy 
+both servers by running the command below (for a Debian/ Ubuntu users)
 
     # copy-and-paste all in one line
     
     curl -L https://raw.github.com/julianromerajuarez/ubuntu\
     -debian-nginx-passenger-installer/master/install.sh | bash 
 
-you can get mor information on that script in this [link](https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer)
+You can get more information about this script [here](https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer)
 
 ### Javascript, templates & css changes
 
@@ -182,25 +125,27 @@ Download and install [node.js](http://nodejs.org/download/)
 
 ### Troubleshooting
 
-[Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
+- [Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
 
 ### Documentation and API access
 
-[API documentation](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
+- [API](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
 
 ### Resources
 
 - [HTML5 Canvas](http://www.w3.org/html/logo/)
 - [Ruby](https://www.ruby-lang.org)
 - [Sinatra](http://www.sinatrarb.com/)
-- [4-store](http://4store.org/)
-- [SQLite]() 
-- [PostgreSQL]() & [Heroku]() PostgreHQ,[Casandra](), [MongoDB](), [RedStore](), [Sesame](), [AllegroGraph]()
+- [Sesame](http://www.openrdf.org/)
+- [PostgreSQL](), [Casandra](), [MongoDB](), [RedStore](), [4-store](), [AllegroGraph]()
 - [Backbonejs](http://backbonejs.org/)
 - [Handlebarjs](http://handlebarsjs.com/)
 - [SASS](http://sass-lang.com/)
 - [Bootstrap 3.0](http://getbootstrap.com/)
 - [Memcached](http://memcached.org/)
+- [UseekM Indexer](https://dev.opensahara.com/projects/useekm)
+- [ElasticSearch](http://www.elasticsearch.org/)
+
 
 ### Author
 

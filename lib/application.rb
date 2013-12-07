@@ -133,9 +133,31 @@ class Kosa < Sinatra::Base
 
     def get_top_concepts(lang=nil)
       
-      # Not Implemented
+        if lang.nil? || !lang.length == 2
+          lang = 'EN'
+        else
+          lang = lang.upcase
+        end
       
-      return encoder.encode({})
+        query = sparql.query("
+          prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          prefix owl: <http://www.w3.org/2002/07/owl#>
+          prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+          SELECT ?cl ?label
+          WHERE {
+            ?cl rdfs:subClassOf ?a .
+            ?cl rdfs:label ?label
+          }
+          offset 19 
+          limit 1
+        ")
+      
+        list = query.map { |w|  
+           { :text => w.label, :uri => w.cl }
+        } 
+         
+        return encoder.encode(list)
+
     end
 
     def get_similar_concepts(term=nil, lang=nil)
@@ -149,8 +171,6 @@ class Kosa < Sinatra::Base
         else
           lang = lang.upcase
         end
-        
-        
         
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
