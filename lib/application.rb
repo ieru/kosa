@@ -45,7 +45,7 @@ class Kosa < Sinatra::Base
   def initialize 
     
     # maximun number of result on query ~= 10pages
-    @soft_limit = 70
+    @soft_limit = 30
     
     # elements on a tree level
     @results_per_page = 4
@@ -240,23 +240,46 @@ class Kosa < Sinatra::Base
         end
 
         # url_uri = prefix + '/' + CGI::escape(node.to_s)
-        
+=begin
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT DISTINCT ?x ?label ?ylabel
+          SELECT ?x ?label
+          # (MIN(?xlabel) AS ?label) 
           WHERE
           {
-            <#{uri}> #{type} ?x .
-            <#{uri}> rdfs:label ?ylabel .
-            ?x rdfs:label ?label .
-            #FILTER(langMatches(lang(?label), '#{lang}')) . 
-            #FILTER(langMatches(lang(?ylabel), '#{lang}')) . 
-          }
+            ?x #{type} <#{uri}>.
+            #<#{uri}> rdfs:label ?xlabel
+            #FILTER(?xlabel != "").
+            { select ?label where { <http://MoKi_light#Method> rdfs:label ?label. FILTER(?label != "") } LIMIT 1 }
+            # FILTER(langMatches(lang(?label), '#{lang}')) .
+            # FILTER(langMatches(lang(?ylabel), '#{lang}')) . 
+          } 
+          #GROUP BY ?x
           LIMIT #{soft_limit}
          ")
-         
+=end     
+
+        query = sparql.query("
+          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          SELECT ?x (MIN(?xlabel) AS ?label)
+          WHERE
+          {
+            ?x #{type} <#{uri}> .
+            ?x rdfs:label ?xlabel .
+            FILTER (STRLEN(?xlabel) > 0 )
+          } GROUP BY ?x
+          LIMIT #{soft_limit}
+         ")
          count = query.count()        
+
+return encoder.encode({:count=>})
+         if query.nil? || count.eql?(0)
+           return encoder.encode({})
+         end
+         
+         
          parents_query = query.offset(offset).limit(results_per_page)
         
          pages = count.divmod results_per_page
@@ -279,8 +302,10 @@ class Kosa < Sinatra::Base
          parents_list = parents_query.map { |w|  
          
            if ylabel.nil?
-             ylabel = w.ylabel
+             # ylabel = w.ylabel
+             ylabel = ''
            end
+
            { :name=> w.label, :id=>'', :uri=>w.x.to_s, :pages=>0, :related_count=>0, :children=>[], :related=>[] }
          } 
         

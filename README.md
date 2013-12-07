@@ -24,13 +24,17 @@ The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alp
 
 - Install ruby
 
+- - Windows
+- - Mac OS
+- - Linux (Ubuntu/ Debian)
+
 ```
 $ ruby -v
 ruby 1.9 ...
-
 ```
 
-- Install a database (Sesame by default)
+
+- Install Database (Sesame by default)
 
 ```
 TBD
@@ -64,13 +68,13 @@ $ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
 - Create 'bundle' 
 
 ```
-( from kosa directory )
+( from Kosa directory )
 $ sudo bundle install
 
 (or '$ sudo rvm all do bundle install' -- if you use rvm -- )
 ```
 
-### Running on a Development server
+### Running on a Development Server
 
 - Since the server has been installed using Rack, just type:
 
