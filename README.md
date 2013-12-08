@@ -4,7 +4,7 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 ### Demo
 
-The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alpha version)
+The current project snapshot may be seen [here](http://kos.appgee.net)
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](https://coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
 
@@ -188,8 +188,6 @@ TBD
 
 ### Running on a Development Server
 
-- Since the server has been installed using Rack, just type:
-
 ```
 $ sudo rackup config.ru
 ( use '$ sudo rvm all do rackup config.ru', if you are using rvm )
@@ -197,13 +195,9 @@ $ sudo rackup config.ru
 [2013-11-04 23:22:27] INFO  WEBrick 1.3.1
 [2013-11-04 23:22:27] INFO  ruby 1.9.2 (2012-04-20) [x86_64-darwin12.5.0]
 [2013-11-04 23:22:27] INFO  WEBrick::HTTPServer#start: pid=53704 port=4568
-
-
-Now, open your browser and write:
-
-http://localhost:4568
-
 ```
+
+Now, open your browser and type ````http://localhost:4568````
 
 ### Running on a Production Server
 
@@ -238,10 +232,9 @@ Download and install [node.js](http://nodejs.org/download/)
     
     ( refresh your browser )
 
-
 ### Troubleshooting
 
-- [Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
+[Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
 
 ### Documentation and API access
 
@@ -265,7 +258,7 @@ Download and install [node.js](http://nodejs.org/download/)
 
 ### Author
 
-University of Alcala
+University of Alcalá
 
 ### 'License'
 
