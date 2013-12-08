@@ -11,7 +11,7 @@ The current project snapshot may be seen [here](http://kos.appgee.net)
 ### Requirements
 
 - Ruby
-- Sesame + Indexer
+- Sesame + Indexer [uSeekM](https://dev.opensahara.com/projects/useekm)
 
 ### Optional requirements
 
@@ -166,13 +166,11 @@ $ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
 
 Create Bundle
 ```
-$ cd __your_kosa_dir__
-$ sudo bundle install
-
-(or '$ sudo rvm all do bundle install' -- if you use rvm -- )
+$ ./bundle.sh
+$ ./bundle.dpl.sh
 ```
 
-### Installation on MAC OS
+### Installation on MAC
 
 ```
 TBD
