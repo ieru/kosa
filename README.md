@@ -21,22 +21,22 @@ The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alp
 
 ### Installation
 
+##### Installation on GNU/Linux (Debian / Ubuntu)
 
-- Install ruby
+(tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
 
-- - Windows
-- - Mac OS
-- - Linux (Ubuntu/ Debian)
 
+1. Install ruby
 ```
 $ ruby -v
 ruby 1.9 ...
+...
+TBD
 ```
 
 
-- Install Database and Indexer (Sesame + Postgres by default)
+2. Install Database and Indexer (Sesame + Postgres by default)
 
--- Debian / Ubuntu (tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
 
 Install java JDK and Tomcat6 servlet container from APT repositories:
 ```
@@ -45,7 +45,7 @@ $ sudo apt-get install sun-java6-jdk tomcat6-admin tomcat6-common tomcat6-exampl
 
 Install PostgreSQL database
 ```
-$ sudo apt-get install postgresql-8.4 postgresql-contrib-8.4
+$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1
 ```
 
 Create a database named 'useekm':
@@ -65,9 +65,9 @@ leases/com/opensahara/useekm-http-workbench/1.2.0-a5/useekm-http-workbench-1.2.0
 ```
 
 Copy and rename archives into Tomcat6's webapp directory (requires restart to take effect). 
-Afterwards, visit Tomcat's admin interface, at http://localhost:8080/manager/html and 
+Afterwards, visit Tomcat's admin interface, at ````http://localhost:8080/manager/html```` and 
 verify that the archives are properly deployed and hosted under the appropriate 
-URL prefix (i.e. /openrdf-sesame and /openrdf-workbench):
+URL prefix (i.e. ````/openrdf-sesame```` and ````/openrdf-workbench````):
 ```
 # cp ~/packages/useekm-http-workbench-1.2.0-a5.war /var/lib/tomcat6/webapps/openrdf-workbench.war
 # cp ~/packages/useekm-http-server-1.2.0-a5.war    /var/lib/tomcat6/webapps/openrdf-sesame.war
@@ -80,7 +80,7 @@ Let's name it "geoknow":
 # mkdir -p /var/opt/useekm/geoknow
 ```
 
-Create a configuration file for your repository at /var/opt/useekm/geoknow/config.xml 
+Create a configuration file for your repository at ````/var/opt/useekm/geoknow/config.xml```` 
 by editing the following template:
 ```
 <beans xmlns="http://www.springframework.org/schema/beans" 
@@ -142,23 +142,22 @@ Afterwards, you should be able to create a new repository named 'geoknow'. Speci
 server's absolute file path of the configuration file (that is ````/var/opt/useekm/geoknow/config.xml````)
 
 
-- Fill your database with some RDF dummy data (to test the endpoint)
+
+3. Fill your database with some RDF dummy data (to test the endpoint)
 
 ```
 TBD
 ```
 
-- Install Kosa:
+4. Install Kosa:
 
 ```
 $ git clone https://github.com/ieru/kosa.git
 $ cd kosa
 ```
 
-- Install required gems with the command:
-
+Install required gems
 ```
-
 (use 'rvm all do gem install __GEMS BELOW__')  
 
 $ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
@@ -167,13 +166,24 @@ $ sudo gem install rdf-rdfxml rdf-turtle rdf-trig rdf-xsd rdf-4store json-ld lin
 $ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
 ```
 
-- Create 'bundle' 
-
+Create 'bundle' 
 ```
 ( from Kosa directory )
 $ sudo bundle install
 
 (or '$ sudo rvm all do bundle install' -- if you use rvm -- )
+```
+
+##### Installation on MAC OS
+
+```
+TBD
+```
+
+##### Installation on Windows
+
+```
+TBD
 ```
 
 ### Running on a Development Server
