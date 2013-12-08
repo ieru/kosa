@@ -181,7 +181,7 @@ TBD
 TBD
 ```
 
-### Running on a Development Server
+### Running on a Development Server (Windows / Mac OS / Linux)
 
 ```
 $ sudo rackup config.ru
@@ -194,11 +194,10 @@ $ sudo rackup config.ru
 
 Now, open your browser and type ````http://localhost:4568````
 
-### Running on a Production Server
-
+### Running on a Production Server (Debian / Ubuntu Linux)
 
 A good option for Linux servers is to use NGINX + Passenger. You can deploy 
-both servers by running the command below (for a Debian/ Ubuntu users)
+both servers by running the command below
 
     # copy-and-paste all in one line
     

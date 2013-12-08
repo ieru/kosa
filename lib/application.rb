@@ -8,6 +8,8 @@ require 'sanitize'
 require 'rdf'
 require 'rdf/turtle' 
 require 'rdf/rdfxml' 
+require 'linkeddata' 
+ 
 
 # Database adapters
 require 'rdf/sesame'
@@ -28,8 +30,7 @@ require 'yajl/json_gem'
 require 'equivalent-xml'
 
 # network access
-#require 'net/http'
-#require 'rest_client'
+# require 'rest_client'
 
 # Config.
 # Repository = 'KOS' # <-- Agrovoc
@@ -87,7 +88,7 @@ class Kosa < Sinatra::Base
         encoder.encode({})
     end
     
-    # first node in a tree
+    # first node in the tree
     get '/api/getsimilarconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
       
@@ -127,6 +128,16 @@ class Kosa < Sinatra::Base
       get_top_concepts(lang)
     end
 
+    # get info from node
+    get '/api/getconcept' do
+      cache_control :public, max_age: 1800  # 30 mins.
+      
+      lang = Sanitize.clean(params[:lang])
+      uri = Sanitize.clean(params[:uri])
+      
+      get_concept(uri, lang)
+    end
+
   
    # private methods
    # private
@@ -149,8 +160,8 @@ class Kosa < Sinatra::Base
             ?cl rdfs:subClassOf ?a .
             ?cl rdfs:label ?label
           }
-          offset 19 
           limit 1
+          offset 19 
         ")
       
         list = query.map { |w|  
@@ -164,7 +175,8 @@ class Kosa < Sinatra::Base
     def get_similar_concepts(term=nil, lang=nil)
     
       if term.nil?
-        encoder.encode({})
+        # save resources and return null
+        return encoder.encode({})
       else
         
         if lang.nil? || !lang.length == 2
@@ -207,7 +219,7 @@ class Kosa < Sinatra::Base
         end 
         
         if type.nil?
-          type = 'narrower'
+          type = 'skos:narrower'
         end 
         
         
@@ -229,37 +241,12 @@ class Kosa < Sinatra::Base
         
         offset = (page - 1) * results_per_page
         
-        id = remove_prefix(uri)
-        
-        # uri = prefix + '/' + node
-        
         rdf_uri = RDF::URI.new(uri)
         
         if !rdf_uri.valid?
           # return empty, and stop to save resources
-          return encoder.encode({:error=>'Error validating Uri "#{uri}"'})
+          return encoder.encode({:error=>"Error validating Uri #{uri}"})
         end
-
-        # url_uri = prefix + '/' + CGI::escape(node.to_s)
-=begin
-        query = sparql.query("
-          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT ?x ?label
-          # (MIN(?xlabel) AS ?label) 
-          WHERE
-          {
-            ?x #{type} <#{uri}>.
-            #<#{uri}> rdfs:label ?xlabel
-            #FILTER(?xlabel != "").
-            { select ?label where { <http://MoKi_light#Method> rdfs:label ?label. FILTER(?label != "") } LIMIT 1 }
-            # FILTER(langMatches(lang(?label), '#{lang}')) .
-            # FILTER(langMatches(lang(?ylabel), '#{lang}')) . 
-          } 
-          #GROUP BY ?x
-          LIMIT #{soft_limit}
-         ")
-=end     
 
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -278,8 +265,6 @@ class Kosa < Sinatra::Base
          count = query.count()        
          parents_query = query.offset(offset).limit(results_per_page)
 
-         # return encoder.encode({ :a=>count })
-        
          pages = count.divmod results_per_page
          
          modulus = pages[1].floor
@@ -291,7 +276,7 @@ class Kosa < Sinatra::Base
          
 
         if page > pages
-          # return empty, and stop to save resources
+          # return empty and stop to save resources
           return encoder.encode({:info=>'No data'})
         end
 
@@ -310,6 +295,59 @@ class Kosa < Sinatra::Base
         
          return encoder.encode({ :name=>ylabel, :id=>'', :uri=>uri.to_s, :pages=>pages, :page=>page, :related_count=>0, :children=>parents_list, :related=>parents_list })
     end
+    
+
+    # passed type arg to Dry the method
+    def get_concept(uri=nil, lang=nil)
+    
+
+        if uri.nil?
+          # return null to save resources
+          return encoder.encode({:error=>'No uri selected'})
+        end 
+        
+        if lang.nil? || !lang.length == 2
+          lang = 'EN'
+        else
+          lang = lang.upcase
+        end
+        
+        rdf_uri = RDF::URI.new(uri)
+        
+        if !rdf_uri.valid?
+          # return empty, and stop to save resources
+          return encoder.encode({:error=>"Error validating Uri #{uri}"})
+        end
+        
+        # @todo set language for o.edunet
+        query = sparql.query("
+          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+          PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+          SELECT DISTINCT ?label
+          WHERE
+          {
+            <#{uri}> rdfs:label ?label .
+          }
+          HAVING (STRLEN(str(?label)) > 0)
+          LIMIT 1
+         ")
+
+         count = query.count()        
+
+        if count.eql? 0
+          # save resources
+          return encoder.encode({})
+        end
+
+         
+        concept = query.map { |w|  
+         
+           { :name=> w.label, :id=>'', :uri=>uri, :pages=>0, :related_count=>0, :children=>[], :related=>[] }
+        } 
+        
+         return encoder.encode(concept)
+    end
+    
 
     # @todo: check this 
     # removes PREFIX from URIs 
