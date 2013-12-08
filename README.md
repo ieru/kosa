@@ -34,11 +34,113 @@ ruby 1.9 ...
 ```
 
 
-- Install Database (Sesame by default)
+- Install Database and Indexer (Sesame + Postgres by default)
 
+-- Debian / Ubuntu (tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
+
+Install java JDK and Tomcat6 servlet container from APT repositories:
 ```
-TBD
+$ sudo apt-get install sun-java6-jdk tomcat6-admin tomcat6-common tomcat6-examples tomcat6
 ```
+
+Install PostgreSQL database
+```
+$ sudo apt-get install postgresql-8.4 postgresql-contrib-8.4
+```
+
+Create a database named 'useekm':
+```
+$ sudo -u postgres createdb useekm
+```
+
+Download webapp archives (WARs) to be deployed under Tomcat6 (we choose version 1.2.0-a5):
+```
+$ sudo mkdir -p ~/packages
+$ cd ~/packages
+$ sudo wget --no-check-certificate https://dev.opensahara.com/nexus/content/repositories/re\
+leases/com/opensahara/useekm-http-server/1.2.0-a5/useekm-http-server-1.2.0-a5.war
+
+$ sudo wget --no-check-certificate https://dev.opensahara.com/nexus/content/repositories/re\
+leases/com/opensahara/useekm-http-workbench/1.2.0-a5/useekm-http-workbench-1.2.0-a5.war
+```
+
+Copy and rename archives into Tomcat6's webapp directory (requires restart to take effect). 
+Afterwards, visit Tomcat's admin interface, at http://localhost:8080/manager/html and 
+verify that the archives are properly deployed and hosted under the appropriate 
+URL prefix (i.e. /openrdf-sesame and /openrdf-workbench):
+```
+# cp ~/packages/useekm-http-workbench-1.2.0-a5.war /var/lib/tomcat6/webapps/openrdf-workbench.war
+# cp ~/packages/useekm-http-server-1.2.0-a5.war    /var/lib/tomcat6/webapps/openrdf-sesame.war
+# /etc/init.d/tomcat6 restart
+```
+
+Now a new RDF repository should be created with a set of minimal configuration options. 
+Let's name it "geoknow":
+```
+# mkdir -p /var/opt/useekm/geoknow
+```
+
+Create a configuration file for your repository at /var/opt/useekm/geoknow/config.xml 
+by editing the following template:
+```
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <!-- The id "repository" is mandatory! -->
+    <bean id="repository" class="org.openrdf.repository.sail.SailRepository">
+        <constructor-arg>
+            <bean class="com.useekm.indexing.IndexingSail">
+                <constructor-arg ref="sail" />
+                <constructor-arg ref="indexerSettings" />
+            </bean>
+        </constructor-arg>
+    </bean>
+
+    <!-- This example uses the NativeStore as the underlying sail, you could also use the MemoryStore -->
+    <bean id="sail" class="org.openrdf.sail.nativerdf.NativeStore" />
+
+    <!-- Please customize the indexer settings: -->
+    <bean id="indexerSettings" lazy-init="true" class="com.useekm.indexing.postgis.PostgisIndexerSettings">
+        <property name="defaultSearchConfig" value="simple" />
+        <property name="dataSource" ref="pgDatasource" />
+        <property name="matchers">
+            <list>
+                <!-- CUSTOMIZE: list all the predicates that need indexing (text and/or geo): -->
+                <bean class="com.useekm.indexing.postgis.PostgisIndexMatcher">
+                    <property name="predicate" value="http://www.w3.org/2000/01/rdf-schema#label" />
+                    <property name="searchConfig" value="simple" />
+                </bean>
+                <bean class="com.useekm.indexing.postgis.PostgisIndexMatcher">
+                    <property name="predicate" value="http://www.opengis.net/ont/geosparql#asWKT" />
+                </bean>
+            </list>
+        </property>
+        <!-- You can add additional configuration, such as index partitions to optimize performance. See the documentation. -->
+    </bean>
+
+    <bean id="pgDatasource" lazy-init="true" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/useekm"/>    <!-- CUSTOMIZE! -->
+        <property name="username" value="postgres"/>                              <!-- CUSTOMIZE! -->
+        <property name="password" value="postgres"/>                              <!-- CUSTOMIZE! -->
+    </bean>
+</beans>
+```
+
+Finally, change ownership of the directories that expect server output (logs etc.):
+```
+# chown root:tomcat6 -R /usr/share/tomcat6/.aduna/openrdf-sesame
+# chmod 0775         -R /usr/share/tomcat6/.aduna/openrdf-sesame
+```
+
+Restart Tomcat6 and visit ````http://localhost:8080/openrdf-workbench````.  
+
+You should be able to create a new server instance by using ````http://127.0.0.1:8080/openrdf-sesame```` 
+as the address. Note that this is a local (to the Tomcat instance) address.
+Afterwards, you should be able to create a new repository named 'geoknow'. Specify the 
+server's absolute file path of the configuration file (that is ````/var/opt/useekm/geoknow/config.xml````)
+
 
 - Fill your database with some RDF dummy data (to test the endpoint)
 

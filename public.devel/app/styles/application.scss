@@ -3,13 +3,18 @@
  * 
  * @langversion SASS (http://sass-lang.com/)
  * 
- * @author Christopher Pappas
- * @since  Month 00, 2012
+ * @author University of Alcala
+ * @since  August, 2013
  */
 
  /* variables */
 
 $label-width: 100px;
+// Edunet's dark green
+$log-label-color: #357A8B;
+
+// Edunet's light green
+// $log-label-color: #00B19E;
 
  /* sass */
 
@@ -26,6 +31,9 @@ body {
 }
 .tleft {
   text-align: left;
+}
+.label-log {
+  background-color: $log-label-color;
 }
 .related-label{
   display:inline-block;

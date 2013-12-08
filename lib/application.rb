@@ -7,6 +7,7 @@ require 'sanitize'
 # rdf and rdf syntaxes
 require 'rdf'
 require 'rdf/turtle' 
+require 'rdf/rdfxml' 
 
 # Database adapters
 require 'rdf/sesame'
@@ -263,24 +264,21 @@ class Kosa < Sinatra::Base
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT ?x (MIN(?xlabel) AS ?label)
+          SELECT ?x ?n (MIN(?xlabel) AS ?label)
           WHERE
           {
             ?x #{type} <#{uri}> .
             ?x rdfs:label ?xlabel .
-            FILTER (STRLEN(?xlabel) > 0 )
-          } GROUP BY ?x
+            BIND( STRLEN(?x) AS ?n) .
+          } GROUP BY ?x ?n 
+          HAVING (STRLEN(str(?x)) > 0)
           LIMIT #{soft_limit}
          ")
-         count = query.count()        
 
-return encoder.encode({:count=>})
-         if query.nil? || count.eql?(0)
-           return encoder.encode({})
-         end
-         
-         
+         count = query.count()        
          parents_query = query.offset(offset).limit(results_per_page)
+
+         # return encoder.encode({ :a=>count })
         
          pages = count.divmod results_per_page
          
@@ -300,13 +298,14 @@ return encoder.encode({:count=>})
          ylabel = nil
          
          parents_list = parents_query.map { |w|  
+
          
            if ylabel.nil?
              # ylabel = w.ylabel
              ylabel = ''
            end
 
-           { :name=> w.label, :id=>'', :uri=>w.x.to_s, :pages=>0, :related_count=>0, :children=>[], :related=>[] }
+           { :name=> w.x, :id=>'', :uri=>w.x, :pages=>0, :related_count=>0, :children=>[], :related=>[] }
          } 
         
          return encoder.encode({ :name=>ylabel, :id=>'', :uri=>uri.to_s, :pages=>pages, :page=>page, :related_count=>0, :children=>parents_list, :related=>parents_list })
