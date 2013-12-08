@@ -19,7 +19,7 @@ The current project snapshot may be seen [here](http://kos.appgee.net)
 - Virtuoso, AllegroGraph
 - Memcached (by default FileStore-Cache is used)
 
-### Installation (Debian / Ubuntu)
+### Installation on Debian / Ubuntu
 
 (tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
 
@@ -141,7 +141,7 @@ server's absolute file path of the configuration file (that is ````/var/opt/usee
 
 
 
-**Fill your database with some RDF dummy data (to test the endpoint)**
+**Fill your Database**
 
 ```
 TBD
@@ -164,21 +164,21 @@ $ sudo gem install rdf-rdfxml rdf-turtle rdf-trig rdf-xsd rdf-4store json-ld lin
 $ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
 ```
 
-Create 'bundle' 
+Create Bundle
 ```
-( from Kosa directory )
+$ cd __your_kosa_dir__
 $ sudo bundle install
 
 (or '$ sudo rvm all do bundle install' -- if you use rvm -- )
 ```
 
-##### Installation on MAC OS
+### Installation on MAC OS
 
 ```
 TBD
 ```
 
-##### Installation on Windows
+### Installation on Windows
 
 ```
 TBD
