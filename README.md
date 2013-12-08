@@ -19,9 +19,7 @@ The current project snapshot may be seen [here](http://kos.appgee.net)
 - Virtuoso, AllegroGraph
 - Memcached (by default FileStore-Cache is used)
 
-### Installation
-
-##### Installation on GNU/Linux (Debian / Ubuntu)
+### Installation (Debian / Ubuntu)
 
 (tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
 
@@ -238,7 +236,7 @@ Download and install [node.js](http://nodejs.org/download/)
 
 ### Documentation and API access
 
-- [API](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
+[API](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
 
 ### Resources
 
