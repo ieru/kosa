@@ -26,7 +26,7 @@ The current project snapshot may be seen [here](http://kos.appgee.net) (Open-Alp
 (tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
 
 
-- Install ruby
+**Install ruby**
 
 ```
 $ ruby -v
@@ -35,7 +35,7 @@ TBD
 ```
 
 
-- Install Database and Indexer (Sesame + Postgres by default)
+**Install Database and Indexer (Sesame + Postgres by default)**
 
 
 Install java JDK and Tomcat6 servlet container from APT repositories:
@@ -143,13 +143,13 @@ server's absolute file path of the configuration file (that is ````/var/opt/usee
 
 
 
-- Fill your database with some RDF dummy data (to test the endpoint)
+**Fill your database with some RDF dummy data (to test the endpoint)**
 
 ```
 TBD
 ```
 
-4. Install Kosa:
+**Install Kosa**
 
 ```
 $ git clone https://github.com/ieru/kosa.git
