@@ -156,12 +156,11 @@ $ cd kosa
 
 Install required gems
 ```
-(use 'rvm all do gem install __GEMS BELOW__')  
+(if you use rvm, type 'rvm all do gem install __GEMS BELOW__')  
 
-$ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf
-$ sudo gem install rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa
-$ sudo gem install rdf-rdfxml rdf-turtle rdf-trig rdf-xsd rdf-4store json-ld linkeddata
-$ sudo gem install sparql sinatra-respond_to sinatra-flash rmagick sparql-client
+$ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf \
+rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa rdf-rdfxml rdf-turtle \
+rdf-trig rdf-xsd rdf-4store json-ld linkeddata sparql sinatra-respond_to sparql-client 
 ```
 
 Create Bundle
@@ -170,7 +169,7 @@ $ ./bundle.sh
 $ ./bundle.dpl.sh
 ```
 
-### Installation on MAC
+### Installation on Mac OS X
 
 ```
 TBD
