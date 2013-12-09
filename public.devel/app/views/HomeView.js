@@ -569,10 +569,17 @@
                 self.Log.loading();
 
                 var response = self.getTree(nodeId, level);
-                
+                                
                 if (typeof response.id !== 'undefined') {
-                  callback.onComplete(nodeId, response);  
+
+                  if (response.children.length === 0) {
+                    console.log('aaa');
+                    self.Log.warn('No subterms found.');
+                  }
+                 
+                  callback.onComplete(nodeId, response); 
                 }
+             
              },
 
              onBeforeCompute: function(id){
@@ -714,6 +721,7 @@
        Log: {
 
         elem: false,
+        warnElem: false,
 
         write: function(txt){
           if (!this.elem) {
@@ -721,6 +729,23 @@
           }      
           this.elem.attr("style", "opacity:1;");
           this.elem.text(txt);
+        },
+        warn: function(txt){
+          var self = this;
+          if (!self.warnElem) {
+            self.warnElem = $('#log-warn');
+          }      
+          self.warnElem.attr("style", "opacity:1;");
+          self.warnElem.text(txt);
+          
+          setTimeout(function(){
+            
+            self.warnElem.attr("style", "opacity:0;");
+            setTimeout(function(){
+              self.warnElem.text('');
+            }, 500);
+          }, 1500);
+
         },
         loading: function(){
           if (!this.elem) {

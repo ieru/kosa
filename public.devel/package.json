@@ -1,8 +1,8 @@
 {
-  "author": "Your Name",
-  "name": "package-name",
-  "description": "Package description",
-  "version": "0.0.1",
+  "author": "University of Alcalá",
+  "name": "Kosa",
+  "description": "A lightweight aggregator of Knowledge Organization Systems (KOS)",
+  "version": "0.1 beta",
   "homepage": "",
   "repository": {
     "type": "git",

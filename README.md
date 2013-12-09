@@ -1,4 +1,4 @@
-### [KOS aggregator (kosa)](http://ieru.github.io/kosa)
+### [KOS aggregator (Kosa)](http://ieru.github.io/kosa)
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
@@ -11,7 +11,7 @@ The current project snapshot may be seen [here](http://kos.appgee.net)
 ### Requirements
 
 - Ruby
-- Sesame + Indexer [uSeekM](https://dev.opensahara.com/projects/useekm)
+- Sesame + [uSeekM Indexer](https://dev.opensahara.com/projects/useekm)
 
 ### Optional requirements
 
@@ -22,7 +22,6 @@ The current project snapshot may be seen [here](http://kos.appgee.net)
 ### Installation on Debian / Ubuntu
 
 (tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
-
 
 **Install ruby**
 
@@ -139,7 +138,21 @@ as the address. Note that this is a local (to the Tomcat instance) address.
 Afterwards, you should be able to create a new repository named 'geoknow'. Specify the 
 server's absolute file path of the configuration file (that is ````/var/opt/useekm/geoknow/config.xml````)
 
+**Deploying on a different Database**
 
+- 4Store
+```
+Visit [this]() Wiki Page
+TBD
+```
+- SQLite
+```
+TBD
+```
+- PostgreSQL
+```
+TBD
+```
 
 **Fill your Database**
 
@@ -181,6 +194,18 @@ TBD
 TBD
 ```
 
+### Installation on a PaaS
+
+**Heroku**
+```
+TBD
+```
+
+**Amazon Web Services EC2**
+```
+TBD
+```
+
 ### Running on a Development Server (Windows / Mac OS / Linux)
 
 ```
@@ -205,6 +230,12 @@ both servers by running the command below
     -debian-nginx-passenger-installer/master/install.sh | bash 
 
 You can get more information about this script [here](https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer)
+
+### Running on a Production Server (PaaS)
+
+```
+TBD
+```
 
 ### Javascript, templates & css changes
 
