@@ -138,22 +138,38 @@ as the address. Note that this is a local (to the Tomcat instance) address.
 Afterwards, you should be able to create a new repository named 'geoknow'. Specify the 
 server's absolute file path of the configuration file (that is ````/var/opt/useekm/geoknow/config.xml````)
 
-**Deploying on a different Database**
+**Using a different Indexer (i.e ElasticSearch)**
 
-- 4Store  
-
-Visit [this]() Wiki Page
 ```
 TBD
 ```
 
+**Deploying on a different Database**
+
+- 4Store  
+
+Visit [this Wiki page]()
+```
+TBD
+``` 
+
+- Virtuoso  
+
+Visit [this Wiki page]()
+```
+TBD
+``` 
+
+
 - SQLite  
 
+Visit [this Wiki page]()
 ```
 TBD
 ```
 - PostgreSQL  
 
+Visit [this Wiki page]()
 ```
 TBD
 ```

@@ -273,11 +273,11 @@
     },
 
 
-     getNewSubtree: function(nodeId2) {
+     getNewSubtree: function(nodeId) {
 
         var self = this;
         var data, uri = '';
-        var nodeId = self.currentId;
+        // var nodeId = self.currentId;
         
             
         if (typeof self.idToLevelsPageNum[nodeId] === 'undefined') {    
@@ -406,7 +406,7 @@
 
   onChangeLanguage: function (e) {
 
-// console.dir(e);
+// // console.dir(e);
     this.currentLang = e.val.toUpperCase();        
     this.Log.write('Changed language to '+e.added.text+', retriving data...');
     this.graph = undefined;
@@ -446,12 +446,19 @@
         getTree: function(nodeId) {
 
               var subtree;
-              
+             
+             //// console.log(1); 
               if ( typeof this.idToLevelsPageNum[nodeId] === 'undefined') {
                   this.idToLevelsPageNum[nodeId] = 1;
               }
               
+              // synchronous, blocking call
               subtree = this.getNewSubtree(nodeId);
+              
+              // // console.log(this.interfaceMutex[nodeId])
+              // console.dir(subtree);
+              // console.log(nodeId);
+              // console.log(this.currentId);
               return this.addSubtreeAndPagers(nodeId, subtree);
         },
 
@@ -517,10 +524,24 @@
              
              Events: {
                enable:true,
-               /*
-               onClick: function (nodeId, eventInfo, e){
-
-               },*/    
+               
+               onClick: function (node, eventInfo, e){
+                  // console.log('click');
+                  // console.dir(node);
+                  // console.dir(eventInfo);
+                  // console.dir(e);
+                  // console.log('fin click');
+                  if (typeof node.id !== 'undefined' && node.id.toString().substring(0,5) !== '_pag_') {
+                    self.currentId = node.id;
+                    // console.log(self.currentId);
+                    self.graph.onClick(node.id);
+                    // console.dir(node);
+                    // alert(typeof parent.document.onSelectionChange);
+                    parent.document.onSelectionChange(node.name);
+                    //alert(typeof window.top.document.onSelectionChange);
+                    // window.top.document.onSelectionChange(node.name);
+                  }
+               },    
                 //Implement handler for TouchScreens
                 onTouchMove: function(node, eventInfo, e) {
                     $jit.util.event.stop(e); //stop default touchmove event
@@ -577,6 +598,8 @@
                   }
                  
                   callback.onComplete(nodeId, response); 
+                  // console.dir(self.uriToIdMapper);
+                  // console.dir(self.idToUriMapper);
                 }
              
              },
@@ -868,7 +891,7 @@
         return tree;
    },
   
-   // @todo: 
+   // @fixme?
    generateId: function () {
    
      var randomId = Math.floor(Math.random()*10000 +1); 
@@ -881,6 +904,8 @@
    
       var self = this;
       
+      console.log(self.currentId);
+      console.log(parentNode);
       var node = self.graph.graph.getNode(parentNode);
       var name = node.name;
       var pages = node.pages;
@@ -894,6 +919,8 @@
           
               newSubtree = self.addSubtreeAndPagers(parentNode, newSubtree);
               
+              // console.log('??');
+              // console.dir(newSubtree);
 
               // adding new subtree 
               self.graph.addSubtree(newSubtree, 'animate', {  
@@ -980,7 +1007,7 @@
                 /* Commented out: Relateds */
                 // this.updateRelateds(newSubtree);
                  
-                 
+                
                  return {
 
                       'name': name, 
