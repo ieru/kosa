@@ -573,7 +573,6 @@
                 if (typeof response.id !== 'undefined') {
 
                   if (response.children.length === 0) {
-                    console.log('aaa');
                     self.Log.warn('No subterms found.');
                   }
                  
@@ -734,17 +733,18 @@
           var self = this;
           if (!self.warnElem) {
             self.warnElem = $('#log-warn');
-          }      
+          } 
+          self.done();   
           self.warnElem.attr("style", "opacity:1;");
           self.warnElem.text(txt);
-          
+
           setTimeout(function(){
             
             self.warnElem.attr("style", "opacity:0;");
             setTimeout(function(){
               self.warnElem.text('');
-            }, 500);
-          }, 1500);
+            }, 600);
+          }, 2000);
 
         },
         loading: function(){

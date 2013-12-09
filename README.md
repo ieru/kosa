@@ -1,4 +1,4 @@
-### [KOS aggregator (Kosa)](http://ieru.github.io/kosa)
+### [KOS aggregator (kosa)](http://ieru.github.io/kosa)
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
@@ -140,22 +140,25 @@ server's absolute file path of the configuration file (that is ````/var/opt/usee
 
 **Deploying on a different Database**
 
-- 4Store
-```
+- 4Store  
+
 Visit [this]() Wiki Page
-TBD
-```
-- SQLite
 ```
 TBD
 ```
-- PostgreSQL
+
+- SQLite  
+
+```
+TBD
+```
+- PostgreSQL  
+
 ```
 TBD
 ```
 
 **Fill your Database**
-
 ```
 TBD
 ```
@@ -194,14 +197,14 @@ TBD
 TBD
 ```
 
-### Installation on a PaaS
+### Installation on a PaaS (e.g AWS, Heroku, etc.)
 
-**Heroku**
+**Heroku**  
 ```
 TBD
 ```
 
-**Amazon Web Services EC2**
+**Amazon Web Services**
 ```
 TBD
 ```
