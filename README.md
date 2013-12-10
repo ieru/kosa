@@ -295,7 +295,7 @@ Download and install [node.js](http://nodejs.org/download/)
 
 ### Documentation and API access
 
-[API](https://github.com/ieru/kosa/wiki/RESTful-API-documentation)
+[API](https://github.com/ieru/kosa/wiki/Kosa-RESTful-API)
 
 ### Resources
 
