@@ -27,6 +27,9 @@ gem 'sinatra'
 gem 'rubygems-bundler'
 gem 'sanitize'
 
+# @fixme: remove?
+# gem 'sinatra-cross_origin'
+
 gem 'dalli'
 
 # Persistence Adapters ##

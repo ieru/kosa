@@ -10,7 +10,6 @@ require 'rdf/turtle'
 require 'rdf/rdfxml' 
 require 'linkeddata' 
  
-
 # Database adapters
 require 'rdf/sesame'
 #require 'rdf/4store'
@@ -27,7 +26,7 @@ require 'uri'
 
 # xml, json parsing
 require 'yajl/json_gem'
-require 'equivalent-xml'
+# require 'equivalent-xml'
 
 # network access
 # require 'rest_client'
@@ -40,6 +39,10 @@ Repository = 'oedunet'
 
 # main class
 class Kosa < Sinatra::Base
+  
+  # before do
+  #    headers['Access-Control-Allow-Origin'] = 'edunet.teluria.net'
+  # end
   
   attr_accessor :repo, :prefix, :root, :sparql
   attr_reader :results_per_page, :soft_limit, :encoder
@@ -112,7 +115,7 @@ class Kosa < Sinatra::Base
     # node children. Returns {} if no children
     get '/api/getnarrowerconcepts' do
       cache_control :public, max_age: 1800  # 30 mins.
-      
+                  
       lang = Sanitize.clean(params[:lang])
       uri = Sanitize.clean(params[:uri])
       page = Sanitize.clean(params[:pag])
