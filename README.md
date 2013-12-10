@@ -2,7 +2,7 @@
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
-![Architecture](appgee.net/docs/kosa.png)
+![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
 
 ### Demo
 
