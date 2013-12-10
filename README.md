@@ -2,7 +2,20 @@
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)
 
+### Scheme
+
 ![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
+
+### Architectural Features
+
+- Lightweight Back ~ 300 LOC
+- RESTful APi
+- MVC Front (BackboneJs)
+- Supports almost any database. Relational | Triplestore | Graph
+- Scalable. Indexed Database: PostgeSQL | ElasticSearch
+- Supports caches: Filesystem | Memcached
+- Touchscreen / Mobile friendly. Responsive HTML5
+
 
 ### Demo
 
