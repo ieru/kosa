@@ -1,8 +1,6 @@
 ### [KOS aggregator (kosa)](http://ieru.github.io/kosa)
 
-A lightweight aggregator of Knowledge Organization Systems (KOS)
-
-### Scheme
+A lightweight aggregator of Knowledge Organization Systems (KOS)  
 
 ![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
 
