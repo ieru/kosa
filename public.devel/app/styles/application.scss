@@ -22,6 +22,10 @@ body {
   padding-top: initial !important;
   min-height: initial !important;
 }
+/* top bar */
+body > div > .container {
+margin-top: 70px;
+}
 
 #_tooltip{
   word-wrap: break-word;  

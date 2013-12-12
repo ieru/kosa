@@ -13,7 +13,8 @@ require 'fileutils'
 # config 
 # Onntology = 'KOS' # <-- agrovoc
 # Ontology = 'cropontology'
-Ontology = 'oedunet'
+# Ontology = 'oedunet'
+Ontology = 'MolGermMapper'
 
 # ruby import.rb
 

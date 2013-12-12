@@ -26,7 +26,6 @@ require 'uri'
 
 # xml, json parsing
 require 'yajl/json_gem'
-# require 'equivalent-xml'
 
 # network access
 # require 'rest_client'
@@ -34,15 +33,11 @@ require 'yajl/json_gem'
 # Config.
 # Repository = 'KOS' # <-- Agrovoc
 # Repository = 'cropontology'
-Repository = 'oedunet'
+# Repository = 'oedunet'
+Repository = 'MolGermMapper'
 
 
-# main class
 class Kosa < Sinatra::Base
-  
-  # before do
-  #    headers['Access-Control-Allow-Origin'] = 'edunet.teluria.net'
-  # end
   
   attr_accessor :repo, :prefix, :root, :sparql
   attr_reader :results_per_page, :soft_limit, :encoder
@@ -54,10 +49,6 @@ class Kosa < Sinatra::Base
     
     # elements on a tree level
     @results_per_page = 4
-    
-    
-    # @prefix = RDF::URI.new('http://aims.fao.org/aos/agrovoc')
-    @prefix = RDF::URI.new('http://www.cropontology.org/rdf')
     
     url = "http://127.0.0.1:8888/openrdf-sesame/repositories/#{Repository}"
     @repo = RDF::Sesame::Repository.new(url)
@@ -119,7 +110,7 @@ class Kosa < Sinatra::Base
       lang = Sanitize.clean(params[:lang])
       uri = Sanitize.clean(params[:uri])
       page = Sanitize.clean(params[:pag])
-      concept = 'rdfs:subClassOf'
+      concept = 'skos:narrower'
       get_concepts(concept, uri, lang, page)
     end
 
@@ -194,9 +185,9 @@ class Kosa < Sinatra::Base
           SELECT REDUCED ?x ?label 
           WHERE
           {
-            # ?x skos:prefLabel ?label .
-            ?x rdfs:label ?label
-            # FILTER(langMatches(lang(?label), '#{lang}')).
+            ?x skos:prefLabel ?label .
+            # ?x rdfs:label ?label
+            FILTER(langMatches(lang(?label), '#{lang}')).
             FILTER(contains(?label, '#{term}'))
           }
           LIMIT #{soft_limit}
@@ -254,14 +245,17 @@ class Kosa < Sinatra::Base
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT ?x ?n (MIN(?xlabel) AS ?label)
+          SELECT ?x ?xlabel 
+          # ?n (MIN(?xlabel) AS ?label)
           WHERE
           {
-            ?x #{type} <#{uri}> .
-            ?x rdfs:label ?xlabel .
-            BIND( STRLEN(?x) AS ?n) .
-          } GROUP BY ?x ?n 
-          HAVING (STRLEN(str(?x)) > 0)
+            <#{uri}> #{type} ?x .
+            ?x skos:prefLabel ?xlabel .
+            FILTER(langMatches(lang(?xlabel), '#{lang}')).
+            # BIND( STRLEN(?x) AS ?n) .
+          } 
+          # GROUP BY ?x ?n 
+          # HAVING (STRLEN(str(?x)) > 0)
           LIMIT #{soft_limit}
          ")
 
@@ -329,7 +323,7 @@ class Kosa < Sinatra::Base
           SELECT DISTINCT ?label
           WHERE
           {
-            <#{uri}> rdfs:label ?label .
+            <#{uri}> skos:prefLabel ?label .
           }
           HAVING (STRLEN(str(?label)) > 0)
           LIMIT 1

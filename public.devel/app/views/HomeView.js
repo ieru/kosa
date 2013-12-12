@@ -16,8 +16,8 @@
  var LanguagesTemplate = require('templates/languages');
  
  // Temporally commented out
- // var RelatedsTemplate = require('templates/relateds');
- // var BreadcrumbTemplate = require('templates/breadcrumb');
+ var RelatedsTemplate = require('templates/relateds');
+ var BreadcrumbTemplate = require('templates/breadcrumb');
  
  var HomeView = View.extend({
 
@@ -34,13 +34,12 @@
      
 
      // FAO's Agrovoc
-     // currentUri:'http://......./c_4788',
-     
+     // currentUri:'http://......./c_4788';
      // Cropontology's
-     // currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000',
-     currentUri: 'http://MoKi_light#Method',
-     // same as currentUri
-     rootUri: 'http://MoKi_light#Method',
+     currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000',
+     // currentUri: 'http://MoKi_light#Method',
+     // rootUri: 'http://MoKi_light#Method',
+     rootUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000', // same as currenturi
      currentLang:'EN',
      
      interfaceMutex:[],
@@ -58,8 +57,8 @@
      homeTemplate: HomeTemplate,
      languagesTemplate: LanguagesTemplate,
      // temporally commented out
-     // relatedsTemplate: RelatedsTemplate,
-     // breadcrumbTemplate: BreadcrumbTemplate,
+     relatedsTemplate: RelatedsTemplate,
+     breadcrumbTemplate: BreadcrumbTemplate,
 
      // graphic framework's attributes
      
@@ -237,18 +236,9 @@
       var self = this;
       var homeTemplate = this.homeTemplate();
       
-      /* commented out */
-      // var relatedsTemplate = this.relatedsTemplate({'related':[]});
-      // var breadcrumbTemplate = this.breadcrumbTemplate({'breadcrumb':[]});
-
 
       self.$el.html(homeTemplate);
 
-      /* commented out */
-      // self.$el.find('#related-container').html(relatedsTemplate); 
-      
-      /* commented out */
-      // self.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
 
       $.get('/json/languages.json', function(data) {
         var languagesTemplate = self.languagesTemplate({'languages':data});
@@ -256,8 +246,25 @@
         self.initLanguages();
       });
 
-
+      self.updateSubTemplates([], []);
       return self;
+    },
+    
+    updateSubTemplates: function(relateds, breadcrumb) {
+      var self = this;
+      _.each(relateds, function(r) {
+      
+         r.id = self.uriToIdMapper[r.uri];
+      });
+
+      var relatedsTemplate = this.relatedsTemplate({'related':relateds});
+
+      // var breadcrumbTemplate = this.breadcrumbTemplate({'breadcrumb':breadcrumb});
+
+      this.$el.find('#related-container').html(relatedsTemplate); 
+      
+      /* commented out */
+      // this.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
     },
 
     afterRender: function () {
@@ -371,7 +378,7 @@
   onRelatedLabelClick: function (e) {
 
 
-      e.stopImmediatePropagation();
+      // e.stopImmediatePropagation();
       e.preventDefault();
       
       var dataId = $(e.currentTarget).data('id');
@@ -382,7 +389,7 @@
 
   onBreadcrumbClick: function (e) {
 
-    e.stopImmediatePropagation();
+    // e.stopImmediatePropagation();
     e.preventDefault();
 
     var dataId = $(e.currentTarget).data('id');
@@ -522,8 +529,8 @@
                onClick: function (node, eventInfo, e){
                   if (typeof node.id !== 'undefined' && node.id.toString().substring(0,5) !== '_pag_') {
                     self.currentId = node.id;
-                    self.graph.onClick(node.id);
-                    parent.document.onSelectionChange(node.name);
+                    // self.graph.onClick(node.id);
+                    // parent.document.onSelectionChange(node.name);
                   }
                },    
                 //Implement handler for TouchScreens
@@ -588,6 +595,11 @@
                   }
                  
                   callback.onComplete(nodeId, response); 
+
+                  if (response.related.length > 0) {
+                    self.updateSubTemplates(response.related, []);
+                  }
+
                 }
              
              },
@@ -991,7 +1003,7 @@
                 );
                 
                 /* Commented out: Relateds */
-                // this.updateRelateds(newSubtree);
+                // this.updateRelateds(newSubtreeCenter);
                  
                 
                  return {
@@ -999,7 +1011,7 @@
                       'name': name, 
                       'id': id, 
                       'children': newSubtree, 
-                      'related': [], // not implemented yet
+                      'related': (typeof tree.related !== 'undefined') ? tree.related : [], // not implemented yet
                       'pages':pages,
                       'page':page
                  };
