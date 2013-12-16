@@ -36,10 +36,12 @@
      // FAO's Agrovoc
      // currentUri:'http://......./c_4788';
      // Cropontology's
-     currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000',
+     //currentUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000',
+     currentUri:'http://purl.obolibrary.org/obo/CO_010#_0000000',
      // currentUri: 'http://MoKi_light#Method',
      // rootUri: 'http://MoKi_light#Method',
-     rootUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000', // same as currenturi
+     rootUri: 'http://purl.obolibrary.org/obo/CO_010#_0000000',
+     // rootUri: 'http://www.cropontology.org/rdf/CO_010%3A0000000', // same as currenturi
      currentLang:'EN',
      
      interfaceMutex:[],
@@ -59,7 +61,9 @@
      // temporally commented out
      relatedsTemplate: RelatedsTemplate,
      breadcrumbTemplate: BreadcrumbTemplate,
-
+     
+     unCacheString: 'uncache3',
+     
      // graphic framework's attributes
      
      labelType : false, 
@@ -113,17 +117,17 @@
       var self = this;
      
       
-      self.collection.url = '/api/getconcept?uri=' + self.customEncode(self.currentUri) +'&lang='+self.currentLang;
+      self.collection.url = '/api/getconcept?uri=' + self.customEncode(self.currentUri) +'&lang='+self.currentLang+'&a='+self.unCacheString;
       self.collection.fetch().done(function() {
       
         var root = self.collection.toJSON();
         if (root.length > 0 && typeof root[0].name !== 'undefined') {
           
-          self.rootLabel = root[0].uri;
+          self.rootLabel = root[0].name;
         }
         
         // once we have root node we get its children
-        self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(self.currentUri) +'&lang='+self.currentLang;
+        self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(self.currentUri) +'&lang='+self.currentLang +'&a='+self.unCacheString;
         self.collection.fetch().done(function() {
          
            self.afterRender();
@@ -164,6 +168,8 @@
         });
         
         $('#language').select2("val", this.currentLang.toLowerCase()); 
+        /* temporally fixed sparql query anguage issue*/
+        $('#language').select2("enable", false);
         $('#language').on('change', this.onChangeLanguage);
    },
 
@@ -305,7 +311,7 @@
           uri = self.idToUriMapper[self.currentId];
         }
 
-        self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(uri) + '&lang='+self.currentLang+ '&pag='+pag;
+        self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(uri) + '&lang='+self.currentLang+ '&pag='+pag+'&a='+self.unCacheString;
         
           
           self.collection.fetch({async:false}) // set Backbone to synchronous mode
@@ -377,13 +383,35 @@
   
   onRelatedLabelClick: function (e) {
 
-
+      var $uri;
       // e.stopImmediatePropagation();
-      e.preventDefault();
       
       var dataId = $(e.currentTarget).data('id');
+      var dataUri;
+      
+      e.preventDefault();
+      
+      
+      
+      if (typeof id !== 'undefined' && id !== '') {
+        $('#'+dataId).trigger('click');
+      } else {
+        dataUri = $(e.currentTarget).data('uri');
+       
+       this.resetStatus();
+       this.currentUri = dataUri;
+       this.rootUri = dataUri;      
+       this.Log.warn('Accessing new Ontology...');
+       this.graph = {};
+       $('#infovis').html('');
+       $('#infovis').css('height', '500px');
+       $('#infovis-canvaswidget').remove();
+       this.initNavigational();
 
-      $('#'+dataId).trigger('click');
+      }
+      
+      
+     
 
   },
 
@@ -402,6 +430,7 @@
 
     this.resetStatus();
     this.currentUri = e.val;      
+    this.rootUri = e.Val;
     this.Log.write('Accessing term, retriving data...');
     this.graph = {};
     $('#infovis').html('');
@@ -820,7 +849,7 @@
    paginateForwards: function(node) {
 
       this.paginate(node, function (a) { 
-        return a + 1; 
+        return parseInt(a) + 1; 
       });        
               
    },   
@@ -828,7 +857,7 @@
    paginateBackwards: function(node) {
 
       this.paginate(node, function (a) { 
-        return a - 1; 
+        return parseInt(a) - 1; 
       });        
    },   
    

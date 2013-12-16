@@ -110,7 +110,7 @@ class Kosa < Sinatra::Base
       lang = Sanitize.clean(params[:lang])
       uri = Sanitize.clean(params[:uri])
       page = Sanitize.clean(params[:pag])
-      concept = 'skos:narrower'
+      concept = 'rdfs:subClassOf'
       get_concepts(concept, uri, lang, page)
     end
 
@@ -185,9 +185,9 @@ class Kosa < Sinatra::Base
           SELECT REDUCED ?x ?label 
           WHERE
           {
-            ?x skos:prefLabel ?label .
-            # ?x rdfs:label ?label
-            FILTER(langMatches(lang(?label), '#{lang}')).
+            # ?x skos:prefLabel ?label .
+            ?x rdfs:label ?label
+            # FILTER(langMatches(lang(?label), '#{lang}')).
             FILTER(contains(?label, '#{term}'))
           }
           LIMIT #{soft_limit}
@@ -234,7 +234,8 @@ class Kosa < Sinatra::Base
         end
         
         offset = (page - 1) * results_per_page
-        
+    
+        # return encoder.encode({:a=>uri})    
         rdf_uri = RDF::URI.new(uri)
         
         if !rdf_uri.valid?
@@ -245,17 +246,16 @@ class Kosa < Sinatra::Base
         query = sparql.query("
           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-          SELECT ?x ?xlabel 
-          # ?n (MIN(?xlabel) AS ?label)
+          SELECT ?x (MIN(?xlabel) AS ?label)
           WHERE
           {
-            <#{uri}> #{type} ?x .
-            ?x skos:prefLabel ?xlabel .
-            FILTER(langMatches(lang(?xlabel), '#{lang}')).
+            ?x #{type} <#{uri}> .
+            ?x rdfs:label ?xlabel .
+            # FILTER(langMatches(lang(?xlabel), '#{lang}')).
             # BIND( STRLEN(?x) AS ?n) .
           } 
-          # GROUP BY ?x ?n 
-          # HAVING (STRLEN(str(?x)) > 0)
+          GROUP BY ?x 
+          HAVING (STRLEN(str(?x)) > 0)
           LIMIT #{soft_limit}
          ")
 
@@ -270,12 +270,39 @@ class Kosa < Sinatra::Base
          if !modulus.eql? 0
            pages += 1
          end
-         
 
-        if page > pages
+         relateds = sparql.query("
+           PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+           prefix owl: <http://www.w3.org/2002/07/owl#>
+           PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+           SELECT ?x ?label
+           WHERE
+           {
+                {?x owl:sameAs <#{uri}> }
+                UNION
+                {<#{uri}> owl:sameAs ?x }
+                
+                ?x rdfs:label ?label
+            
+           }
+           LIMIT #{soft_limit}
+          ")
+         
+        relateds_count = relateds.count
+
+        if relateds_count.eql? 0 && page > pages
           # return empty and stop to save resources
           return encoder.encode({:info=>'No data'})
         end
+
+
+
+
+         relateds_list = relateds.map { |w|  
+
+           { :name=> w.label, :id=>'', :uri=>w.x }
+         } 
+
 
          ylabel = nil
          
@@ -287,10 +314,10 @@ class Kosa < Sinatra::Base
              ylabel = ''
            end
 
-           { :name=> w.x, :id=>'', :uri=>w.x, :pages=>0, :related_count=>0, :children=>[], :related=>[] }
+           { :name=> w.label, :id=>'', :uri=>w.x, :pages=>0, :related_count=>0, :children=>[], :related=>[] }
          } 
         
-         return encoder.encode({ :name=>ylabel, :id=>'', :uri=>uri.to_s, :pages=>pages, :page=>page, :related_count=>0, :children=>parents_list, :related=>parents_list })
+         return encoder.encode({ :name=>ylabel, :id=>'', :uri=>uri.to_s, :pages=>pages, :page=>page, :related_count=>relateds_count, :children=>parents_list, :related=>relateds_list })
     end
     
 
@@ -323,19 +350,20 @@ class Kosa < Sinatra::Base
           SELECT DISTINCT ?label
           WHERE
           {
-            <#{uri}> skos:prefLabel ?label .
+            <#{uri}> rdfs:label ?label .
           }
           HAVING (STRLEN(str(?label)) > 0)
           LIMIT 1
          ")
-
-         count = query.count()        
+         
+          
+          
+        count = query.count()        
 
         if count.eql? 0
           # save resources
           return encoder.encode({})
         end
-
          
         concept = query.map { |w|  
          
