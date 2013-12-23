@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 require 'sinatra'
-require 'sinatra_warden'
+# require 'sinatra_warden'
 
 require 'uri'
 require 'sanitize'
@@ -28,6 +28,8 @@ require 'uri'
 
 # xml, json parsing
 require 'yajl/json_gem'
+require 'auth/user.controller'
+
 
 # network access
 # require 'rest_client'
@@ -40,13 +42,17 @@ Repository = 'MolGermMapper'
 
 
 class Kosa < Sinatra::Base
-  register Sinatra::Warden
-  
+  # register Sinatra::Warden
+  register Sinatra::AuthRoutes
+   
+  set :sessions => true
   
   attr_accessor :repo, :prefix, :root, :sparql
   attr_reader :results_per_page, :soft_limit, :encoder
    
   def initialize 
+    
+    
     
     # maximun number of result on query ~= 10pages
     @soft_limit = 30
@@ -69,12 +75,10 @@ class Kosa < Sinatra::Base
     # repo = RDF::DataObjects::Repository.new(ENV['DATABASE_URL']) #(Heroku)
     # url = "http://user:passwd@localhost:10035/repositories/example"
     # repo = RDF::AllegroGraph::Repository.new(url, :create => true)
-  end
-
-    get '/api/authenticate' do
-      warden.authorize!('login') # require session, redirect to '/login' instead of work
-      return encoder.encode({:code=> 'authenticate'})
     end
+
+
+
 
     # test endpoint1 
     get '/test' do

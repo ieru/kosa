@@ -178,6 +178,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.5)
+    bcrypt-ruby (3.1.2)
     builder (3.2.2)
     bundler-unload (1.0.2)
     columnize (0.3.6)
@@ -188,6 +189,18 @@ GEM
       term-ansicolor
       thor
     dalli (2.6.4)
+    data_mapper (1.2.0)
+      dm-aggregates (~> 1.2.0)
+      dm-constraints (~> 1.2.0)
+      dm-core (~> 1.2.0)
+      dm-migrations (~> 1.2.0)
+      dm-serializer (~> 1.2.0)
+      dm-timestamps (~> 1.2.0)
+      dm-transactions (~> 1.2.0)
+      dm-types (~> 1.2.0)
+      dm-validations (~> 1.2.0)
+    data_objects (0.10.13)
+      addressable (~> 2.1)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -195,6 +208,42 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.5)
+    dm-aggregates (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-constraints (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-core (1.2.1)
+      addressable (~> 2.3)
+    dm-do-adapter (1.2.0)
+      data_objects (~> 0.10.6)
+      dm-core (~> 1.2.0)
+    dm-migrations (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-serializer (1.2.2)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5)
+      json (~> 1.6)
+      json_pure (~> 1.6)
+      multi_json (~> 1.0)
+    dm-sqlite-adapter (1.2.0)
+      dm-do-adapter (~> 1.2.0)
+      do_sqlite3 (~> 0.10.6)
+    dm-timestamps (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-transactions (1.2.0)
+      dm-core (~> 1.2.0)
+    dm-types (1.2.2)
+      bcrypt-ruby (~> 3.0)
+      dm-core (~> 1.2.0)
+      fastercsv (~> 1.5)
+      json (~> 1.6)
+      multi_json (~> 1.0)
+      stringex (~> 1.4)
+      uuidtools (~> 2.1)
+    dm-validations (1.2.0)
+      dm-core (~> 1.2.0)
+    do_sqlite3 (0.10.13)
+      data_objects (= 0.10.13)
     docile (1.1.0)
     ebnf (0.3.1)
       rdf
@@ -203,7 +252,11 @@ GEM
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
     executable-hooks (1.2.6)
+    fastercsv (1.5.5)
     ffi (1.9.3)
+    ffi-compiler (0.1.3)
+      ffi (>= 1.0.0)
+      rake
     fileutils (0.7)
       rmagick (>= 2.13.1)
     haml (4.0.4)
@@ -222,6 +275,8 @@ GEM
     rack (1.5.2)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-flash3 (1.0.5)
+      rack
     rack-protection (1.5.1)
       rack
     rack-test (0.6.2)
@@ -248,6 +303,9 @@ GEM
       executable-hooks (>= 1.2.5)
     sanitize (2.0.6)
       nokogiri (>= 1.4.4)
+    scrypt (1.2.0)
+      ffi-compiler (>= 0.0.2)
+      rake
     simplecov (0.8.1)
       docile (~> 1.1.0)
       lockfile (>= 2.1.0)
@@ -258,9 +316,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    sinatra_warden (0.3.2)
-      sinatra (>= 1.0.0)
-      warden (~> 1.0)
+    stringex (1.5.1)
     sxp (0.1.3)
       json (>= 1.1.1)
     term-ansicolor (1.2.2)
@@ -268,6 +324,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     tins (0.13.1)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
     yajl-ruby (1.1.0)
@@ -276,14 +333,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   bundler
   coveralls
   dalli
+  data_mapper
   debugger
+  dm-sqlite-adapter
   fileutils
   json-ld!
   kosa!
   linkeddata!
+  rack-flash3
   rack-test
   rake
   rdf!
@@ -303,9 +364,10 @@ DEPENDENCIES
   rspec (>= 2.12.0)
   rubygems-bundler
   sanitize
+  scrypt
   sinatra
   sinatra-respond_to!
-  sinatra_warden
   sparql!
   sparql-client!
+  warden
   yajl-ruby

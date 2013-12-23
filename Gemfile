@@ -25,11 +25,15 @@ gem 'rdf-sesame', 	  :git => "git://github.com/ruby-rdf/rdf-sesame.git"
 
 gem 'sinatra'
 gem 'rubygems-bundler'
-gem 'sanitize'
-gem 'sinatra_warden'
 
-# @fixme: remove?
-# gem 'sinatra-cross_origin'
+gem 'sanitize'
+
+gem 'rack-flash3', require: 'rack/flash'
+gem 'warden'
+gem 'data_mapper'
+gem 'dm-sqlite-adapter'
+gem 'bcrypt-ruby'
+gem 'scrypt'
 
 gem 'dalli'
 
