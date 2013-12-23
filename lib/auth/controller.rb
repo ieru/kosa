@@ -11,7 +11,7 @@ class Auth
   end
 
   Warden::Strategies.add(:password) do
-    def valid?
+    def valid? 
       params['user'] && params['user']['username'] && params['user']['password']
     end
 
