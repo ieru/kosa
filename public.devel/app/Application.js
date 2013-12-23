@@ -17,12 +17,14 @@ var Application = {
 
         // Imports
         var HomeView = require('views/HomeView');
+        var LoginView = require('views/LoginView');
         var ApplicationRouter = require('routers/ApplicationRouter');
         // var Events = require('events/Event');
         // var GraphCollection = require('collections/GraphCollection');
 
         // Initialize
         this.homeView = new HomeView();
+        this.loginView = new LoginView();
         this.applicationRouter = new ApplicationRouter();
 
 

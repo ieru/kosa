@@ -37,7 +37,8 @@ exports.config =
         before: [
           'vendor/styles/bootstrap.css',
           'vendor/styles/select2.css',
-          'vendor/styles/navbar-fixed-top.css'
+          'vendor/styles/navbar-fixed-top.css',
+          'vendor/styles/signin.css'
         ]
         
     templates:
