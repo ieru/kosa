@@ -29,7 +29,7 @@ require 'auth/user.model'
 module Sinatra
   module AuthRoutes
 
-  class Auth < Sinatra::Base
+  class Auth 
   
    attr_reader :encoder
   
@@ -55,13 +55,16 @@ module Sinatra
       user = User.first(username: params['user']['username'])
 
       if user.nil?
-        fail!("The username you entered does not exist.")
-        flash.error = ""
-      elsif user.authenticate(params['user']['password'])
-        flash.success = "Successfully Logged In"
-        success!(user)
+        # fail!("The username you entered does not exist.")
+        # flash.error = ""
+        "error"
+       elsif user.authenticate(params['user']['password'])
+        # flash.success = "Successfully Logged In"
+        # success!(user)
+        "success"
       else
-        fail!("Could not log in")
+        "error2"
+        #fail!("Could not log in")
       end
     end
   end
@@ -92,21 +95,21 @@ module Sinatra
   app.get '/auth/logout' do
     env['warden'].raw_session.inspect
     env['warden'].logout
-    flash.success = 'Successfully logged out'
-    redirect '/'
+    # flash.success = 'Successfully logged out'
+    # redirect '/'
   end
 
   app.post '/auth/unauthenticated' do
     session[:return_to] = env['warden.options'][:attempted_path]
     puts env['warden.options'][:attempted_path]
-    flash.error = env['warden'].message || "You must log in"
-    redirect '/auth/login'
+    # flash.error = env['warden'].message || "You must log in"
+    # redirect '/auth/login'
   end
 
   app.get '/protected' do
     env['warden'].authenticate!
 
-    erb :protected
+    # erb :protected
   end
   
     end

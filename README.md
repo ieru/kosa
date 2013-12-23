@@ -4,33 +4,30 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 ![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
 
-### Architectural Features
-
-- Lightweight Back ~ 300 LOC
-- RESTful APi
-- MVC Front (BackboneJs)
-- Supports almost any database. Relational | Triplestore | Graph
-- Scalable. Indexed Database: PostgeSQL | ElasticSearch
-- Supports caches: Filesystem | Memcached
-- Touchscreen / Mobile friendly. Responsive HTML5
-
-
-### Demo
+### Live Demo
 
 The current project snapshot may be seen [here](http://edunet.teluria.es/en/#/navigation)
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](https://coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
 
+
+### Architecture
+
+- Lightweight Backend ~ 300 LOC
+- MVC Frontend (BackboneJs)
+- RESTful APi
+- Supports almost any database. Relational | Triplestore | Graph
+- Scalable.
+- Database Indexer: PostgeSQL | ElasticSearch
+- Supports Cache: Filesystem | Memcached
+- Touchscreen / Mobile friendly. Responsive HTML5
+
+
 ### Requirements
 
-- Ruby
-- Sesame + [uSeekM Indexer](https://dev.opensahara.com/projects/useekm)
+- Ruby v1.9+
+- Java Application Server (e.g Tomcat, GlashFish, Jetty, JBoss, etc. )
 
-### Optional requirements
-
-- SQLite, PostgreSQL, Casandra, MongoDB, RedStore, 4-store
-- Virtuoso, AllegroGraph
-- Memcached (by default FileStore-Cache is used)
 
 ### Installation on Debian / Ubuntu
 
@@ -296,6 +293,29 @@ Download and install [node.js](http://nodejs.org/download/)
 ### Documentation and API access
 
 [API](https://github.com/ieru/kosa/wiki/Kosa-RESTful-API)
+
+
+### Optional Features
+
+Pluggable databases:
+- Sesame
+- SQLite
+- PostgreSQL 
+- Casandra
+- MongoDB
+- RedStore
+- 4-store
+- Virtuoso
+- AllegroGraph
+
+Caches:
+- FileStore (default)
+- Memcached
+
+Indexers:
+- Sesame + [Postgres - uSeekM Indexer](https://dev.opensahara.com/projects/useekm)
+- Sesame + [ElasticSearch - uSeekM Indexer](https://dev.opensahara.com/projects/useekm)
+
 
 ### Resources
 
