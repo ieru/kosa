@@ -17,8 +17,8 @@ The current project snapshot may be seen [here](http://edunet.teluria.es/en/#/na
 - MVC Frontend (BackboneJs)
 - RESTful APi
 - Supports almost any database. Relational | Triplestore | Graph
-- Scalable.
-- Database Indexer: PostgeSQL | ElasticSearch
+- Scalable
+- Indexable Database: PostgeSQL | ElasticSearch
 - Supports Cache: Filesystem | Memcached
 - Touchscreen / Mobile friendly. Responsive HTML5
 
@@ -33,16 +33,15 @@ The current project snapshot may be seen [here](http://edunet.teluria.es/en/#/na
 
 (tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)
 
-**Install ruby**
+**Test your ruby installation**
 
 ```
 $ ruby -v
 ruby 1.9 ...
-TBD
 ```
 
 
-**Install Database and Indexer (Sesame + Postgres by default)**
+**Install Database (Sesame + PostgreSQL by default)**
 
 
 Install java JDK and Tomcat6 servlet container from APT repositories:
@@ -50,7 +49,7 @@ Install java JDK and Tomcat6 servlet container from APT repositories:
 $ sudo apt-get install sun-java6-jdk tomcat6-admin tomcat6-common tomcat6-examples tomcat6
 ```
 
-Install PostgreSQL database
+Install PostgreSQL database (for indexing)
 ```
 $ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1
 ```
@@ -148,7 +147,7 @@ as the address. Note that this is a local (to the Tomcat instance) address.
 Afterwards, you should be able to create a new repository named 'geoknow'. Specify the 
 server's absolute file path of the configuration file (that is ````/var/opt/useekm/geoknow/config.xml````)
 
-**Using a different Indexer (i.e ElasticSearch)**
+**Using Sesame with a different Indexer (ElasticSearch)**
 
 ```
 TBD
@@ -156,35 +155,25 @@ TBD
 
 **Deploying on a different Database**
 
-- 4Store  
+- 4Store (tbd)  
 
 Visit [this Wiki page]()
-```
-TBD
-``` 
 
-- Virtuoso  
+- Virtuoso (tbd)  
 
 Visit [this Wiki page]()
-```
-TBD
-``` 
 
-
-- SQLite  
+- SQLite (tbd)  
 
 Visit [this Wiki page]()
-```
-TBD
-```
-- PostgreSQL  
+
+- PostgreSQL (tbd)  
 
 Visit [this Wiki page]()
-```
-TBD
-```
 
-**Fill your Database**
+**Fill your Database**  
+
+*Creating a Backoffice-Importer*
 ```
 TBD
 ```
@@ -192,7 +181,8 @@ TBD
 **Install Kosa**
 
 ```
-$ git clone https://github.com/ieru/kosa.git
+$ wget https://github.com/ieru/kosa/archive/master.zip
+$ unzip master.zip
 $ cd kosa
 ```
 

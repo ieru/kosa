@@ -59,6 +59,26 @@ end
 
 disable :run, :reload
 
+
+use Rack::Session::Cookie, secret: "nothingissecretontheinternet"
+use Rack::Flash, accessorize: [:error, :success]
+
+use Warden::Manager do |config|
+
+  config.serialize_into_session{|user| user.id }
+
+  config.serialize_from_session{|id| User.get(id) }
+
+  config.scope_defaults :default,
+
+    strategies: [:password],
+
+    action: 'auth/unauthenticated'
+
+  config.failure_app = self
+end
+
+
 # Bootstrap
 # classic:
 # run Sinatra::Application

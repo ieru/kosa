@@ -1,7 +1,7 @@
 require 'bcrypt'
 # require 'scrypt' # safer hashing function https://github.com/pbhogan/scrypt
 
-DataMapper.setup(:default, "sqlite://#{Dir.pwd}/users.sqlite")
+DataMapper.setup(:default, "sqlite://#{Dir.pwd}/userdb.sqlite")
 
 class User
   include DataMapper::Resource
