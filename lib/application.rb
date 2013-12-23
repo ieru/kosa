@@ -1,6 +1,8 @@
 # encoding: UTF-8
 
 require 'sinatra'
+require 'sinatra_warden'
+
 require 'uri'
 require 'sanitize'
 
@@ -38,6 +40,8 @@ Repository = 'MolGermMapper'
 
 
 class Kosa < Sinatra::Base
+  register Sinatra::Warden
+  
   
   attr_accessor :repo, :prefix, :root, :sparql
   attr_reader :results_per_page, :soft_limit, :encoder
@@ -66,6 +70,11 @@ class Kosa < Sinatra::Base
     # url = "http://user:passwd@localhost:10035/repositories/example"
     # repo = RDF::AllegroGraph::Repository.new(url, :create => true)
   end
+
+    get '/api/authenticate' do
+      warden.authorize!('login') # require session, redirect to '/login' instead of work
+      return encoder.encode({:code=> 'authenticate'})
+    end
 
     # test endpoint1 
     get '/test' do

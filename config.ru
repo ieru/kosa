@@ -27,7 +27,6 @@ set :root, File.dirname(__FILE__)
 set :environment, (ENV['RACK_ENV'] || 'production').to_sym
 
 
-
 # LOGGING
 
 if settings.environment == :production

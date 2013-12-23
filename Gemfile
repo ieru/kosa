@@ -26,6 +26,7 @@ gem 'rdf-sesame', 	  :git => "git://github.com/ruby-rdf/rdf-sesame.git"
 gem 'sinatra'
 gem 'rubygems-bundler'
 gem 'sanitize'
+gem 'sinatra_warden'
 
 # @fixme: remove?
 # gem 'sinatra-cross_origin'

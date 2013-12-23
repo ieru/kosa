@@ -258,6 +258,9 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    sinatra_warden (0.3.2)
+      sinatra (>= 1.0.0)
+      warden (~> 1.0)
     sxp (0.1.3)
       json (>= 1.1.1)
     term-ansicolor (1.2.2)
@@ -265,6 +268,8 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     tins (0.13.1)
+    warden (1.2.3)
+      rack (>= 1.0)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -300,6 +305,7 @@ DEPENDENCIES
   sanitize
   sinatra
   sinatra-respond_to!
+  sinatra_warden
   sparql!
   sparql-client!
   yajl-ruby
