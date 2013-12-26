@@ -7,6 +7,8 @@ if [ "x$1" = "x" ];then
 fi
 sudo git add .
 sudo git commit -a -m "$1"
+sudo git rebase
 sudo git push bb --all
+sudo git rebase
 sudo git push origin --all
 

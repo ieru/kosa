@@ -2,6 +2,8 @@
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)  
 
+### Scheme  
+
 ![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
 
 ### Live Demo
@@ -225,7 +227,7 @@ TBD
 TBD
 ```
 
-### Running on a Development Server (Windows / Mac OS / Linux)
+### Running on a Development Server (Linux / Mac OS / Windows)
 
 ```
 $ sudo rackup config.ru
@@ -249,12 +251,6 @@ both servers by running the command below
     -debian-nginx-passenger-installer/master/install.sh | bash 
 
 You can get more information about this script [here](https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer)
-
-### Running on a Production Server (PaaS)
-
-```
-TBD
-```
 
 ### Javascript, templates & css changes
 
