@@ -15,7 +15,7 @@
  var HomeTemplate = require('templates/HomeTemplate');
  var LanguagesTemplate = require('templates/languages');
  
- // Temporally commented out
+ // Partials
  var RelatedsTemplate = require('templates/relateds');
  var BreadcrumbTemplate = require('templates/breadcrumb');
  
@@ -73,7 +73,7 @@
      graph: false,
      json: false,
 
-     breadCrumbs: null, // te be implemented
+     breadCrumb: [{'name':'test_breadcrumb1', 'id':'c_11'}], // te be implemented
 
     //--------------------------------------
     //+ INHERITED / OVERRIDES
@@ -252,9 +252,10 @@
         self.initLanguages();
       });
 
-      self.updateSubTemplates([], []);
+      self.updateSubTemplates([], self.breadCrumb);
       return self;
     },
+    
     
     updateSubTemplates: function(relateds, breadcrumb) {
       var self = this;
@@ -262,15 +263,10 @@
       
          r.id = self.uriToIdMapper[r.uri];
       });
-
       var relatedsTemplate = this.relatedsTemplate({'related':relateds});
-
-      // var breadcrumbTemplate = this.breadcrumbTemplate({'breadcrumb':breadcrumb});
-
-      this.$el.find('#related-container').html(relatedsTemplate); 
-      
-      /* commented out */
-      // this.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
+      var breadcrumbTemplate = this.breadcrumbTemplate({'breadcrumb':breadcrumb});
+      this.$el.find('#related-container').html(relatedsTemplate);   
+      this.$el.find('#breadcrumb-container').html(breadcrumbTemplate);
     },
 
     afterRender: function () {
@@ -279,7 +275,6 @@
         this.initializeScreen();
       }
       this.initSearchBox();
-    
       this.customRenderingFunctionsInit();
       this.createGraph();
       this.drawGraph();
@@ -290,16 +285,12 @@
 
         var self = this;
         var data, uri = '';
-        // var nodeId = self.currentId;
-        
             
         if (typeof self.idToLevelsPageNum[nodeId] === 'undefined') {    
           self.idToLevelsPageNum[self.currentId] = '1';
         }
-        
-        
+                
         pag = self.idToLevelsPageNum[nodeId];
-        
         
         if (typeof self.idToUriMapper[nodeId] !== 'undefined') {
           uri = self.idToUriMapper[nodeId];
@@ -311,8 +302,7 @@
           uri = self.idToUriMapper[self.currentId];
         }
 
-        self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(uri) + '&lang='+self.currentLang+ '&pag='+pag+'&a='+self.unCacheString;
-        
+        self.collection.url = '/api/getnarrowerconcepts?uri=' + self.customEncode(uri) + '&lang='+self.currentLang+ '&pag='+pag+'&a='+self.unCacheString;        
           
           self.collection.fetch({async:false}) // set Backbone to synchronous mode
           .done(function() {
@@ -325,17 +315,12 @@
 
           }); 
 
-
-
           if (typeof data === 'object' && data.length > 0){
           
             return data[0];
           } else {
             return {};
           }
-
-
-
       },
 /*
       redrawRelated: function(newRelated){ // not implemented yet
@@ -384,15 +369,12 @@
   onRelatedLabelClick: function (e) {
 
       var $uri;
-      // e.stopImmediatePropagation();
       
       var dataId = $(e.currentTarget).data('id');
       var dataUri;
       
       e.preventDefault();
-      
-      
-      
+            
       if (typeof id !== 'undefined' && id !== '') {
         $('#'+dataId).trigger('click');
       } else {
@@ -407,23 +389,14 @@
        $('#infovis').css('height', '500px');
        $('#infovis-canvaswidget').remove();
        this.initNavigational();
-
       }
-      
-      
-     
-
   },
 
   onBreadcrumbClick: function (e) {
 
-    // e.stopImmediatePropagation();
-    e.preventDefault();
-
     var dataId = $(e.currentTarget).data('id');
-
-      $('#'+dataId).trigger('click');
-
+    e.preventDefault();
+    $('#'+dataId).trigger('click');
   },
   
   onSearchTerm: function (e) {
@@ -437,7 +410,6 @@
     $('#infovis').css('height', '500px');
     $('#infovis-canvaswidget').remove();
     this.initNavigational();
-
   },
 
   onChangeLanguage: function (e) {
@@ -448,7 +420,6 @@
     $('#infovis').html('');
     $('#infovis').css('height', '500px');
     this.initNavigational();
-  
   },
 
 
@@ -481,14 +452,11 @@
         getTree: function(nodeId) {
 
               var subtree;
-             
               if ( typeof this.idToLevelsPageNum[nodeId] === 'undefined') {
                   this.idToLevelsPageNum[nodeId] = 1;
               }
-              
               // synchronous, blocking call
               subtree = this.getNewSubtree(nodeId);
-              
               return this.addSubtreeAndPagers(nodeId, subtree);
         },
 
@@ -497,8 +465,6 @@
 
         customRenderingFunctionsInit: function () {
               
-           //Implement a node rendering function called 'nodeline' that plots a straight line
-           //when contracting or expanding a subtree.
            $jit.ST.Plot.NodeTypes.implement({
             'nodeline': {
               'render': function(node, canvas, animating) {
@@ -512,33 +478,29 @@
                     ctx.moveTo(algnPos.x, algnPos.y + height / 2);
                     ctx.lineTo(algnPos.x + width, algnPos.y + height / 2);
                   } else {
-
                      ctx.moveTo(algnPos.x + width / 2, algnPos.y);
                      ctx.lineTo(algnPos.x + width / 2, algnPos.y + height);
-                      
                   }
-                 ctx.stroke();
+                  ctx.stroke();
                  } 
                }
              },
-
-          });
-              
+           });
         },
+
+
 
         createGraph: function (){
 
            var self = this;
-
-           // semaphore
-           var removing = false;
-
-           
+           var removing = false;           
            //Create a new ST instance
-           self.graph = new $jit.ST({
-              injectInto: 'infovis',
-              orientation: 'bottom',
-              //set duration for the animation
+           self.graph = new $jit.ST(
+         
+           {
+               injectInto: 'infovis',
+               orientation: 'bottom',
+               //set duration for the animation
                duration: 600,
                //set animation transition type
                transition: $jit.Trans.Quart.easeInOut,
@@ -546,105 +508,85 @@
                levelDistance: 90,
                levelsToShow: 1,
                
-             Navigation: {
-                enable:true,
-                panning:true
+               Navigation: {
+                 enable:true,
+                 panning:true
                  // zooming:10
-             },
+               },
              
-             Events: {
-               enable:true,
+               Events: {
+                 enable:true,
                
-               onClick: function (node, eventInfo, e){
-                  if (typeof node.id !== 'undefined' && node.id.toString().substring(0,5) !== '_pag_') {
-                    self.currentId = node.id;
-                    // self.graph.onClick(node.id);
-                    // parent.document.onSelectionChange(node.name);
-                  }
-               },    
-                //Implement handler for TouchScreens
-                onTouchMove: function(node, eventInfo, e) {
+                 onClick: function (node, eventInfo, e){
+                   if (typeof node.id !== 'undefined' && node.id.toString().substring(0,5) !== '_pag_') {
+                     self.currentId = node.id;
+                     // self.graph.onClick(node.id);
+                     // parent.document.onSelectionChange(node.name);
+                   }
+                 },    
+                 //Implement handler for TouchScreens
+                 onTouchMove: function(node, eventInfo, e) {
                     $jit.util.event.stop(e); //stop default touchmove event
                     this.onDragMove(node, eventInfo, e);
-                }
+                 }
                 /*
                 onDragMove: function(node, eventInfo, e) {  
                     var pos = eventInfo.getPos();  
                     node.pos.setc(pos.x, pos.y);  
                     self.graph.plot();  
                 }*/
-            },
-            
-            Tips: {
-               enable: true,
-               onShow: function (tip, node){
-
-                  
-
+               },
+               Tips: {
+                 enable: true,
+                 onShow: function (tip, node){
                   if (typeof node.id !== 'undefined' && node.id.toString().substring(0, 6) === '_pag_r') {
                     tip.innerHTML = 'Click here to see more terms of this ontology';
                   } else if (typeof node.id !== 'undefined' && node.id.toString().substring(0, 6) === '_pag_l') {
                     tip.innerHTML = 'Click here to see more terms of this ontology';
-                  
                   } else {
-                    
                       tip.innerHTML = node.name;
                     //}
                   }
-               }                                
+                
+              }                                
             },
-            
             Node: {
-              height: 30,
-              width: 150,
+                height: 30,
+                width: 150,
                    //use a custom
                    //node rendering function
                    type: 'nodeline', // roundrect, nodeline
                    align:"center",
                    overridable: true
-               },
-
-             Edge: {
+                },
+           Edge: {
                 type: 'bezier',
                 lineWidth: 1,
                 color: '#444444',
                    overridable: true
-             },
-
-             request: function(nodeId, level, callback) {
-
-                self.Log.loading();
-
-                var response = self.getTree(nodeId, level);
-                                
-                if (typeof response.id !== 'undefined') {
-
-                  if (response.children.length === 0) {
-                    self.Log.warn('No subterms found.');
-                  }
-                 
-                  callback.onComplete(nodeId, response); 
-
-                  if (response.related.length > 0) {
-                    self.updateSubTemplates(response.related, []);
-                  }
-
-                }
-             
-             },
-
-             onBeforeCompute: function(id){
+               },
+           request: function(nodeId, level, callback) {
+                 var response = self.getTree(nodeId, level);
+                 self.Log.loading();                                
+                 if (typeof response.id !== 'undefined') {
+                   if (response.children.length === 0) {
+                     self.Log.warn('No subterms found.');
+                   }
+                   
+                   callback.onComplete(nodeId, response); 
+                   if (response.related.length > 0) {
+                     self.updateSubTemplates(response.related, self.breadCrumb);
+                   }
+                 }
+               },
+            onBeforeCompute: function(id){
                  // self.Log.loading();
-             },
-
-             onAfterCompute: function(id){
-
+               },
+            onAfterCompute: function(id){
                 self.Log.done();
                 self.Spinner.hide();
-             },
-
-             onCreateLabel: function(label, node){
-               
+               },
+            onCreateLabel: function(label, node){
                 if (node.id === self.rootId) {
                   node.name = self.rootLabel;
                 }
@@ -654,9 +596,12 @@
                 label.onclick = function(){
                   // normal node
                   if (label.id.toString().substring(0, 7) !== '_pag_l_' && label.id.toString().substring(0, 7) !== '_pag_r_') {
-
-                      self.currentId = node.id;
-                      self.graph.onClick(node.id);
+		      
+		      // @bugfix: avoid root node (id: c_1)
+		      if (label.id.toString() !== 'c_1') {
+                        self.currentId = node.id;
+                        self.graph.onClick(node.id);
+                      }
                   // go forwards arrow
                   } else if (label.id.toString().substring(0, 7) === '_pag_r_'){
                       
@@ -674,7 +619,7 @@
                    style.height = 'auto';            
                    style.cursor = 'pointer';
                    style.textAlign = 'center';
-               },
+             },
 
                /* onBeforePlotNode: function(node){
                
@@ -688,7 +633,7 @@
                    }
                },*/
 
-               onBeforePlotLine: function(adj){
+              onBeforePlotLine: function(adj){
                 if (adj.nodeFrom.selected && adj.nodeTo.selected) {
                        // adj.data.$color = "#eed";
                        
