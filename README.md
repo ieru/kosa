@@ -8,18 +8,18 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 ### Index
 
-[Demo]()
-[Architecture]()
-[Requirements]()
-[Installation]()
-[Running a Production Server]()
-[Changing Javascript, HTML and CSS]()
-[Troubleshooting]()
-[Documentation and API Access]()
-[Extra Features]()
-[Resources]()
-[Author]()
-['Licence']()
+- [Demo]()  
+- [Architecture]()  
+- [Requirements]()  
+- [Installation]()  
+- [Running a Production Server]()  
+- [Changing Javascript, HTML and CSS]()  
+- [Troubleshooting]()  
+- [Documentation and API Access]()  
+- [Extra Features]()  
+- [Resources]()  
+- [Author]()  
+- ['Licence']()  
 
 ### Demo
 
