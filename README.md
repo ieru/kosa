@@ -6,7 +6,22 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 ![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
 
-### Live Demo
+### Index
+
+[Demo]()
+[Architecture]()
+[Requirements]()
+[Installation]()
+[Running a Production Server]()
+[Changing Javascript, HTML and CSS]()
+[Troubleshooting]()
+[Documentation and API Access]()
+[Extra Features]()
+[Resources]()
+[Author]()
+['Licence']()
+
+### Demo
 
 The current project snapshot may be seen [here](http://kos.appgee.net)
 
@@ -281,7 +296,7 @@ Download and install [node.js](http://nodejs.org/download/)
 [API](https://github.com/ieru/kosa/wiki/Kosa-RESTful-API)
 
 
-### Optional Features
+### Extra Features
 
 Pluggable databases:
 - Sesame
