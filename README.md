@@ -2,6 +2,9 @@
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)  
 
+[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](https://coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
+
+
 ### Scheme  
 
 ![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
@@ -24,8 +27,6 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 ### Demo
 
 The current project snapshot may be seen [here](http://kos.appgee.net)
-
-[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](https://coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
 
 
 ### Architecture
