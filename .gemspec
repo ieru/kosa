@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
 
   # RDF dependencies
   s.add_runtime_dependency        'linkeddata',         '>= 1.0'
-  s.add_runtime_dependency        'rdf'
+  s.add_runtime_dependency        'rdf'     #,		'=1.0.10'
   # s.add_runtime_dependency      'equivalent-xml',     '>= 0.3.0'
   # s.add_runtime_dependency      'sparql',             '>= 1.0'
   # s.add_runtime_dependency      'curb',               '>= 0.8.3'

@@ -31,8 +31,6 @@ require 'yajl/json_gem'
 require 'auth/controller'
 
 
-require 'pry'
-
 # debugging support for :development
 Pry.commands.alias_command 'c', 'continue'
 Pry.commands.alias_command 's', 'step'
@@ -76,8 +74,8 @@ class Kosa < Sinatra::Base
    
   def initialize 
     
-    # start debugger
-    binding.pry
+    # Start debugger
+    # binding.pry
             
     # maximun number of result on query ~= 10pages
     @soft_limit = 30
@@ -105,7 +103,7 @@ class Kosa < Sinatra::Base
 
     get '/auth/login' do
       # erb :login
-      return encoder.encode({:html_code => 200})
+      return encoder.encode({:code => 200, message => "OK"})
     end
 
     post '/auth/login' do
@@ -132,7 +130,7 @@ class Kosa < Sinatra::Base
       # puts env['warden.options'][:attempted_path]
       # flash.error = env['warden'].message || "You must log in"
       # redirect '/login'
-      return encoder.encode({:html_code => 403})
+      return encoder.encode({:code => 403, message => "Forbidden"})
     end
 
     get '/protected' do
@@ -446,6 +444,43 @@ class Kosa < Sinatra::Base
         } 
         
          return encoder.encode(concept)
+    end
+    
+    
+    def get_ontologies(lang=nil)
+    
+        if lang.nil? || !lang.length == 2
+          lang = 'EN'
+        else
+          lang = lang.upcase
+        end
+        
+        query = sparql.query("
+          PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+          PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+    
+          SELECT DISTINCT ?root ?label
+          WHERE {
+            ?root a owl:Class .
+            ?root rdfs:label ?label .
+            OPTIONAL {
+              ?root rdfs:subClassOf ?super
+            }
+            FILTER (!bound(?super))
+          }
+         ")
+          
+        count = query.count()        
+
+        if count.eql? 0
+          # save resources
+          return encoder.encode({})
+        end
+         
+        concept = query.map { |w|  
+           { :name=> w.label, :id=>'', :uri=>w.root }
+        } 
+         return encoder.encode(concept)    
     end
     
 
