@@ -64,7 +64,7 @@ gem 'rack-test'
 group :production do
 end
 
-# group :development, :test do
+group :development, :test do
   # gem 'shotgun'
   # gem "wirble"
   # gem "syntax"
@@ -72,16 +72,17 @@ end
   # gem 'rack-test'
   # gem "redcarpet"
   
-  # gem "debugger" if RUBY_VERSION > "1.9"
-  # gem "rake"
+  gem "debugger" if RUBY_VERSION > "1.9"
+  gem "rake"
+end
+
+
+# group :development, :test do
+#   gem 'awesome_print'
+#   gem 'racksh'
+#   gem 'debugger' if RUBY_VERSION > '1.9'
+#   gem 'rake'
+#   gem 'pry'
+#   gem 'pry-debugger'
 # end
 
-
-group :development, :test do
-  gem 'awesome_print'
-  gem 'racksh'
-  gem 'debugger' if RUBY_VERSION > '1.9'
-  gem 'rake'
-  gem 'pry'
-  gem 'pry-debugger'
-end
