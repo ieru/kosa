@@ -31,6 +31,15 @@ require 'yajl/json_gem'
 require 'auth/controller'
 
 
+require 'pry'
+
+# debugging support for :development
+Pry.commands.alias_command 'c', 'continue'
+Pry.commands.alias_command 's', 'step'
+Pry.commands.alias_command 'n', 'next'
+Pry.commands.alias_command 'f', 'finish'
+
+
 # network access
 # require 'rest_client'
 
@@ -45,9 +54,11 @@ class Kosa < Sinatra::Base
   # register Sinatra::Warden
   # register Sinatra::AuthRoutes
    
-  set :sessions => true
-
-  use Rack::Session::Cookie, secret: "nothingissecretontheinternet"
+  # set :sessions => true
+  enable :sessions
+  
+  
+  use Rack::Session::Cookie, secret: "REPLACE_ME_SECRET_LONG_KEY"
   use Rack::Flash, accessorize: [:error, :success]
 
   use Warden::Manager do |config|
@@ -65,7 +76,9 @@ class Kosa < Sinatra::Base
    
   def initialize 
     
-        
+    # start debugger
+    binding.pry
+            
     # maximun number of result on query ~= 10pages
     @soft_limit = 30
     
@@ -88,7 +101,6 @@ class Kosa < Sinatra::Base
     # url = "http://user:passwd@localhost:10035/repositories/example"
     # repo = RDF::AllegroGraph::Repository.new(url, :create => true)
     end
-
 
 
     get '/auth/login' do
@@ -131,6 +143,7 @@ class Kosa < Sinatra::Base
 
     # test endpoint1 
     get '/test' do
+
         "test"
     end
     
