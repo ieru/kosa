@@ -17,147 +17,150 @@ GIT
 
 GIT
   remote: git://github.com/ruby-rdf/json-ld.git
-  revision: d9e1dc1808e674b11d42191395f336f50b53d0ec
+  revision: c0860c902211ed2cf2c9669f92637f091551cd56
   specs:
-    json-ld (1.0.8.1)
-      json (>= 1.7.5)
+    json-ld (1.1.1)
       rdf (>= 1.0.8)
 
 GIT
   remote: git://github.com/ruby-rdf/linkeddata.git
-  revision: 6467fe2d3fc3a57460d30da7aeeecc20b4a7a932
+  revision: b7bb7e60c1d3248d0aa908fa9cd0cfb9eacc1b60
   specs:
-    linkeddata (1.0.9)
-      json-ld (>= 1.0.7)
-      rdf (>= 1.0.9)
-      rdf-isomorphic (>= 1.0.2)
-      rdf-json (>= 1.0)
-      rdf-microdata (>= 1.0.2)
-      rdf-n3 (>= 1.0.1)
-      rdf-rdfa (>= 1.0.2)
-      rdf-rdfxml (>= 1.0.2)
-      rdf-trig (>= 1.0.3)
-      rdf-trix (>= 1.0)
-      rdf-turtle (>= 1.0.9)
+    linkeddata (1.1.1)
+      equivalent-xml (>= 0.4.0)
+      json-ld (>= 1.1.1)
+      nokogiri (>= 1.6.1)
+      rdf (>= 1.1.1)
+      rdf-aggregate-repo (>= 1.1.0)
+      rdf-isomorphic (>= 1.1.0)
+      rdf-json (>= 1.1.0)
+      rdf-microdata (>= 1.1.1)
+      rdf-n3 (>= 1.1.0)
+      rdf-rdfa (>= 1.1.1)
+      rdf-rdfxml (>= 1.1.0)
+      rdf-trig (>= 1.1.2)
+      rdf-trix (>= 1.1.0)
+      rdf-turtle (>= 1.1.2)
+      sparql (>= 1.1.2)
+      sparql-client (>= 1.1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-aggregate-repo.git
-  revision: 1aa06bc4e5ca621e5053795aa56215927132ca00
+  revision: 24742dc88348d5c8bb26923dcd210ca47fe3d1b5
   specs:
-    rdf-aggregate-repo (0.1.2)
-      rdf (>= 1.0)
+    rdf-aggregate-repo (1.1.0)
+      rdf (>= 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-isomorphic.git
-  revision: 17226a63abcf03d9743238992f9fe24e3a98aeca
+  revision: d4d0714cf47d22173231a1de7a160b47ae312b72
   specs:
-    rdf-isomorphic (1.0.2)
-      rdf (>= 1.0)
+    rdf-isomorphic (1.1.0)
+      rdf (>= 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-json.git
-  revision: 43a7cf7b61b79eeb3efbf827866a293beb579aff
+  revision: 94038aa5cbc3c06a9c94ad7ee2686a1ac7161359
   specs:
-    rdf-json (1.0.0)
-      json_pure (>= 1.4)
-      rdf (>= 1.0.5)
+    rdf-json (1.1.0)
+      rdf (>= 1.1.0)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-microdata.git
-  revision: 8e4da90da949aa250db3866f1c3a3f612a4da860
+  revision: 5150c4b9742b6e6256134f62cf614b6866a51ef5
   specs:
-    rdf-microdata (1.0.3)
+    rdf-microdata (1.1.1)
       htmlentities (>= 4.3.0)
-      json (>= 1.7.7)
-      rdf (>= 1.0.7)
-      rdf-xsd (>= 1.0)
+      nokogiri (>= 1.6.1)
+      rdf (>= 1.1.0)
+      rdf-xsd (>= 1.1.0)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-n3.git
-  revision: cef4994e5d13ef737addfcaff3231917c2a5a241
+  revision: ac7cc44d2d68486ed9c2bdaa45862348e322a29c
   specs:
-    rdf-n3 (1.0.1)
-      rdf (>= 1.0.7)
+    rdf-n3 (1.1.0)
+      rdf (>= 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-rdfa.git
-  revision: 359ce104862e12c5a82816243f4cb0b13fafaf96
+  revision: c7768a33bde85f706c7e43e6597d9b2bc47fed49
   specs:
-    rdf-rdfa (1.0.3)
+    rdf-rdfa (1.1.1)
       haml (>= 4.0)
       htmlentities (>= 4.3.1)
-      rdf (>= 1.0.5)
-      rdf-xsd (>= 1.0)
+      rdf (>= 1.1.0)
+      rdf-xsd (>= 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-rdfxml.git
-  revision: 4a24c17f25531c42e2f34e4e705f8ae0fa84404e
+  revision: 0362948e9d849d0b28de07ee61b70db9f2f43d17
   specs:
-    rdf-rdfxml (1.0.3)
-      rdf (>= 1.0)
-      rdf-xsd (>= 1.0)
+    rdf-rdfxml (1.1.0)
+      rdf (>= 1.1)
+      rdf-rdfa (>= 1.1)
+      rdf-xsd (>= 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-sesame.git
-  revision: f40908ed72502bf8170ad96874744c8c1d384f3a
+  revision: 90e0f324a3a334fbe9514147ef24e031ebfa6464
   specs:
-    rdf-sesame (0.4.2)
+    rdf-sesame (1.1)
+      addressable (~> 2.3)
       json_pure (~> 1.8)
-      rdf (~> 1.0)
+      rdf (~> 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-trig.git
-  revision: 439f229b34a1f8ca362484015fde9eabf2e90679
+  revision: 8102a5115dc65043298b1f93a3fbd8b8850ec0e5
   specs:
-    rdf-trig (1.0.3)
-      ebnf (>= 0.3.0)
-      rdf (>= 1.0.7)
-      rdf-turtle (>= 1.0.9)
+    rdf-trig (1.1.2)
+      ebnf (>= 0.3.5)
+      rdf (>= 1.1.1.1)
+      rdf-turtle (>= 1.1.2)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-turtle.git
-  revision: d6176aa2a17c545268bb76a1505e94b1104986cb
+  revision: 3cdc514dbed6ede654e12380e2c06941993d69bd
   specs:
-    rdf-turtle (1.0.9)
-      ebnf (>= 0.3.0)
-      rdf (>= 1.0.7)
+    rdf-turtle (1.1.2)
+      ebnf (>= 0.3.5)
+      rdf (>= 1.1.1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf-xsd.git
-  revision: 95b980581f71701452d73d4b2fafc6bd549da174
+  revision: 48ae68dad922435610c1557424f9b1bc92c8f46b
   specs:
-    rdf-xsd (1.0.2.1)
-      nokogiri (>= 1.5.0)
-      rdf (>= 0.3.4)
+    rdf-xsd (1.1.0)
+      rdf (>= 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/rdf.git
-  revision: a5ef31557475f74905d2a8f28a95f8c728a2a0d2
+  revision: c31259b6c4aa701bddb0c951e9e8145ae5e05ca1
   specs:
-    rdf (1.0.10)
-      addressable (>= 2.3)
+    rdf (1.1.1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/sparql-client.git
-  revision: 29256e69aa6919bd9fb7d2cae05c61ead05884c0
+  revision: 66bad05f1f27903e57350570e0d75d6ab3d43a8a
   specs:
-    sparql-client (1.0.4.1)
-      json_pure (>= 1.4)
+    sparql-client (1.1.1)
+      json (>= 1.8)
       net-http-persistent (>= 1.4)
-      rdf (>= 1.0)
+      rdf (>= 1.1)
 
 GIT
   remote: git://github.com/ruby-rdf/sparql.git
-  revision: da8b4932a2c65c8e8e25b8f190a9ffaa0c7f8445
+  revision: 764cfb89d473554a539302c8dce3316147b0d40d
   specs:
-    sparql (1.1.1)
+    sparql (1.1.2.1)
       builder (>= 3.0)
-      ebnf (>= 0.3.0)
+      ebnf (>= 0.3.2)
       json (>= 1.7)
-      rdf (~> 1.0.10)
-      rdf-aggregate-repo
-      rdf-xsd (~> 1.0.2)
-      sparql-client (>= 1.0.3)
+      rdf (>= 1.1.0)
+      rdf-aggregate-repo (>= 1.1.0)
+      rdf-xsd (>= 1.0.2)
+      sparql-client (>= 1.1)
       sxp (>= 0.1.3)
 
 PATH
@@ -178,9 +181,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.5)
+    awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
     builder (3.2.2)
     bundler-unload (1.0.2)
+    coderay (1.1.0)
     columnize (0.3.6)
     coveralls (0.7.0)
       multi_json (~> 1.3)
@@ -188,7 +193,7 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    dalli (2.6.4)
+    dalli (2.7.0)
     data_mapper (1.2.0)
       dm-aggregates (~> 1.2.0)
       dm-constraints (~> 1.2.0)
@@ -201,12 +206,12 @@ GEM
       dm-validations (~> 1.2.0)
     data_objects (0.10.13)
       addressable (~> 2.1)
-    debugger (1.6.2)
+    debugger (1.6.5)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
+      debugger-ruby_core_source (~> 1.3.1)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
+    debugger-ruby_core_source (1.3.1)
     diff-lcs (1.2.5)
     dm-aggregates (1.2.0)
       dm-core (~> 1.2.0)
@@ -244,14 +249,14 @@ GEM
       dm-core (~> 1.2.0)
     do_sqlite3 (0.10.13)
       data_objects (= 0.10.13)
-    docile (1.1.0)
-    ebnf (0.3.1)
+    docile (1.1.2)
+    ebnf (0.3.5)
       rdf
       sxp
-    equivalent-xml (0.3.0)
+    equivalent-xml (0.4.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
-    executable-hooks (1.2.6)
+    executable-hooks (1.3.0)
     fastercsv (1.5.5)
     ffi (1.9.3)
     ffi-compiler (0.1.3)
@@ -259,19 +264,26 @@ GEM
       rake
     fileutils (0.7)
       rmagick (>= 2.13.1)
-    haml (4.0.4)
+    haml (4.0.5)
       tilt
     htmlentities (4.3.1)
     json (1.8.1)
     json_pure (1.8.1)
-    lockfile (2.1.0)
     maruku (0.7.0)
+    method_source (0.8.2)
     mime-types (2.0)
     mini_portile (0.5.2)
-    multi_json (1.8.2)
+    multi_json (1.8.4)
     net-http-persistent (2.9)
-    nokogiri (1.6.0)
+    nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    pry (0.9.12.4)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-debugger (0.2.2)
+      debugger (~> 1.3)
+      pry (~> 0.9.10)
     rack (1.5.2)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -281,12 +293,15 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rake (10.1.0)
-    rdf-raptor (1.0.1)
-      ffi (>= 1.0)
-      rdf (>= 1.0.0)
-    rdf-trix (1.0.0)
-      rdf (>= 1.0)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
+    rake (10.1.1)
+    rdf-raptor (1.1.0)
+      ffi (>= 1.9.3)
+      rdf (>= 1.1.0)
+    rdf-trix (1.1.0)
+      rdf (>= 1.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rmagick (2.13.2)
@@ -306,9 +321,8 @@ GEM
     scrypt (1.2.0)
       ffi-compiler (>= 0.0.2)
       rake
-    simplecov (0.8.1)
+    simplecov (0.8.2)
       docile (~> 1.1.0)
-      lockfile (>= 2.1.0)
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
@@ -316,9 +330,9 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    slop (3.4.7)
     stringex (1.5.1)
-    sxp (0.1.3)
-      json (>= 1.1.1)
+    sxp (0.1.5)
     term-ansicolor (1.2.2)
       tins (~> 0.8)
     thor (0.18.1)
@@ -327,12 +341,13 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
-    yajl-ruby (1.1.0)
+    yajl-ruby (1.2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bcrypt-ruby
   bundler
   coveralls
@@ -344,8 +359,11 @@ DEPENDENCIES
   json-ld!
   kosa!
   linkeddata!
+  pry
+  pry-debugger
   rack-flash3
   rack-test
+  racksh
   rake
   rdf!
   rdf-4store!

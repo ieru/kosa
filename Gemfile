@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gemspec :name => ""
 
 # Include non-released gems first
-gem 'rdf',                :git => "git://github.com/ruby-rdf/rdf.git"
+gem 'rdf',                :git => "git://github.com/ruby-rdf/rdf.git"        # , :tag => '1.0.10'
 gem 'rdf-aggregate-repo', :git => "git://github.com/ruby-rdf/rdf-aggregate-repo.git", :require => "rdf/aggregate_repo"
 gem 'rdf-isomorphic',     :git => "git://github.com/ruby-rdf/rdf-isomorphic.git", :require => "rdf/isomorphic"
 gem 'rdf-json',           :git => "git://github.com/ruby-rdf/rdf-json.git", :require => "rdf/json"
@@ -64,8 +64,7 @@ gem 'rack-test'
 group :production do
 end
 
-group :development, :test do
-
+# group :development, :test do
   # gem 'shotgun'
   # gem "wirble"
   # gem "syntax"
@@ -73,6 +72,16 @@ group :development, :test do
   # gem 'rack-test'
   # gem "redcarpet"
   
-  gem "debugger" if RUBY_VERSION > "1.9"
-  gem "rake"
+  # gem "debugger" if RUBY_VERSION > "1.9"
+  # gem "rake"
+# end
+
+
+group :development, :test do
+  gem 'awesome_print'
+  gem 'racksh'
+  gem 'debugger' if RUBY_VERSION > '1.9'
+  gem 'rake'
+  gem 'pry'
+  gem 'pry-debugger'
 end
