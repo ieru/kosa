@@ -21,11 +21,11 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 - [Author](#author)  
 - ['Licence'](#license)  
 
-### Demo
+### [Demo](http://kos.appgee.net)
 
-The current project snapshot may be seen [here](http://kos.appgee.net)
+The current project snapshot may be seen [Here](http://kos.appgee.net)
 
-### State  
+### Status  
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](https://coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
 
@@ -49,31 +49,20 @@ The current project snapshot may be seen [here](http://kos.appgee.net)
 
 ### Installation on Debian / Ubuntu
 
-Visit [this Wiki page](//github.com/ieru/kosa/wiki/Installation-on-Debian---Ubuntu-Linux.-Recommended)
+Visit this [Wiki page](//github.com/ieru/kosa/wiki/Installation-on-Debian---Ubuntu-Linux.-Recommended)
 
 ### Installation on Mac OS X
 
-```
-TBD
-```
+To be done.
 
 ### Installation on Windows
 
-```
-TBD
-```
+To be done.
 
-### Installation on a PaaS (e.g AWS, Heroku, etc.)
+### Installation on a SaaS (e.g AWS, Heroku, etc.)
 
-**Heroku**  
-```
-TBD
-```
+To be done.
 
-**Amazon Web Services**
-```
-TBD
-```
 
 ### Running on a Development Server (Linux / Mac OS / Windows)
 
