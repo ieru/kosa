@@ -181,11 +181,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.5)
-    awesome_print (1.2.0)
     bcrypt-ruby (3.1.2)
     builder (3.2.2)
     bundler-unload (1.0.2)
-    coderay (1.1.0)
     columnize (0.3.6)
     coveralls (0.7.0)
       multi_json (~> 1.3)
@@ -270,20 +268,12 @@ GEM
     json (1.8.1)
     json_pure (1.8.1)
     maruku (0.7.0)
-    method_source (0.8.2)
     mime-types (2.0)
     mini_portile (0.5.2)
     multi_json (1.8.4)
     net-http-persistent (2.9)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    pry (0.9.12.4)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
-      slop (~> 3.4)
-    pry-debugger (0.2.2)
-      debugger (~> 1.3)
-      pry (~> 0.9.10)
     rack (1.5.2)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -293,9 +283,6 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    racksh (1.0.0)
-      rack (>= 1.0)
-      rack-test (>= 0.5)
     rake (10.1.1)
     rdf-raptor (1.1.0)
       ffi (>= 1.9.3)
@@ -330,7 +317,6 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    slop (3.4.7)
     stringex (1.5.1)
     sxp (0.1.5)
     term-ansicolor (1.2.2)
@@ -347,7 +333,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
   bcrypt-ruby
   bundler
   coveralls
@@ -359,11 +344,8 @@ DEPENDENCIES
   json-ld!
   kosa!
   linkeddata!
-  pry
-  pry-debugger
   rack-flash3
   rack-test
-  racksh
   rake
   rdf!
   rdf-4store!

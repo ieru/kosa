@@ -20,6 +20,8 @@
 
       ""					: "home",
       "admin"					: "login",
+      "sparql"					: "sparql",
+
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
       "api/test"				: "test"
     },
@@ -35,6 +37,10 @@
 
     login: function() {
       $( 'body' ).html( application.loginView.render().el );
+    },
+
+    sparql: function() {
+      $( 'body' ).html( application.sparqlView.render().el );
     },
     
     getNarrowerConcepts: function (node){

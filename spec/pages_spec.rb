@@ -10,10 +10,10 @@ describe "Kosa" do
   end
 
   describe "/" do
-    it "gets OK response from /" do
+    it "gets False response from / (Managed by browser)" do
       get '/'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
-      last_response.should be_ok
+      last_response.should_not be_ok
     end
   end
   
