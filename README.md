@@ -9,13 +9,13 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 
 - [Demo](#demo)  
 - [State](#state)  
-- [Architecture](#architecture)  
 - [Requirements](#requirements)  
-- [Installation](#installation-on-debian--ubuntu)  
+- [Architecture](#architecture)  
+- [Installation](#recommended-installation)  
 - [Post-Installation](#postinstallation)  
-- [Customizing Kosa](#customizations)  
 - [Troubleshooting](#troubleshooting)  
-- [Documentation and API Access](#documentation-and-api-access)  
+- [API Documentation](#api-documentation)  
+- [Customizing Kosa](#customizations) 
 - [Extra Features](#extra-features)  
 - [Resources](#resources)  
 - [Author](#author)  
@@ -29,6 +29,12 @@ The current project snapshot may be seen [Here](http://kos.appgee.net)
 
 [![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](https://coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
 
+
+### Requirements
+
+- Ruby v1.9+
+- Java Application Server (e.g Tomcat, GlashFish, Jetty, JBoss, etc. )
+
 ### Architecture
 
 - Lightweight Backend ~ 300 LOC
@@ -41,26 +47,25 @@ The current project snapshot may be seen [Here](http://kos.appgee.net)
 - Touchscreen / Mobile friendly. Responsive HTML5
 
 
-### Requirements
+### Recommeneded Installation
 
-- Ruby v1.9+
-- Java Application Server (e.g Tomcat, GlashFish, Jetty, JBoss, etc. )
-
-
-### Installation on Debian / Ubuntu
+(On Debian / Ubuntu)  
 
 Visit this [Wiki page](//github.com/ieru/kosa/wiki/Installation-on-Debian---Ubuntu-Linux.-Recommended)
 
-### Installation on Mac OS X
+### Installation  
 
+(On Mac OS X)
 To be done.
 
-### Installation on Windows
+### Installation
 
+(On Windows)
 To be done.
 
-### Installation on a SaaS (e.g AWS, Heroku, etc.)
+### Installation 
 
+(On a SaaS: AWS and Heroku)
 To be done.
 
 ### Postinstallation
@@ -72,16 +77,16 @@ Server on this [Wiki Page](https://github.com/ieru/kosa/wiki/Postinstallation)
 
 Yo can get more information about Javascript, templates & css changes
 (Browser-side and Server-Side are now completely separated), 
-on this [Wiki Page]()
+on this [Wiki Page](//github.com/ieru/kosa/wiki/Customizations)
 
 
 ### Troubleshooting
 
-[Troubleshooting](https://github.com/ieru/kosa/wiki/Troubleshooting)
+[Troubleshooting](//github.com/ieru/kosa/wiki/Troubleshooting)
 
-### Documentation and API access
+### API Documentation
 
-[API](https://github.com/ieru/kosa/wiki/Kosa-RESTful-API)
+[API](//github.com/ieru/kosa/wiki/Kosa-RESTful-API)
 
 
 ### Extra Features
