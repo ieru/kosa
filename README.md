@@ -2,16 +2,16 @@
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)  
 
-![Architecture](https://raw.github.com/ieru/kosa/master/kosa.png)
+![Architecture](//raw.github.com/ieru/kosa/master/kosa.png)
 
 
 ### Index
 
 - [Demo](#demo)  
-- [State](#state)  
+- [Status](#status)  
 - [Requirements](#requirements)  
 - [Architecture](#architecture)  
-- [Installation](#recommended-installation)  
+- [Recommended Installation](#installation)  
 - [Post-Installation](#postinstallation)  
 - [Troubleshooting](#troubleshooting)  
 - [API Documentation](#api-documentation)  
@@ -21,13 +21,13 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 - [Author](#author)  
 - ['Licence'](#license)  
 
-### [Demo](http://kos.appgee.net)
+### Demo
 
-The current project snapshot may be seen [Here](http://kos.appgee.net)
+The current project snapshot may be seen [Here](//kos.appgee.net)
 
 ### Status  
 
-[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](https://travis-ci.org/ieru/kosa) [![Code Climate](https://codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](https://coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
+[![Build Status](https://travis-ci.org/ieru/kosa.png?branch=master)](//travis-ci.org/ieru/kosa) [![Code Climate](//codeclimate.com/github/ieru/kosa.png)](https://codeclimate.com/github/ieru/kosa) [![Coverage Status](//coveralls.io/repos/ieru/kosa/badge.png)](https://coveralls.io/r/ieru/kosa)
 
 
 ### Requirements
@@ -51,7 +51,7 @@ The current project snapshot may be seen [Here](http://kos.appgee.net)
 
 (On Debian / Ubuntu)  
 
-Visit this [Wiki page](//github.com/ieru/kosa/wiki/Installation-on-Debian---Ubuntu-Linux.-Recommended)
+Visit this [Wiki page](//github.com/ieru/kosa/wiki/Installation)
 
 ### Installation  
 
@@ -129,7 +129,7 @@ Indexers:
 
 ### Author
 
-University of Alcal�
+University of Alcala
 
 ### 'License'
 
