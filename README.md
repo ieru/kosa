@@ -12,7 +12,7 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 - [Architecture](#architecture)  
 - [Requirements](#requirements)  
 - [Installation](#installation-on-debian--ubuntu)  
-- [Running a Production Server](#running-on-a-development-server-linux--mac-os--windows)  
+- [Post-Installation](#postinstallation)  
 - [Changing Javascript, HTML and CSS](#javascript-templates--css-changes)  
 - [Troubleshooting](#troubleshooting)  
 - [Documentation and API Access](#documentation-and-api-access)  
@@ -63,31 +63,9 @@ To be done.
 
 To be done.
 
+### Postinstallation (Installing a Production or Devel. Server) 
 
-### Running on a Development Server (Linux / Mac OS / Windows)
-
-```
-$ sudo rackup config.ru
-( use '$ sudo rvm all do rackup config.ru', if you are using rvm )
-...
-[2013-11-04 23:22:27] INFO  WEBrick 1.3.1
-[2013-11-04 23:22:27] INFO  ruby 1.9.2 (2012-04-20) [x86_64-darwin12.5.0]
-[2013-11-04 23:22:27] INFO  WEBrick::HTTPServer#start: pid=53704 port=4568
-```
-
-Now, open your browser and type ````http://localhost:4568````
-
-### Running on a Production Server (Debian / Ubuntu Linux)
-
-A good option for Linux servers is to use NGINX + Passenger. You can deploy 
-both servers by running the command below
-
-    # copy-and-paste all in one line
-    
-    curl -L https://raw.github.com/julianromerajuarez/ubuntu\
-    -debian-nginx-passenger-installer/master/install.sh | bash 
-
-You can get more information about this script [here](https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer)
+You can get more info on this [Wiki Page]()
 
 ### Javascript, templates & css changes
 
