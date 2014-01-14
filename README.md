@@ -86,7 +86,7 @@ on this [Wiki Page](//github.com/ieru/kosa/wiki/Customizations)
 
 ### API Documentation
 
-[API](//github.com/ieru/kosa/wiki/Kosa-RESTful-API)
+Read more about the Server-Side [API](//github.com/ieru/kosa/wiki/Kosa-RESTful-API)
 
 
 ### Extra Features
