@@ -1,4 +1,4 @@
-### [KOS aggregator (kosa)](http://ieru.github.io/kosa)
+### KOS aggregator [(kosa)](//kos.appgee.net)
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)  
 
@@ -13,7 +13,7 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 - [Requirements](#requirements)  
 - [Installation](#installation-on-debian--ubuntu)  
 - [Post-Installation](#postinstallation)  
-- [Changing Javascript, HTML and CSS](#javascript-templates--css-changes)  
+- [Customizing Kosa](#customizations)  
 - [Troubleshooting](#troubleshooting)  
 - [Documentation and API Access](#documentation-and-api-access)  
 - [Extra Features](#extra-features)  
@@ -63,29 +63,17 @@ To be done.
 
 To be done.
 
-### Postinstallation (Installing a Production or Devel. Server) 
+### Postinstallation
 
-You can get more info on this [Wiki Page]()
+You can get more info on how to Install a Production or Development  
+Server on this [Wiki Page](https://github.com/ieru/kosa/wiki/Postinstallation)
 
-### Javascript, templates & css changes
+### Customizations
 
-Since Front and Back are now completely separated, to modify html, javascript or
-styles follow these steps:  
+Yo can get more information about Javascript, templates & css changes
+(Browser-side and Server-Side are now completely separated), 
+on this [Wiki Page]()
 
-    
-Download and install [node.js](http://nodejs.org/download/)
-    
-    $ sudo npm install -g brunch
-    
-    $ cd __YOUR_SITE_DIR__/public.dev
-    $ ./deploy.sh
-
-    Compiling assets ...
-    11 Nov 05:57:39 - info: compiled 30 files and 2 cached into 7 files, copied 14 in 3905ms
-    Deploying assets ...
-    Done. Created ./../public
-    
-    ( refresh your browser )
 
 ### Troubleshooting
 
