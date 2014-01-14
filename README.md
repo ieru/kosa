@@ -75,8 +75,7 @@ Server on this [Wiki Page](https://github.com/ieru/kosa/wiki/Postinstallation)
 
 ### Customizations
 
-Yo can get more information about Javascript, templates & css changes
-(Browser-side and Server-Side are now completely separated), 
+You can get more information about Javascript, templates & css changes  
 on this [Wiki Page](//github.com/ieru/kosa/wiki/Customizations)
 
 
