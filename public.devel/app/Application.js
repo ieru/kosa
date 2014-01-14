@@ -18,6 +18,7 @@ var Application = {
         // Imports
         var HomeView = require('views/HomeView');
         var LoginView = require('views/LoginView');
+        var SparqlView = require('views/SparqlView');
         var ApplicationRouter = require('routers/ApplicationRouter');
         // var Events = require('events/Event');
         // var GraphCollection = require('collections/GraphCollection');
@@ -25,6 +26,7 @@ var Application = {
         // Initialize
         this.homeView = new HomeView();
         this.loginView = new LoginView();
+        this.sparqlView = new SparqlView();
         this.applicationRouter = new ApplicationRouter();
 
 
