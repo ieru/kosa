@@ -1,4 +1,4 @@
-### KOS aggregator [(kosa)](//kos.appgee.net)
+### KOS aggregator (kosa)
 
 A lightweight aggregator of Knowledge Organization Systems (KOS)  
 
@@ -11,7 +11,7 @@ A lightweight aggregator of Knowledge Organization Systems (KOS)
 - [Status](#status)  
 - [Requirements](#requirements)  
 - [Architecture](#architecture)  
-- [Recommended Installation](#installation)  
+- [Recommended Installation](#recommended-installation)  
 - [Post-Installation](#postinstallation)  
 - [Troubleshooting](#troubleshooting)  
 - [API Documentation](#api-documentation)  
@@ -47,7 +47,7 @@ The current project snapshot may be seen [Here](//kos.appgee.net)
 - Touchscreen / Mobile friendly. Responsive HTML5
 
 
-### Recommeneded Installation
+### Recommended Installation
 
 (On Debian / Ubuntu)  
 
