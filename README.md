@@ -49,7 +49,7 @@ The current project snapshot may be seen [here](http://kos.appgee.net)
 
 ### Installation on Debian / Ubuntu
 
-Visit [this Wiki page](//github.com/ieru/kosa/wiki/Installation-on-Debian---Ubuntu-Linux-(Recommended))
+Visit [this Wiki page](//github.com/ieru/kosa/wiki/Installation-on-Debian---Ubuntu-Linux.-Recommended)
 
 ### Installation on Mac OS X
 
