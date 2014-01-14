@@ -29,7 +29,7 @@
       </header>
       <section>
         <h3>
-<a name="kos-aggregator-kosa" class="anchor" href="#kos-aggregator-kosa"><span class="octicon octicon-link"></span></a><a href="http://ieru.github.io/kosa">KOS aggregator (kosa)</a>
+<a name="kos-aggregator-kosa" class="anchor" href="#kos-aggregator-kosa"><span class="octicon octicon-link"></span></a>KOS aggregator <a href="//kos.appgee.net">(kosa)</a>
 </h3>
 
 <p>A lightweight aggregator of Knowledge Organization Systems (KOS)  </p>
@@ -37,13 +37,64 @@
 <p><img src="https://raw.github.com/ieru/kosa/master/kosa.png" alt="Architecture"></p>
 
 <h3>
-<a name="live-demo" class="anchor" href="#live-demo"><span class="octicon octicon-link"></span></a>Live Demo</h3>
+<a name="index" class="anchor" href="#index"><span class="octicon octicon-link"></span></a>Index</h3>
 
-<p>The current project snapshot may be seen <a href="http://edunet.teluria.es/en/#/navigation">here</a></p>
+<ul>
+<li>
+<a href="#demo">Demo</a><br>
+</li>
+<li>
+<a href="#status">Status</a><br>
+</li>
+<li>
+<a href="#requirements">Requirements</a><br>
+</li>
+<li>
+<a href="#architecture">Architecture</a><br>
+</li>
+<li>
+<a href="#installation">Recommended Installation</a><br>
+</li>
+<li>
+<a href="#postinstallation">Post-Installation</a><br>
+</li>
+<li>
+<a href="#troubleshooting">Troubleshooting</a><br>
+</li>
+<li>
+<a href="#api-documentation">API Documentation</a><br>
+</li>
+<li>
+<a href="#customizations">Customizing Kosa</a> </li>
+<li>
+<a href="#extra-features">Extra Features</a><br>
+</li>
+<li>
+<a href="#resources">Resources</a><br>
+</li>
+<li>
+<a href="#author">Author</a><br>
+</li>
+<li>
+<a href="#license">'Licence'</a><br>
+</li>
+</ul><h3>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h3>
+
+<p>The current project snapshot may be seen <a href="//kos.appgee.net">Here</a></p>
+
+<h3>
+<a name="status" class="anchor" href="#status"><span class="octicon octicon-link"></span></a>Status</h3>
 
 <p><a href="https://travis-ci.org/ieru/kosa"><img src="https://travis-ci.org/ieru/kosa.png?branch=master" alt="Build Status"></a> <a href="https://codeclimate.com/github/ieru/kosa"><img src="https://codeclimate.com/github/ieru/kosa.png" alt="Code Climate"></a> <a href="https://coveralls.io/r/ieru/kosa"><img src="https://coveralls.io/repos/ieru/kosa/badge.png" alt="Coverage Status"></a></p>
 
 <h3>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+
+<ul>
+<li>Ruby v1.9+</li>
+<li>Java Application Server (e.g Tomcat, GlashFish, Jetty, JBoss, etc. )</li>
+</ul><h3>
 <a name="architecture" class="anchor" href="#architecture"><span class="octicon octicon-link"></span></a>Architecture</h3>
 
 <ul>
@@ -56,274 +107,55 @@
 <li>Supports Cache: Filesystem | Memcached</li>
 <li>Touchscreen / Mobile friendly. Responsive HTML5</li>
 </ul><h3>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h3>
+<a name="recommeneded-installation" class="anchor" href="#recommeneded-installation"><span class="octicon octicon-link"></span></a>Recommeneded Installation</h3>
 
-<ul>
-<li>Ruby v1.9+</li>
-<li>Java Application Server (e.g Tomcat, GlashFish, Jetty, JBoss, etc. )</li>
-</ul><h3>
-<a name="installation-on-debian--ubuntu" class="anchor" href="#installation-on-debian--ubuntu"><span class="octicon octicon-link"></span></a>Installation on Debian / Ubuntu</h3>
+<p>(On Debian / Ubuntu)  </p>
 
-<p>(tested to work with uSeekM 1.2.0-a5 on a debian/squeezy platform.)</p>
-
-<p><strong>Test your ruby installation</strong></p>
-
-<pre><code>$ ruby -v
-ruby 1.9 ...
-</code></pre>
-
-<p><strong>Install Database (Sesame + PostgreSQL by default)</strong></p>
-
-<p>Install java JDK and Tomcat6 servlet container from APT repositories:</p>
-
-<pre><code>$ sudo apt-get install sun-java6-jdk tomcat6-admin tomcat6-common tomcat6-examples tomcat6
-</code></pre>
-
-<p>Install PostgreSQL database (for indexing)</p>
-
-<pre><code>$ sudo apt-get install postgresql-9.1 postgresql-contrib-9.1
-</code></pre>
-
-<p>Create a database named 'useekm':</p>
-
-<pre><code>$ sudo -u postgres createdb useekm
-</code></pre>
-
-<p>Download webapp archives (WARs) to be deployed under Tomcat6 (we choose version 1.2.0-a5):</p>
-
-<pre><code>$ sudo mkdir -p ~/packages
-$ cd ~/packages
-$ sudo wget --no-check-certificate https://dev.opensahara.com/nexus/content/repositories/re\
-leases/com/opensahara/useekm-http-server/1.2.0-a5/useekm-http-server-1.2.0-a5.war
-
-$ sudo wget --no-check-certificate https://dev.opensahara.com/nexus/content/repositories/re\
-leases/com/opensahara/useekm-http-workbench/1.2.0-a5/useekm-http-workbench-1.2.0-a5.war
-</code></pre>
-
-<p>Copy and rename archives into Tomcat6's webapp directory (requires restart to take effect). 
-Afterwards, visit Tomcat's admin interface, at <code>http://localhost:8080/manager/html</code> and 
-verify that the archives are properly deployed and hosted under the appropriate 
-URL prefix (i.e. <code>/openrdf-sesame</code> and <code>/openrdf-workbench</code>):</p>
-
-<pre><code># cp ~/packages/useekm-http-workbench-1.2.0-a5.war /var/lib/tomcat6/webapps/openrdf-workbench.war
-# cp ~/packages/useekm-http-server-1.2.0-a5.war    /var/lib/tomcat6/webapps/openrdf-sesame.war
-# /etc/init.d/tomcat6 restart
-</code></pre>
-
-<p>Now a new RDF repository should be created with a set of minimal configuration options. 
-Let's name it "geoknow":</p>
-
-<pre><code># mkdir -p /var/opt/useekm/geoknow
-</code></pre>
-
-<p>Create a configuration file for your repository at <code>/var/opt/useekm/geoknow/config.xml</code> 
-by editing the following template:</p>
-
-<pre><code>&lt;beans xmlns="http://www.springframework.org/schema/beans" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"&gt;
-
-    &lt;!-- The id "repository" is mandatory! --&gt;
-    &lt;bean id="repository" class="org.openrdf.repository.sail.SailRepository"&gt;
-        &lt;constructor-arg&gt;
-            &lt;bean class="com.useekm.indexing.IndexingSail"&gt;
-                &lt;constructor-arg ref="sail" /&gt;
-                &lt;constructor-arg ref="indexerSettings" /&gt;
-            &lt;/bean&gt;
-        &lt;/constructor-arg&gt;
-    &lt;/bean&gt;
-
-    &lt;!-- This example uses the NativeStore as the underlying sail, you could also use the MemoryStore --&gt;
-    &lt;bean id="sail" class="org.openrdf.sail.nativerdf.NativeStore" /&gt;
-
-    &lt;!-- Please customize the indexer settings: --&gt;
-    &lt;bean id="indexerSettings" lazy-init="true" class="com.useekm.indexing.postgis.PostgisIndexerSettings"&gt;
-        &lt;property name="defaultSearchConfig" value="simple" /&gt;
-        &lt;property name="dataSource" ref="pgDatasource" /&gt;
-        &lt;property name="matchers"&gt;
-            &lt;list&gt;
-                &lt;!-- CUSTOMIZE: list all the predicates that need indexing (text and/or geo): --&gt;
-                &lt;bean class="com.useekm.indexing.postgis.PostgisIndexMatcher"&gt;
-                    &lt;property name="predicate" value="http://www.w3.org/2000/01/rdf-schema#label" /&gt;
-                    &lt;property name="searchConfig" value="simple" /&gt;
-                &lt;/bean&gt;
-                &lt;bean class="com.useekm.indexing.postgis.PostgisIndexMatcher"&gt;
-                    &lt;property name="predicate" value="http://www.opengis.net/ont/geosparql#asWKT" /&gt;
-                &lt;/bean&gt;
-            &lt;/list&gt;
-        &lt;/property&gt;
-        &lt;!-- You can add additional configuration, such as index partitions to optimize performance. See the documentation. --&gt;
-    &lt;/bean&gt;
-
-    &lt;bean id="pgDatasource" lazy-init="true" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"&gt;
-        &lt;property name="driverClassName" value="org.postgresql.Driver"/&gt;
-        &lt;property name="url" value="jdbc:postgresql://localhost:5432/useekm"/&gt;    &lt;!-- CUSTOMIZE! --&gt;
-        &lt;property name="username" value="postgres"/&gt;                              &lt;!-- CUSTOMIZE! --&gt;
-        &lt;property name="password" value="postgres"/&gt;                              &lt;!-- CUSTOMIZE! --&gt;
-    &lt;/bean&gt;
-&lt;/beans&gt;
-</code></pre>
-
-<p>Finally, change ownership of the directories that expect server output (logs etc.):</p>
-
-<pre><code># chown root:tomcat6 -R /usr/share/tomcat6/.aduna/openrdf-sesame
-# chmod 0775         -R /usr/share/tomcat6/.aduna/openrdf-sesame
-</code></pre>
-
-<p>Restart Tomcat6 and visit <code>http://localhost:8080/openrdf-workbench</code>.  </p>
-
-<p>You should be able to create a new server instance by using <code>http://127.0.0.1:8080/openrdf-sesame</code> 
-as the address. Note that this is a local (to the Tomcat instance) address.
-Afterwards, you should be able to create a new repository named 'geoknow'. Specify the 
-server's absolute file path of the configuration file (that is <code>/var/opt/useekm/geoknow/config.xml</code>)</p>
-
-<p><strong>Using Sesame with a different Indexer (ElasticSearch)</strong></p>
-
-<pre><code>TBD
-</code></pre>
-
-<p><strong>Deploying on a different Database</strong></p>
-
-<ul>
-<li>4Store (tbd)<br>
-</li>
-</ul><p>Visit <a href="">this Wiki page</a></p>
-
-<ul>
-<li>Virtuoso (tbd)<br>
-</li>
-</ul><p>Visit <a href="">this Wiki page</a></p>
-
-<ul>
-<li>SQLite (tbd)<br>
-</li>
-</ul><p>Visit <a href="">this Wiki page</a></p>
-
-<ul>
-<li>PostgreSQL (tbd)<br>
-</li>
-</ul><p>Visit <a href="">this Wiki page</a></p>
-
-<p><strong>Fill your Database</strong>  </p>
-
-<p><em>Creating a Backoffice-Importer</em></p>
-
-<pre><code>TBD
-</code></pre>
-
-<p><strong>Install Kosa</strong></p>
-
-<pre><code>$ wget https://github.com/ieru/kosa/archive/master.zip
-$ unzip master.zip
-$ cd kosa
-</code></pre>
-
-<p>Install required gems</p>
-
-<pre><code>(if you use rvm, type 'rvm all do gem install __GEMS BELOW__')  
-
-$ sudo gem install bundle bundler sinatra nokogiri rest-client json dm-core dm-sqlite-adapter rdf \
-rdf-aggregate-repo rdf-isomorphic rdf-json rdf-microdata rdf-n3 rdf-rdfa rdf-rdfxml rdf-turtle \
-rdf-trig rdf-xsd rdf-4store json-ld linkeddata sparql sinatra-respond_to sparql-client 
-</code></pre>
-
-<p>Create Bundle</p>
-
-<pre><code>$ ./bundle.sh
-$ ./bundle.dpl.sh
-</code></pre>
+<p>Visit this <a href="//github.com/ieru/kosa/wiki/Recommended-Installation">Wiki page</a></p>
 
 <h3>
-<a name="installation-on-mac-os-x" class="anchor" href="#installation-on-mac-os-x"><span class="octicon octicon-link"></span></a>Installation on Mac OS X</h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<pre><code>TBD
-</code></pre>
-
-<h3>
-<a name="installation-on-windows" class="anchor" href="#installation-on-windows"><span class="octicon octicon-link"></span></a>Installation on Windows</h3>
-
-<pre><code>TBD
-</code></pre>
+<p>(On Mac OS X)
+To be done.</p>
 
 <h3>
-<a name="installation-on-a-paas-eg-aws-heroku-etc" class="anchor" href="#installation-on-a-paas-eg-aws-heroku-etc"><span class="octicon octicon-link"></span></a>Installation on a PaaS (e.g AWS, Heroku, etc.)</h3>
+<a name="installation-1" class="anchor" href="#installation-1"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<p><strong>Heroku</strong>  </p>
-
-<pre><code>TBD
-</code></pre>
-
-<p><strong>Amazon Web Services</strong></p>
-
-<pre><code>TBD
-</code></pre>
+<p>(On Windows)
+To be done.</p>
 
 <h3>
-<a name="running-on-a-development-server-windows--mac-os--linux" class="anchor" href="#running-on-a-development-server-windows--mac-os--linux"><span class="octicon octicon-link"></span></a>Running on a Development Server (Windows / Mac OS / Linux)</h3>
+<a name="installation-2" class="anchor" href="#installation-2"><span class="octicon octicon-link"></span></a>Installation</h3>
 
-<pre><code>$ sudo rackup config.ru
-( use '$ sudo rvm all do rackup config.ru', if you are using rvm )
-...
-[2013-11-04 23:22:27] INFO  WEBrick 1.3.1
-[2013-11-04 23:22:27] INFO  ruby 1.9.2 (2012-04-20) [x86_64-darwin12.5.0]
-[2013-11-04 23:22:27] INFO  WEBrick::HTTPServer#start: pid=53704 port=4568
-</code></pre>
-
-<p>Now, open your browser and type <code>http://localhost:4568</code></p>
+<p>(On a SaaS: AWS and Heroku)
+To be done.</p>
 
 <h3>
-<a name="running-on-a-production-server-debian--ubuntu-linux" class="anchor" href="#running-on-a-production-server-debian--ubuntu-linux"><span class="octicon octicon-link"></span></a>Running on a Production Server (Debian / Ubuntu Linux)</h3>
+<a name="postinstallation" class="anchor" href="#postinstallation"><span class="octicon octicon-link"></span></a>Postinstallation</h3>
 
-<p>A good option for Linux servers is to use NGINX + Passenger. You can deploy 
-both servers by running the command below</p>
-
-<pre><code># copy-and-paste all in one line
-
-curl -L https://raw.github.com/julianromerajuarez/ubuntu\
--debian-nginx-passenger-installer/master/install.sh | bash 
-</code></pre>
-
-<p>You can get more information about this script <a href="https://github.com/julianromerajuarez/ubuntu-debian-nginx-passenger-installer">here</a></p>
+<p>You can get more info on how to Install a Production or Development<br>
+Server on this <a href="https://github.com/ieru/kosa/wiki/Postinstallation">Wiki Page</a></p>
 
 <h3>
-<a name="running-on-a-production-server-paas" class="anchor" href="#running-on-a-production-server-paas"><span class="octicon octicon-link"></span></a>Running on a Production Server (PaaS)</h3>
+<a name="customizations" class="anchor" href="#customizations"><span class="octicon octicon-link"></span></a>Customizations</h3>
 
-<pre><code>TBD
-</code></pre>
-
-<h3>
-<a name="javascript-templates--css-changes" class="anchor" href="#javascript-templates--css-changes"><span class="octicon octicon-link"></span></a>Javascript, templates &amp; css changes</h3>
-
-<p>Since Front and Back are now completely separated, to modify html, javascript or
-styles follow these steps:  </p>
-
-<p>Download and install <a href="http://nodejs.org/download/">node.js</a></p>
-
-<pre><code>$ sudo npm install -g brunch
-
-$ cd __YOUR_SITE_DIR__/public.dev
-$ ./deploy.sh
-
-Compiling assets ...
-11 Nov 05:57:39 - info: compiled 30 files and 2 cached into 7 files, copied 14 in 3905ms
-Deploying assets ...
-Done. Created ./../public
-
-( refresh your browser )
-</code></pre>
+<p>Yo can get more information about Javascript, templates &amp; css changes
+(Browser-side and Server-Side are now completely separated), 
+on this <a href="//github.com/ieru/kosa/wiki/Customizations">Wiki Page</a></p>
 
 <h3>
 <a name="troubleshooting" class="anchor" href="#troubleshooting"><span class="octicon octicon-link"></span></a>Troubleshooting</h3>
 
-<p><a href="https://github.com/ieru/kosa/wiki/Troubleshooting">Troubleshooting</a></p>
+<p><a href="//github.com/ieru/kosa/wiki/Troubleshooting">Troubleshooting</a></p>
 
 <h3>
-<a name="documentation-and-api-access" class="anchor" href="#documentation-and-api-access"><span class="octicon octicon-link"></span></a>Documentation and API access</h3>
+<a name="api-documentation" class="anchor" href="#api-documentation"><span class="octicon octicon-link"></span></a>API Documentation</h3>
 
-<p><a href="https://github.com/ieru/kosa/wiki/Kosa-RESTful-API">API</a></p>
+<p><a href="//github.com/ieru/kosa/wiki/Kosa-RESTful-API">API</a></p>
 
 <h3>
-<a name="optional-features" class="anchor" href="#optional-features"><span class="octicon octicon-link"></span></a>Optional Features</h3>
+<a name="extra-features" class="anchor" href="#extra-features"><span class="octicon octicon-link"></span></a>Extra Features</h3>
 
 <p>Pluggable databases:</p>
 
@@ -370,7 +202,7 @@ Done. Created ./../public
 </ul><h3>
 <a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h3>
 
-<p>University of Alcalá</p>
+<p>University of Alcala</p>
 
 <h3>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>'License'</h3>
