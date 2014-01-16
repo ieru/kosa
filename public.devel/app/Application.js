@@ -19,6 +19,7 @@ var Application = {
         var HomeView = require('views/HomeView');
         var LoginView = require('views/LoginView');
         var SparqlView = require('views/SparqlView');
+        var PanelView = require('views/PanelView');
         var ApplicationRouter = require('routers/ApplicationRouter');
         // var Events = require('events/Event');
         // var GraphCollection = require('collections/GraphCollection');
@@ -27,6 +28,7 @@ var Application = {
         this.homeView = new HomeView();
         this.loginView = new LoginView();
         this.sparqlView = new SparqlView();
+        this.panelView = new PanelView();
         this.applicationRouter = new ApplicationRouter();
 
 
