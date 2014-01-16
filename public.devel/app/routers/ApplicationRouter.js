@@ -21,6 +21,7 @@
       ""					: "home",
       "admin"					: "login",
       "sparql"					: "sparql",
+      "panel"					: "panel",
 
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
       "api/test"				: "test"
@@ -41,6 +42,10 @@
 
     sparql: function() {
       $( 'body' ).html( application.sparqlView.render().el );
+    },
+
+    panel: function() {
+      $( 'body' ).html( application.panelView.render().el );
     },
     
     getNarrowerConcepts: function (node){
