@@ -1,0 +1,21 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Ontology Name</th>
+      <th>Languages</th>
+      <th>Number of Terms</th>
+    </tr>
+  </thead>
+ <tbody>
+      {{#if ontologies}}<h4 class="h4 col-md-12 text-info marlefn15" >List of Ontologies in the Repositories</h4>{{/if}}
+        {{#ontologies}}
+         <tr>
+              <td>{{id}}</td>
+              <td>{{name}}</td>
+              <td>{{language}}</td>
+              <td>{{terms}}</td>
+         </tr>
+        {{/ontologies}}
+  </tbody>
+</table>  

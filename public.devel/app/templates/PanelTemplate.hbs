@@ -12,57 +12,34 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-           <!--
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-            -->
           </ul>
-
-
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/#/admin">Manage Metadata</a></li>
-            <li class="active"><a href="#">SPARQL Query Form</a></li>
+            <li class="active"><a href="/#/admin">Manage Metadata</a></li>
+            <li><a href="#">Administration Panel</a></li>
           </ul>
-
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
+    
+    <div class="ontology_list"></div>
+    
     <div class="container">
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron marbot1">
         <h2 class="h2 col-md-offset-2">&nbsp;SPARQL Query Form</h2>
 
-
-
-        <form  id="form">
+        <form id="form">
          <div class="container text-center">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
-               <textarea id="query" class="form-control" rows="7">PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT * WHERE {
-  ?s ?p ?o } LIMIT 50</textarea>
+               Place the file to be imported on dir 'import/data/load.rdf'
             </div>
           </div>
          </div>
          <div class="container text-center">
           <div class="row">
-            <button class="btn btn-default" id="clear">Reset Form</button>
-            <button class="btn btn-primary" id="run">Run Query</button>
+            <button class="btn btn-danger" id="run">Import</button>
           </div>
          </div>
         </form>
@@ -71,21 +48,11 @@ SELECT * WHERE {
      <div id="result" class="bs-docs-section">
       <div class="bs-callout bs-callout-warning">
       <h4>Results</h4>
-      <p>No results yet. Run Query!</p>
+      <p></p>
       </div>
      </div>
 
-    <!--
-      <div class="col-lg-12">
-
-       <h2 class="h2">Results</h2>
-       -->
         <!-- result is loaded here -->
-        <!--
-        <p id="result">No results yet. Run Query!</p>
-       </div>
-     </div>
-     -->
 
     </div> <!-- /container -->
 
