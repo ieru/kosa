@@ -10,7 +10,7 @@ describe "Kosa" do
   end
 
   describe "/" do
-    it "gets False response from / (Managed by browser)" do
+    it "gets False response from /" do
       get '/'
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should_not be_ok
@@ -23,6 +23,14 @@ describe "Kosa" do
       last_response['Content-Type'].should =~ %r{#{mime_type(:html)}}
       last_response.should be_ok
       last_response.should match %r{test}
+    end
+  end
+
+  describe "/auth/login" do
+    it "a 403 Forbidden json string from /auth/login when no credential is passed" do
+      get '/auth/login'
+      last_response['Content-Type'].should =~ %r{#{mime_type(:json)}}
+      last_response.should be_ok
     end
   end
   
