@@ -156,8 +156,8 @@
           }
 
           /* commented out: draw flags */
-          // return "<img class='flag' width='16' height='16' src='images/flags/" + state.id.toLowerCase() + ".png'/>"+ state.text;
-          return state.text;
+          return "<img class='flag' width='16' height='16' src='images/flags/" + state.id.toLowerCase() + ".png'/>"+ state.text;
+          // return state.text;
         }
         
         $("#language").select2({
