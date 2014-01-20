@@ -345,6 +345,7 @@ DEPENDENCIES
   kosa!
   linkeddata!
   rack-flash3
+  rack-protection
   rack-test
   rake
   rdf!
