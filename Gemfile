@@ -54,6 +54,8 @@ gem 'dalli'
 gem 'rdf-raptor'
 gem 'coveralls', require: false
 
+gem 'rack-protection'
+
 gem 'fileutils'
 
 # yajl gem increases JSON parse ~ 1.9x -> https://github.com/brianmario/yajl-ruby
