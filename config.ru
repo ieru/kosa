@@ -59,8 +59,8 @@ end
 
 disable :run, :reload
 
-require 'rack/protection'
-use Rack::Protection
+#require 'rack/protection'
+#use Rack::Protection
 
 
 # Bootstrap
