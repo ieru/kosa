@@ -49,10 +49,7 @@ Repository = 'MolGermMapper'
 
 
 class Kosa < Sinatra::Base
-  # register Sinatra::Warden
-  # register Sinatra::AuthRoutes
-   
-  # set :sessions => true
+
   enable :sessions
   
   
@@ -102,14 +99,12 @@ class Kosa < Sinatra::Base
 
 
     get '/auth/login' do
-      # erb :login
+
       return encoder.encode({:code => 200, message => "OK"})
     end
 
     post '/auth/login' do
       env['warden'].authenticate!
-
-      #flash.success = env['warden'].message
 
       if session[:return_to].nil?
         redirect '/'
@@ -121,39 +116,42 @@ class Kosa < Sinatra::Base
     get '/auth/logout' do
       env['warden'].raw_session.inspect
       env['warden'].logout
-      # flash.success = 'Successfully logged out'
+
       redirect '/'
     end
 
     post '/auth/unauthenticated' do
       session[:return_to] = env['warden.options'][:attempted_path]
-      # puts env['warden.options'][:attempted_path]
-      # flash.error = env['warden'].message || "You must log in"
-      # redirect '/login'
+
       return encoder.encode({:code => 403, message => "Forbidden"})
     end
 
     get '/protected' do
       env['warden'].authenticate!
-      "protected"
-      # erb :protected
+      return "protected"
     end
 
     # test endpoint1 
     get '/test' do
-
-        "test"
+        return "test"
     end
     
-    # test endpoint2
+    # test endpoint2: json
     get '/api/test' do
-        encoder.encode({:id=>'4', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1})
+        return encoder.encode({:id=>'4', :name=>'test', :children=>[], :related=>[], :childrenNumber=>1, :relatedNumber=>1})
     end
     
     # api index     
     get '/api' do
-        encoder.encode({})
+        return encoder.encode({})
     end
+
+    # start Import     
+    post '/import' do
+        # n.i.y.
+        return encoder.encode({:code=>404, message => "file not found"})
+    end
+
     
     # first node in the tree
     get '/api/getsimilarconcepts' do
