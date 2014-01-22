@@ -100,7 +100,7 @@ class Kosa < Sinatra::Base
 
     get '/auth/login' do
 
-      return encoder.encode({:code => 200, message => "OK"})
+      return encoder.encode({:code => 200, message => "Success"})
     end
 
     post '/auth/login' do
@@ -128,7 +128,7 @@ class Kosa < Sinatra::Base
 
     get '/protected' do
       env['warden'].authenticate!
-      return "protected"
+      "protected"
     end
 
     # test endpoint1 
@@ -147,9 +147,16 @@ class Kosa < Sinatra::Base
     end
 
     # start Import     
-    post '/import' do
+    get '/import' do
         # n.i.y.
-        return encoder.encode({:code=>404, message => "file not found"})
+        return encoder.encode({:code=>404, :message => "file not found"})
+    end
+
+    # returns ontology list
+    get '/api/getontologies' do
+      cache_control :public, max_age: 1800  # 30 mins.
+      
+      return get_ontologies()
     end
 
     
@@ -475,10 +482,10 @@ class Kosa < Sinatra::Base
           return encoder.encode({})
         end
          
-        concept = query.map { |w|  
-           { :name=> w.label, :id=>'', :uri=>w.root }
+        ontologies = query.map { |w|  
+           { :name=> w.label, :id=>'', :uri=>w.root , :count=> count, :languages=>[]}
         } 
-         return encoder.encode(concept)    
+         return encoder.encode({:ontologies=>ontologies})    
     end
     
 
