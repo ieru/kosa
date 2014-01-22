@@ -8,7 +8,8 @@
  */
 
 var View     = require('core/View');
-var template = require('templates/PanelTemplate');
+var PanelTemplate = require('templates/PanelTemplate');
+var OntologiesTemplate = require('templates/ontologies');
 
 var PanelView = View.extend({
 
@@ -19,7 +20,8 @@ var PanelView = View.extend({
 	/*
    	 * @private
    	*/
-	template: template,
+	template: PanelTemplate,
+	ontologiesTemplate: OntologiesTemplate,
 
 
 	//--------------------------------------
