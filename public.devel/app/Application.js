@@ -21,8 +21,6 @@ var Application = {
         var SparqlView = require('views/SparqlView');
         var PanelView = require('views/PanelView');
         var ApplicationRouter = require('routers/ApplicationRouter');
-        // var Events = require('events/Event');
-        // var GraphCollection = require('collections/GraphCollection');
 
         // Initialize
         this.homeView = new HomeView();

@@ -25,6 +25,7 @@ var PanelView = View.extend({
 	template: PanelTemplate,
 	ontologiesTemplate: OntologiesTemplate,
         
+        collection: {},
 
 	//--------------------------------------
   	//+ INHERITED / OVERRIDES
@@ -47,7 +48,9 @@ var PanelView = View.extend({
 	},
 
 	render: function() {
+		this.initPanel();
 		this.$el.html( this.template({}));
+		this.$el.find('#ontologies').html(this.ontologiesTemplate({'ontologies':this.ontologies}));
 		return this;
 	},
 	
@@ -60,11 +63,11 @@ var PanelView = View.extend({
 	    self.collection.url = '/api/getontologies';
 	    self.collection.fetch().done(function() {
 
-		var root = self.collection.toJSON();
-    		if (root.length > 0 && typeof root[0].name !== 'undefined') {
+		self.ontologies = self.collection.toJSON();
+    		/*if (root.length > 0 && typeof root[0].name !== 'undefined') {
 
         	    // self.rootLabel = root[0].name;
-    		}
+    		}*/
 
     		// once we have root node we get its children
     		/*
@@ -83,6 +86,7 @@ var PanelView = View.extend({
 
     	    }).fail(function (){
     		
+    		self.ontologies = {};
     		// self.Spinner.hide();
     		// self.Log.write('Error retrieving data');
     	    });
