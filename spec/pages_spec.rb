@@ -33,5 +33,14 @@ describe "Kosa" do
       last_response.should be_ok
     end
   end
+
+  describe "/api/getontologies" do
+    it "gets a OK response from /getontologies, and content is what should be expected" do
+      get '/api/getontologies'
+      last_response['Content-Type'].should =~ %r{#{mime_type(:json)}}
+      last_response.should be_ok
+    end
+  end
+
   
 end
