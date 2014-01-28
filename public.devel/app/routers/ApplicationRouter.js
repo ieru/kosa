@@ -21,7 +21,7 @@
       ""					: "home",
       "admin"					: "login",
       "sparql"					: "sparql",
-      "panel"					: "panel",
+      /*"panel"					: "panel",*/
 
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
       "api/test"				: "test"
