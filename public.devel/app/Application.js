@@ -18,15 +18,15 @@ var Application = {
         // Imports
         var HomeView = require('views/HomeView');
         var LoginView = require('views/LoginView');
-        var SparqlView = require('views/SparqlView');
-        var PanelView = require('views/PanelView');
+        // var SparqlView = require('views/SparqlView');
+        // var PanelView = require('views/PanelView');
         var ApplicationRouter = require('routers/ApplicationRouter');
 
         // Initialize
         this.homeView = new HomeView();
         this.loginView = new LoginView();
-        this.sparqlView = new SparqlView();
-        this.panelView = new PanelView();
+        // this.sparqlView = new SparqlView();
+        // this.panelView = new PanelView();
         this.applicationRouter = new ApplicationRouter();
 
 
