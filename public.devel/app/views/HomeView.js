@@ -62,7 +62,7 @@
      relatedsTemplate: RelatedsTemplate,
      breadcrumbTemplate: BreadcrumbTemplate,
      
-     unCacheString: 'uncache3',
+     unCacheString: 'uncache4',
      
      // graphic framework's attributes
      
@@ -322,41 +322,6 @@
             return {};
           }
       },
-/*
-      redrawRelated: function(newRelated){ // not implemented yet
-         $("#relateds").empty();
-         var relatedNumber = newRelated.length;
-         var relatedElementWidth = 150;
-         var relatedSpace = relatedNumber*relatedElementWidth;
-         var canvasWidth = $(window).innerWidth();
-         var relatedSpaceBeginning = canvasWidth/2 - relatedSpace/2;
-         var relatedHeight = 350;
-         var radioDiff = 14;
-
-         var graphReference = this.graph;
-         var canvas = this.graph.canvas;
-         graphReference.fx.edgeHelper.line.render({ x: 10, y: 30 }, { x: 10, y: 50 }, canvas); 
-        
-         for (var i = 0; i < relatedNumber; i++) {
-           var relHeight = relatedHeight + radioDiff * Math.round(Math.pow(Math.abs(i-relatedNumber/2), 1.1));
-           var relWidth = Math.floor(relatedSpaceBeginning + i*relatedElementWidth);
-           $("#relateds").append('<div class="related-label" style="top:' + relHeight + 'px; left:' + relWidth + 'px">' + newRelated[i].name + '</div>');
-
-           // graph.edgeHelper.line.render({ x: 10, y: 30 }, { x: 10, y: 50 }, canvas); 
-           // test.moveTo(100,100);
-           // test.lineTo(relWidth,relHeight);
-           // test.stroke();
-           // this.graph.canvas.getContext("2d").moveTo(100,100);
-           // this.graph.canvas.getContext("2d").lineTo(relWidth,relHeight);
-           // this.graph.canvas.getContext("2d").stroke;
-        }
-        
-
-      },
-*/
-
-
-
 
   //--------------------------------------
   //+ PUBLIC METHODS / GETTERS / SETTERS
@@ -529,12 +494,6 @@
                     $jit.util.event.stop(e); //stop default touchmove event
                     this.onDragMove(node, eventInfo, e);
                  }
-                /*
-                onDragMove: function(node, eventInfo, e) {  
-                    var pos = eventInfo.getPos();  
-                    node.pos.setc(pos.x, pos.y);  
-                    self.graph.plot();  
-                }*/
                },
                Tips: {
                  enable: true,
@@ -621,60 +580,22 @@
                    style.textAlign = 'center';
              },
 
-               /* onBeforePlotNode: function(node){
-               
-                if (node.selected) {
-                
-                   // node.data.$color = "#ff7";
-                   // node.data.$color = "#23A4FF";
-                   }
-                   else {
-                    // delete node.data.$color;
-                   }
-               },*/
-
               onBeforePlotLine: function(adj){
                 if (adj.nodeFrom.selected && adj.nodeTo.selected) {
-                       // adj.data.$color = "#eed";
-                       
-                       // light blue
-                       // adj.data.$color = "#23A4FF";
-                       // light green
                        adj.data.$color = "#00B19E";
                        adj.data.$lineWidth = 3;
                    }
                    else {
                     adj.data.$color = "#666";
-                       // delete adj.data.$color;
                        delete adj.data.$lineWidth;
                    }
                },
                
-               // handler to change label
-               /*
-               onCreateLabel: function(domElement, node){
-                 
-                 domElement.innerHTML = node.name;
-                 domElement.onclick = function(){
-        
-                        doc_rgraph[document_id].onClick(node.id, {
-                        onComplete: function() {
-                        Log.write("Done");
-                        }
-                    });
-                    
-                  };
-                  
-                },
-                */
                onPlaceLabel: function(label, node){          
 
                 var style = label.style;
                 
                 if (node.selected) {    
-                  // blue
-                  // style.color = '#23A4FF';
-                  // green
                   style.color = '#00B19E';
                   style.fontSize = '15px';
                   style.lineHeight='15px';
@@ -865,7 +786,6 @@
         return tree;
    },
   
-   // @fixme?
    generateId: function () {
    
      var randomId = Math.floor(Math.random()*10000 +1); 
@@ -967,10 +887,6 @@
                   }];
                  }
                 }
-                // mid dark blue
-                // #0081A5
-                // button blue
-                // #357EBD
                 newSubtree = newSubtreeLeft.concat(
                   newSubtreeCenter,
                   newSubtreeRight

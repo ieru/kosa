@@ -10,11 +10,11 @@
  /* variables */
 
 $label-width: 100px;
-// Edunet's dark green
+/* Edunet's dark green */
 $log-label-color: #357A8B;
 
-// Edunet's light green
-// $log-label-color: #00B19E;
+/* Edunet's light green */
+/* $log-label-color: #00B19E; */
 
  /* sass */
 
@@ -23,11 +23,12 @@ body {
   min-height: initial !important;
 }
 /* top bar */
+
 body > div > .container {
-margin-top: 70px;
+  margin-top: 70px;
 }
 
-#_tooltip{
+#tooltip{
   word-wrap: break-word;  
 }
 .tright {
@@ -109,15 +110,16 @@ div.jumbotron {
   background-color: #f0f7fd;
   border-color: #d0e3f0;
 }
+
 /* JSON prettifier */
-/*
+
 pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
 .string { color: green; }
 .number { color: darkorange; }
 .boolean { color: blue; }
 .null { color: magenta; }
 .key { color: red; }
-*/
+
 
 /**
 @To-do: - add sections
@@ -129,11 +131,13 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
 .jit-autoadjust-label {
   padding: 15px;
 }
+
 #infovis-label div.node{
   padding-top:0 !important;
   word-wrap: break-word;
   background-color:transparent;
 }
+
 #infovis-label div.node[id^='_pag_'] {
     color: #fff !important; 
     margin-top: 6px !important;
@@ -150,7 +154,8 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  font: 14px / 100% Arial, Helvetica, sans-serif;
+  /*font: 14px / 100% Arial, Helvetica, sans-serif;*/
+  font-size: 14px;
   padding: 0.5em 1em 0.55em;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-border-radius: 0.5em;
@@ -160,6 +165,7 @@ pre {padding: 5px; margin: 5px;background-color:#f5f5f5; }
   -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 }
+
 .button:hover {
   text-decoration: none;
 }
@@ -216,7 +222,6 @@ a {
     text-align:center;
 }
 #infovis {
-
    position:relative;
    width:inherit;
    height:500px;
@@ -240,3 +245,4 @@ a {
     font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
     padding:7px;
 }
+
