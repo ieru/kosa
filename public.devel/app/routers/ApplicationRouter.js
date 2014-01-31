@@ -19,7 +19,7 @@
   	routes: {
 
       ""					: "home",
-      "admin"					: "login",
+      /*"admin"					: "login",*/
       /*"sparql"				: "sparql",*/
       /*"panel"					: "panel",*/
 
