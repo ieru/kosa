@@ -19,9 +19,9 @@
   	routes: {
 
       ""					: "home",
-      /*"admin"					: "login",*/
-      /*"sparql"				: "sparql",*/
-      /*"panel"					: "panel",*/
+      "admin"					: "login",
+      "sparql"					: "sparql",
+      "panel"					: "panel",
 
       "api/getnarrowerconcepts/:node"		: "getNarrowerConcepts",
       "api/test"				: "test"
