@@ -36,9 +36,10 @@ exports.config =
         # after: ['vendor/styles/helpers.css']
         before: [
           'vendor/styles/bootstrap.css',
-          'vendor/styles/select2.css'
-          # ,'vendor/styles/navbar-fixed-top.css'
-          # ,'vendor/styles/signin.css'
+          'vendor/styles/select2.css',
+          'vendor/styles/style.css',
+          'vendor/styles/navbar-fixed-top.css',
+          'vendor/styles/signin.css'
         ]
         
     templates:
