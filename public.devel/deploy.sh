@@ -32,6 +32,8 @@ echo "Compiling assets ..."
 $BRUNCH build
 RES=$?
 
+
+
 echo "Result: ${RES}"
 
 if [ $RES -ne 0 ];then
